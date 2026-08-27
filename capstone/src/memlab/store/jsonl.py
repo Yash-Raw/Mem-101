@@ -42,6 +42,20 @@ class JsonlStore:
     def clear(self) -> None:
         self.path.unlink(missing_ok=True)
 
+    def replace(self, memories: list[Memory]) -> int:
+        """Rewrite the log wholesale.
+
+        Only consolidation needs this -- merging duplicates and retiring
+        superseded beliefs produces a new set, not an append. It is the one
+        operation that breaks append-only, which is why it lives behind an
+        explicit method rather than being reachable from `add`.
+        """
+        self.clear()
+        with self.path.open("a") as fh:
+            for m in memories:
+                fh.write(m.to_json() + "\n")
+        return len(memories)
+
     @staticmethod
     def _revive(d: dict) -> Memory:
         return Memory(

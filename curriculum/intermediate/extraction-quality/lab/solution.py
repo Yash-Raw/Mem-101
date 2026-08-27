@@ -43,7 +43,7 @@ def score(
 def score_profiles(k: int = 10) -> dict[str, ExtractionScore]:
     from memlab.app.chat import ingest
     from memlab.fixtures import load_turns
-    from memlab.pipeline import get
+    from memlab.pipeline import at, get
     from memlab.store.jsonl import JsonlStore
 
     scope = Scope(user="priya")
@@ -52,6 +52,6 @@ def score_profiles(k: int = 10) -> dict[str, ExtractionScore]:
     for name in ("beginner", "intermediate"):
         store = JsonlStore(f"/tmp/memlab-quality-{name}.jsonl")
         store.clear()
-        ingest(store, scope, get(name))
+        ingest(store, scope, get(name) if name == "beginner" else at("I1"))
         out[name] = score(store.all(), turns, scope, k=k)
     return out

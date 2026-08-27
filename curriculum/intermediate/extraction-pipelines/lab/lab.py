@@ -36,7 +36,7 @@ class ProfileReport:
 def compare_profiles(profiles: tuple[str, ...] = ("beginner", "intermediate")) -> list[ProfileReport]:
     from memlab.app.chat import ingest
     from memlab.eval.exam import exam_answer
-    from memlab.pipeline import get
+    from memlab.pipeline import at, get
     from memlab.retrieve.embedding import EmbeddingRetriever
     from memlab.store.jsonl import JsonlStore
 
@@ -45,7 +45,7 @@ def compare_profiles(profiles: tuple[str, ...] = ("beginner", "intermediate")) -
     for name in profiles:
         store = JsonlStore(f"/tmp/memlab-cmp-{name}.jsonl")
         store.clear()
-        ingest(store, scope, get(name))
+        ingest(store, scope, get(name) if name == "beginner" else at("I1"))
         memories = store.all()
 
         hits = EmbeddingRetriever().search("where do I work?", memories, scope, k=len(memories))

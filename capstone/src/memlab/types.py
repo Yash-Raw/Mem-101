@@ -71,6 +71,12 @@ class Memory:
     tier: Tier = Tier.WORKING
     access_count: int = 0
     entities: tuple[str, ...] = ()
+    # Source ids of the memories this one was derived from. Empty for anything
+    # extracted directly from a turn; populated for summaries and promotions.
+    # Added in Level 2, when summarisation first needed it -- see
+    # `summarization-and-compaction` for why adding it late is cheap now and
+    # would not have been after a million summaries existed.
+    derived_from: tuple[str, ...] = ()
     id: str = ""
 
     def __post_init__(self) -> None:

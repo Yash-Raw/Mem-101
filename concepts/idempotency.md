@@ -20,4 +20,6 @@ Re-ingestion is normal, not exceptional: retries, replays, backfills, a consolid
 
 <!-- graph:begin -->
 **Taught in:** [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md)
+
+**Used in:** [Deduplication](../curriculum/intermediate/deduplication/index.md)
 <!-- graph:end -->

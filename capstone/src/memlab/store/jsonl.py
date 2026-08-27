@@ -72,5 +72,6 @@ class JsonlStore:
             tier=Tier(d["tier"]),
             access_count=d["access_count"],
             entities=tuple(d.get("entities", ())),
+            derived_from=tuple(d.get("derived_from", ())),
             id=d["id"],
         )

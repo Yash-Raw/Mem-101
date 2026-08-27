@@ -54,19 +54,49 @@ def beginner() -> Pipeline:
     return Pipeline(name="beginner", extract=naive_extract)
 
 
-def intermediate() -> Pipeline:
-    """Level 2. Identical to beginner until the lessons that fill it in.
+# Each module switches on exactly one capability, so the improvement it claims
+# is attributable to it alone -- and so a lesson's measured numbers stay true
+# after later modules land. `at("I1")` is the system as I1 left it, forever.
+MODULES = ("I1", "I2", "I3", "I4")
 
-    Each of I1-I4 switches on exactly one stage, so the improvement it claims is
-    attributable to it alone.
+
+def intermediate(through: str = "latest") -> Pipeline:
+    """Level 2, optionally as it stood at the end of a given module.
+
+    Lesson tests pin numbers measured against their own module's snapshot.
+    Without that, I3's deduplication silently invalidates every count I1
+    quoted, and the only remedies are re-quoting prose on every commit or
+    letting the numbers rot. Both are worse than a checkpoint.
     """
-    return replace(
-        beginner(),
-        name="intermediate",
-        extract=staged_extract,          # I1: staged, with event -> state
-        ingest_agent_writes=True,        # I1: shared-scope writes carry authority
-        consolidate=resolve_all,         # I2: resolution needs the whole store
-    )
+    if through != "latest" and through not in MODULES:
+        raise ValueError(f"unknown module {through!r} (known: {', '.join(MODULES)})")
+    reached = MODULES if through == "latest" else MODULES[: MODULES.index(through) + 1]
+
+    p = replace(beginner(), name=f"intermediate@{through}")
+
+    if "I1" in reached:
+        p = replace(
+            p,
+            extract=staged_extract,        # staged, with event -> state
+            ingest_agent_writes=True,      # shared-scope writes carry authority
+        )
+    if "I2" in reached:
+        p = replace(p, consolidate=resolve_all)          # resolution needs the whole store
+    if "I3" in reached:
+        p = replace(p, consolidate=_resolve_then_dedupe)  # + collapse restatements
+    return p
+
+
+def _resolve_then_dedupe(memories):
+    """Order matters: dedupe compares entities, so resolution runs first."""
+    from .evolve.dedupe import dedupe
+
+    return dedupe(resolve_all(memories))
+
+
+def at(module: str) -> Pipeline:
+    """The intermediate pipeline as it stood at the end of `module`."""
+    return intermediate(through=module)
 
 
 PROFILES: dict[str, Callable[[], Pipeline]] = {

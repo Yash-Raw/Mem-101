@@ -52,13 +52,13 @@ PARTNER = ("Sam ", "Sam's", "Samira", "Sammy", "partner")
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
     from memlab.types import Scope
 
     store = JsonlStore("/tmp/memlab-aliases.jsonl")
     store.clear()
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I2"))
 
     about_partner = [
         m for m in store.all()

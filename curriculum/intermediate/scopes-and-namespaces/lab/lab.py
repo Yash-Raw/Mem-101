@@ -68,12 +68,12 @@ def rank_then_filter(memories: list[Memory], scope: Scope, k: int = 5) -> list[M
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
 
     store = JsonlStore("/tmp/memlab-scopes.jsonl")
     store.clear()
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I2"))
     memories = store.all()
 
     print("namespaces in the store:")

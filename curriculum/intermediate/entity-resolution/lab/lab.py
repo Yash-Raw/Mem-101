@@ -81,7 +81,7 @@ PARTNER = ("Sam ", "Sam's", "Samira", "Sammy")
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
     from memlab.types import Scope
 
@@ -91,7 +91,7 @@ def main() -> None:
 
     store = JsonlStore("/tmp/memlab-resolve.jsonl")
     store.clear()
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I2"))
     memories = store.all()
 
     about = [m for m in memories

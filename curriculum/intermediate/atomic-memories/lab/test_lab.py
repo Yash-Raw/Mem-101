@@ -4,7 +4,7 @@ from __future__ import annotations
 import pytest
 from memlab import labkit
 from memlab.app.chat import ingest
-from memlab.pipeline import get
+from memlab.pipeline import at
 from memlab.store.jsonl import JsonlStore
 from memlab.types import MemoryType, Scope
 
@@ -19,7 +19,7 @@ is_atomic = _solution.is_atomic
 @pytest.fixture(scope="module")
 def memories(tmp_path_factory):
     store = JsonlStore(tmp_path_factory.mktemp("atom") / "m.jsonl")
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I1"))
     return store.all()
 
 

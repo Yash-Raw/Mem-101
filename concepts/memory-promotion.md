@@ -21,5 +21,5 @@ Promotion is where the decision "is this worth keeping" actually gets made. Prom
 <!-- graph:begin -->
 **Taught in:** [Session Memory vs Long-Term Memory](../curriculum/beginner/session-vs-longterm/index.md)
 
-**Used in:** [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md) · [Your First Memory Layer](../curriculum/beginner/your-first-memory-layer/index.md) · [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
+**Used in:** [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md) · [Your First Memory Layer](../curriculum/beginner/your-first-memory-layer/index.md) · [From Episode to Belief](../curriculum/intermediate/episodic-to-semantic/index.md) · [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
 <!-- graph:end -->

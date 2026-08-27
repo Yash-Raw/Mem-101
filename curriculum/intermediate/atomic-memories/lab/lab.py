@@ -55,13 +55,13 @@ CASES = [
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
     from memlab.types import Scope
 
     store = JsonlStore("/tmp/memlab-atomic.jsonl")
     store.clear()
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I1"))
 
     audit = audit_atomicity(store.all())
     print(f"corpus: {len(audit.compound)} of {audit.total} non-atomic "

@@ -25,6 +25,8 @@ status: published
 **You need first:** [Entity Resolution](../entity-resolution/index.md)
 
 **Concepts assumed:** [Retrieval Scoping](../../../concepts/retrieval-scoping.md) · [Canonical Entity](../../../concepts/canonical-entity.md)
+
+**This unlocks:** [Deduplication](../deduplication/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -157,4 +159,6 @@ uv run python curriculum/intermediate/scopes-and-namespaces/lab/lab.py
 **You need first:** [Entity Resolution](../entity-resolution/index.md)
 
 **Concepts assumed:** [Retrieval Scoping](../../../concepts/retrieval-scoping.md) · [Canonical Entity](../../../concepts/canonical-entity.md)
+
+**This unlocks:** [Deduplication](../deduplication/index.md)
 <!-- graph:end -->

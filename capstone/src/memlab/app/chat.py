@@ -51,6 +51,10 @@ def _agent_memories(scope: Scope) -> list[Memory]:
                     authority=row["authority"],
                 ),
                 happened_at=datetime.fromisoformat(row["ts"]),
+                # A relayed claim is believed no more than its source is
+                # trusted. Storing hearsay at full confidence is how a
+                # colleague's guess outranks something the user actually said.
+                confidence=row["authority"],
             )
         )
     return out

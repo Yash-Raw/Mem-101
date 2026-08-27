@@ -4,7 +4,7 @@ from __future__ import annotations
 import pytest
 from memlab import labkit
 from memlab.app.chat import ingest
-from memlab.pipeline import get
+from memlab.pipeline import at
 from memlab.store.jsonl import JsonlStore
 from memlab.types import Memory, MemoryType, Provenance, Scope
 
@@ -23,7 +23,7 @@ PRIYA = Scope(user="priya")
 @pytest.fixture(scope="module")
 def memories(tmp_path_factory):
     store = JsonlStore(tmp_path_factory.mktemp("ns") / "m.jsonl")
-    ingest(store, PRIYA, get("intermediate"))
+    ingest(store, PRIYA, at("I2"))
     return store.all()
 
 

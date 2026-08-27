@@ -32,6 +32,8 @@ from .atomise import atomise
 from .gate import passes
 from .naive import SCHEMA
 
+SINGLE_SOURCE_CONFIDENCE = 0.9
+
 PROMPT = (
     "Extract durable facts worth remembering from the user's message. "
     "Return a JSON array of objects with 'content' and 'type'. "
@@ -69,6 +71,10 @@ def extract(turn: dict, scope: Scope, client: LLMClient | None = None) -> list[M
             scope=scope,
             provenance=provenance,
             happened_at=happened,
+            # A single unconfirmed source is not certainty. Leaving headroom is
+            # what lets corroboration mean anything -- a claim that starts at
+            # 1.0 can never be strengthened by independent evidence.
+            confidence=SINGLE_SOURCE_CONFIDENCE,
         )
         for candidate in candidates
         for fact in atomise(candidate["content"], MemoryType(candidate["type"]))

@@ -4,7 +4,7 @@ from __future__ import annotations
 import pytest
 from memlab import labkit
 from memlab.app.chat import ingest
-from memlab.pipeline import get
+from memlab.pipeline import at
 from memlab.store.jsonl import JsonlStore
 from memlab.types import Scope
 
@@ -23,7 +23,7 @@ PARTNER = ("Sam ", "Sam's", "Samira", "Sammy")
 @pytest.fixture(scope="module")
 def about_partner(tmp_path_factory):
     store = JsonlStore(tmp_path_factory.mktemp("res") / "m.jsonl")
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I2"))
     return [
         m for m in store.all()
         if any(n in m.content for n in PARTNER) or m.content.startswith("She")

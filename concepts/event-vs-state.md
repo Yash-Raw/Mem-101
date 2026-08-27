@@ -21,5 +21,5 @@ This is the single highest-cost extraction decision, because the two share almos
 <!-- graph:begin -->
 **Taught in:** [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
 
-**Used in:** [Precision and Recall on the Write Path](../curriculum/intermediate/extraction-quality/index.md)
+**Used in:** [From Episode to Belief](../curriculum/intermediate/episodic-to-semantic/index.md) · [Precision and Recall on the Write Path](../curriculum/intermediate/extraction-quality/index.md)
 <!-- graph:end -->

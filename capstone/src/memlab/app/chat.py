@@ -100,7 +100,7 @@ def ask(
 ) -> tuple[str, list[Hit]]:
     pipeline = pipeline or beginner()
     if pipeline.rank is not None:
-        hits = pipeline.rank(question, store.all(), scope, k)
+        hits = pipeline.rank(question, store.all(), scope, k, index=pipeline.vectors)
     else:
         hits = EmbeddingRetriever().search(
             question, store.all(), scope, k=k, live_only=pipeline.live_only

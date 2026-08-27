@@ -27,7 +27,7 @@ ResolveFn = Callable[[list[Memory], list[Memory]], list[Memory]]
 ConsolidateFn = Callable[[list[Memory]], list[Memory]]
 DecayFn = Callable[[list[Memory]], list[Memory]]
 RankFn = Callable[[str, list[Memory], Scope], list]
-VectorFn = Callable[[str], list[float]]
+
 AssembleFn = Callable[..., str]
 
 
@@ -43,7 +43,7 @@ class Pipeline:
     ingest_agent_writes: bool = False         # I1: admit shared-scope hearsay
     decay: DecayFn | None = None              # I5: score salience, move tiers
     rank: RankFn | None = None                # I6: hybrid scoring; None = plain cosine
-    vectors: VectorFn | None = None           # I7: cached embeddings; None = recompute
+    vectors: object | None = None             # I7: a VectorIndex; None = recompute
     assemble: AssembleFn | None = None        # I8: budgeted packing; None = assemble.simple
 
     def with_stage(self, **changes) -> Pipeline:
@@ -102,14 +102,18 @@ def intermediate(through: str = "latest") -> Pipeline:
         p = replace(p, decay=_score_and_decay)      # salience, ageing, tiering
     if "I6" in reached:
         p = replace(p, rank=_hybrid_search)         # filter, formulate, rank, merge
+    if "I7" in reached:
+        from .store.vector import VectorIndex
+
+        p = replace(p, vectors=VectorIndex())       # embed once per memory, not per query
     return p
 
 
-def _hybrid_search(query, memories, scope, k=5):
+def _hybrid_search(query, memories, scope, k=5, index=None):
     """The composed read path: scope -> formulate -> slot+similarity -> merge."""
     from .retrieve.scoped import search
 
-    return search(query, memories, scope, k=k)
+    return search(query, memories, scope, k=k, index=index)
 
 
 def _score_and_decay(memories):

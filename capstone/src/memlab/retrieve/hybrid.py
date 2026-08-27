@@ -164,9 +164,13 @@ def score_one(
     intent: str,
     scope: Scope,
     wanted_slots: set[str] | None = None,
+    query_vector: list[float] | None = None,
+    index=None,
 ) -> Scored:
+    q = query_vector if query_vector is not None else embed_text(query)
+    content_vector = index.vector_for(memory) if index is not None else embed_text(memory.content)
     parts = {
-        "similarity": W_SIMILARITY * cosine(embed_text(query), embed_text(memory.content)),
+        "similarity": W_SIMILARITY * cosine(q, content_vector),
         "coverage": W_COVERAGE * coverage(query, memory.content),
         "recency": W_RECENCY * recency(memory, now),
         "salience": W_SALIENCE * memory.salience,
@@ -177,8 +181,14 @@ def score_one(
     return Scored(memory=memory, total=round(sum(parts.values()), 4), parts=parts)
 
 
-def rank(query: str, memories: list[Memory], scope: Scope, k: int = 5) -> list[Hit]:
-    """Signature matches EmbeddingRetriever.search, so it drops into Pipeline."""
+def rank(
+    query: str, memories: list[Memory], scope: Scope, k: int = 5, index=None
+) -> list[Hit]:
+    """Signature matches EmbeddingRetriever.search, so it drops into Pipeline.
+
+    With an index, the query is embedded once and every memory vector is served
+    from cache -- 2N embed calls per query become one.
+    """
     if not memories:
         return []
     from .query import slots_for
@@ -186,6 +196,10 @@ def rank(query: str, memories: list[Memory], scope: Scope, k: int = 5) -> list[H
     now = max((m.happened_at or m.recorded_at) for m in memories)
     intent = intent_of(query)
     wanted = slots_for(query)
-    scored = [score_one(query, m, now, intent, scope, wanted) for m in memories]
+    q = embed_text(query)
+    scored = [
+        score_one(query, m, now, intent, scope, wanted, query_vector=q, index=index)
+        for m in memories
+    ]
     scored.sort(key=lambda s: -s.total)
     return [Hit(memory=s.memory, score=s.total) for s in scored[:k]]

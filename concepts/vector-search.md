@@ -21,5 +21,5 @@ It is a genuinely good tool for the read path and a genuinely bad proxy for rele
 <!-- graph:begin -->
 **Taught in:** [Embedding Recall](../curriculum/beginner/embedding-recall/index.md)
 
-**Used in:** [Retrieval Is Not Enough](../curriculum/beginner/retrieval-is-not-enough/index.md) · [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md) · [Your First Memory Layer](../curriculum/beginner/your-first-memory-layer/index.md) · [Deduplication](../curriculum/intermediate/deduplication/index.md) · [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md)
+**Used in:** [Retrieval Is Not Enough](../curriculum/beginner/retrieval-is-not-enough/index.md) · [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md) · [Your First Memory Layer](../curriculum/beginner/your-first-memory-layer/index.md) · [Deduplication](../curriculum/intermediate/deduplication/index.md) · [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md) · [Vector Stores for Data That Changes](../curriculum/intermediate/vector-stores-for-mutable-data/index.md)
 <!-- graph:end -->

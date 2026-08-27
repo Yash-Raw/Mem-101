@@ -217,6 +217,24 @@
       "path": "curriculum/intermediate/extraction-quality/index.md"
     },
     {
+      "id": "graph-stores",
+      "type": "lesson",
+      "title": "Graph Stores",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 38,
+      "path": "curriculum/intermediate/graph-stores/index.md"
+    },
+    {
+      "id": "hybrid-architecture",
+      "type": "lesson",
+      "title": "Hybrid Architecture",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 39,
+      "path": "curriculum/intermediate/hybrid-architecture/index.md"
+    },
+    {
       "id": "hybrid-ranking",
       "type": "lesson",
       "title": "Hybrid Ranking",
@@ -242,6 +260,15 @@
       "stage": "retrieve",
       "order": 34,
       "path": "curriculum/intermediate/query-formulation/index.md"
+    },
+    {
+      "id": "relational-stores",
+      "type": "lesson",
+      "title": "The Underrated Default",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 37,
+      "path": "curriculum/intermediate/relational-stores/index.md"
     },
     {
       "id": "retrieval-triggers",
@@ -314,6 +341,15 @@
       "stage": "store",
       "order": 13,
       "path": "curriculum/intermediate/typed-memory-model/index.md"
+    },
+    {
+      "id": "vector-stores-for-mutable-data",
+      "type": "lesson",
+      "title": "Vector Stores for Data That Changes",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 36,
+      "path": "curriculum/intermediate/vector-stores-for-mutable-data/index.md"
     },
     {
       "id": "why-forgetting-is-a-feature",
@@ -509,6 +545,14 @@
       "status": "published"
     },
     {
+      "id": "graph-traversal",
+      "type": "concept",
+      "title": "Graph Traversal",
+      "stage": "store",
+      "path": "concepts/graph-traversal.md",
+      "status": "published"
+    },
+    {
       "id": "hybrid-ranking",
       "type": "concept",
       "title": "Hybrid Ranking",
@@ -522,6 +566,14 @@
       "title": "Idempotent Writes",
       "stage": "store",
       "path": "concepts/idempotency.md",
+      "status": "published"
+    },
+    {
+      "id": "indexed-predicate",
+      "type": "concept",
+      "title": "Indexed Predicates",
+      "stage": "store",
+      "path": "concepts/indexed-predicate.md",
       "status": "published"
     },
     {
@@ -709,11 +761,27 @@
       "status": "published"
     },
     {
+      "id": "tombstone",
+      "type": "concept",
+      "title": "Tombstone",
+      "stage": "store",
+      "path": "concepts/tombstone.md",
+      "status": "published"
+    },
+    {
       "id": "type-rules",
       "type": "concept",
       "title": "Type Rules",
       "stage": "store",
       "path": "concepts/type-rules.md",
+      "status": "published"
+    },
+    {
+      "id": "vector-index",
+      "type": "concept",
+      "title": "Vector Index",
+      "stage": "store",
+      "path": "concepts/vector-index.md",
       "status": "published"
     },
     {
@@ -730,6 +798,14 @@
       "title": "Working Memory",
       "stage": "assemble",
       "path": "concepts/working-memory.md",
+      "status": "published"
+    },
+    {
+      "id": "write-fan-out",
+      "type": "concept",
+      "title": "Write Fan-Out",
+      "stage": "store",
+      "path": "concepts/write-fan-out.md",
       "status": "published"
     },
     {
@@ -866,6 +942,16 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "graph-stores",
+      "to": "relational-stores",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "hybrid-architecture",
+      "to": "graph-stores",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "hybrid-ranking",
       "to": "scope-then-rank",
       "kind": "requires_lesson"
@@ -878,6 +964,11 @@
     {
       "from": "query-formulation",
       "to": "hybrid-ranking",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "relational-stores",
+      "to": "vector-stores-for-mutable-data",
       "kind": "requires_lesson"
     },
     {
@@ -918,6 +1009,11 @@
     {
       "from": "typed-memory-model",
       "to": "watching-it-fail",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "vector-stores-for-mutable-data",
+      "to": "retrieval-triggers",
       "kind": "requires_lesson"
     },
     {
@@ -1126,6 +1222,16 @@
       "kind": "teaches"
     },
     {
+      "from": "graph-stores",
+      "to": "graph-traversal",
+      "kind": "teaches"
+    },
+    {
+      "from": "hybrid-architecture",
+      "to": "write-fan-out",
+      "kind": "teaches"
+    },
+    {
       "from": "hybrid-ranking",
       "to": "hybrid-ranking",
       "kind": "teaches"
@@ -1143,6 +1249,11 @@
     {
       "from": "query-formulation",
       "to": "query-rewriting",
+      "kind": "teaches"
+    },
+    {
+      "from": "relational-stores",
+      "to": "indexed-predicate",
       "kind": "teaches"
     },
     {
@@ -1193,6 +1304,16 @@
     {
       "from": "typed-memory-model",
       "to": "type-rules",
+      "kind": "teaches"
+    },
+    {
+      "from": "vector-stores-for-mutable-data",
+      "to": "vector-index",
+      "kind": "teaches"
+    },
+    {
+      "from": "vector-stores-for-mutable-data",
+      "to": "tombstone",
       "kind": "teaches"
     },
     {
@@ -1486,6 +1607,41 @@
       "kind": "uses"
     },
     {
+      "from": "graph-stores",
+      "to": "indexed-predicate",
+      "kind": "uses"
+    },
+    {
+      "from": "graph-stores",
+      "to": "canonical-entity",
+      "kind": "uses"
+    },
+    {
+      "from": "graph-stores",
+      "to": "entity-resolution",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-architecture",
+      "to": "vector-index",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-architecture",
+      "to": "indexed-predicate",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-architecture",
+      "to": "graph-traversal",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-architecture",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
       "from": "hybrid-ranking",
       "to": "vector-search",
       "kind": "uses"
@@ -1538,6 +1694,21 @@
     {
       "from": "query-formulation",
       "to": "coreference",
+      "kind": "uses"
+    },
+    {
+      "from": "relational-stores",
+      "to": "vector-index",
+      "kind": "uses"
+    },
+    {
+      "from": "relational-stores",
+      "to": "retrieval-scoping",
+      "kind": "uses"
+    },
+    {
+      "from": "relational-stores",
+      "to": "namespace",
       "kind": "uses"
     },
     {
@@ -1661,6 +1832,21 @@
       "kind": "uses"
     },
     {
+      "from": "vector-stores-for-mutable-data",
+      "to": "vector-search",
+      "kind": "uses"
+    },
+    {
+      "from": "vector-stores-for-mutable-data",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
+      "from": "vector-stores-for-mutable-data",
+      "to": "idempotency",
+      "kind": "uses"
+    },
+    {
       "from": "why-forgetting-is-a-feature",
       "to": "token-budget",
       "kind": "uses"
@@ -1716,8 +1902,18 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "graph-traversal",
+      "to": "indexed-predicate",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "hybrid-ranking",
       "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "indexed-predicate",
+      "to": "vector-index",
       "kind": "contrasts_with"
     },
     {
@@ -1781,8 +1977,18 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "tombstone",
+      "to": "supersession",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "type-rules",
       "to": "memory-record",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "vector-index",
+      "to": "vector-search",
       "kind": "contrasts_with"
     },
     {

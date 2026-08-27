@@ -65,7 +65,9 @@ def _merge(lists: list[list[Hit]], k: int) -> list[Hit]:
     return merged[:k]
 
 
-def search(query: str, memories: list[Memory], scope: Scope, k: int = 5) -> list[Hit]:
+def search(
+    query: str, memories: list[Memory], scope: Scope, k: int = 5, index=None
+) -> list[Hit]:
     pool = eligible(memories, scope)
     if not pool:
         return []
@@ -77,6 +79,6 @@ def search(query: str, memories: list[Memory], scope: Scope, k: int = 5) -> list
         # "gluten intolerance" against "what should I not eat".
         by_slot = in_slots(pool, slots_for(sub))
         candidates = {m.id: m for m in [*by_slot, *pool]}.values()
-        per_query.append(hybrid_rank(sub, list(candidates), scope, k=k))
+        per_query.append(hybrid_rank(sub, list(candidates), scope, k=k, index=index))
 
     return _merge(per_query, k)

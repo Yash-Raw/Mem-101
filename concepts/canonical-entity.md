@@ -21,5 +21,5 @@ It is the join key that makes accumulation possible: once six memories share `en
 <!-- graph:begin -->
 **Taught in:** [Entity Resolution](../curriculum/intermediate/entity-resolution/index.md)
 
-**Used in:** [Contradiction Detection](../curriculum/intermediate/contradiction-detection/index.md) · [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md) · [Scopes and Namespaces](../curriculum/intermediate/scopes-and-namespaces/index.md)
+**Used in:** [Contradiction Detection](../curriculum/intermediate/contradiction-detection/index.md) · [Graph Stores](../curriculum/intermediate/graph-stores/index.md) · [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md) · [Scopes and Namespaces](../curriculum/intermediate/scopes-and-namespaces/index.md)
 <!-- graph:end -->

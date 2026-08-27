@@ -21,5 +21,5 @@ Re-ingestion is normal, not exceptional: retries, replays, backfills, a consolid
 <!-- graph:begin -->
 **Taught in:** [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md)
 
-**Used in:** [Deduplication](../curriculum/intermediate/deduplication/index.md)
+**Used in:** [Deduplication](../curriculum/intermediate/deduplication/index.md) · [Vector Stores for Data That Changes](../curriculum/intermediate/vector-stores-for-mutable-data/index.md)
 <!-- graph:end -->

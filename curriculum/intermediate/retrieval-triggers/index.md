@@ -25,6 +25,8 @@ status: published
 **You need first:** [The Query Is Not the Last Message](../query-formulation/index.md)
 
 **Concepts assumed:** [Query Formulation](../../../concepts/query-rewriting.md) · [The Read Path](../../../concepts/read-path.md) · [The Write Path](../../../concepts/write-path.md)
+
+**This unlocks:** [Vector Stores for Data That Changes](../vector-stores-for-mutable-data/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -131,4 +133,6 @@ uv run python curriculum/intermediate/retrieval-triggers/lab/lab.py
 **You need first:** [The Query Is Not the Last Message](../query-formulation/index.md)
 
 **Concepts assumed:** [Query Formulation](../../../concepts/query-rewriting.md) · [The Read Path](../../../concepts/read-path.md) · [The Write Path](../../../concepts/write-path.md)
+
+**This unlocks:** [Vector Stores for Data That Changes](../vector-stores-for-mutable-data/index.md)
 <!-- graph:end -->

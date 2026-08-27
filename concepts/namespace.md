@@ -21,7 +21,7 @@ This is the multi-tenancy substrate, and it is a correctness boundary rather tha
 <!-- graph:begin -->
 **Taught in:** [Scopes and Namespaces](../curriculum/intermediate/scopes-and-namespaces/index.md)
 
-**Used in:** [Scope, Then Rank](../curriculum/intermediate/scope-then-rank/index.md)
+**Used in:** [The Underrated Default](../curriculum/intermediate/relational-stores/index.md) · [Scope, Then Rank](../curriculum/intermediate/scope-then-rank/index.md)
 
 **Do not confuse with:** [Retrieval Scoping](retrieval-scoping.md)
 <!-- graph:end -->

@@ -127,6 +127,24 @@
       "path": "curriculum/intermediate/atomic-memories/index.md"
     },
     {
+      "id": "entities-and-aliases",
+      "type": "lesson",
+      "title": "Entities and Aliases",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 17,
+      "path": "curriculum/intermediate/entities-and-aliases/index.md"
+    },
+    {
+      "id": "entity-resolution",
+      "type": "lesson",
+      "title": "Entity Resolution",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 18,
+      "path": "curriculum/intermediate/entity-resolution/index.md"
+    },
+    {
       "id": "extraction-pipelines",
       "type": "lesson",
       "title": "Extraction Pipelines",
@@ -143,6 +161,15 @@
       "stage": "extract",
       "order": 15,
       "path": "curriculum/intermediate/extraction-quality/index.md"
+    },
+    {
+      "id": "scopes-and-namespaces",
+      "type": "lesson",
+      "title": "Scopes and Namespaces",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 19,
+      "path": "curriculum/intermediate/scopes-and-namespaces/index.md"
     },
     {
       "id": "typed-memory-model",
@@ -186,6 +213,14 @@
       "status": "stub"
     },
     {
+      "id": "canonical-entity",
+      "type": "concept",
+      "title": "Canonical Entity",
+      "stage": "store",
+      "path": "concepts/canonical-entity.md",
+      "status": "published"
+    },
+    {
       "id": "context-assembly",
       "type": "concept",
       "title": "Context Assembly",
@@ -202,12 +237,28 @@
       "status": "published"
     },
     {
+      "id": "coreference",
+      "type": "concept",
+      "title": "Coreference",
+      "stage": "extract",
+      "path": "concepts/coreference.md",
+      "status": "published"
+    },
+    {
       "id": "corpus-authorship",
       "type": "concept",
       "title": "Corpus Authorship",
       "stage": "orientation",
       "path": "concepts/corpus-authorship.md",
       "status": "published"
+    },
+    {
+      "id": "deduplication",
+      "type": "concept",
+      "title": "Deduplication",
+      "stage": "evolve",
+      "path": "concepts/deduplication.md",
+      "status": "stub"
     },
     {
       "id": "durability-gate",
@@ -231,7 +282,7 @@
       "title": "Entity Resolution",
       "stage": "store",
       "path": "concepts/entity-resolution.md",
-      "status": "stub"
+      "status": "published"
     },
     {
       "id": "episodic-memory",
@@ -314,6 +365,14 @@
       "status": "published"
     },
     {
+      "id": "namespace",
+      "type": "concept",
+      "title": "Namespace",
+      "stage": "store",
+      "path": "concepts/namespace.md",
+      "status": "published"
+    },
+    {
       "id": "over-extraction",
       "type": "concept",
       "title": "Over-Extraction",
@@ -335,7 +394,7 @@
       "title": "Provenance",
       "stage": "govern",
       "path": "concepts/provenance.md",
-      "status": "stub"
+      "status": "published"
     },
     {
       "id": "read-path",
@@ -485,6 +544,16 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "entities-and-aliases",
+      "to": "atomic-memories",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "entity-resolution",
+      "to": "entities-and-aliases",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "extraction-pipelines",
       "to": "typed-memory-model",
       "kind": "requires_lesson"
@@ -492,6 +561,11 @@
     {
       "from": "extraction-quality",
       "to": "extraction-pipelines",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "scopes-and-namespaces",
+      "to": "entity-resolution",
       "kind": "requires_lesson"
     },
     {
@@ -630,6 +704,21 @@
       "kind": "teaches"
     },
     {
+      "from": "entities-and-aliases",
+      "to": "coreference",
+      "kind": "teaches"
+    },
+    {
+      "from": "entity-resolution",
+      "to": "entity-resolution",
+      "kind": "teaches"
+    },
+    {
+      "from": "entity-resolution",
+      "to": "canonical-entity",
+      "kind": "teaches"
+    },
+    {
       "from": "extraction-pipelines",
       "to": "extraction-pipeline",
       "kind": "teaches"
@@ -647,6 +736,16 @@
     {
       "from": "extraction-quality",
       "to": "write-path-recall",
+      "kind": "teaches"
+    },
+    {
+      "from": "scopes-and-namespaces",
+      "to": "namespace",
+      "kind": "teaches"
+    },
+    {
+      "from": "scopes-and-namespaces",
+      "to": "provenance",
       "kind": "teaches"
     },
     {
@@ -795,6 +894,26 @@
       "kind": "uses"
     },
     {
+      "from": "entities-and-aliases",
+      "to": "entity-fragmentation",
+      "kind": "uses"
+    },
+    {
+      "from": "entities-and-aliases",
+      "to": "extraction-pipeline",
+      "kind": "uses"
+    },
+    {
+      "from": "entity-resolution",
+      "to": "coreference",
+      "kind": "uses"
+    },
+    {
+      "from": "entity-resolution",
+      "to": "entity-fragmentation",
+      "kind": "uses"
+    },
+    {
       "from": "extraction-pipelines",
       "to": "extraction",
       "kind": "uses"
@@ -830,6 +949,16 @@
       "kind": "uses"
     },
     {
+      "from": "scopes-and-namespaces",
+      "to": "retrieval-scoping",
+      "kind": "uses"
+    },
+    {
+      "from": "scopes-and-namespaces",
+      "to": "canonical-entity",
+      "kind": "uses"
+    },
+    {
       "from": "typed-memory-model",
       "to": "semantic-memory",
       "kind": "uses"
@@ -860,13 +989,28 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "entity-resolution",
+      "to": "deduplication",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "episodic-memory",
       "to": "semantic-memory",
       "kind": "contrasts_with"
     },
     {
+      "from": "namespace",
+      "to": "retrieval-scoping",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "procedural-memory",
       "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "provenance",
+      "to": "namespace",
       "kind": "contrasts_with"
     },
     {

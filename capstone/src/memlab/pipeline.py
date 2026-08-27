@@ -17,6 +17,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass, replace
 
+from .entity.resolve import resolve_all
 from .extract.naive import extract as naive_extract
 from .extract.pipeline import extract as staged_extract
 from .types import Memory, Scope
@@ -64,6 +65,7 @@ def intermediate() -> Pipeline:
         name="intermediate",
         extract=staged_extract,          # I1: staged, with event -> state
         ingest_agent_writes=True,        # I1: shared-scope writes carry authority
+        consolidate=resolve_all,         # I2: resolution needs the whole store
     )
 
 

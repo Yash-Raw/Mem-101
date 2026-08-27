@@ -20,4 +20,6 @@ Fragmentation splits the evidence for a fact across records that never meet, so 
 
 <!-- graph:begin -->
 **Taught in:** [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md)
+
+**Used in:** [Entities and Aliases](../curriculum/intermediate/entities-and-aliases/index.md) · [Entity Resolution](../curriculum/intermediate/entity-resolution/index.md)
 <!-- graph:end -->

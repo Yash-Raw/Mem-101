@@ -41,7 +41,10 @@ def _agent_memories(scope: Scope) -> list[Memory]:
             Memory(
                 content=row["text"],
                 type=MemoryType.SEMANTIC,
-                scope=scope,
+                # Filed under the writing agent's namespace, not the user's.
+                # Same user, different agent -- which is what makes visibility
+                # rules meaningful rather than decorative.
+                scope=Scope(user=scope.user, agent=row["agent"]),
                 provenance=Provenance(
                     source_id=f"{row['agent']}:{row['ts']}",
                     speaker=row["agent"],

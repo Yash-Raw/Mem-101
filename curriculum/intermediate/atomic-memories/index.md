@@ -25,6 +25,8 @@ status: published
 **You need first:** [Precision and Recall on the Write Path](../extraction-quality/index.md)
 
 **Concepts assumed:** [Atomicity](../../../concepts/atomic-fact.md) · [The Extraction Pipeline](../../../concepts/extraction-pipeline.md) · [Procedural Memory](../../../concepts/procedural-memory.md)
+
+**This unlocks:** [Entities and Aliases](../entities-and-aliases/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -125,4 +127,6 @@ uv run python curriculum/intermediate/atomic-memories/lab/lab.py
 **You need first:** [Precision and Recall on the Write Path](../extraction-quality/index.md)
 
 **Concepts assumed:** [Atomicity](../../../concepts/atomic-fact.md) · [The Extraction Pipeline](../../../concepts/extraction-pipeline.md) · [Procedural Memory](../../../concepts/procedural-memory.md)
+
+**This unlocks:** [Entities and Aliases](../entities-and-aliases/index.md)
 <!-- graph:end -->

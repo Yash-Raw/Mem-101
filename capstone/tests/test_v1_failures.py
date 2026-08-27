@@ -147,11 +147,16 @@ def test_entity_fragmentation(built, profile) -> None:
 
     partner = [m for m in store.all()
                if any(n in m.content for n in ("Sam ", "Sam's", "Samira", "Sammy"))]
-    if pipeline.resolve is None:
+    # Resolution needs the whole store, so it runs as a consolidation pass.
+    if pipeline.consolidate is None:
         assert all(not m.entities for m in partner), "nothing links them"
     else:
         canonical = {e for m in partner for e in m.entities}
         assert len(canonical) == 1, f"one person, one entity id, got {canonical}"
+        pronoun = [m for m in store.all() if m.content.startswith("She works nights")]
+        assert pronoun and set(pronoun[0].entities) == canonical, (
+            "the bare pronoun resolves to the same person"
+        )
 
 
 def test_an_unresolved_pronoun_is_stored_as_a_fact(built) -> None:

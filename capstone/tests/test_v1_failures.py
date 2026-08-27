@@ -19,11 +19,11 @@ from __future__ import annotations
 
 import pytest
 from memlab.app.chat import ingest
-from memlab.eval.exam import QUESTION, exam_answer
+from memlab.eval.exam import QUESTION, exam_answer, exam_from_context
 from memlab.pipeline import get
 from memlab.retrieve.embedding import EmbeddingRetriever
 from memlab.store.jsonl import JsonlStore
-from memlab.types import MemoryType, Scope
+from memlab.types import MemoryType, Scope, Tier
 
 PRIYA = Scope(user="priya")
 PROFILES = ["beginner", "intermediate"]
@@ -225,12 +225,25 @@ def test_the_deletion_request_is_not_honoured(built) -> None:
         )
 
 
-def test_nothing_can_be_forgotten(built) -> None:
-    """Salience and decay land in I5."""
-    for profile in PROFILES:
-        store = built[profile][0]
+# --- failure 6: no forgetting ----------------------------------------------
+# Fixed by salience + decay (I5), detected via pipeline.decay.
+@pytest.mark.parametrize("profile", PROFILES)
+def test_forgetting(built, profile) -> None:
+    store, pipeline = built[profile]
+
+    if pipeline.decay is None:
+        # Every memory equally important, so nothing can be ranked down or aged
+        # out. The fields exist and nothing populates them.
         assert {m.salience for m in store.all()} == {0.5}
         assert {m.access_count for m in store.all()} == {0}
+        return
+
+    assert len({m.salience for m in store.all()}) > 1, "salience must discriminate"
+    assert any(m.tier is not Tier.LONG_TERM for m in store.all()), (
+        "and something must be demoted -- eviction is tier demotion, never deletion"
+    )
+    # Supersede-never-destroy holds for forgetting too.
+    assert len(store.all()) >= 36, "nothing is removed from the log"
 
 
 # --- the exam ----------------------------------------------------------------
@@ -245,6 +258,37 @@ def test_consolidation_is_idempotent(built) -> None:
         assert [(m.id, m.confidence, m.invalid_at) for m in once] == [
             (m.id, m.confidence, m.invalid_at) for m in twice
         ]
+
+
+# --- the 2b target: answered from what the model actually receives ----------
+@pytest.mark.parametrize("profile", PROFILES)
+def test_the_exam_from_context(built, profile) -> None:
+    """Strictly harder than the belief exam.
+
+    2a made the store believe the right thing. This asks whether the answer
+    survives top-k and the token budget -- i.e. whether the model would ever
+    see it. Expected to pass exactly when hybrid ranking is wired (I6).
+    """
+    store, pipeline = built[profile]
+    answer = exam_from_context(store.all(), PRIYA, k=5, pipeline=pipeline)
+
+    if pipeline.rank is None:
+        assert not answer.is_correct, (
+            "with plain cosine the employer never reaches a 5-memory context"
+        )
+        assert answer.employer is None
+    else:
+        assert answer.employer == "Calico Systems"
+        assert answer.is_correct
+
+
+def test_belief_and_context_exams_can_disagree(built) -> None:
+    """The gap between believing and saying, as of this milestone."""
+    store, pipeline = built["intermediate"]
+    believes = exam_answer(store.all(), PRIYA).is_correct
+    says = exam_from_context(store.all(), PRIYA, k=5, pipeline=pipeline).is_correct
+    if pipeline.rank is None:
+        assert believes and not says, "correct beliefs, unreachable answer"
 
 
 @pytest.mark.parametrize("profile", PROFILES)

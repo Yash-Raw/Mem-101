@@ -4,6 +4,14 @@
 
 Correct: Calico Systems; avoid meat and gluten; fish is fine.
 
+There are two readers, and the gap between them is the point.
+
+`exam_answer` reads the whole live belief store: it asks whether the system
+BELIEVES the right thing. `exam_from_context` reads only the assembled context
+at a realistic k: it asks whether the system would SAY it. A store can be
+entirely correct and still fail the second one, because ranking is a separate
+problem from belief -- which is exactly the state Milestone 2a left things in.
+
 This module READS beliefs -- it does not repair them. That distinction is the
 whole point. It answers the way the system itself would: by retrieving, then
 reading the top-ranked *live semantic* facts. Under the beginner profile the
@@ -78,4 +86,52 @@ def exam_answer(memories: list[Memory], scope: Scope) -> ExamAnswer:
     elif vegetarian_live and eats_fish:
         answer.evidence["fish"] = "unresolved: 'is vegetarian' and 'eats fish' both live"
 
+    return answer
+
+
+def exam_from_context(
+    memories: list[Memory],
+    scope: Scope,
+    k: int = 5,
+    pipeline=None,
+) -> ExamAnswer:
+    """Answer from ONLY what the model receives.
+
+    The stricter reader. `exam_answer` may scan thirty beliefs; a model sees
+    whatever survived top-k and the token budget. Holding a correct belief that
+    never reaches the context is not answering the question -- it is being right
+    somewhere the user cannot see.
+    """
+    from ..app.chat import ask
+    from ..store.jsonl import JsonlStore
+
+    class _View(JsonlStore):
+        """Adapt an in-memory list to the store interface `ask` expects."""
+
+        def __init__(self, items: list[Memory]) -> None:
+            self._items = items
+
+        def all(self) -> list[Memory]:
+            return self._items
+
+        def live(self) -> list[Memory]:
+            return [m for m in self._items if m.is_live]
+
+    context, _hits = ask(_View(memories), scope, QUESTION, k=k, pipeline=pipeline)
+
+    answer = ExamAnswer()
+    for name, markers in EMPLOYERS.items():
+        if any(marker in context for marker in markers):
+            answer.employer = name
+            answer.evidence["employer"] = "found in assembled context"
+            break
+
+    if "does not eat meat" in context or "vegetarian" in context:
+        answer.avoid.add("meat")
+    if "gluten" in context:
+        answer.avoid.add("gluten")
+    if ("eats fish" in context or "pescatarian" in context) and "is vegetarian" not in context:
+        answer.permitted.add("fish")
+
+    answer.evidence["context_lines"] = str(context.count("\n- "))
     return answer

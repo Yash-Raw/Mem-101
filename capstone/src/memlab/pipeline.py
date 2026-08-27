@@ -25,6 +25,8 @@ from .types import Memory, Scope
 ExtractFn = Callable[[dict, Scope], list[Memory]]
 ResolveFn = Callable[[list[Memory], list[Memory]], list[Memory]]
 ConsolidateFn = Callable[[list[Memory]], list[Memory]]
+DecayFn = Callable[[list[Memory]], list[Memory]]
+RankFn = Callable[[str, list[Memory], Scope], list]
 
 
 @dataclass(frozen=True)
@@ -36,7 +38,9 @@ class Pipeline:
     resolve: ResolveFn | None = None          # I2/I4: entity + conflict resolution
     consolidate: ConsolidateFn | None = None  # I3: dedupe, summarise, promote
     live_only: bool = False                   # I4: filter retired memories on read
-    ingest_agent_writes: bool = False         # I4: admit shared-scope hearsay
+    ingest_agent_writes: bool = False         # I1: admit shared-scope hearsay
+    decay: DecayFn | None = None              # I5: score salience, move tiers
+    rank: RankFn | None = None                # I6: hybrid scoring; None = plain cosine
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -57,7 +61,7 @@ def beginner() -> Pipeline:
 # Each module switches on exactly one capability, so the improvement it claims
 # is attributable to it alone -- and so a lesson's measured numbers stay true
 # after later modules land. `at("I1")` is the system as I1 left it, forever.
-MODULES = ("I1", "I2", "I3", "I4")
+MODULES = ("I1", "I2", "I3", "I4", "I5", "I6")
 
 
 def intermediate(through: str = "latest") -> Pipeline:

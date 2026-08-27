@@ -107,6 +107,8 @@ def main() -> None:
     ap.add_argument("--profile", default="beginner", choices=["beginner", "intermediate"])
     ap.add_argument("--ingest", action="store_true", help="rebuild the store from the corpus")
     ap.add_argument("--ask", help="a question to answer from memory")
+    ap.add_argument("--exam", action="store_true",
+                    help="answer the session-14 question from live beliefs")
     ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--user", default="priya")
     args = ap.parse_args()
@@ -118,6 +120,18 @@ def main() -> None:
         store.clear()
         n = ingest(store, scope, pipeline)
         print(f"[{pipeline.name}] ingested {n} memories into {store.path}")
+
+    if args.exam:
+        from ..eval.exam import QUESTION, exam_answer
+
+        answer = exam_answer(store.all(), scope)
+        print(f"\nQ: {QUESTION}")
+        print("   correct: Calico Systems; avoid meat and gluten; fish is fine\n")
+        print(f"   employer   {answer.employer}")
+        print(f"   avoid      {', '.join(sorted(answer.avoid)) or '-'}")
+        print(f"   permitted  {', '.join(sorted(answer.permitted)) or '-'}")
+        print(f"\n   {'CORRECT' if answer.is_correct else 'WRONG'}  "
+              f"[profile={pipeline.name}, {len(store.live())} live memories]")
 
     if args.ask:
         context, hits = ask(store, scope, args.ask, k=args.k, pipeline=pipeline)

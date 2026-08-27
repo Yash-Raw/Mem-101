@@ -25,6 +25,8 @@ status: published
 **You need first:** [Semantic Drift](../semantic-drift/index.md)
 
 **Concepts assumed:** [Promotion](../../../concepts/memory-promotion.md) · [Semantic Drift](../../../concepts/semantic-drift.md) · [Events and States](../../../concepts/event-vs-state.md)
+
+**This unlocks:** [Contradiction Detection](../contradiction-detection/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -136,4 +138,6 @@ uv run python curriculum/intermediate/episodic-to-semantic/lab/lab.py
 **You need first:** [Semantic Drift](../semantic-drift/index.md)
 
 **Concepts assumed:** [Promotion](../../../concepts/memory-promotion.md) · [Semantic Drift](../../../concepts/semantic-drift.md) · [Events and States](../../../concepts/event-vs-state.md)
+
+**This unlocks:** [Contradiction Detection](../contradiction-detection/index.md)
 <!-- graph:end -->

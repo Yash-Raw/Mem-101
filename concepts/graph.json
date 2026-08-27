@@ -127,6 +127,15 @@
       "path": "curriculum/intermediate/atomic-memories/index.md"
     },
     {
+      "id": "contradiction-detection",
+      "type": "lesson",
+      "title": "Contradiction Detection",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 24,
+      "path": "curriculum/intermediate/contradiction-detection/index.md"
+    },
+    {
       "id": "deduplication",
       "type": "lesson",
       "title": "Deduplication",
@@ -134,6 +143,15 @@
       "stage": "evolve",
       "order": 20,
       "path": "curriculum/intermediate/deduplication/index.md"
+    },
+    {
+      "id": "deterministic-freshness",
+      "type": "lesson",
+      "title": "Deterministic Arbitration",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 26,
+      "path": "curriculum/intermediate/deterministic-freshness/index.md"
     },
     {
       "id": "entities-and-aliases",
@@ -181,6 +199,15 @@
       "path": "curriculum/intermediate/extraction-quality/index.md"
     },
     {
+      "id": "memory-operations",
+      "type": "lesson",
+      "title": "ADD, UPDATE, MERGE, NOOP",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 25,
+      "path": "curriculum/intermediate/memory-operations/index.md"
+    },
+    {
       "id": "scopes-and-namespaces",
       "type": "lesson",
       "title": "Scopes and Namespaces",
@@ -206,6 +233,15 @@
       "stage": "evolve",
       "order": 21,
       "path": "curriculum/intermediate/summarization-and-compaction/index.md"
+    },
+    {
+      "id": "supersession-not-deletion",
+      "type": "lesson",
+      "title": "Supersede, Never Destroy",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 27,
+      "path": "curriculum/intermediate/supersession-not-deletion/index.md"
     },
     {
       "id": "typed-memory-model",
@@ -238,7 +274,7 @@
       "title": "Belief Updating",
       "stage": "evolve",
       "path": "concepts/belief-updating.md",
-      "status": "stub"
+      "status": "published"
     },
     {
       "id": "bi-temporal-modeling",
@@ -270,6 +306,14 @@
       "title": "The Context Window",
       "stage": "assemble",
       "path": "concepts/context-window.md",
+      "status": "published"
+    },
+    {
+      "id": "contradiction-vs-refinement",
+      "type": "concept",
+      "title": "Contradiction vs Refinement",
+      "stage": "evolve",
+      "path": "concepts/contradiction-vs-refinement.md",
       "status": "published"
     },
     {
@@ -393,6 +437,14 @@
       "status": "published"
     },
     {
+      "id": "memory-operations",
+      "type": "concept",
+      "title": "Memory Operations",
+      "stage": "evolve",
+      "path": "concepts/memory-operations.md",
+      "status": "published"
+    },
+    {
       "id": "memory-promotion",
       "type": "concept",
       "title": "Promotion",
@@ -489,11 +541,27 @@
       "status": "published"
     },
     {
+      "id": "slot",
+      "type": "concept",
+      "title": "Slot",
+      "stage": "evolve",
+      "path": "concepts/slot.md",
+      "status": "published"
+    },
+    {
       "id": "summarization",
       "type": "concept",
       "title": "Summarization",
       "stage": "evolve",
       "path": "concepts/summarization.md",
+      "status": "published"
+    },
+    {
+      "id": "supersession",
+      "type": "concept",
+      "title": "Supersession",
+      "stage": "evolve",
+      "path": "concepts/supersession.md",
       "status": "published"
     },
     {
@@ -612,8 +680,18 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "contradiction-detection",
+      "to": "episodic-to-semantic",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "deduplication",
       "to": "scopes-and-namespaces",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "deterministic-freshness",
+      "to": "memory-operations",
       "kind": "requires_lesson"
     },
     {
@@ -642,6 +720,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "memory-operations",
+      "to": "contradiction-detection",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "scopes-and-namespaces",
       "to": "entity-resolution",
       "kind": "requires_lesson"
@@ -654,6 +737,11 @@
     {
       "from": "summarization-and-compaction",
       "to": "deduplication",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "supersession-not-deletion",
+      "to": "deterministic-freshness",
       "kind": "requires_lesson"
     },
     {
@@ -792,8 +880,23 @@
       "kind": "teaches"
     },
     {
+      "from": "contradiction-detection",
+      "to": "slot",
+      "kind": "teaches"
+    },
+    {
+      "from": "contradiction-detection",
+      "to": "contradiction-vs-refinement",
+      "kind": "teaches"
+    },
+    {
       "from": "deduplication",
       "to": "deduplication",
+      "kind": "teaches"
+    },
+    {
+      "from": "deterministic-freshness",
+      "to": "belief-updating",
       "kind": "teaches"
     },
     {
@@ -837,6 +940,11 @@
       "kind": "teaches"
     },
     {
+      "from": "memory-operations",
+      "to": "memory-operations",
+      "kind": "teaches"
+    },
+    {
       "from": "scopes-and-namespaces",
       "to": "namespace",
       "kind": "teaches"
@@ -859,6 +967,11 @@
     {
       "from": "summarization-and-compaction",
       "to": "derived-memory",
+      "kind": "teaches"
+    },
+    {
+      "from": "supersession-not-deletion",
+      "to": "supersession",
       "kind": "teaches"
     },
     {
@@ -1007,6 +1120,21 @@
       "kind": "uses"
     },
     {
+      "from": "contradiction-detection",
+      "to": "corroboration",
+      "kind": "uses"
+    },
+    {
+      "from": "contradiction-detection",
+      "to": "type-rules",
+      "kind": "uses"
+    },
+    {
+      "from": "contradiction-detection",
+      "to": "canonical-entity",
+      "kind": "uses"
+    },
+    {
       "from": "deduplication",
       "to": "idempotency",
       "kind": "uses"
@@ -1019,6 +1147,21 @@
     {
       "from": "deduplication",
       "to": "vector-search",
+      "kind": "uses"
+    },
+    {
+      "from": "deterministic-freshness",
+      "to": "memory-operations",
+      "kind": "uses"
+    },
+    {
+      "from": "deterministic-freshness",
+      "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "deterministic-freshness",
+      "to": "event-time",
       "kind": "uses"
     },
     {
@@ -1092,6 +1235,21 @@
       "kind": "uses"
     },
     {
+      "from": "memory-operations",
+      "to": "contradiction-vs-refinement",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-operations",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-operations",
+      "to": "type-rules",
+      "kind": "uses"
+    },
+    {
       "from": "scopes-and-namespaces",
       "to": "retrieval-scoping",
       "kind": "uses"
@@ -1127,6 +1285,21 @@
       "kind": "uses"
     },
     {
+      "from": "supersession-not-deletion",
+      "to": "belief-updating",
+      "kind": "uses"
+    },
+    {
+      "from": "supersession-not-deletion",
+      "to": "memory-operations",
+      "kind": "uses"
+    },
+    {
+      "from": "supersession-not-deletion",
+      "to": "episodic-memory",
+      "kind": "uses"
+    },
+    {
       "from": "typed-memory-model",
       "to": "semantic-memory",
       "kind": "uses"
@@ -1145,6 +1318,11 @@
       "from": "typed-memory-model",
       "to": "memory-record",
       "kind": "uses"
+    },
+    {
+      "from": "belief-updating",
+      "to": "deduplication",
+      "kind": "contrasts_with"
     },
     {
       "from": "context-window",
@@ -1209,6 +1387,11 @@
     {
       "from": "semantic-memory",
       "to": "episodic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "slot",
+      "to": "vector-search",
       "kind": "contrasts_with"
     },
     {

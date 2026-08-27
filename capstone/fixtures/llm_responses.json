@@ -1,4 +1,7 @@
 {
+  "028b7f3034e84459": {
+    "relation": "contradiction"
+  },
   "06335096db201473": [
     {
       "content": "Priya prefers shorter answers",
@@ -35,6 +38,9 @@
       "type": "semantic"
     }
   ],
+  "18846f923a421008": {
+    "relation": "compatible"
+  },
   "1c5558acee9138f7": [],
   "1d4c0f2e05a30010": [
     {
@@ -46,6 +52,18 @@
       "type": "episodic"
     }
   ],
+  "1da73cb88c7bae21": {
+    "relation": "refinement"
+  },
+  "203d3678bc318d1c": {
+    "relation": "compatible"
+  },
+  "20e3dc3ab52ab0b7": {
+    "relation": "compatible"
+  },
+  "2101f9cd9c7c169a": {
+    "relation": "refinement"
+  },
   "23c22dd46715c61f": [
     {
       "content": "Priya's partner Sam is a nurse at St. Aubyn's",
@@ -56,6 +74,12 @@
       "type": "episodic"
     }
   ],
+  "25ea1645a0569987": {
+    "relation": "compatible"
+  },
+  "2cd6e5dd30d8e239": {
+    "relation": "compatible"
+  },
   "2face383702a0a2f": [
     {
       "content": "Priya used to cycle to work before the move",
@@ -67,6 +91,12 @@
     }
   ],
   "316526842ef68fe4": [],
+  "32c0c8facd77f92c": {
+    "relation": "contradiction"
+  },
+  "353b200ffbf3cbda": {
+    "relation": "duplicate"
+  },
   "38281d5db03b3a45": [
     {
       "content": "Priya is debugging a Spark job",
@@ -83,6 +113,12 @@
       "type": "semantic"
     }
   ],
+  "3be1274cc4c03511": {
+    "relation": "compatible"
+  },
+  "3cd19394113b9077": {
+    "relation": "compatible"
+  },
   "3defd9213824a00d": [
     {
       "content": "Priya is a data engineer at Northwind Labs",
@@ -109,6 +145,9 @@
       "type": "semantic"
     }
   ],
+  "4d59ba1e78456498": {
+    "relation": "contradiction"
+  },
   "4e4ec3366683bd60": [
     {
       "content": "Samira got a promotion to charge nurse",
@@ -125,6 +164,9 @@
       "type": "episodic"
     }
   ],
+  "582fdd22c82220f9": {
+    "relation": "contradiction"
+  },
   "5b64573464568b1f": [
     {
       "content": "Priya's partner Sam is a nurse at St. Aubyn's",
@@ -135,6 +177,12 @@
       "type": "episodic"
     }
   ],
+  "5d7ebadc5019acaf": {
+    "relation": "compatible"
+  },
+  "5fe44903178f9aee": {
+    "relation": "compatible"
+  },
   "617ea5515908001d": [
     {
       "content": "Priya has a gluten intolerance",
@@ -189,6 +237,12 @@
       "type": "semantic"
     }
   ],
+  "6e3ce234be2da22f": {
+    "relation": "contradiction"
+  },
+  "7858a22c265d048a": {
+    "relation": "contradiction"
+  },
   "7ab6cebe0dcd01bc": [
     {
       "content": "Priya moved house",
@@ -252,6 +306,9 @@
     }
   ],
   "99c39e167897ec18": [],
+  "9aa2cf7c010bb374": {
+    "relation": "compatible"
+  },
   "b17fe4fb988d6638": [
     {
       "content": "Priya was diagnosed with a gluten intolerance last week",
@@ -268,6 +325,9 @@
       "type": "semantic"
     }
   ],
+  "b5e2f26acf8ba7f5": {
+    "relation": "compatible"
+  },
   "c22df714f14cace1": [
     {
       "content": "Priya is a data engineer at Northwind Labs",
@@ -296,6 +356,12 @@
       "type": "episodic"
     }
   ],
+  "c6d992c60b85db8a": {
+    "relation": "compatible"
+  },
+  "ca2d4601a1825389": {
+    "relation": "compatible"
+  },
   "cb0a4dd1084756d2": [
     {
       "content": "Priya prefers detailed explanations with reasoning",
@@ -328,6 +394,9 @@
       "type": "semantic"
     }
   ],
+  "d65d704726e78e9b": {
+    "relation": "compatible"
+  },
   "d886b1de6adc17ad": [],
   "ddad4880acb59098": [
     {
@@ -375,6 +444,9 @@
       "type": "episodic"
     }
   ],
+  "f96c3b773ff39ea7": {
+    "relation": "compatible"
+  },
   "f9d574605ed054fb": [
     {
       "content": "Priya completed her first week at the new job",

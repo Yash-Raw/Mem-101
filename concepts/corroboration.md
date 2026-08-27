@@ -21,5 +21,7 @@ The appealing shortcut is to treat textual similarity as evidence of agreement, 
 <!-- graph:begin -->
 **Taught in:** [From Episode to Belief](../curriculum/intermediate/episodic-to-semantic/index.md)
 
+**Used in:** [Contradiction Detection](../curriculum/intermediate/contradiction-detection/index.md)
+
 **Do not confuse with:** [Deduplication](deduplication.md)
 <!-- graph:end -->

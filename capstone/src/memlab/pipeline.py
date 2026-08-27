@@ -84,6 +84,12 @@ def intermediate(through: str = "latest") -> Pipeline:
         p = replace(p, consolidate=resolve_all)          # resolution needs the whole store
     if "I3" in reached:
         p = replace(p, consolidate=_resolve_then_dedupe)  # + collapse restatements
+    if "I4" in reached:
+        p = replace(
+            p,
+            consolidate=_resolve_dedupe_reconcile,  # + retire superseded beliefs
+            live_only=True,                         # and stop retrieving them
+        )
     return p
 
 
@@ -92,6 +98,20 @@ def _resolve_then_dedupe(memories):
     from .evolve.dedupe import dedupe
 
     return dedupe(resolve_all(memories))
+
+
+def _resolve_dedupe_reconcile(memories):
+    """The full write path. Resolve identities, collapse restatements, then
+    reconcile what genuinely disagrees."""
+    from .types import Scope
+
+    consolidated = _resolve_then_dedupe(memories)
+    scope = Scope(user=consolidated[0].scope.user) if consolidated else None
+    if scope is None:
+        return consolidated
+    from .evolve.supersede import reconcile
+
+    return reconcile(consolidated, scope).memories
 
 
 def at(module: str) -> Pipeline:

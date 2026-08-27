@@ -21,7 +21,7 @@ Episodes are the raw material everything else is derived from, and the only memo
 <!-- graph:begin -->
 **Taught in:** [The Taxonomy That Actually Routes](../curriculum/beginner/memory-taxonomy/index.md)
 
-**Used in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
+**Used in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md) · [Supersede, Never Destroy](../curriculum/intermediate/supersession-not-deletion/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
 
 **Do not confuse with:** [Semantic Memory](semantic-memory.md)
 <!-- graph:end -->

@@ -44,13 +44,13 @@ def orphaned_summaries(memories: list[Memory]) -> list[Memory]:
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
 
     scope = Scope(user="priya")
     store = JsonlStore("/tmp/memlab-summarise.jsonl")
     store.clear()
-    ingest(store, scope, get("intermediate"))
+    ingest(store, scope, at("I3"))
     memories = store.all()
 
     summaries = summarise_all(memories, scope)

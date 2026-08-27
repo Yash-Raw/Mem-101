@@ -65,13 +65,13 @@ def is_idempotent(sources: list[Memory], keep: float = 0.7) -> bool:
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
     from memlab.types import MemoryType, Scope
 
     store = JsonlStore("/tmp/memlab-drift.jsonl")
     store.clear()
-    ingest(store, Scope(user="priya"), get("intermediate"))
+    ingest(store, Scope(user="priya"), at("I3"))
     sources = [m for m in store.all() if m.type is MemoryType.SEMANTIC and m.is_live]
 
     print(f"{len(sources)} source claims, keep=0.7 per round\n")

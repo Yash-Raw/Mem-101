@@ -86,13 +86,13 @@ def best_threshold_accuracy() -> float:
 
 def main() -> None:
     from memlab.app.chat import ingest
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
 
     scope = Scope(user="priya")
     store = JsonlStore("/tmp/memlab-promote.jsonl")
     store.clear()
-    ingest(store, scope, get("intermediate"))
+    ingest(store, scope, at("I3"))
 
     report = analyse(store.all(), scope)
     print(report.verdict, "\n")

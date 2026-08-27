@@ -48,7 +48,7 @@ Price every element instead of just the memories — shares are of the 77 tokens
 
 A retrieval prompt has framing too, and it is usually a fixed prefix nobody counts because the context is thousands of tokens and the framing is dozens.
 
-A memory context is *small* — five memories, eighty tokens — because the whole design is selecting a few things worth saying. At that scale a fixed prefix is not overhead, it is **a third of the payload**, and the arithmetic that makes it invisible in RAG is exactly what makes it dominant here.
+A memory context is *small* — five memories, eighty tokens — because the whole design is selecting a few things worth saying. At that scale a fixed prefix is not overhead, it is **two fifths of the payload**, and the arithmetic that makes it invisible in RAG is exactly what makes it dominant here.
 
 ## Mechanism
 

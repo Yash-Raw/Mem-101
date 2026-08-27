@@ -20,4 +20,6 @@ The distinction is the same one supersession makes and for the same reason: a fa
 
 <!-- graph:begin -->
 **Taught in:** [Forgetting Under a Budget](../curriculum/intermediate/budgeted-forgetting/index.md)
+
+**Used in:** [Scope, Then Rank](../curriculum/intermediate/scope-then-rank/index.md)
 <!-- graph:end -->

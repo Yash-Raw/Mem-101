@@ -21,7 +21,7 @@ Type is where a memory's whole life is decided, and the load-bearing entry is `c
 <!-- graph:begin -->
 **Taught in:** [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
 
-**Used in:** [Contradiction Detection](../curriculum/intermediate/contradiction-detection/index.md) · [Decay and Memory Tiers](../curriculum/intermediate/decay-and-tiers/index.md) · [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md) · [ADD, UPDATE, MERGE, NOOP](../curriculum/intermediate/memory-operations/index.md)
+**Used in:** [Contradiction Detection](../curriculum/intermediate/contradiction-detection/index.md) · [Decay and Memory Tiers](../curriculum/intermediate/decay-and-tiers/index.md) · [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md) · [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md) · [ADD, UPDATE, MERGE, NOOP](../curriculum/intermediate/memory-operations/index.md)
 
 **Do not confuse with:** [The Memory Record](memory-record.md)
 <!-- graph:end -->

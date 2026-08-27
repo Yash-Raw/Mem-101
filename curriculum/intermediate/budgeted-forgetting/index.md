@@ -25,6 +25,8 @@ status: published
 **You need first:** [Decay and Memory Tiers](../decay-and-tiers/index.md)
 
 **Concepts assumed:** [Decay](../../../concepts/decay-function.md) · [Salience](../../../concepts/salience.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Scope, Then Rank](../scope-then-rank/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -130,4 +132,6 @@ That result is worth sitting with: it rules out the obvious fix. [What must neve
 **You need first:** [Decay and Memory Tiers](../decay-and-tiers/index.md)
 
 **Concepts assumed:** [Decay](../../../concepts/decay-function.md) · [Salience](../../../concepts/salience.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Scope, Then Rank](../scope-then-rank/index.md)
 <!-- graph:end -->

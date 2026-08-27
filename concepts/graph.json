@@ -217,6 +217,15 @@
       "path": "curriculum/intermediate/extraction-quality/index.md"
     },
     {
+      "id": "hybrid-ranking",
+      "type": "lesson",
+      "title": "Hybrid Ranking",
+      "level": "intermediate",
+      "stage": "retrieve",
+      "order": 33,
+      "path": "curriculum/intermediate/hybrid-ranking/index.md"
+    },
+    {
       "id": "memory-operations",
       "type": "lesson",
       "title": "ADD, UPDATE, MERGE, NOOP",
@@ -226,6 +235,24 @@
       "path": "curriculum/intermediate/memory-operations/index.md"
     },
     {
+      "id": "query-formulation",
+      "type": "lesson",
+      "title": "The Query Is Not the Last Message",
+      "level": "intermediate",
+      "stage": "retrieve",
+      "order": 34,
+      "path": "curriculum/intermediate/query-formulation/index.md"
+    },
+    {
+      "id": "retrieval-triggers",
+      "type": "lesson",
+      "title": "Should I Even Look?",
+      "level": "intermediate",
+      "stage": "retrieve",
+      "order": 35,
+      "path": "curriculum/intermediate/retrieval-triggers/index.md"
+    },
+    {
       "id": "salience-scoring",
       "type": "lesson",
       "title": "Salience Scoring",
@@ -233,6 +260,15 @@
       "stage": "evolve",
       "order": 29,
       "path": "curriculum/intermediate/salience-scoring/index.md"
+    },
+    {
+      "id": "scope-then-rank",
+      "type": "lesson",
+      "title": "Scope, Then Rank",
+      "level": "intermediate",
+      "stage": "retrieve",
+      "order": 32,
+      "path": "curriculum/intermediate/scope-then-rank/index.md"
     },
     {
       "id": "scopes-and-namespaces",
@@ -473,6 +509,14 @@
       "status": "published"
     },
     {
+      "id": "hybrid-ranking",
+      "type": "concept",
+      "title": "Hybrid Ranking",
+      "stage": "retrieve",
+      "path": "concepts/hybrid-ranking.md",
+      "status": "published"
+    },
+    {
       "id": "idempotency",
       "type": "concept",
       "title": "Idempotent Writes",
@@ -553,6 +597,14 @@
       "status": "published"
     },
     {
+      "id": "query-rewriting",
+      "type": "concept",
+      "title": "Query Formulation",
+      "stage": "retrieve",
+      "path": "concepts/query-rewriting.md",
+      "status": "published"
+    },
+    {
       "id": "read-path",
       "type": "concept",
       "title": "The Read Path",
@@ -585,11 +637,27 @@
       "status": "published"
     },
     {
+      "id": "retrieval-trigger",
+      "type": "concept",
+      "title": "Retrieval Triggers",
+      "stage": "retrieve",
+      "path": "concepts/retrieval-trigger.md",
+      "status": "published"
+    },
+    {
       "id": "salience",
       "type": "concept",
       "title": "Salience",
       "stage": "evolve",
       "path": "concepts/salience.md",
+      "status": "published"
+    },
+    {
+      "id": "score-fusion",
+      "type": "concept",
+      "title": "Score Fusion",
+      "stage": "retrieve",
+      "path": "concepts/score-fusion.md",
       "status": "published"
     },
     {
@@ -798,13 +866,33 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "hybrid-ranking",
+      "to": "scope-then-rank",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "memory-operations",
       "to": "contradiction-detection",
       "kind": "requires_lesson"
     },
     {
+      "from": "query-formulation",
+      "to": "hybrid-ranking",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "retrieval-triggers",
+      "to": "query-formulation",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "salience-scoring",
       "to": "why-forgetting-is-a-feature",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "scope-then-rank",
+      "to": "budgeted-forgetting",
       "kind": "requires_lesson"
     },
     {
@@ -1038,8 +1126,28 @@
       "kind": "teaches"
     },
     {
+      "from": "hybrid-ranking",
+      "to": "hybrid-ranking",
+      "kind": "teaches"
+    },
+    {
+      "from": "hybrid-ranking",
+      "to": "score-fusion",
+      "kind": "teaches"
+    },
+    {
       "from": "memory-operations",
       "to": "memory-operations",
+      "kind": "teaches"
+    },
+    {
+      "from": "query-formulation",
+      "to": "query-rewriting",
+      "kind": "teaches"
+    },
+    {
+      "from": "retrieval-triggers",
+      "to": "retrieval-trigger",
       "kind": "teaches"
     },
     {
@@ -1378,6 +1486,31 @@
       "kind": "uses"
     },
     {
+      "from": "hybrid-ranking",
+      "to": "vector-search",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-ranking",
+      "to": "salience",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-ranking",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-ranking",
+      "to": "type-rules",
+      "kind": "uses"
+    },
+    {
+      "from": "hybrid-ranking",
+      "to": "canonical-entity",
+      "kind": "uses"
+    },
+    {
       "from": "memory-operations",
       "to": "contradiction-vs-refinement",
       "kind": "uses"
@@ -1393,6 +1526,36 @@
       "kind": "uses"
     },
     {
+      "from": "query-formulation",
+      "to": "hybrid-ranking",
+      "kind": "uses"
+    },
+    {
+      "from": "query-formulation",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "query-formulation",
+      "to": "coreference",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieval-triggers",
+      "to": "query-rewriting",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieval-triggers",
+      "to": "read-path",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieval-triggers",
+      "to": "write-path",
+      "kind": "uses"
+    },
+    {
       "from": "salience-scoring",
       "to": "relevance-vs-truth",
       "kind": "uses"
@@ -1405,6 +1568,26 @@
     {
       "from": "salience-scoring",
       "to": "corroboration",
+      "kind": "uses"
+    },
+    {
+      "from": "scope-then-rank",
+      "to": "retrieval-scoping",
+      "kind": "uses"
+    },
+    {
+      "from": "scope-then-rank",
+      "to": "namespace",
+      "kind": "uses"
+    },
+    {
+      "from": "scope-then-rank",
+      "to": "eviction",
+      "kind": "uses"
+    },
+    {
+      "from": "scope-then-rank",
+      "to": "supersession",
       "kind": "uses"
     },
     {
@@ -1530,6 +1713,11 @@
     {
       "from": "episodic-memory",
       "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "hybrid-ranking",
+      "to": "vector-search",
       "kind": "contrasts_with"
     },
     {

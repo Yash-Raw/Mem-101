@@ -21,5 +21,5 @@ A memory stored with an unresolved pronoun is attached to nobody and can never b
 <!-- graph:begin -->
 **Taught in:** [Entities and Aliases](../curriculum/intermediate/entities-and-aliases/index.md)
 
-**Used in:** [Entity Resolution](../curriculum/intermediate/entity-resolution/index.md)
+**Used in:** [Entity Resolution](../curriculum/intermediate/entity-resolution/index.md) · [The Query Is Not the Last Message](../curriculum/intermediate/query-formulation/index.md)
 <!-- graph:end -->

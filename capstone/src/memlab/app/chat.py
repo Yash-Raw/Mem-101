@@ -98,9 +98,12 @@ def ask(
     pipeline: Pipeline | None = None,
 ) -> tuple[str, list[Hit]]:
     pipeline = pipeline or beginner()
-    hits = EmbeddingRetriever().search(
-        question, store.all(), scope, k=k, live_only=pipeline.live_only
-    )
+    if pipeline.rank is not None:
+        hits = pipeline.rank(question, store.all(), scope, k)
+    else:
+        hits = EmbeddingRetriever().search(
+            question, store.all(), scope, k=k, live_only=pipeline.live_only
+        )
     return assemble(hits), hits
 
 

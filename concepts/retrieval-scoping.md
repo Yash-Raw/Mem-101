@@ -21,7 +21,7 @@ Scope is a correctness boundary, not a performance optimisation. Ranking across 
 <!-- graph:begin -->
 **Taught in:** [Retrieval Is Not Enough](../curriculum/beginner/retrieval-is-not-enough/index.md)
 
-**Used in:** [Getting Memories Into the Prompt](../curriculum/beginner/context-assembly-v0/index.md) · [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md) · [Scopes and Namespaces](../curriculum/intermediate/scopes-and-namespaces/index.md)
+**Used in:** [Getting Memories Into the Prompt](../curriculum/beginner/context-assembly-v0/index.md) · [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md) · [Scope, Then Rank](../curriculum/intermediate/scope-then-rank/index.md) · [Scopes and Namespaces](../curriculum/intermediate/scopes-and-namespaces/index.md)
 
 **Do not confuse with:** [Vector Search](vector-search.md)
 <!-- graph:end -->

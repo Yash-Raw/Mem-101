@@ -175,6 +175,16 @@ reasoning — worth knowing before extending this:
   separates them, which is why `evolve/promote.py` promotes nothing and defers
   to conflict detection.
 
-Remaining: Intermediate I5–I8 (16 lessons — forgetting, retrieval, stores,
-assembly), Advanced (40), and `mkdocs.yml` (Phase 7 — the CI step is present
-but gated on the file existing).
+Two more findings from 2b, both of which reversed an obvious approach:
+
+- **Salience must not be added to a relevance score.** It moves the correct
+  answer *down* and promotes a taught procedure to first place. Importance and
+  relevance are different axes; salience is for forgetting, and only earns a
+  ranking term alongside type and slot.
+- **Decay rate must be scaled by memory type.** One half-life for everything
+  drops fourteen standing beliefs and breaks the exam. What decays is
+  relevance, not truth.
+
+Remaining: Intermediate I7–I8 (8 lessons — stores, assembly), Advanced (40),
+and `mkdocs.yml` (Phase 7 — the CI step is present but gated on the file
+existing).

@@ -96,7 +96,16 @@ def intermediate(through: str = "latest") -> Pipeline:
         )
     if "I5" in reached:
         p = replace(p, decay=_score_and_decay)      # salience, ageing, tiering
+    if "I6" in reached:
+        p = replace(p, rank=_hybrid_search)         # filter, formulate, rank, merge
     return p
+
+
+def _hybrid_search(query, memories, scope, k=5):
+    """The composed read path: scope -> formulate -> slot+similarity -> merge."""
+    from .retrieve.scoped import search
+
+    return search(query, memories, scope, k=k)
 
 
 def _score_and_decay(memories):

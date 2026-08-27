@@ -23,7 +23,7 @@ This is where memory systems are actually hard, and it is the part almost no tut
 <!-- graph:begin -->
 **Taught in:** [Anatomy of a Memory Layer](../curriculum/beginner/anatomy-of-a-memory-layer/index.md) · [Memory Is Not RAG](../curriculum/beginner/memory-is-not-rag/index.md)
 
-**Used in:** [Naive Extraction](../curriculum/beginner/naive-extraction/index.md)
+**Used in:** [Naive Extraction](../curriculum/beginner/naive-extraction/index.md) · [Should I Even Look?](../curriculum/intermediate/retrieval-triggers/index.md)
 
 **Do not confuse with:** [The Read Path](read-path.md)
 <!-- graph:end -->

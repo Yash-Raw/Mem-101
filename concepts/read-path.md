@@ -23,7 +23,7 @@ The read path is where memory looks most like retrieval, which is exactly why it
 <!-- graph:begin -->
 **Taught in:** [Anatomy of a Memory Layer](../curriculum/beginner/anatomy-of-a-memory-layer/index.md) · [Memory Is Not RAG](../curriculum/beginner/memory-is-not-rag/index.md)
 
-**Used in:** [Embedding Recall](../curriculum/beginner/embedding-recall/index.md) · [Retrieval Is Not Enough](../curriculum/beginner/retrieval-is-not-enough/index.md)
+**Used in:** [Embedding Recall](../curriculum/beginner/embedding-recall/index.md) · [Retrieval Is Not Enough](../curriculum/beginner/retrieval-is-not-enough/index.md) · [Should I Even Look?](../curriculum/intermediate/retrieval-triggers/index.md)
 
 **Do not confuse with:** [The Write Path](write-path.md)
 <!-- graph:end -->

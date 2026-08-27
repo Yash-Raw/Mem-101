@@ -41,10 +41,28 @@ def test_stub_is_runnable(by_profile) -> None:
         _lab.reconcile(by_profile["@I3"], PRIYA)
 
 
-def test_six_retired_none_deleted(result) -> None:
+def test_seven_retired_none_deleted(result) -> None:
     assert len(result.memories) == 37
-    assert len(result.retired) == 6
-    assert sum(1 for m in result.memories if m.is_live) == 31
+    assert len(result.retired) == 7
+    assert sum(1 for m in result.memories if m.is_live) == 30
+
+
+def test_a_merge_actually_merges(result) -> None:
+    """One fact, one live record -- the restatement retired, not left beside it."""
+    nights = [m for m in result.memories if "works nights" in m.content]
+    assert len(nights) == 2
+    assert sum(1 for m in nights if m.is_live) == 1
+    survivor = next(m for m in nights if m.is_live)
+    assert survivor.confidence > 0.9, "and corroborated by the one it absorbed"
+
+
+def test_consolidation_is_idempotent(by_profile) -> None:
+    """The standard semantic-drift set for compaction, applied to the whole pass."""
+    pipeline = at("I4")
+    once = pipeline.consolidate(by_profile["@I3"])
+    twice = pipeline.consolidate(once)
+    key = lambda ms: [(m.id, m.confidence, m.invalid_at, m.derived_from) for m in ms]
+    assert key(once) == key(twice)
 
 
 def test_every_retirement_points_at_its_replacement(result) -> None:

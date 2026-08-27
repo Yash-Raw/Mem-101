@@ -56,7 +56,11 @@ def reconcile(memories: list[Memory], scope: Scope) -> Reconciliation:
             # A belief is invalid from the moment its replacement became true.
             retire[loser.id] = (winner.id, _when(winner))
         elif d.operation is Operation.MERGE and d.verdict:
+            # A merge that leaves both copies live is not a merge. Retire the
+            # loser and corroborate the winner -- one fact, one live record,
+            # and the restatement preserved as evidence.
             support.setdefault(d.verdict.winner.id, []).append(d.verdict.loser)
+            retire[d.verdict.loser.id] = (d.verdict.winner.id, _when(d.verdict.winner))
 
     out = []
     for memory in memories:

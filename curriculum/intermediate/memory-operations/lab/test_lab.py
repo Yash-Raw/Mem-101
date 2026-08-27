@@ -39,8 +39,9 @@ def test_the_policy_is_exhaustive() -> None:
 
 
 def test_delete_is_not_in_the_vocabulary() -> None:
-    """Nothing in belief updating deletes."""
-    assert Operation.DELETE if hasattr(Operation, "DELETE") else True
+    """Nothing in belief updating deletes. Erasure is a governance operation."""
+    assert not hasattr(Operation, "DELETE")
+    assert "delete" not in {op.value for op in Operation}
     assert "delete" not in {op.value for op in POLICY.values()}
 
 

@@ -117,7 +117,15 @@ def corroborate(memory: Memory, supporters: list[Memory]) -> Memory:
     Used by I4 after conflict detection classifies a pair as a restatement.
     Confidence rises, and the supporting sources are recorded so the boost can
     be traced -- and undone if a supporter is later retired.
+
+    Idempotent: a supporter already recorded in `derived_from` has already been
+    counted, so re-running consolidation cannot ratchet confidence upward. The
+    field exists for provenance and does double duty as the guard.
     """
+    fresh = [s for s in supporters if s.provenance.source_id not in memory.derived_from]
+    if not fresh:
+        return memory
+    supporters = fresh
     return replace(
         memory,
         confidence=min(1.0, memory.confidence + 0.05 * len(supporters)),

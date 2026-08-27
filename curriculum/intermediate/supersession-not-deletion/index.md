@@ -15,7 +15,7 @@ status: published
 
 # Supersede, Never Destroy
 
-> **In one line.** Forty lines set two fields, six beliefs retire, and the question this course opened with is finally answered correctly — without losing a single thing Priya said.
+> **In one line.** Forty lines set two fields, seven beliefs retire, and the question this course opened with is finally answered correctly — without losing a single thing Priya said.
 
 ## Where this sits
 
@@ -54,7 +54,7 @@ Two fields, both designed into the record back in Beginner and unused until now.
 
 ### The result
 
-Six beliefs retired, none deleted. **37 memories, 31 live.**
+Seven beliefs retired, none deleted. **37 memories, 30 live.**
 
 | retired | invalid from | replaced by |
 |---|---|---|
@@ -64,6 +64,9 @@ Six beliefs retired, none deleted. **37 memories, 31 live.**
 | `does not drink coffee` | 2026-02-27 | `drinks three coffees a day` |
 | `partner Sam is a nurse at St. Aubyn's` | 2025-04-22 | `Samira is a charge nurse` |
 | `colleague mentioned she is relocating to Berlin` | 2025-08-02 | `lives at 47 Halloway Road` |
+| `She works nights most of the month` | 2026-04-08 | `Sam still works nights` |
+
+The last row is a **MERGE**, not a contradiction — the same fact restated, so the earlier (pronoun-only) record retires and the survivor is corroborated. A merge that left both copies live would not be a merge, and the audit trail would inherit the misnomer.
 
 And the retriever finally filters on it — `live_only=True` in the intermediate profile, the flag that has existed since Beginner and did nothing because nothing ever set `invalid_at`.
 
@@ -79,7 +82,7 @@ where do I work and what should I not eat?
 | @I1 | 38 | Northwind Labs | meat, gluten | ✗ |
 | @I2 | 38 | Northwind Labs | meat, gluten | ✗ |
 | @I3 | 37 | Northwind Labs | meat, gluten | ✗ |
-| **@I4** | **31** | **Calico Systems** | **meat, gluten** | **✓** |
+| **@I4** | **30** | **Calico Systems** | **meat, gluten** | **✓** |
 
 Four modules of machinery, and the answer changes on the last one. Everything before it was necessary and none of it was sufficient: extraction made the right answer *exist*, resolution made evidence *accumulate*, deduplication removed a competing copy — and the answer stayed wrong until something recorded that one belief had *retired* another.
 
@@ -92,9 +95,9 @@ Supersession **removed the wrong answer; it did not promote the right one.** Mea
 | | live memories | `data engineer at Northwind` | `works at Calico Systems` |
 |---|--:|---|---|
 | beginner | 36 | **rank 9** | absent |
-| @I4 | 31 | **gone from retrieval** | **rank 21 of 31** |
+| @I4 | 30 | **gone from retrieval** | **rank 20 of 30** |
 
-The stale fact no longer competes — `live_only` filters it out entirely. But Calico sits at 21st, still outranked by *"Priya mostly does pipeline work"* and *"Priya used to cycle to work"* on plain lexical overlap with the word *work*.
+The stale fact no longer competes — `live_only` filters it out entirely. But Calico sits at 20th, still outranked by *"Priya mostly does pipeline work"* and *"Priya used to cycle to work"* on plain lexical overlap with the word *work*.
 
 The exam passes because `exam_answer` reads the live semantic beliefs rather than the top-k, and the beliefs are now correct. Ask the CLI for the top 4 and you still get noise. **That is a ranking problem, not a belief problem** — it belongs to [hybrid ranking](../hybrid-ranking/index.md) in I6, which adds recency and salience terms to a score that currently has neither.
 
@@ -118,6 +121,8 @@ uv run python curriculum/intermediate/supersession-not-deletion/lab/lab.py
 ```
 
 **Expected output:** the retirement table above, then the exam across all five snapshots, flipping to correct at `@I4`. Then the check that matters most: `where did I work before Calico?` answered from retired beliefs, and both Northwind episodes confirmed still live.
+
+**And run consolidation twice.** `consolidate(consolidate(x)) == consolidate(x)` — the same standard [semantic drift](../semantic-drift/index.md) demanded of compaction. Without the guard in `corroborate`, a re-run re-detects the merge and ratchets confidence 0.9 → 0.95 → 1.0, so the store's beliefs would depend on how often a background job happened to fire.
 
 **Stretch:** replace `supersede` with a delete and re-run. The exam still passes — and the historical query returns nothing, the audit trail is gone, and a misclassification is now unrecoverable. **Both implementations pass the headline test.** Only one of them is right, which is why the lab asserts the history too.
 

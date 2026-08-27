@@ -159,6 +159,37 @@ def test_entity_fragmentation(built, profile) -> None:
         )
 
 
+# --- failure 5: hearsay promoted to belief ---------------------------------
+# Only testable once I1 admits agent_writes.jsonl; fixed by arbitration (I4).
+@pytest.mark.parametrize("profile", PROFILES)
+def test_hearsay_is_not_believed(built, profile) -> None:
+    store, pipeline = built[profile]
+    berlin = [m for m in store.all() if "Berlin" in m.content]
+
+    if not pipeline.ingest_agent_writes:
+        assert berlin == [], "the beginner pipeline never sees shared-scope writes"
+        return
+
+    # Present -- refusing to store it would make a later confirmation look like
+    # the first anyone had heard.
+    assert len(berlin) == 1
+    claim = berlin[0]
+    assert claim.provenance.speaker == "travel-agent"
+    assert claim.provenance.authority == 0.3
+    assert claim.confidence == 0.3, "believed no more than its source is trusted"
+
+    if pipeline.live_only:
+        # ...and demoted: retired on authority, not on date. It is NEWER than
+        # the address it lost to, so recency alone would have believed it.
+        assert not claim.is_live and claim.superseded_by
+        address = next(m for m in store.all() if "Halloway Road" in m.content)
+        assert address.is_live
+        assert claim.happened_at > address.happened_at, "the newer claim lost"
+        assert "Berlin" not in str(exam_answer(store.all(), PRIYA).evidence)
+    else:
+        assert claim.is_live, "nothing has arbitrated yet"
+
+
 def test_an_unresolved_pronoun_is_stored_as_a_fact(built) -> None:
     store, _ = built["beginner"]
     assert any(m.content.startswith("She works nights") for m in store.all())
@@ -203,6 +234,19 @@ def test_nothing_can_be_forgotten(built) -> None:
 
 
 # --- the exam ----------------------------------------------------------------
+def test_consolidation_is_idempotent(built) -> None:
+    """Re-running the write path must not change what the system believes."""
+    for profile in PROFILES:
+        store, pipeline = built[profile]
+        if pipeline.consolidate is None:
+            continue
+        once = pipeline.consolidate(store.all())
+        twice = pipeline.consolidate(once)
+        assert [(m.id, m.confidence, m.invalid_at) for m in once] == [
+            (m.id, m.confidence, m.invalid_at) for m in twice
+        ]
+
+
 @pytest.mark.parametrize("profile", PROFILES)
 def test_the_exam(built, profile) -> None:
     store, pipeline = built[profile]

@@ -91,7 +91,7 @@ Two paths meeting at one store. The write path runs on every turn; the read path
 uv run python curriculum/beginner/your-first-memory-layer/lab/lab.py
 ```
 
-**Expected output:** 25 turns ingested to 36 memories. Four questions answered from memory. Then the restart check: a brand-new store object over the same file recalls identically, and a second ingest writes **0** new memories.
+**Expected output:** 24 turns ingested to 36 memories (session 14 is held out — it is the question). Four questions answered from memory. Then the restart check: a brand-new store object over the same file recalls identically, and a second ingest writes **0** new memories.
 
 **Stretch:** ask *"who is Sam?"* and read the recalled memories carefully. Sam, Samira and Sammy all appear, described as separate people with separate jobs. The system is not confused — it never had the concept that they might be one person. That is [entity resolution](../../intermediate/entity-resolution/index.md), and it is the first thing Level 2 fixes.
 

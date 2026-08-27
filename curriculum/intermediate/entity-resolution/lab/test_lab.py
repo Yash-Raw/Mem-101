@@ -54,6 +54,13 @@ def test_the_cluster_picks_the_longest_name(monkeypatch) -> None:
     assert assignments["Priya"] == "priya"
 
 
+def test_the_store_is_small_enough_for_all_pairs(tmp_path) -> None:
+    """The lesson opens with "on 38 memories that is fine" -- pin the 38."""
+    store = JsonlStore(tmp_path / "m.jsonl")
+    ingest(store, Scope(user="priya"), at("I2"))
+    assert len(store.all()) == 38
+
+
 def test_store_wide_resolution_yields_one_identity(about_partner) -> None:
     ids = {e for m in resolve_all(about_partner) for e in m.entities}
     assert ids == {"samira"}

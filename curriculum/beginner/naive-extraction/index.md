@@ -33,7 +33,7 @@ status: published
 
 You have a record shape. Now something has to fill it, turn by turn.
 
-The naive approach is one prompt: *"extract durable facts from this message."* It works immediately and it feels finished — 25 turns in, 36 memories out, all of them plausible, none of them obviously wrong. Nothing in the output tells you that a specific one is malformed in a way that will lose the course's headline question.
+The naive approach is one prompt: *"extract durable facts from this message."* It works immediately and it feels finished — 24 turns in, 36 memories out, all of them plausible, none of them obviously wrong. Nothing in the output tells you that a specific one is malformed in a way that will lose the course's headline question.
 
 Here is what the extractor did with session 8:
 
@@ -100,7 +100,7 @@ The shaded decision is absent in Beginner. The red box is what you get instead: 
 uv run python curriculum/beginner/naive-extraction/lab/lab.py
 ```
 
-**Expected output:** 36 memories from 25 turns. The audit then reports the three things the naive extractor got wrong, in order of cost: **no employer state** (session 8), **PII stored ungated** (session 5), and **a deletion request filed as a memory instead of honoured** (session 13).
+**Expected output:** 36 memories from 24 turns (session 14 is the question, and is held out). The audit then reports the three things the naive extractor got wrong, in order of cost: **no employer state** (session 8), **PII stored ungated** (session 5), and **a deletion request filed as a memory instead of honoured** (session 13).
 
 **Stretch:** add one sentence to `PROMPT` telling the model to record the resulting state when a turn describes a change, then author the fixture for session 8 by hand with `register_fixture`. Re-run the retrieval from lesson 00. The employer climbs sharply — and still loses to the stale fact, because nothing retires anything. Extraction is necessary and not sufficient.
 

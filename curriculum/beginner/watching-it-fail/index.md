@@ -65,7 +65,7 @@ The seven, in the order they will bite you.
 
 **4 · Entity fragmentation.** Sam, Samira and Sammy are three people with three jobs. Plus *"She works nights most of the month"*, stored with the pronoun unresolved and attached to nobody. Evidence about one person is split across records that never meet, so nothing accumulates and no contradiction is detectable. → [entity resolution](../../intermediate/entity-resolution/index.md)
 
-**5 · Over-extraction.** 36 memories from 25 turns, and *"Priya completed her first week at the new job"* — true for one week — ranks **6th** for a question about employment and diet. It is not wasting storage; it is spending a slot the model will actually see. → [extraction quality](../../intermediate/extraction-quality/index.md), [salience scoring](../../intermediate/salience-scoring/index.md)
+**5 · Over-extraction.** 36 memories from 24 turns, and *"Priya completed her first week at the new job"* — true for one week — ranks **6th** for a question about employment and diet. It is not wasting storage; it is spending a slot the model will actually see. → [extraction quality](../../intermediate/extraction-quality/index.md), [salience scoring](../../intermediate/salience-scoring/index.md)
 
 **6 · No forgetting.** Every memory sits at salience 0.5 with `access_count` 0. Nothing is more important than anything else, so nothing can be evicted, so the store only grows. → [forgetting](../../intermediate/why-forgetting-is-a-feature/index.md), [decay and tiers](../../intermediate/decay-and-tiers/index.md)
 

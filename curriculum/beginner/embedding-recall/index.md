@@ -35,7 +35,7 @@ Thirty-six memories in a file. To get any of them into a prompt you need an orde
 
 It works, and this lesson is not going to tell you it doesn't. Build it, then measure precisely what it is measuring — because the mistake is not using embeddings, it is believing the number means more than it does.
 
-Score every pair of memories in Priya's store against each other, and the top of the list looks like this:
+Score every pair of memories in Priya's store against each other. Here are five from the top of the list, one of each kind:
 
 | Score | Pair | The actual relationship |
 |--:|---|---|
@@ -44,6 +44,8 @@ Score every pair of memories in Priya's store against each other, and the top of
 | 0.739 | *has a gluten intolerance* / *was diagnosed with a gluten intolerance last week* | **duplicate** |
 | 0.669 | *is vegetarian* / *is pescatarian* | **refinement** — the second narrows the first |
 | 0.557 | *drinks tea* / *drinks three coffees a day* | **contradiction** |
+
+(The lab prints the top seven; 0.697 — *is leaving Northwind* / *left Northwind last month* — is a sixth kind, one event reported twice, and it is [deduplication](../../intermediate/deduplication/index.md)'s worked example.)
 
 Five pairs, scoring between 0.56 and 0.78, and five *completely different* relationships. Each one needs a different action: merge, supersede, merge, narrow, arbitrate. Similarity found all five and can distinguish none of them.
 

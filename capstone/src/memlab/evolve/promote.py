@@ -102,11 +102,12 @@ def analyse(memories: list[Memory], scope: Scope) -> PromotionReport:
 
 
 def promote(memories: list[Memory], scope: Scope) -> list[Memory]:
-    """A no-op that records what it declined to do.
+    """A no-op, kept so the deferral is visible in code rather than an absence.
 
-    Kept as a real stage so `contradiction-detection` has somewhere to plug in,
-    and so the deferral is visible in the pipeline rather than implied by an
-    absence.
+    Deliberately NOT wired into any pipeline: a stage that does nothing would
+    cost a pass over the store to achieve nothing. `supersede.reconcile`
+    imports `corroborate` directly, once conflict detection can name a pair as
+    a restatement -- which is the plug-in point this module actually provides.
     """
     return list(memories)
 

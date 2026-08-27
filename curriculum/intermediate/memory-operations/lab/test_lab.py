@@ -30,7 +30,11 @@ def decisions(tmp_path_factory):
 
 
 def test_stub_is_runnable() -> None:
+    """An empty table is the honest stub here -- but `decide` still raises,
+    so the convention every other lab follows holds."""
     assert _lab.POLICY == {}, "the table starts empty"
+    with pytest.raises(NotImplementedError):
+        _lab.decide(object())
 
 
 def test_the_policy_is_exhaustive() -> None:
@@ -46,6 +50,8 @@ def test_delete_is_not_in_the_vocabulary() -> None:
 
 
 def test_the_breakdown(decisions) -> None:
+    """24 classified pairs, as the lesson's opening line claims."""
+    assert len(decisions) == 24
     counts = Counter(d.operation.value for d in decisions)
     assert counts == {"noop": 15, "update": 8, "merge": 1}
 

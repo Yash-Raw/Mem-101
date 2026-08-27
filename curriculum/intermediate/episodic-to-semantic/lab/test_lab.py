@@ -46,11 +46,20 @@ def test_candidates_are_found_and_none_promoted(memories) -> None:
     assert "defer to conflict detection" in report.verdict
 
 
-def test_corroboration_ranks_below_a_refinement() -> None:
-    """The finding the lesson is built on."""
-    scored = {label: s for s, _, _, label in labelled_scores()}
-    assert scored["refinement"] > scored["corroboration"]
-    assert scored["corroboration"] > scored["contradiction"]
+def test_corroboration_sits_between_two_refinements() -> None:
+    """The finding the lesson is built on -- the spread, not just the order.
+
+    Two refinements bracket the genuine corroboration (0.669 above, 0.250
+    below) and a contradiction sits between it and the lower one. No cutoff
+    can separate the classes.
+    """
+    scored = labelled_scores()
+    refinements = sorted(s for s, _, _, lbl in scored if lbl == "refinement")
+    corroboration = next(s for s, _, _, lbl in scored if lbl == "corroboration")
+    contradiction = next(s for s, _, _, lbl in scored if lbl == "contradiction")
+
+    assert len(refinements) == 2
+    assert refinements[-1] > corroboration > contradiction > refinements[0]
 
 
 def test_no_threshold_separates_corroboration() -> None:

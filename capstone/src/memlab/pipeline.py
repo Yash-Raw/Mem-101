@@ -48,7 +48,7 @@ def beginner() -> Pipeline:
 
     This configuration is load-bearing. A dozen exact figures are quoted in the
     Beginner lessons and pinned by capstone/tests/test_v1_failures.py -- rank 1
-    vs rank 18, 36 memories from 25 turns, the k-sweep table. If a change here
+    vs rank 18, 36 memories from 24 turns, the k-sweep table. If a change here
     moves one of them, that is a build break, not a number to update.
     """
     return Pipeline(name="beginner", extract=naive_extract)

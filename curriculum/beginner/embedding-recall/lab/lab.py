@@ -40,10 +40,11 @@ def main() -> None:
         print(f"  {score:.3f}  {m.content}")
 
     print("\nmost similar PAIRS in the whole store:\n")
-    for score, a, b in most_similar_pairs(memories, top=5):
+    for score, a, b in most_similar_pairs(memories, top=7):
         print(f"  {score:.3f}  {a.content[:36]:<36} | {b.content[:36]}")
 
-    print("\nRead that table again. Those are the contradictions.")
+    print("\nA duplicate, a retraction, a refinement, a contradiction --")
+    print("and one score band holding all of them.")
 
 
 if __name__ == "__main__":

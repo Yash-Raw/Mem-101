@@ -14,6 +14,7 @@ SUITE = [
     "validate_links.py",
     "validate_quarantine.py",
     "validate_capstone.py",
+    "validate_expected_output.py",
     "validate_freshness.py",
 ]
 GENERATED = [("render_syllabus.py", "--check"), ("build_graph.py", "--check")]

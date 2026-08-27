@@ -15,7 +15,7 @@ status: published
 
 # Semantic Drift
 
-> **In one line.** Summarising a summary loses 19% of the original claims in four rounds; re-deriving from anchors holds at 70% forever — same compression ratio, same summariser, different input.
+> **In one line.** Summarising a summary leaves 19% of the original claims after four rounds; re-deriving from anchors holds at 69% forever — same compression ratio, same summariser, different input.
 
 ## Where this sits
 
@@ -37,13 +37,13 @@ The cheap implementation takes yesterday's summary as today's input. It is faste
 
 | round | claims | original claims still recoverable |
 |--:|--:|--:|
-| 0 | 27 | 100% |
-| 1 | 18 | 70% |
-| 2 | 12 | **44%** |
-| 3 | 8 | **30%** |
+| 0 | 26 | 100% |
+| 1 | 18 | 69% |
+| 2 | 12 | **46%** |
+| 3 | 8 | **31%** |
 | 4 | 5 | **19%** |
 
-Each round keeps 70%, and the survival rate is not 70% — it is 0.7ⁿ. Round two does not lose 30% of the original; it loses 30% of what round one left. The decay is geometric, and after four rounds four fifths of what Priya said is gone.
+Each round keeps 70%, and the survival rate is not 70% — it is roughly 0.7ⁿ. Round two does not lose 30% of the original; it loses 30% of what round one left. The decay is geometric, and after four rounds four fifths of what Priya said is gone.
 
 **And nothing recorded that it existed.** The only thing that knew about the dropped claims was the input you just replaced.
 
@@ -73,7 +73,7 @@ flowchart LR
   style R3 fill:#aed6f1,stroke:#2874a6
 ```
 
-Re-derivation always compacts the **originals**, reachable through `derived_from`. Same summariser, same ratio, and the result is stable at 70% no matter how many times it runs.
+Re-derivation always compacts the **originals**, reachable through `derived_from`. Same summariser, same ratio, and the result is stable at 69% no matter how many times it runs.
 
 That stability has a name: **compaction becomes idempotent**. Compacting twice equals compacting once, which is what `is_idempotent` asserts. The naive loop fails that test by construction, and once a loop is not idempotent, "how many times has this run?" becomes a question your data depends on and nobody is tracking.
 
@@ -96,7 +96,7 @@ The measurement also exposes something the ratio hides: **which claims survive i
 uv run python curriculum/intermediate/semantic-drift/lab/lab.py
 ```
 
-**Expected output:** the two curves side by side — naive decaying 100 → 70 → 44 → 30 → 19%, re-derived flat at 70% — and `is_idempotent` returning `False` for the naive loop and `True` for re-derivation.
+**Expected output:** 26 source claims, and the two curves side by side — naive decaying 100 → 69 → 46 → 31 → 19%, re-derived flat at **69%** — with `is_idempotent` returning `True` for re-derivation and the naive loop shown failing it.
 
 **Stretch:** change `compact` to drop the *head* instead of the tail and re-run both curves. The percentages are identical and a completely different set of facts survives: Priya's current employer instead of her diet baseline. The ratio told you nothing about which half you kept.
 
@@ -117,10 +117,10 @@ uv run python curriculum/intermediate/semantic-drift/lab/lab.py
 ## Check yourself
 
 ??? question "Each round keeps 70%. Why is round four at 19% rather than 70%?"
-    Because the ratio applies to the previous round, not the original: 0.7⁴ ≈ 0.24, and rounding down to whole claims gives 19%. Every lossy step compounds against an already-reduced base, which is what makes "just compact again" so much more expensive than it sounds.
+    Because the ratio applies to the previous round, not the original: 0.7⁴ ≈ 0.24, and rounding down to whole claims at each step gives 19%. Every lossy step compounds against an already-reduced base, which is what makes "just compact again" so much more expensive than it sounds.
 
-??? question "Re-derivation holds at 70% forever. Is that not also lossy?"
-    Yes — 30% is dropped and stays dropped. The difference is that the loss is *bounded and reproducible*: the same sources and ratio always give the same summary, and the dropped 30% is still in the store. Lossy is fine; unbounded and unrecoverable is not.
+??? question "Re-derivation holds at 69% forever. Is that not also lossy?"
+    Yes — 31% is dropped and stays dropped. The difference is that the loss is *bounded and reproducible*: the same sources and ratio always give the same summary, and the dropped 30% is still in the store. Lossy is fine; unbounded and unrecoverable is not.
 
 ??? question "Why does idempotency matter for a summariser?"
     Because without it, your data depends on how many times a background job happened to run — after a retry, a redeploy, a duplicated cron entry. That is a variable nobody tracks and no test covers. An idempotent compactor makes the question irrelevant.

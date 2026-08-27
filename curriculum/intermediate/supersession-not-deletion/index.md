@@ -130,7 +130,7 @@ uv run python curriculum/intermediate/supersession-not-deletion/lab/lab.py
 
 `memlab.evolve.supersede` — `reconcile`, `Reconciliation`. The intermediate profile becomes `resolve → dedupe → reconcile` with `live_only=True`.
 
-**memlab v0.2-alpha ships here.** Four of the seven pinned failures flip: staleness, accumulating contradictions, refinement-read-as-noise, and entity fragmentation. Three remain and are correctly still broken — over-extraction and forgetting are I5's; the deletion cascade is Advanced's.
+**memlab v0.2-alpha ships here.** Five predicates in the regression suite flip — staleness, accumulating contradictions, refinement-read-as-noise, entity fragmentation, and hearsay demotion (testable only once I1 admitted the shared-scope writes). Four of the seven *original* failures are among them. Three remain and are correctly still broken: over-extraction and forgetting are I5's, the deletion cascade is Advanced's.
 
 ## Failure modes
 

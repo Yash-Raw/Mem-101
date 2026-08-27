@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Weld content to code: every capstone_piece must actually import."""
+"""Weld content to code: every capstone_piece must actually import.
+
+`capstone_piece` may be a single dotted path or a list of them -- a lesson that
+builds two modules should say so rather than leaving one orphaned.
+
+INFRASTRUCTURE names modules the course uses but never teaches: the fake LLM,
+the lab loader, the pipeline registry, the exam reader. They are scaffolding for
+the curriculum rather than subjects of it, and listing them here is a deliberate
+statement to that effect -- an unexplained warning is one people learn to ignore.
+"""
+
 from __future__ import annotations
 
 import importlib
@@ -11,6 +21,17 @@ sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from _common import ROOT, Problems, lessons
 
 SRC = ROOT / "capstone" / "src"
+
+# Deliberately taught by no lesson. Scaffolding, not subject matter.
+INFRASTRUCTURE = frozenset({
+    "memlab.labkit",          # loads each lab's modules without cross-import
+    "memlab.pipeline",        # level profiles and module snapshots
+    "memlab.fixtures",        # access to the canonical corpus
+    "memlab.eval.exam",       # the headline metric's reader
+    "memlab.llm.base",        # provider shim
+    "memlab.llm.fake",        # the deterministic backend
+    "memlab.llm.anthropic",   # the optional live backend
+})
 
 
 def main() -> int:
@@ -27,37 +48,53 @@ def main() -> int:
     claimed: set[str] = set()
 
     for d in ls:
-        piece = d.meta.get("capstone_piece")
-        if not piece:
+        declared = d.meta.get("capstone_piece")
+        if not declared:
             continue
-        claimed.add(piece)
-        mod, _, attr = piece.rpartition(".")
-        try:
-            m = importlib.import_module(piece)
-            _ = m
-        except ModuleNotFoundError:
-            try:
-                m = importlib.import_module(mod)
-            except Exception as e:  # noqa: BLE001
-                p.add(d.rel, f"capstone_piece '{piece}' does not import: {e}")
-                continue
-            if not hasattr(m, attr):
-                p.add(d.rel, f"capstone_piece '{piece}' — '{mod}' has no '{attr}'")
-        except Exception as e:  # noqa: BLE001
-            p.add(d.rel, f"capstone_piece '{piece}' raised on import: {e}")
+        pieces = declared if isinstance(declared, list) else [declared]
+        for piece in pieces:
+            claimed.add(piece)
+            _check_one(p, d, piece)
 
-    # Orphan detection: a memlab module no lesson claims.
-    pkg = SRC / "memlab"
-    if pkg.exists():
-        for m in pkgutil.walk_packages([str(pkg)], prefix="memlab."):
-            name = m.name
-            if name.rsplit(".", 1)[-1].startswith("_") or m.ispkg:
-                continue
-            if not any(c == name or c.startswith(name + ".") for c in claimed):
-                rel = Path(name.replace(".", "/")).with_suffix(".py")
-                print(f"  warn  capstone/src/{rel}: no lesson claims this module")
-
+    _warn_orphans(claimed)
     return p.report("capstone")
+
+
+def _check_one(p, d, piece: str) -> None:
+    """A declared capstone_piece must resolve to a module or an attribute."""
+    mod, _, attr = piece.rpartition(".")
+    try:
+        importlib.import_module(piece)
+        return
+    except ModuleNotFoundError:
+        pass
+    except Exception as e:  # noqa: BLE001
+        p.add(d.rel, f"capstone_piece '{piece}' raised on import: {e}")
+        return
+
+    try:
+        m = importlib.import_module(mod)
+    except Exception as e:  # noqa: BLE001
+        p.add(d.rel, f"capstone_piece '{piece}' does not import: {e}")
+        return
+
+    if not hasattr(m, attr):
+        p.add(d.rel, f"capstone_piece '{piece}' — '{mod}' has no '{attr}'")
+
+def _warn_orphans(claimed: set[str]) -> None:
+    """A memlab module no lesson claims and INFRASTRUCTURE does not excuse."""
+    pkg = SRC / "memlab"
+    if not pkg.exists():
+        return
+    for m in pkgutil.walk_packages([str(pkg)], prefix="memlab."):
+        name = m.name
+        if name.rsplit(".", 1)[-1].startswith("_") or m.ispkg:
+            continue
+        if name in INFRASTRUCTURE:
+            continue
+        if not any(c == name or c.startswith(name + ".") for c in claimed):
+            rel = Path(name.replace(".", "/")).with_suffix(".py")
+            print(f"  warn  capstone/src/{rel}: no lesson claims this module")
 
 
 if __name__ == "__main__":

@@ -58,7 +58,7 @@ Here the same signal would drive **confidence**, and that inverts the damage. A 
 So the stage promotes nothing, and says so:
 
 ```
-46 candidate pairs, 0 promoted -- similarity cannot distinguish
+41 candidate pairs, 0 promoted -- similarity cannot distinguish
 corroboration from refinement or contradiction, so all of them
 defer to conflict detection
 ```
@@ -67,7 +67,7 @@ Two things it *does* contribute.
 
 **`subject_of` fixes a real blind spot.** A belief with no linked entity is about the account holder — `Priya is vegetarian` names nobody, because `Priya` is on the stop list, and it is obviously a claim about Priya. Without that fallback the system can only reason about third parties and is blind to every fact about its own user. That is a one-line fix for a failure that would have been very hard to notice.
 
-**`corroborate` is written and left uncalled.** It is what promotion looks like *once a relationship has been named* — confidence rises by the number of supporters, and `derived_from` records which sources justified the boost, so it can be traced and undone when a supporter is later retired. I4 calls it. Shipping it now, unused, keeps the deferral visible in the code rather than implied by an absence.
+**`corroborate` is written and left uncalled.** It is what promotion looks like *once a relationship has been named* — confidence rises by the number of supporters, and `derived_from` records which sources justified the boost, so it can be traced and undone when a supporter is later retired. [Supersession](../supersession-not-deletion/index.md) imports it directly once conflict detection can classify a pair as a restatement. Shipping it now, unused, keeps the deferral visible in the code rather than implied by an absence.
 
 ```mermaid
 flowchart LR
@@ -84,7 +84,7 @@ flowchart LR
 
 ## Design decisions
 
-**Ship a stage that does nothing, or leave it out?** Ship it. An absent stage looks like an oversight; a stage that reports 46 candidates and 0 promotions documents a decision. It is also where I4 plugs in, so the seam exists before it is needed.
+**Ship a stage that does nothing, or leave it out?** Ship it. An absent stage looks like an oversight; a stage that reports 41 candidates and 0 promotions documents a decision. It is deliberately **not wired into any pipeline** — `supersede` imports `corroborate` directly — because a no-op stage in the consolidation chain would cost a pass over the store to achieve nothing. The seam is the function, not a slot in the pipeline.
 
 **Could a model classify the pairs instead?** Yes — and that is exactly what conflict detection is, so building it here would be building I4 twice. The right move is to notice the cheap signal fails and stop, rather than to escalate inside a lesson about consolidation.
 
@@ -99,7 +99,7 @@ flowchart LR
 uv run python curriculum/intermediate/episodic-to-semantic/lab/lab.py
 ```
 
-**Expected output:** 46 candidate pairs, 0 promoted, and the ranked table above. Note the sixth row — `Priya drinks tea` / `Priya works at Calico Systems` at **0.478**, pure noise, scoring above the compatible diet pair and only just below the real corroboration.
+**Expected output:** 41 candidate pairs, 0 promoted, and the ranked table above. Note the **fifth** row — `Priya drinks tea` / `Priya works at Calico Systems` at **0.478**, pure noise, sitting directly below the real corroboration at 0.505.
 
 **Stretch:** pick any threshold and count what it would promote correctly versus wrongly. There is no value that gets more than one of the three relationship types right. Then compute the *mean* similarity of corroborating pairs against contradicting ones — the means separate, and the distributions overlap completely. That gap between "correlates in aggregate" and "decides per case" is why the aggregate is the wrong thing to look at.
 

@@ -35,16 +35,17 @@ Priya's store is 37 memories after deduplication. In two years it will be thousa
 
 The obvious move is a summary per session. Build one, measure it, and the first result is not what you expect:
 
-| session | sources kept | compression |
-|---|--:|--:|
-| s1 | 4 | 0.95 |
-| **s2** | 2 | **1.22** |
-| **s4** | 2 | **1.40** |
-| s5 | 3 | 0.84 |
+| session | sources kept | dropped | compression |
+|---|--:|--:|--:|
+| s1 | 4 | 30 | 0.95 |
+| **s2** | 2 | **0** | **1.22** |
+| **s4** | 2 | **0** | **1.40** |
+| s5 | 3 | 42 | 0.84 |
+| s8 | 3 | 97 | 0.64 |
 
-Two sessions got **bigger**. The summary of session 4 is 1.4× the size of session 4.
+**Six of the ten summaries got bigger.** The summary of session 4 is 1.4× the size of session 4.
 
-Nothing is broken. An extractive summary that keeps every claim is not a compression — it is a re-joining, and it pays for the joining. Sessions 2 and 4 contain nothing but semantic claims, so there was nothing to drop, and the summary added punctuation to a list it kept whole.
+Nothing is broken. An extractive summary that keeps every claim is not a compression — it is a re-joining, and it pays for the joining. Read the `dropped` column: every session that expanded dropped **zero** characters. Sessions 2 and 4 contain nothing but semantic claims, so there was nothing to discard, and the summary added punctuation to a list it kept whole.
 
 **Compression is entirely a function of what you throw away.** That reframes the design question from *how do I summarise* to *what am I willing to lose*, which is a question with a defensible answer.
 
@@ -58,7 +59,7 @@ A memory summary is meant to **replace** what it summarises, or it saves nothing
 
 **What gets dropped: episodes.** Sessions are summarised from their semantic and procedural claims only. That is a real, arguable choice — episodes are the record of *what happened*, and a summary of them loses the timestamps that made them worth keeping. Standing beliefs compress; dated events should be archived or forgotten, not blurred.
 
-Across the store that yields **1461 → 1175 characters**, about 0.80. Modest, and honest: the compression is exactly the size of what was dropped.
+Across the store that yields **1432 → 1175 characters**, about **0.82**. Modest, and honest: the compression is exactly the size of what was dropped — and it comes from four sessions, while six worked against it.
 
 **What makes it safe: `derived_from`.**
 
@@ -92,13 +93,17 @@ This is a field the Beginner record did not have, added here because summarisati
 uv run python curriculum/intermediate/summarization-and-compaction/lab/lab.py
 ```
 
-**Expected output:** 10 session summaries; the per-session compression table above, including the two that expand; the whole-store figure of **0.80**; then a source is deleted and `orphaned_summaries` detects exactly one stale summary.
+**Expected output:** 10 summaries; the per-session table above, with **six** rows flagged `EXPANDED`; the whole-store figure of **1432 → 1175**; then a source is deleted and `orphaned_summaries` detects exactly one stale summary.
+
+One row is `summary:calendar-agent` rather than a session — the shared-scope agent writes group under their own source prefix. Worth noticing rather than special-casing: "session" was never the real unit, `source_id` was.
 
 **Stretch:** compute compression against the summary's own sources rather than the whole session. Every number goes above 1.0 and the technique looks useless — the correct answer to the wrong question. Choosing the denominator *is* the measurement.
 
 ## What this adds to the capstone
 
 `memlab.evolve.summarize` — `summarise_session`, `summarise_all`, `orphaned_summaries`, `Summary`. And `Memory.derived_from`, which [semantic drift](../semantic-drift/index.md) needs immediately and cascade deletion needs in Advanced.
+
+**Not wired into the pipeline, deliberately.** At 37 memories there is no budget pressure to relieve, and a compaction step that runs for no reason is a lossy transform applied for free. It gets switched on in [decay and tiers](../decay-and-tiers/index.md), once forgetting gives the store a bound worth respecting.
 
 ## Failure modes
 

@@ -13,6 +13,8 @@ LABELLED = [
     ("She works nights most of the month", "Sam still works nights", "corroboration"),
     ("Priya does not drink coffee", "Priya drinks three coffees a day", "contradiction"),
     ("Priya does not eat meat", "Priya eats fish", "compatible"),
+    ("Priya's partner Sam is a nurse at St. Aubyn's", "Samira is a charge nurse",
+     "refinement"),
 ]
 
 

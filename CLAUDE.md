@@ -129,11 +129,25 @@ So a lesson's tests pin against its own module's snapshot, and a number
 measured once stays true. When adding a module, extend `MODULES` and switch on
 exactly one capability, so its claimed improvement is attributable to it alone.
 
+## Verifying prose against reality
+
+`tools/validate_expected_output.py` runs **every lab** with its reference
+solution patched over the stubs, then checks that each figure quoted in the
+lesson's measuring sections appears in what the lab actually printed — or is
+pinned in that lab's test file.
+
+It exists because a grep-based staleness sweep passed while seven figures across
+five lessons were wrong: three I3 lessons had been re-pointed to a different
+pipeline snapshot without re-measuring, and "25 turns → 36 memories" was wrong
+in seven places (session 14 is held out, so it is 24). Sampling is not
+verification. **When a lesson's number changes, re-run the lab — never edit the
+number to match a memory of what it used to be.**
+
 ## Status
 
 **Milestone 1 complete.** Scaffold, validator suite, the 84-lesson syllabus, all
 13 Beginner lessons with labs, 28 concept pages, and `memlab` v0.1 (extract →
-store → retrieve → assemble, with a CLI). 100 tests pass; all 8 validators pass.
+store → retrieve → assemble, with a CLI).
 
 `capstone/tests/test_v1_failures.py` pins the seven ways v0.1 is broken. Those
 tests are the baseline every Level 2 claim is measured against — when a level-2
@@ -143,7 +157,7 @@ Landscape snapshot written and dated 2026-08-27 (8 pages; high-volatility pages
 fail CI at 180 days — re-verify rather than bumping the date).
 
 **Milestone 2a complete** — Intermediate modules I1–I4 (15 lessons), 45 concept
-pages, `memlab` v0.2-alpha. 238 tests.
+pages, `memlab` v0.2-alpha. 244 tests.
 
 The headline result: the session-14 exam passes under `--profile intermediate`
 and fails under every earlier snapshot. `uv run python -m memlab.app.chat

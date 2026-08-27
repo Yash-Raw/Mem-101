@@ -7,7 +7,7 @@ estimated_minutes: 50
 concepts_taught: [extraction-pipeline, event-vs-state, durability-gate]
 concepts_required: [extraction, type-rules, atomic-fact, memory-promotion]
 lessons_required: [typed-memory-model]
-capstone_piece: memlab.extract.pipeline
+capstone_piece: [memlab.extract.pipeline, memlab.extract.gate]
 lab: lab/lab.py
 lab_runtime: fake
 status: published

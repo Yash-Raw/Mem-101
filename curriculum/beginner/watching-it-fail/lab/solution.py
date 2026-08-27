@@ -3,10 +3,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from memlab.fixtures import load_turns
 from memlab.retrieve.embedding import EmbeddingRetriever
 from memlab.types import Memory, Scope
 
 QUESTION = "where do I work and what should I not eat?"
+
+
+def _ingested_turns() -> list[dict]:
+    """Session 14 is the question, not a memory -- ingest holds it out."""
+    return [t for t in load_turns(user_only=True) if t["session"] < 14]
 
 
 @dataclass
@@ -66,7 +72,8 @@ def diagnose(memories: list[Memory], scope: Scope) -> list[Finding]:
     transient = rank_of(ranked, "completed her first week")
     out.append(Finding(
         5, "over-extraction",
-        f"{len(memories)} memories from 25 turns; a finished activity ranks {transient}",
+        f"{len(memories)} memories from {len(_ingested_turns())} turns; "
+        f"a finished activity ranks {transient}",
         "extraction-quality, salience-scoring",
     ))
 

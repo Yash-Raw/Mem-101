@@ -32,7 +32,7 @@ status: published
 
 The cheapest possible answer to "how do I give my agent memory" is: don't. Windows are large now. Put the whole conversation in the prompt every turn and let attention sort it out.
 
-For Priya's 17 months, that is about 500 tokens. It genuinely fits, with room to spare. So try it and ask the session-14 question with the entire history in context.
+For Priya's seventeen months, that is **501 tokens**. It genuinely fits, with room to spare. So try it and ask the session-14 question with the entire history in context.
 
 It still gets the employer wrong — but now for a different reason, and that difference is the lesson. The model is not missing the fact. It is holding the old employer, stated confidently in session 1, alongside a job change phrased as an aside nine months later, with nothing marking which one is current. You have not solved the problem. You have moved it inside the model, where you can no longer inspect or fix it.
 

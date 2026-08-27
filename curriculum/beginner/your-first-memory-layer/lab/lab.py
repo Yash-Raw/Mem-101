@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 from memlab.app.chat import ingest
+from memlab.fixtures import load_turns
 from memlab.store.jsonl import JsonlStore
 from memlab.types import Scope
 
@@ -41,7 +42,8 @@ def main() -> None:
     store.clear()
 
     written = ingest(store, scope)
-    print(f"ingested 25 turns -> {written} memories\n")
+    turns = [t for t in load_turns(user_only=True) if t["session"] < 14]
+    print(f"ingested {len(turns)} turns -> {written} memories\n")
 
     for q in QUESTIONS:
         print(f"Q: {q}")

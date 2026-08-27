@@ -96,6 +96,7 @@ def ask(
     question: str,
     k: int = 5,
     pipeline: Pipeline | None = None,
+    budget: int = 400,
 ) -> tuple[str, list[Hit]]:
     pipeline = pipeline or beginner()
     if pipeline.rank is not None:
@@ -104,7 +105,8 @@ def ask(
         hits = EmbeddingRetriever().search(
             question, store.all(), scope, k=k, live_only=pipeline.live_only
         )
-    return assemble(hits), hits
+    pack = pipeline.assemble or assemble
+    return pack(hits, budget_tokens=budget), hits
 
 
 def main() -> None:
@@ -116,6 +118,8 @@ def main() -> None:
     ap.add_argument("--exam", action="store_true",
                     help="answer the session-14 question from live beliefs")
     ap.add_argument("-k", type=int, default=5)
+    ap.add_argument("--budget", type=int, default=400,
+                    help="token budget for the assembled context")
     ap.add_argument("--user", default="priya")
     args = ap.parse_args()
 
@@ -128,19 +132,25 @@ def main() -> None:
         print(f"[{pipeline.name}] ingested {n} memories into {store.path}")
 
     if args.exam:
-        from ..eval.exam import QUESTION, exam_answer
+        from ..eval.exam import QUESTION, exam_answer, exam_from_context
 
         answer = exam_answer(store.all(), scope)
+        from_context = exam_from_context(
+            store.all(), scope, k=args.k, pipeline=pipeline, budget=args.budget
+        )
         print(f"\nQ: {QUESTION}")
         print("   correct: Calico Systems; avoid meat and gluten; fish is fine\n")
         print(f"   employer   {answer.employer}")
         print(f"   avoid      {', '.join(sorted(answer.avoid)) or '-'}")
         print(f"   permitted  {', '.join(sorted(answer.permitted)) or '-'}")
-        print(f"\n   {'CORRECT' if answer.is_correct else 'WRONG'}  "
-              f"[profile={pipeline.name}, {len(store.live())} live memories]")
+        print(f"\n   belief store   {'CORRECT' if answer.is_correct else 'WRONG'}")
+        print(f"   from context   {'CORRECT' if from_context.is_correct else 'WRONG'}  "
+              f"(k={args.k}, budget={args.budget})")
+        print(f"\n   [profile={pipeline.name}, {len(store.live())} live memories]")
 
     if args.ask:
-        context, hits = ask(store, scope, args.ask, k=args.k, pipeline=pipeline)
+        context, hits = ask(store, scope, args.ask, k=args.k, pipeline=pipeline,
+                            budget=args.budget)
         print(f"\nQ: {args.ask}\n")
         print(context or "(nothing recalled)")
         live = len(store.live()) if pipeline.live_only else len(store.all())

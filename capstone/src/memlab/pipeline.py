@@ -27,6 +27,8 @@ ResolveFn = Callable[[list[Memory], list[Memory]], list[Memory]]
 ConsolidateFn = Callable[[list[Memory]], list[Memory]]
 DecayFn = Callable[[list[Memory]], list[Memory]]
 RankFn = Callable[[str, list[Memory], Scope], list]
+VectorFn = Callable[[str], list[float]]
+AssembleFn = Callable[..., str]
 
 
 @dataclass(frozen=True)
@@ -41,6 +43,8 @@ class Pipeline:
     ingest_agent_writes: bool = False         # I1: admit shared-scope hearsay
     decay: DecayFn | None = None              # I5: score salience, move tiers
     rank: RankFn | None = None                # I6: hybrid scoring; None = plain cosine
+    vectors: VectorFn | None = None           # I7: cached embeddings; None = recompute
+    assemble: AssembleFn | None = None        # I8: budgeted packing; None = assemble.simple
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -61,7 +65,7 @@ def beginner() -> Pipeline:
 # Each module switches on exactly one capability, so the improvement it claims
 # is attributable to it alone -- and so a lesson's measured numbers stay true
 # after later modules land. `at("I1")` is the system as I1 left it, forever.
-MODULES = ("I1", "I2", "I3", "I4", "I5", "I6")
+MODULES = ("I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8")
 
 
 def intermediate(through: str = "latest") -> Pipeline:

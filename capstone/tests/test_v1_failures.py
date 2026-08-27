@@ -282,6 +282,50 @@ def test_the_exam_from_context(built, profile) -> None:
         assert answer.is_correct
 
 
+@pytest.mark.parametrize("budget", [400, 80, 60, 55, 50, 45])
+def test_the_exam_under_a_token_budget(built, budget) -> None:
+    """Milestone 2c's target: does the answer survive a context worth paying for?
+
+    At k=5 the assembled context is 80 tokens, 29 of which are the framing
+    header. Expected to pass down to 50 exactly when the header has been
+    right-sized -- and to fail below the derived floor whatever happens, because
+    header plus four facts does not fit in 45.
+    """
+    store, pipeline = built["intermediate"]
+    answer = exam_from_context(store.all(), PRIYA, k=5, pipeline=pipeline, budget=budget)
+
+    trimmed = pipeline.assemble is not None
+    floor_ok = budget >= _derived_floor(store, pipeline)
+
+    if budget >= 80:
+        assert answer.is_correct
+    elif not trimmed:
+        assert not answer.is_correct, "the 29-token header undersizes the context"
+    elif floor_ok:
+        assert answer.is_correct
+    else:
+        assert not answer.is_correct, "below the floor, no policy can help"
+
+
+def _derived_floor(store, pipeline) -> int:
+    """header + the four required lines, at the CURRENT line format.
+
+    Computed, never hardcoded: `ordering-and-formatting` changes the line
+    format, which moves the floor. A literal here would silently rot.
+    """
+    from memlab.app.chat import ask
+    from memlab.assemble.simple import HEADER, estimate_tokens
+
+    needed = ("works at Calico", "does not eat meat", "eats fish", "gluten")
+    _ctx, hits = ask(store, PRIYA, QUESTION, k=5, pipeline=pipeline)
+    lines = [
+        f"- [{h.memory.happened_at.date()}] {h.memory.content}"
+        for h in hits
+        if any(n in h.memory.content for n in needed)
+    ]
+    return estimate_tokens(HEADER) + sum(estimate_tokens(x) for x in lines)
+
+
 def test_belief_and_context_exams_can_disagree(built) -> None:
     """The gap between believing and saying, as of this milestone."""
     store, pipeline = built["intermediate"]

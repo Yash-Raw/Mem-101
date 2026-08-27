@@ -94,6 +94,7 @@ def exam_from_context(
     scope: Scope,
     k: int = 5,
     pipeline=None,
+    budget: int = 400,
 ) -> ExamAnswer:
     """Answer from ONLY what the model receives.
 
@@ -117,7 +118,9 @@ def exam_from_context(
         def live(self) -> list[Memory]:
             return [m for m in self._items if m.is_live]
 
-    context, _hits = ask(_View(memories), scope, QUESTION, k=k, pipeline=pipeline)
+    context, _hits = ask(
+        _View(memories), scope, QUESTION, k=k, pipeline=pipeline, budget=budget
+    )
 
     answer = ExamAnswer()
     for name, markers in EMPLOYERS.items():

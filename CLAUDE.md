@@ -117,6 +117,18 @@ retrieve_topk = _solution.retrieve_topk
 `tools/validate_structure.py` fails the build on bare imports or `sys.path`
 manipulation inside a test.
 
+## Level profiles and module snapshots
+
+`memlab.pipeline` decides which stages run. `get("beginner")` is Level 1 as
+shipped; `get("intermediate")` is everything built so far; **`at("I3")` is the
+system as module I3 left it.**
+
+Snapshots exist because lesson prose quotes measured numbers. I3's dedupe
+changes the store size, which would silently invalidate every count I1 quoted.
+So a lesson's tests pin against its own module's snapshot, and a number
+measured once stays true. When adding a module, extend `MODULES` and switch on
+exactly one capability, so its claimed improvement is attributable to it alone.
+
 ## Status
 
 **Milestone 1 complete.** Scaffold, validator suite, the 84-lesson syllabus, all
@@ -130,5 +142,25 @@ mechanism fixes one, move its test and flip the expectation rather than deleting
 Landscape snapshot written and dated 2026-08-27 (8 pages; high-volatility pages
 fail CI at 180 days — re-verify rather than bumping the date).
 
-Remaining: Intermediate (31 lessons) and Advanced (40), their concept pages, and
-`mkdocs.yml` (Phase 7 — the CI step for it is present but gated on the file existing).
+**Milestone 2a complete** — Intermediate modules I1–I4 (15 lessons), 45 concept
+pages, `memlab` v0.2-alpha. 238 tests.
+
+The headline result: the session-14 exam passes under `--profile intermediate`
+and fails under every earlier snapshot. `uv run python -m memlab.app.chat
+--profile intermediate --ingest --exam`.
+
+Two findings that shaped the design, both from measurement rather than
+reasoning — worth knowing before extending this:
+
+- **Similarity cannot generate conflict candidates.** The employer
+  contradiction scores 0.285, below unrelated noise at 0.478. Candidates are
+  grouped by `SLOT` (the attribute claimed) instead. Removing a slot silently
+  reverts the exam.
+- **Similarity cannot identify corroboration either.** A refinement scores
+  0.669, a genuine corroboration 0.505, a contradiction 0.439. No threshold
+  separates them, which is why `evolve/promote.py` promotes nothing and defers
+  to conflict detection.
+
+Remaining: Intermediate I5–I8 (16 lessons — forgetting, retrieval, stores,
+assembly), Advanced (40), and `mkdocs.yml` (Phase 7 — the CI step is present
+but gated on the file existing).

@@ -166,12 +166,27 @@ def test_pii_is_stored_with_no_gate(built) -> None:
         assert "47 Halloway Road" in text and "07700 900412" in text
 
 
-def test_the_deletion_request_is_filed_instead_of_honoured(built) -> None:
-    """Compliance, not quality. Lands in Advanced."""
+def test_the_deletion_request_is_not_honoured(built) -> None:
+    """Compliance, not quality. The cascade lands in Advanced.
+
+    I1's durability gate does fix half of this: an imperative is no longer
+    filed as though it were a fact. The part that matters is untouched --
+    Priya asked for the address to be forgotten and it is still there, in
+    both profiles. Half a compliance failure is a compliance failure.
+    """
     for profile in PROFILES:
-        contents = [m.content for m in built[profile][0].all()]
-        assert "Priya asked to forget her old address" in contents
-        assert any("47 Halloway Road" in c for c in contents)
+        store, pipeline = built[profile]
+        contents = [m.content for m in store.all()]
+        filed = "Priya asked to forget her old address" in contents
+
+        if pipeline.extract is get("beginner").extract:
+            assert filed, "the naive extractor stores the request as a fact"
+        else:
+            assert not filed, "the gate routes imperatives away from the store"
+
+        assert any("47 Halloway Road" in c for c in contents), (
+            "and in neither case was anything actually deleted"
+        )
 
 
 def test_nothing_can_be_forgotten(built) -> None:

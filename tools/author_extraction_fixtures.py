@@ -16,6 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "capstone" / "src"))
 
+from memlab.extract import pipeline as v2
 from memlab.extract.naive import SCHEMA, build_messages
 from memlab.fixtures import load_turns
 from memlab.llm.fake import register_fixture
@@ -127,6 +128,70 @@ EXTRACTIONS: dict[str, list[tuple[str, str]]] = {
 }
 
 
+# --- Level 2 -----------------------------------------------------------------
+# The staged extractor's prompt differs, so its FakeLLM keys differ and it needs
+# its own table. Only the turns whose extraction actually CHANGES are listed;
+# everything else reuses the naive output verbatim.
+#
+# The change is event->state normalisation. Session 8 gains the fact the whole
+# corpus implies and no turn states, which is the one that costs the exam.
+INTERMEDIATE_OVERRIDES: dict[str, list[tuple[str, str]]] = {
+    "Big news": [
+        ("Priya is leaving Northwind Labs", E),
+        ("Priya is starting at Calico Systems in January as a staff engineer", E),
+        ("Priya works at Calico Systems", S),          # <- the state, finally
+        ("Priya is a staff engineer", S),
+    ],
+    "I left Northwind last month": [
+        ("Priya left Northwind Labs last month", E),
+        # Same content and source-independent id as above once written, so the
+        # store dedupes it for free -- idempotency doing real work.
+        ("Priya works at Calico Systems", S),
+    ],
+    "We moved. New place is": [
+        ("Priya moved house", E),
+        ("Priya lives at 47 Halloway Road, Bristol", S),
+        ("Priya's phone number is 07700 900412", S),
+    ],
+    "Samira got a promotion": [
+        ("Samira got a promotion to charge nurse", E),
+        ("Samira is a charge nurse", S),
+    ],
+    "Actually I've started eating fish": [
+        ("Priya eats fish", S),
+        ("Priya does not eat meat", S),
+        ("Priya is pescatarian", S),
+    ],
+    "I was diagnosed with a gluten": [
+        ("Priya was diagnosed with a gluten intolerance last week", E),
+        ("Priya has a gluten intolerance", S),
+    ],
+    "Honestly the coffee machine": [
+        ("Priya drinks three coffees a day", S),
+    ],
+    "Before the move I used to cycle": [
+        ("Priya used to cycle to work before the move", E),
+        ("Priya commutes 40 minutes by train", S),
+    ],
+}
+
+
+def author_intermediate(turns) -> int:
+    written = 0
+    for turn in turns:
+        match = next((k for k in INTERMEDIATE_OVERRIDES if turn["text"].startswith(k)), None)
+        pairs = INTERMEDIATE_OVERRIDES[match] if match else None
+        if pairs is None:
+            naive = next((k for k in EXTRACTIONS if turn["text"].startswith(k)), None)
+            if naive is None:
+                continue
+            pairs = EXTRACTIONS[naive]
+        payload = [{"content": c, "type": ty} for c, ty in pairs]
+        register_fixture(v2.build_messages(turn["text"]), payload, SCHEMA)
+        written += 1
+    return written
+
+
 def main() -> int:
     turns = load_turns(user_only=True)
     written, unmatched = 0, []
@@ -147,7 +212,14 @@ def main() -> int:
         return 1
 
     total = sum(len(v) for v in EXTRACTIONS.values())
-    print(f"authored {written} fixtures covering {len(turns)} user turns -> {total} memories")
+    print(f"naive:        {written} fixtures over {len(turns)} turns -> {total} candidates")
+
+    v2_written = author_intermediate(turns)
+    v2_total = sum(
+        len(INTERMEDIATE_OVERRIDES.get(k, EXTRACTIONS[k])) for k in EXTRACTIONS
+    )
+    print(f"intermediate: {v2_written} fixtures over {len(turns)} turns -> {v2_total} candidates")
+    print(f"              {len(INTERMEDIATE_OVERRIDES)} turns re-extracted, rest reused")
     return 0
 
 

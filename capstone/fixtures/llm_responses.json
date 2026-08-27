@@ -5,6 +5,20 @@
       "type": "semantic"
     }
   ],
+  "074339f735036f6b": [
+    {
+      "content": "Priya eats fish",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya does not eat meat",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya is pescatarian",
+      "type": "semantic"
+    }
+  ],
   "07b88d50ec5c63b2": [
     {
       "content": "Samira got a promotion to charge nurse",
@@ -12,6 +26,12 @@
     },
     {
       "content": "Samira is a charge nurse",
+      "type": "semantic"
+    }
+  ],
+  "0d37b38759005d66": [
+    {
+      "content": "Priya's new role involves more architecture and less firefighting",
       "type": "semantic"
     }
   ],
@@ -26,6 +46,27 @@
       "type": "episodic"
     }
   ],
+  "23c22dd46715c61f": [
+    {
+      "content": "Priya's partner Sam is a nurse at St. Aubyn's",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya is planning a trip around Sam's shift rota",
+      "type": "episodic"
+    }
+  ],
+  "2face383702a0a2f": [
+    {
+      "content": "Priya used to cycle to work before the move",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya commutes 40 minutes by train",
+      "type": "semantic"
+    }
+  ],
+  "316526842ef68fe4": [],
   "38281d5db03b3a45": [
     {
       "content": "Priya is debugging a Spark job",
@@ -33,6 +74,12 @@
     },
     {
       "content": "Priya is vegetarian",
+      "type": "semantic"
+    }
+  ],
+  "39d1262ad6e1fef0": [
+    {
+      "content": "Sam still works nights",
       "type": "semantic"
     }
   ],
@@ -44,6 +91,38 @@
     {
       "content": "Priya mostly does pipeline work",
       "type": "semantic"
+    }
+  ],
+  "408e6ffdc14b2094": [
+    {
+      "content": "Priya prefers shorter answers",
+      "type": "semantic"
+    }
+  ],
+  "4caf550d9b48c228": [
+    {
+      "content": "Priya does not drink coffee",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya drinks tea",
+      "type": "semantic"
+    }
+  ],
+  "4e4ec3366683bd60": [
+    {
+      "content": "Samira got a promotion to charge nurse",
+      "type": "episodic"
+    },
+    {
+      "content": "Samira is a charge nurse",
+      "type": "semantic"
+    }
+  ],
+  "560ac16796b06c52": [
+    {
+      "content": "Priya completed her first week at the new job",
+      "type": "episodic"
     }
   ],
   "5b64573464568b1f": [
@@ -66,6 +145,16 @@
       "type": "episodic"
     }
   ],
+  "62a8b27b234f138f": [
+    {
+      "content": "Priya is debugging a Spark job",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya is vegetarian",
+      "type": "semantic"
+    }
+  ],
   "64a18a4a24c188e6": [
     {
       "content": "Priya left Northwind Labs last month",
@@ -79,6 +168,24 @@
   "6853c0789aad0286": [
     {
       "content": "Sam still works nights",
+      "type": "semantic"
+    }
+  ],
+  "696b9aa4feffc957": [
+    {
+      "content": "Priya is leaving Northwind Labs",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya is starting at Calico Systems in January as a staff engineer",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya works at Calico Systems",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya is a staff engineer",
       "type": "semantic"
     }
   ],
@@ -96,6 +203,7 @@
       "type": "semantic"
     }
   ],
+  "7de01ce200fa8c03": [],
   "7de760cc4e7c4a96": [],
   "8008f6a85400a1fc": [
     {
@@ -105,6 +213,12 @@
     {
       "content": "Priya's commute is 40 minutes by train",
       "type": "semantic"
+    }
+  ],
+  "82025478ee40ce69": [
+    {
+      "content": "In Priya's weekly report, the diff step matters most",
+      "type": "procedural"
     }
   ],
   "8c178935f9126f40": [
@@ -123,11 +237,69 @@
       "type": "semantic"
     }
   ],
+  "98cb295268bb2894": [
+    {
+      "content": "Priya moved house",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya lives at 47 Halloway Road, Bristol",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya's phone number is 07700 900412",
+      "type": "semantic"
+    }
+  ],
   "99c39e167897ec18": [],
+  "b17fe4fb988d6638": [
+    {
+      "content": "Priya was diagnosed with a gluten intolerance last week",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya has a gluten intolerance",
+      "type": "semantic"
+    }
+  ],
+  "b4ec858041aca178": [
+    {
+      "content": "Priya drinks three coffees a day",
+      "type": "semantic"
+    }
+  ],
+  "c22df714f14cace1": [
+    {
+      "content": "Priya is a data engineer at Northwind Labs",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya mostly does pipeline work",
+      "type": "semantic"
+    }
+  ],
   "c4797f0c63431c37": [
     {
       "content": "Priya's weekly report process: pull pipeline metrics from the warehouse, diff against last week, flag anything over 15% drift, write it up in the shared doc, in that order",
       "type": "procedural"
+    }
+  ],
+  "c541ececef8dc47b": [
+    {
+      "content": "Priya's weekly report process: pull pipeline metrics from the warehouse, diff against last week, flag anything over 15% drift, write it up in the shared doc, in that order",
+      "type": "procedural"
+    }
+  ],
+  "c576cc21c8f9b80c": [
+    {
+      "content": "Priya asked to forget her old address",
+      "type": "episodic"
+    }
+  ],
+  "cb0a4dd1084756d2": [
+    {
+      "content": "Priya prefers detailed explanations with reasoning",
+      "type": "semantic"
     }
   ],
   "cc164ab9535b9d52": [
@@ -140,6 +312,23 @@
       "type": "semantic"
     }
   ],
+  "d12fcbbd46b7a3ab": [
+    {
+      "content": "Priya left Northwind Labs last month",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya works at Calico Systems",
+      "type": "semantic"
+    }
+  ],
+  "d269b481d0fc7df5": [
+    {
+      "content": "She works nights most of the month",
+      "type": "semantic"
+    }
+  ],
+  "d886b1de6adc17ad": [],
   "ddad4880acb59098": [
     {
       "content": "Priya prefers detailed explanations with reasoning",
@@ -155,6 +344,16 @@
   "e006f48807eb5e2d": [
     {
       "content": "Priya drinks three coffees a day",
+      "type": "semantic"
+    }
+  ],
+  "e2065e4dd7e3c596": [
+    {
+      "content": "Sammy's commute got worse",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya's new flat is bigger",
       "type": "semantic"
     }
   ],

@@ -20,4 +20,6 @@ Atomicity is what makes a memory *updatable*. You cannot mark half a sentence su
 
 <!-- graph:begin -->
 **Taught in:** [Naive Extraction](../curriculum/beginner/naive-extraction/index.md)
+
+**Used in:** [Atomic Memories](../curriculum/intermediate/atomic-memories/index.md) · [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
 <!-- graph:end -->

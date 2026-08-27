@@ -21,5 +21,7 @@ Procedures break the assumptions the other types are stored under. Order is load
 <!-- graph:begin -->
 **Taught in:** [The Taxonomy That Actually Routes](../curriculum/beginner/memory-taxonomy/index.md)
 
+**Used in:** [Atomic Memories](../curriculum/intermediate/atomic-memories/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
+
 **Do not confuse with:** [Semantic Memory](semantic-memory.md)
 <!-- graph:end -->

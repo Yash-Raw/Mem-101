@@ -18,6 +18,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, replace
 
 from .extract.naive import extract as naive_extract
+from .extract.pipeline import extract as staged_extract
 from .types import Memory, Scope
 
 ExtractFn = Callable[[dict, Scope], list[Memory]]
@@ -58,7 +59,12 @@ def intermediate() -> Pipeline:
     Each of I1-I4 switches on exactly one stage, so the improvement it claims is
     attributable to it alone.
     """
-    return replace(beginner(), name="intermediate")
+    return replace(
+        beginner(),
+        name="intermediate",
+        extract=staged_extract,          # I1: staged, with event -> state
+        ingest_agent_writes=True,        # I1: shared-scope writes carry authority
+    )
 
 
 PROFILES: dict[str, Callable[[], Pipeline]] = {

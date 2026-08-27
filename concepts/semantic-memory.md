@@ -21,7 +21,7 @@ This is the type a question usually wants, and the type that needs the most mach
 <!-- graph:begin -->
 **Taught in:** [The Taxonomy That Actually Routes](../curriculum/beginner/memory-taxonomy/index.md)
 
-**Used in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md)
+**Used in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
 
 **Do not confuse with:** [Episodic Memory](episodic-memory.md)
 <!-- graph:end -->

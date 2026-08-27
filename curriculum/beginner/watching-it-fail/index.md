@@ -24,6 +24,8 @@ status: published
 **You need first:** [Your First Memory Layer](../your-first-memory-layer/index.md)
 
 **Concepts assumed:** [Promotion](../../../concepts/memory-promotion.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md) · [Vector Search](../../../concepts/vector-search.md)
+
+**This unlocks:** [The Typed Memory Model](../../intermediate/typed-memory-model/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -146,4 +148,6 @@ Nothing. It measures. `capstone/tests/test_v1_failures.py` is the deliverable, a
 **You need first:** [Your First Memory Layer](../your-first-memory-layer/index.md)
 
 **Concepts assumed:** [Promotion](../../../concepts/memory-promotion.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md) · [Vector Search](../../../concepts/vector-search.md)
+
+**This unlocks:** [The Typed Memory Model](../../intermediate/typed-memory-model/index.md)
 <!-- graph:end -->

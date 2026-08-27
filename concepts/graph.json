@@ -118,6 +118,42 @@
       "path": "curriculum/beginner/your-first-memory-layer/index.md"
     },
     {
+      "id": "atomic-memories",
+      "type": "lesson",
+      "title": "Atomic Memories",
+      "level": "intermediate",
+      "stage": "extract",
+      "order": 16,
+      "path": "curriculum/intermediate/atomic-memories/index.md"
+    },
+    {
+      "id": "extraction-pipelines",
+      "type": "lesson",
+      "title": "Extraction Pipelines",
+      "level": "intermediate",
+      "stage": "extract",
+      "order": 14,
+      "path": "curriculum/intermediate/extraction-pipelines/index.md"
+    },
+    {
+      "id": "extraction-quality",
+      "type": "lesson",
+      "title": "Precision and Recall on the Write Path",
+      "level": "intermediate",
+      "stage": "extract",
+      "order": 15,
+      "path": "curriculum/intermediate/extraction-quality/index.md"
+    },
+    {
+      "id": "typed-memory-model",
+      "type": "lesson",
+      "title": "The Typed Memory Model",
+      "level": "intermediate",
+      "stage": "store",
+      "order": 13,
+      "path": "curriculum/intermediate/typed-memory-model/index.md"
+    },
+    {
       "id": "append-only-log",
       "type": "concept",
       "title": "The Append-Only Log",
@@ -174,6 +210,14 @@
       "status": "published"
     },
     {
+      "id": "durability-gate",
+      "type": "concept",
+      "title": "The Durability Gate",
+      "stage": "extract",
+      "path": "concepts/durability-gate.md",
+      "status": "published"
+    },
+    {
       "id": "entity-fragmentation",
       "type": "concept",
       "title": "Entity Fragmentation",
@@ -203,6 +247,22 @@
       "title": "Event Time vs Ingestion Time",
       "stage": "store",
       "path": "concepts/event-time.md",
+      "status": "published"
+    },
+    {
+      "id": "event-vs-state",
+      "type": "concept",
+      "title": "Events and States",
+      "stage": "extract",
+      "path": "concepts/event-vs-state.md",
+      "status": "published"
+    },
+    {
+      "id": "extraction-pipeline",
+      "type": "concept",
+      "title": "The Extraction Pipeline",
+      "stage": "extract",
+      "path": "concepts/extraction-pipeline.md",
       "status": "published"
     },
     {
@@ -318,6 +378,14 @@
       "status": "published"
     },
     {
+      "id": "type-rules",
+      "type": "concept",
+      "title": "Type Rules",
+      "stage": "store",
+      "path": "concepts/type-rules.md",
+      "status": "published"
+    },
+    {
       "id": "vector-search",
       "type": "concept",
       "title": "Vector Search",
@@ -331,6 +399,14 @@
       "title": "Working Memory",
       "stage": "assemble",
       "path": "concepts/working-memory.md",
+      "status": "published"
+    },
+    {
+      "id": "write-path-recall",
+      "type": "concept",
+      "title": "Write-Path Recall",
+      "stage": "extract",
+      "path": "concepts/write-path-recall.md",
       "status": "published"
     },
     {
@@ -401,6 +477,26 @@
     {
       "from": "your-first-memory-layer",
       "to": "session-vs-longterm",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "atomic-memories",
+      "to": "extraction-quality",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "typed-memory-model",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "extraction-quality",
+      "to": "extraction-pipelines",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "typed-memory-model",
+      "to": "watching-it-fail",
       "kind": "requires_lesson"
     },
     {
@@ -534,6 +630,31 @@
       "kind": "teaches"
     },
     {
+      "from": "extraction-pipelines",
+      "to": "extraction-pipeline",
+      "kind": "teaches"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "event-vs-state",
+      "kind": "teaches"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "durability-gate",
+      "kind": "teaches"
+    },
+    {
+      "from": "extraction-quality",
+      "to": "write-path-recall",
+      "kind": "teaches"
+    },
+    {
+      "from": "typed-memory-model",
+      "to": "type-rules",
+      "kind": "teaches"
+    },
+    {
       "from": "anatomy-of-a-memory-layer",
       "to": "memory-lifecycle",
       "kind": "uses"
@@ -659,8 +780,83 @@
       "kind": "uses"
     },
     {
+      "from": "atomic-memories",
+      "to": "atomic-fact",
+      "kind": "uses"
+    },
+    {
+      "from": "atomic-memories",
+      "to": "extraction-pipeline",
+      "kind": "uses"
+    },
+    {
+      "from": "atomic-memories",
+      "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "extraction",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "type-rules",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "atomic-fact",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-pipelines",
+      "to": "memory-promotion",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-quality",
+      "to": "extraction-pipeline",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-quality",
+      "to": "event-vs-state",
+      "kind": "uses"
+    },
+    {
+      "from": "extraction-quality",
+      "to": "over-extraction",
+      "kind": "uses"
+    },
+    {
+      "from": "typed-memory-model",
+      "to": "semantic-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "typed-memory-model",
+      "to": "episodic-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "typed-memory-model",
+      "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "typed-memory-model",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
       "from": "context-window",
       "to": "working-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "durability-gate",
+      "to": "salience",
       "kind": "contrasts_with"
     },
     {
@@ -686,6 +882,11 @@
     {
       "from": "semantic-memory",
       "to": "episodic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "type-rules",
+      "to": "memory-record",
       "kind": "contrasts_with"
     },
     {

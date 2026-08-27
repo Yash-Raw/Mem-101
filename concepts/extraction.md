@@ -21,5 +21,5 @@ This is the stage retrieval systems do not have, and the one that caps everythin
 <!-- graph:begin -->
 **Taught in:** [Naive Extraction](../curriculum/beginner/naive-extraction/index.md)
 
-**Used in:** [Session Memory vs Long-Term Memory](../curriculum/beginner/session-vs-longterm/index.md) · [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md)
+**Used in:** [Session Memory vs Long-Term Memory](../curriculum/beginner/session-vs-longterm/index.md) · [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md) · [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
 <!-- graph:end -->

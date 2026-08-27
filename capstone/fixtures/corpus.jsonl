@@ -1,0 +1,27 @@
+{"session": 1, "ts": "2025-03-04T09:12:00Z", "role": "user", "text": "Morning. I'm Priya, I work as a data engineer at Northwind Labs. Mostly pipeline work."}
+{"session": 1, "ts": "2025-03-04T09:12:30Z", "role": "assistant", "text": "Nice to meet you, Priya. What are you working on today?"}
+{"session": 1, "ts": "2025-03-04T09:13:10Z", "role": "user", "text": "Debugging a Spark job. Also — I'm vegetarian, so if you ever suggest restaurants, keep that in mind."}
+{"session": 1, "ts": "2025-03-04T09:14:00Z", "role": "user", "text": "One more thing, I like detailed explanations. Don't give me one-liners, I want the reasoning."}
+{"session": 2, "ts": "2025-03-19T14:02:00Z", "role": "user", "text": "My partner Sam is a nurse at St. Aubyn's. We're trying to plan a trip around her shift rota."}
+{"session": 2, "ts": "2025-03-19T14:05:00Z", "role": "user", "text": "She works nights most of the month, so weekends are hard."}
+{"session": 3, "ts": "2025-04-22T08:40:00Z", "role": "user", "text": "Samira got a promotion. Charge nurse now. Very proud of her."}
+{"session": 3, "ts": "2025-04-22T08:44:00Z", "role": "user", "text": "Can you remind me what I said about the Spark job last month? I've forgotten where I left it."}
+{"session": 4, "ts": "2025-06-11T19:30:00Z", "role": "user", "text": "I don't drink coffee, never have. Tea only. Filing that away for when you suggest cafes."}
+{"session": 5, "ts": "2025-08-02T11:15:00Z", "role": "user", "text": "We moved. New place is 47 Halloway Road, Bristol. Reach me on 07700 900412 if the chat drops."}
+{"session": 5, "ts": "2025-08-02T11:20:00Z", "role": "user", "text": "Sammy's commute got worse, but the flat is bigger, so worth it."}
+{"session": 6, "ts": "2025-09-14T16:00:00Z", "role": "user", "text": "Here's how I do my weekly report, memorise this. Pull the pipeline metrics from the warehouse, diff against last week, flag anything over 15% drift, then write it up in the shared doc. Always in that order."}
+{"session": 6, "ts": "2025-09-14T16:03:00Z", "role": "user", "text": "The diff step matters most. If you skip it the numbers look fine and they aren't."}
+{"session": 7, "ts": "2025-10-30T10:05:00Z", "role": "user", "text": "Actually I've started eating fish again. Still no meat, but pescatarian now I suppose."}
+{"session": 8, "ts": "2025-12-08T09:00:00Z", "role": "user", "text": "Big news — I'm leaving Northwind. Starting at Calico Systems in January as a staff engineer."}
+{"session": 8, "ts": "2025-12-08T09:04:00Z", "role": "user", "text": "It's a step up. More architecture, less firefighting, hopefully."}
+{"session": 9, "ts": "2026-01-19T08:30:00Z", "role": "user", "text": "First week done at the new place. Very different codebase."}
+{"session": 9, "ts": "2026-01-19T08:33:00Z", "role": "assistant", "text": "How are you finding it compared to your work at Northwind Labs?"}
+{"session": 9, "ts": "2026-01-19T08:34:00Z", "role": "user", "text": "I left Northwind last month, remember? I'm at Calico now."}
+{"session": 10, "ts": "2026-02-27T13:45:00Z", "role": "user", "text": "Honestly the coffee machine here is the best part of the job. I'm on three a day now."}
+{"session": 10, "ts": "2026-02-27T13:50:00Z", "role": "user", "text": "Also can you keep answers shorter from now on? I don't have time for essays anymore."}
+{"session": 11, "ts": "2026-04-08T17:20:00Z", "role": "user", "text": "Before the move I used to cycle to work. Can't now, it's 40 minutes on the train."}
+{"session": 11, "ts": "2026-04-08T17:25:00Z", "role": "user", "text": "Sam's still on nights. Some things don't change."}
+{"session": 12, "ts": "2026-05-15T12:00:00Z", "role": "user", "text": "I was diagnosed with a gluten intolerance last week. So that's the diet changed again."}
+{"session": 13, "ts": "2026-06-20T09:10:00Z", "role": "user", "text": "Run my weekly report process for the Q2 numbers."}
+{"session": 13, "ts": "2026-06-20T09:15:00Z", "role": "user", "text": "And actually — forget my old address, I don't want that stored anywhere."}
+{"session": 14, "ts": "2026-08-11T15:30:00Z", "role": "user", "text": "Quick one: where do I work and what should I not eat?"}

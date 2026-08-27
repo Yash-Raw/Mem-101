@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push: { branches: [main] }
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly: catch landscape pages ageing past their SLA
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      MEMLAB_LLM: fake      # the whole course runs with no API key
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv sync --all-extras --dev
+      - name: lint
+        run: uv run ruff check .
+      - name: validators
+        run: uv run python tools/check.py
+      - name: labs and capstone tests
+        run: uv run pytest -q
+      # Enabled in Phase 7, when mkdocs.yml lands. Keeping it here but inert
+      # so the step is not forgotten, and CI is not committed red.
+      - name: site builds
+        if: hashFiles('mkdocs.yml') != ''
+        run: uv run mkdocs build --strict

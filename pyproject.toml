@@ -1,0 +1,31 @@
+[project]
+name = "memory-layer-course"
+version = "0.1.0"
+description = "A structured, hands-on curriculum for building an agent memory layer."
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+live = ["anthropic>=0.40"]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6", "jsonschema>=4.23", "mkdocs-material>=9.5"]
+
+[tool.uv]
+package = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["capstone/src/memlab"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["curriculum", "capstone/tests"]
+python_files = ["test_*.py"]
+# Every lab ships a file named test_lab.py; importlib mode keeps them from colliding.
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 100

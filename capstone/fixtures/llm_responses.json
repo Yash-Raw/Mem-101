@@ -1,0 +1,199 @@
+{
+  "06335096db201473": [
+    {
+      "content": "Priya prefers shorter answers",
+      "type": "semantic"
+    }
+  ],
+  "07b88d50ec5c63b2": [
+    {
+      "content": "Samira got a promotion to charge nurse",
+      "type": "episodic"
+    },
+    {
+      "content": "Samira is a charge nurse",
+      "type": "semantic"
+    }
+  ],
+  "1c5558acee9138f7": [],
+  "1d4c0f2e05a30010": [
+    {
+      "content": "Priya is leaving Northwind Labs",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya is starting at Calico Systems in January as a staff engineer",
+      "type": "episodic"
+    }
+  ],
+  "38281d5db03b3a45": [
+    {
+      "content": "Priya is debugging a Spark job",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya is vegetarian",
+      "type": "semantic"
+    }
+  ],
+  "3defd9213824a00d": [
+    {
+      "content": "Priya is a data engineer at Northwind Labs",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya mostly does pipeline work",
+      "type": "semantic"
+    }
+  ],
+  "5b64573464568b1f": [
+    {
+      "content": "Priya's partner Sam is a nurse at St. Aubyn's",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya is planning a trip around Sam's shift rota",
+      "type": "episodic"
+    }
+  ],
+  "617ea5515908001d": [
+    {
+      "content": "Priya has a gluten intolerance",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya was diagnosed with a gluten intolerance last week",
+      "type": "episodic"
+    }
+  ],
+  "64a18a4a24c188e6": [
+    {
+      "content": "Priya left Northwind Labs last month",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya is at Calico now",
+      "type": "semantic"
+    }
+  ],
+  "6853c0789aad0286": [
+    {
+      "content": "Sam still works nights",
+      "type": "semantic"
+    }
+  ],
+  "7ab6cebe0dcd01bc": [
+    {
+      "content": "Priya moved house",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya's address is 47 Halloway Road, Bristol",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya's phone number is 07700 900412",
+      "type": "semantic"
+    }
+  ],
+  "7de760cc4e7c4a96": [],
+  "8008f6a85400a1fc": [
+    {
+      "content": "Priya used to cycle to work before the move",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya's commute is 40 minutes by train",
+      "type": "semantic"
+    }
+  ],
+  "8c178935f9126f40": [
+    {
+      "content": "Sammy's commute got worse",
+      "type": "episodic"
+    },
+    {
+      "content": "Priya's new flat is bigger",
+      "type": "semantic"
+    }
+  ],
+  "90efb019440cb8b7": [
+    {
+      "content": "Lives in Berlin",
+      "type": "semantic"
+    }
+  ],
+  "99c39e167897ec18": [],
+  "c4797f0c63431c37": [
+    {
+      "content": "Priya's weekly report process: pull pipeline metrics from the warehouse, diff against last week, flag anything over 15% drift, write it up in the shared doc, in that order",
+      "type": "procedural"
+    }
+  ],
+  "cc164ab9535b9d52": [
+    {
+      "content": "Priya does not drink coffee",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya drinks tea",
+      "type": "semantic"
+    }
+  ],
+  "ddad4880acb59098": [
+    {
+      "content": "Priya prefers detailed explanations with reasoning",
+      "type": "semantic"
+    }
+  ],
+  "deb783544e01d2e4": [
+    {
+      "content": "She works nights most of the month",
+      "type": "semantic"
+    }
+  ],
+  "e006f48807eb5e2d": [
+    {
+      "content": "Priya drinks three coffees a day",
+      "type": "semantic"
+    }
+  ],
+  "e553c75951c99742": [
+    {
+      "content": "Priya's new role involves more architecture and less firefighting",
+      "type": "semantic"
+    }
+  ],
+  "e6fb04cb6813950c": [
+    {
+      "content": "In Priya's weekly report, the diff step matters most",
+      "type": "procedural"
+    }
+  ],
+  "e7454a6f2b70be27": [
+    {
+      "content": "Priya asked to forget her old address",
+      "type": "episodic"
+    }
+  ],
+  "f9d574605ed054fb": [
+    {
+      "content": "Priya completed her first week at the new job",
+      "type": "episodic"
+    }
+  ],
+  "fcbf0f4751234243": [
+    {
+      "content": "Priya eats fish",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya does not eat meat",
+      "type": "semantic"
+    },
+    {
+      "content": "Priya is pescatarian",
+      "type": "semantic"
+    }
+  ]
+}

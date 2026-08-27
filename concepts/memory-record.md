@@ -1,0 +1,25 @@
+---
+id: memory-record
+title: "The Memory Record"
+kind: concept
+stage: store
+contrasts_with: []
+related: [provenance,event-time,semantic-memory]
+status: published
+---
+
+# The Memory Record
+
+The unit a memory layer stores: content, type, scope, provenance, timestamps, confidence, salience. Not a chunk of text — an addressable, updatable object.
+
+## Why it matters in a memory layer
+
+The fields chosen here decide what is possible later. Without two clocks you cannot answer "what did I believe then"; without provenance you cannot honour a deletion request, because nothing identifies what to delete; without a validity field you can only delete, never retire. Almost every Level 2 mechanism is a field on this record.
+
+## Connections
+
+<!-- graph:begin -->
+**Taught in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md)
+
+**Used in:** [Naive Extraction](../curriculum/beginner/naive-extraction/index.md) · [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md)
+<!-- graph:end -->

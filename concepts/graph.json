@@ -1,0 +1,702 @@
+{
+  "nodes": [
+    {
+      "id": "anatomy-of-a-memory-layer",
+      "type": "lesson",
+      "title": "Anatomy of a Memory Layer",
+      "level": "beginner",
+      "stage": "orientation",
+      "order": 3,
+      "path": "curriculum/beginner/anatomy-of-a-memory-layer/index.md"
+    },
+    {
+      "id": "context-assembly-v0",
+      "type": "lesson",
+      "title": "Getting Memories Into the Prompt",
+      "level": "beginner",
+      "stage": "assemble",
+      "order": 9,
+      "path": "curriculum/beginner/context-assembly-v0/index.md"
+    },
+    {
+      "id": "context-is-not-memory",
+      "type": "lesson",
+      "title": "Context Is Not Memory",
+      "level": "beginner",
+      "stage": "orientation",
+      "order": 2,
+      "path": "curriculum/beginner/context-is-not-memory/index.md"
+    },
+    {
+      "id": "embedding-recall",
+      "type": "lesson",
+      "title": "Embedding Recall",
+      "level": "beginner",
+      "stage": "retrieve",
+      "order": 7,
+      "path": "curriculum/beginner/embedding-recall/index.md"
+    },
+    {
+      "id": "memory-is-not-rag",
+      "type": "lesson",
+      "title": "Memory Is Not RAG",
+      "level": "beginner",
+      "stage": "orientation",
+      "order": 0,
+      "path": "curriculum/beginner/memory-is-not-rag/index.md"
+    },
+    {
+      "id": "memory-taxonomy",
+      "type": "lesson",
+      "title": "The Taxonomy That Actually Routes",
+      "level": "beginner",
+      "stage": "orientation",
+      "order": 1,
+      "path": "curriculum/beginner/memory-taxonomy/index.md"
+    },
+    {
+      "id": "naive-extraction",
+      "type": "lesson",
+      "title": "Naive Extraction",
+      "level": "beginner",
+      "stage": "extract",
+      "order": 5,
+      "path": "curriculum/beginner/naive-extraction/index.md"
+    },
+    {
+      "id": "retrieval-is-not-enough",
+      "type": "lesson",
+      "title": "Retrieval Is Not Enough",
+      "level": "beginner",
+      "stage": "retrieve",
+      "order": 8,
+      "path": "curriculum/beginner/retrieval-is-not-enough/index.md"
+    },
+    {
+      "id": "session-vs-longterm",
+      "type": "lesson",
+      "title": "Session Memory vs Long-Term Memory",
+      "level": "beginner",
+      "stage": "evolve",
+      "order": 10,
+      "path": "curriculum/beginner/session-vs-longterm/index.md"
+    },
+    {
+      "id": "the-memory-record",
+      "type": "lesson",
+      "title": "Designing the Memory Record",
+      "level": "beginner",
+      "stage": "store",
+      "order": 4,
+      "path": "curriculum/beginner/the-memory-record/index.md"
+    },
+    {
+      "id": "watching-it-fail",
+      "type": "lesson",
+      "title": "Watching It Fail",
+      "level": "beginner",
+      "stage": "govern",
+      "order": 12,
+      "path": "curriculum/beginner/watching-it-fail/index.md"
+    },
+    {
+      "id": "writing-memories-down",
+      "type": "lesson",
+      "title": "Writing Memories Down",
+      "level": "beginner",
+      "stage": "store",
+      "order": 6,
+      "path": "curriculum/beginner/writing-memories-down/index.md"
+    },
+    {
+      "id": "your-first-memory-layer",
+      "type": "lesson",
+      "title": "Your First Memory Layer",
+      "level": "beginner",
+      "stage": "assemble",
+      "order": 11,
+      "path": "curriculum/beginner/your-first-memory-layer/index.md"
+    },
+    {
+      "id": "append-only-log",
+      "type": "concept",
+      "title": "The Append-Only Log",
+      "stage": "store",
+      "path": "concepts/append-only-log.md",
+      "status": "published"
+    },
+    {
+      "id": "atomic-fact",
+      "type": "concept",
+      "title": "Atomicity",
+      "stage": "extract",
+      "path": "concepts/atomic-fact.md",
+      "status": "published"
+    },
+    {
+      "id": "belief-updating",
+      "type": "concept",
+      "title": "Belief Updating",
+      "stage": "evolve",
+      "path": "concepts/belief-updating.md",
+      "status": "stub"
+    },
+    {
+      "id": "bi-temporal-modeling",
+      "type": "concept",
+      "title": "Bi-Temporal Modeling",
+      "stage": "store",
+      "path": "concepts/bi-temporal-modeling.md",
+      "status": "stub"
+    },
+    {
+      "id": "context-assembly",
+      "type": "concept",
+      "title": "Context Assembly",
+      "stage": "assemble",
+      "path": "concepts/context-assembly.md",
+      "status": "published"
+    },
+    {
+      "id": "context-window",
+      "type": "concept",
+      "title": "The Context Window",
+      "stage": "assemble",
+      "path": "concepts/context-window.md",
+      "status": "published"
+    },
+    {
+      "id": "corpus-authorship",
+      "type": "concept",
+      "title": "Corpus Authorship",
+      "stage": "orientation",
+      "path": "concepts/corpus-authorship.md",
+      "status": "published"
+    },
+    {
+      "id": "entity-fragmentation",
+      "type": "concept",
+      "title": "Entity Fragmentation",
+      "stage": "store",
+      "path": "concepts/entity-fragmentation.md",
+      "status": "published"
+    },
+    {
+      "id": "entity-resolution",
+      "type": "concept",
+      "title": "Entity Resolution",
+      "stage": "store",
+      "path": "concepts/entity-resolution.md",
+      "status": "stub"
+    },
+    {
+      "id": "episodic-memory",
+      "type": "concept",
+      "title": "Episodic Memory",
+      "stage": "store",
+      "path": "concepts/episodic-memory.md",
+      "status": "published"
+    },
+    {
+      "id": "event-time",
+      "type": "concept",
+      "title": "Event Time vs Ingestion Time",
+      "stage": "store",
+      "path": "concepts/event-time.md",
+      "status": "published"
+    },
+    {
+      "id": "extraction",
+      "type": "concept",
+      "title": "Extraction",
+      "stage": "extract",
+      "path": "concepts/extraction.md",
+      "status": "published"
+    },
+    {
+      "id": "idempotency",
+      "type": "concept",
+      "title": "Idempotent Writes",
+      "stage": "store",
+      "path": "concepts/idempotency.md",
+      "status": "published"
+    },
+    {
+      "id": "memory-lifecycle",
+      "type": "concept",
+      "title": "The Memory Lifecycle",
+      "stage": "orientation",
+      "path": "concepts/memory-lifecycle.md",
+      "status": "published"
+    },
+    {
+      "id": "memory-promotion",
+      "type": "concept",
+      "title": "Promotion",
+      "stage": "evolve",
+      "path": "concepts/memory-promotion.md",
+      "status": "published"
+    },
+    {
+      "id": "memory-record",
+      "type": "concept",
+      "title": "The Memory Record",
+      "stage": "store",
+      "path": "concepts/memory-record.md",
+      "status": "published"
+    },
+    {
+      "id": "memory-staleness",
+      "type": "concept",
+      "title": "Staleness",
+      "stage": "evolve",
+      "path": "concepts/memory-staleness.md",
+      "status": "published"
+    },
+    {
+      "id": "over-extraction",
+      "type": "concept",
+      "title": "Over-Extraction",
+      "stage": "extract",
+      "path": "concepts/over-extraction.md",
+      "status": "published"
+    },
+    {
+      "id": "procedural-memory",
+      "type": "concept",
+      "title": "Procedural Memory",
+      "stage": "store",
+      "path": "concepts/procedural-memory.md",
+      "status": "published"
+    },
+    {
+      "id": "provenance",
+      "type": "concept",
+      "title": "Provenance",
+      "stage": "govern",
+      "path": "concepts/provenance.md",
+      "status": "stub"
+    },
+    {
+      "id": "read-path",
+      "type": "concept",
+      "title": "The Read Path",
+      "stage": "retrieve",
+      "path": "concepts/read-path.md",
+      "status": "published"
+    },
+    {
+      "id": "retrieval-scoping",
+      "type": "concept",
+      "title": "Retrieval Scoping",
+      "stage": "retrieve",
+      "path": "concepts/retrieval-scoping.md",
+      "status": "published"
+    },
+    {
+      "id": "salience",
+      "type": "concept",
+      "title": "Salience",
+      "stage": "evolve",
+      "path": "concepts/salience.md",
+      "status": "stub"
+    },
+    {
+      "id": "semantic-memory",
+      "type": "concept",
+      "title": "Semantic Memory",
+      "stage": "store",
+      "path": "concepts/semantic-memory.md",
+      "status": "published"
+    },
+    {
+      "id": "token-budget",
+      "type": "concept",
+      "title": "Token Budget",
+      "stage": "assemble",
+      "path": "concepts/token-budget.md",
+      "status": "published"
+    },
+    {
+      "id": "vector-search",
+      "type": "concept",
+      "title": "Vector Search",
+      "stage": "retrieve",
+      "path": "concepts/vector-search.md",
+      "status": "published"
+    },
+    {
+      "id": "working-memory",
+      "type": "concept",
+      "title": "Working Memory",
+      "stage": "assemble",
+      "path": "concepts/working-memory.md",
+      "status": "published"
+    },
+    {
+      "id": "write-path",
+      "type": "concept",
+      "title": "The Write Path",
+      "stage": "extract",
+      "path": "concepts/write-path.md",
+      "status": "published"
+    }
+  ],
+  "edges": [
+    {
+      "from": "anatomy-of-a-memory-layer",
+      "to": "context-is-not-memory",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "context-assembly-v0",
+      "to": "retrieval-is-not-enough",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "context-is-not-memory",
+      "to": "memory-taxonomy",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "embedding-recall",
+      "to": "writing-memories-down",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "memory-taxonomy",
+      "to": "memory-is-not-rag",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "naive-extraction",
+      "to": "the-memory-record",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "retrieval-is-not-enough",
+      "to": "embedding-recall",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "session-vs-longterm",
+      "to": "context-assembly-v0",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "the-memory-record",
+      "to": "anatomy-of-a-memory-layer",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "your-first-memory-layer",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "writing-memories-down",
+      "to": "naive-extraction",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "your-first-memory-layer",
+      "to": "session-vs-longterm",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "anatomy-of-a-memory-layer",
+      "to": "write-path",
+      "kind": "teaches"
+    },
+    {
+      "from": "anatomy-of-a-memory-layer",
+      "to": "read-path",
+      "kind": "teaches"
+    },
+    {
+      "from": "context-assembly-v0",
+      "to": "context-assembly",
+      "kind": "teaches"
+    },
+    {
+      "from": "context-is-not-memory",
+      "to": "context-window",
+      "kind": "teaches"
+    },
+    {
+      "from": "context-is-not-memory",
+      "to": "token-budget",
+      "kind": "teaches"
+    },
+    {
+      "from": "embedding-recall",
+      "to": "vector-search",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-is-not-rag",
+      "to": "write-path",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-is-not-rag",
+      "to": "read-path",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-is-not-rag",
+      "to": "memory-lifecycle",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-is-not-rag",
+      "to": "corpus-authorship",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-taxonomy",
+      "to": "episodic-memory",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-taxonomy",
+      "to": "semantic-memory",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-taxonomy",
+      "to": "procedural-memory",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-taxonomy",
+      "to": "working-memory",
+      "kind": "teaches"
+    },
+    {
+      "from": "naive-extraction",
+      "to": "extraction",
+      "kind": "teaches"
+    },
+    {
+      "from": "naive-extraction",
+      "to": "atomic-fact",
+      "kind": "teaches"
+    },
+    {
+      "from": "naive-extraction",
+      "to": "over-extraction",
+      "kind": "teaches"
+    },
+    {
+      "from": "retrieval-is-not-enough",
+      "to": "retrieval-scoping",
+      "kind": "teaches"
+    },
+    {
+      "from": "session-vs-longterm",
+      "to": "memory-promotion",
+      "kind": "teaches"
+    },
+    {
+      "from": "the-memory-record",
+      "to": "memory-record",
+      "kind": "teaches"
+    },
+    {
+      "from": "the-memory-record",
+      "to": "event-time",
+      "kind": "teaches"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "memory-staleness",
+      "kind": "teaches"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "entity-fragmentation",
+      "kind": "teaches"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "over-extraction",
+      "kind": "teaches"
+    },
+    {
+      "from": "writing-memories-down",
+      "to": "append-only-log",
+      "kind": "teaches"
+    },
+    {
+      "from": "writing-memories-down",
+      "to": "idempotency",
+      "kind": "teaches"
+    },
+    {
+      "from": "anatomy-of-a-memory-layer",
+      "to": "memory-lifecycle",
+      "kind": "uses"
+    },
+    {
+      "from": "context-assembly-v0",
+      "to": "token-budget",
+      "kind": "uses"
+    },
+    {
+      "from": "context-assembly-v0",
+      "to": "retrieval-scoping",
+      "kind": "uses"
+    },
+    {
+      "from": "context-is-not-memory",
+      "to": "working-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "context-is-not-memory",
+      "to": "memory-lifecycle",
+      "kind": "uses"
+    },
+    {
+      "from": "embedding-recall",
+      "to": "read-path",
+      "kind": "uses"
+    },
+    {
+      "from": "embedding-recall",
+      "to": "append-only-log",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-taxonomy",
+      "to": "memory-lifecycle",
+      "kind": "uses"
+    },
+    {
+      "from": "naive-extraction",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "naive-extraction",
+      "to": "write-path",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieval-is-not-enough",
+      "to": "vector-search",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieval-is-not-enough",
+      "to": "read-path",
+      "kind": "uses"
+    },
+    {
+      "from": "session-vs-longterm",
+      "to": "working-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "session-vs-longterm",
+      "to": "extraction",
+      "kind": "uses"
+    },
+    {
+      "from": "session-vs-longterm",
+      "to": "context-assembly",
+      "kind": "uses"
+    },
+    {
+      "from": "the-memory-record",
+      "to": "episodic-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "the-memory-record",
+      "to": "semantic-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "memory-promotion",
+      "kind": "uses"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "retrieval-scoping",
+      "kind": "uses"
+    },
+    {
+      "from": "watching-it-fail",
+      "to": "vector-search",
+      "kind": "uses"
+    },
+    {
+      "from": "writing-memories-down",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "writing-memories-down",
+      "to": "extraction",
+      "kind": "uses"
+    },
+    {
+      "from": "your-first-memory-layer",
+      "to": "context-assembly",
+      "kind": "uses"
+    },
+    {
+      "from": "your-first-memory-layer",
+      "to": "memory-promotion",
+      "kind": "uses"
+    },
+    {
+      "from": "your-first-memory-layer",
+      "to": "vector-search",
+      "kind": "uses"
+    },
+    {
+      "from": "context-window",
+      "to": "working-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "episodic-memory",
+      "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "procedural-memory",
+      "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "read-path",
+      "to": "write-path",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "retrieval-scoping",
+      "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "semantic-memory",
+      "to": "episodic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "working-memory",
+      "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "write-path",
+      "to": "read-path",
+      "kind": "contrasts_with"
+    }
+  ]
+}

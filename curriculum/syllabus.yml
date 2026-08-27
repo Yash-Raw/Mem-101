@@ -1,0 +1,457 @@
+# Single source of truth for the LINEAR order of the course.
+# The prerequisite DAG lives in each lesson's frontmatter; CI proves this
+# linearization is a valid topological sort of that DAG.
+#
+# Directory slugs are number-free on purpose (convention C1): ordering is data,
+# so reordering the course never breaks a URL.
+
+title: "Building a Memory Layer"
+tagline: "The write path is the part the tutorials skip."
+
+stages: [orientation, extract, store, retrieve, evolve, assemble, govern]
+
+levels:
+
+  - id: beginner
+    title: "The Loop"
+    question: "How does a system remember at all?"
+    outcome: >-
+      A CLI assistant that survives process restart, builds its own corpus from
+      conversation, and is visibly broken in seven documented ways.
+    modules:
+
+      - id: foundations
+        title: "Why Memory Is Not RAG"
+        lessons:
+          - id: memory-is-not-rag
+            title: "Memory Is Not RAG"
+            stage: orientation
+            objective: "Separate the read path over a given corpus from the write path that authors its own."
+          - id: memory-taxonomy
+            title: "The Taxonomy That Actually Routes"
+            stage: orientation
+            objective: "Treat working/episodic/semantic/procedural as engineering categories with distinct lifecycles."
+          - id: context-is-not-memory
+            title: "Context Is Not Memory"
+            stage: orientation
+            objective: "Explain why a larger context window is not a memory layer: no selection, persistence, or mutation."
+          - id: anatomy-of-a-memory-layer
+            title: "Anatomy of a Memory Layer"
+            stage: orientation
+            objective: "Name every component the rest of the course builds. The reference diagram."
+
+      - id: write-path-naive
+        title: "The Write Path, Naively"
+        lessons:
+          - id: the-memory-record
+            title: "Designing the Memory Record"
+            stage: store
+            objective: "Choose the fields now that Intermediate will depend on: scope, provenance, event time, confidence."
+          - id: naive-extraction
+            title: "Naive Extraction"
+            stage: extract
+            objective: "Pull durable facts from a turn with structured output, and cause your first over-extraction disaster."
+          - id: writing-memories-down
+            title: "Writing Memories Down"
+            stage: store
+            objective: "Append-only JSONL with stable ids and idempotent writes; meet the duplicate problem it creates."
+
+      - id: read-path-honest
+        title: "The Read Path, Honestly"
+        lessons:
+          - id: embedding-recall
+            title: "Embedding Recall"
+            stage: retrieve
+            objective: "Build minimum-viable vector search, framed as one strategy among several."
+          - id: retrieval-is-not-enough
+            title: "Retrieval Is Not Enough"
+            stage: retrieve
+            objective: "Scope by owner before ranking; meet semantically-close-but-wrong and confidently-stale."
+          - id: context-assembly-v0
+            title: "Getting Memories Into the Prompt"
+            stage: assemble
+            objective: "Inject recalled beliefs with attribution, and mark them as beliefs rather than ground truth."
+
+      - id: loop-closes
+        title: "The Loop Closes"
+        lessons:
+          - id: session-vs-longterm
+            title: "Session Memory vs Long-Term Memory"
+            stage: evolve
+            objective: "Decide what dies at end of session and what gets promoted."
+          - id: your-first-memory-layer
+            title: "Your First Memory Layer"
+            stage: assemble
+            objective: "Ship memlab v0.1: an assistant that survives restart."
+          - id: watching-it-fail
+            title: "Watching It Fail"
+            stage: govern
+            objective: "Catalogue the seven failures you now have; each one names the Intermediate module that fixes it."
+
+  - id: intermediate
+    title: "The Write Path in Earnest"
+    question: "How does memory stay correct as it grows?"
+    outcome: >-
+      memlab v0.2: typed memories, entity resolution, deterministic belief
+      updating, salience-driven decay, and budgeted context assembly.
+    modules:
+
+      - id: typed-extraction
+        title: "Typed Memory & Extraction Pipelines"
+        lessons:
+          - id: typed-memory-model
+            title: "The Typed Memory Model"
+            stage: store
+            objective: "Give each memory type its own schema, lifecycle, and update rule."
+          - id: extraction-pipelines
+            title: "Extraction Pipelines"
+            stage: extract
+            objective: "Stage candidate generation, salience filtering, schema validation, and type routing."
+          - id: extraction-quality
+            title: "Precision and Recall on the Write Path"
+            stage: extract
+            objective: "Measure extraction quality and price the compounding cost of over-extraction."
+          - id: atomic-memories
+            title: "Atomic Memories"
+            stage: extract
+            objective: "Size a memory so it can be updated later; recognise one that is too big to revise."
+
+      - id: identity
+        title: "Identity & Entity Resolution"
+        lessons:
+          - id: entities-and-aliases
+            title: "Entities and Aliases"
+            stage: store
+            objective: "Collapse 'my wife', 'Sarah', and 'S.' into one canonical node."
+          - id: entity-resolution
+            title: "Entity Resolution"
+            stage: store
+            objective: "Block, score, merge, and un-merge; handle the split problem."
+          - id: scopes-and-namespaces
+            title: "Scopes and Namespaces"
+            stage: store
+            objective: "Key memory by user, agent, org, and session — the multi-tenancy substrate."
+
+      - id: consolidation
+        title: "Consolidation"
+        lessons:
+          - id: deduplication
+            title: "Deduplication"
+            stage: evolve
+            objective: "Detect exact, near, and semantic duplicates; choose write-time vs read-time dedupe."
+          - id: summarization-and-compaction
+            title: "Summarization and Compaction"
+            stage: evolve
+            objective: "Build rolling summaries and hierarchical digests without losing the originals."
+          - id: semantic-drift
+            title: "Semantic Drift"
+            stage: evolve
+            objective: "Bound degradation by re-deriving from anchored originals, never summarizing summaries."
+          - id: episodic-to-semantic
+            title: "From Episode to Belief"
+            stage: evolve
+            objective: "Promote 'on Tuesday she said X' to 'she prefers X' — and know when that is wrong."
+
+      - id: conflict
+        title: "Conflict Resolution & Belief Updating"
+        lessons:
+          - id: contradiction-detection
+            title: "Contradiction Detection"
+            stage: evolve
+            objective: "Separate a genuine contradiction from a legitimate change over time."
+          - id: memory-operations
+            title: "ADD, UPDATE, DELETE, NOOP"
+            stage: evolve
+            objective: "See why a free-form LLM UPDATE decision is the largest source of silent memory corruption."
+          - id: deterministic-freshness
+            title: "Deterministic Arbitration"
+            stage: evolve
+            objective: "Confine the model to detection and let rules decide, using recency, authority, and explicitness."
+          - id: supersession-not-deletion
+            title: "Supersede, Never Destroy"
+            stage: evolve
+            objective: "Keep the audit trail that makes bi-temporal modeling possible later."
+
+      - id: forgetting
+        title: "Forgetting"
+        lessons:
+          - id: why-forgetting-is-a-feature
+            title: "Why Forgetting Is a Feature"
+            stage: evolve
+            objective: "Justify forgetting on cost, latency, precision, privacy, and coherence."
+          - id: salience-scoring
+            title: "Salience Scoring"
+            stage: evolve
+            objective: "Combine recency, reinforcement, explicit markers, and retrieval-hit feedback."
+          - id: decay-and-tiers
+            title: "Decay and Memory Tiers"
+            stage: evolve
+            objective: "Move memories across scratchpad, working, and long-term tiers under decay and reinforcement."
+          - id: budgeted-forgetting
+            title: "Forgetting Under a Budget"
+            stage: evolve
+            objective: "Evict, archive, or quarantine within a bounded store, and tune without losing the user."
+
+      - id: retrieval-proper
+        title: "Retrieval Done Properly"
+        lessons:
+          - id: scope-then-rank
+            title: "Scope, Then Rank"
+            stage: retrieve
+            objective: "Apply hard filters on owner, type, and validity before any similarity is computed."
+          - id: hybrid-ranking
+            title: "Hybrid Ranking"
+            stage: retrieve
+            objective: "Fuse semantic, lexical, recency, and salience signals; add diversity."
+          - id: query-formulation
+            title: "The Query Is Not the Last Message"
+            stage: retrieve
+            objective: "Rewrite and expand queries; condition retrieval on intent."
+          - id: retrieval-triggers
+            title: "Should I Even Look?"
+            stage: retrieve
+            objective: "Choose between always-on retrieval and memory as a tool call."
+
+      - id: stores
+        title: "Stores"
+        lessons:
+          - id: vector-stores-for-mutable-data
+            title: "Vector Stores for Data That Changes"
+            stage: store
+            objective: "Handle reindexing, tombstones, and embedding staleness after an UPDATE."
+          - id: relational-stores
+            title: "The Underrated Default"
+            stage: store
+            objective: "Use SQLite with FTS as a genuinely good memory store."
+          - id: graph-stores
+            title: "Graph Stores"
+            stage: store
+            objective: "Model entities and relations; traverse for multi-hop recall."
+          - id: hybrid-architecture
+            title: "Hybrid Architecture"
+            stage: store
+            objective: "Pick a store per memory type and keep them consistent under write fan-out."
+
+      - id: assembly
+        title: "Context Assembly Under Budget"
+        lessons:
+          - id: the-packing-problem
+            title: "The Packing Problem"
+            stage: assemble
+            objective: "Treat the token budget as constrained selection, not truncation."
+          - id: ordering-and-formatting
+            title: "Ordering and Formatting"
+            stage: assemble
+            objective: "Section, order, and pin so the model can actually use what you packed."
+          - id: compaction-safety
+            title: "What Must Never Be Dropped"
+            stage: assemble
+            objective: "Protect safety constraints and pinned identity from silent compaction loss."
+          - id: slot-value
+            title: "Does This Memory Earn Its Tokens?"
+            stage: assemble
+            objective: "Measure the marginal contribution of each retrieved memory."
+
+  - id: advanced
+    title: "Time, Scale, Multiplicity, Trust"
+    question: "How does it survive time, scale, multiplicity, and scrutiny?"
+    outcome: >-
+      memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with
+      cascade deletion that provably reaches derived data.
+    modules:
+
+      - id: temporal
+        title: "Temporal Reasoning & Bi-Temporal Modeling"
+        lessons:
+          - id: two-clocks
+            title: "Two Clocks"
+            stage: store
+            objective: "Separate event time from ingestion time; one timestamp is a bug."
+          - id: validity-intervals
+            title: "Validity Intervals"
+            stage: store
+            objective: "Model valid_at, invalid_at, and expired_at; answer as-of queries."
+          - id: temporal-questions
+            title: "Three Temporal Questions"
+            stage: retrieve
+            objective: "Answer what is true now, what I believed then, and when it changed."
+          - id: relative-time-resolution
+            title: "Resolving 'Last Week'"
+            stage: extract
+            objective: "Parse, anchor, and store relative time references."
+          - id: temporal-knowledge-graphs
+            title: "Temporal Knowledge Graphs"
+            stage: store
+            objective: "Carry validity on edges and cascade invalidation through derived facts."
+
+      - id: sleep-time
+        title: "Offline Consolidation"
+        lessons:
+          - id: sleep-time-compute
+            title: "Sleep-Time Compute"
+            stage: evolve
+            objective: "Do memory work between conversations, and know when it pays off."
+          - id: background-job-mechanics
+            title: "Background Job Mechanics"
+            stage: evolve
+            objective: "Make consolidation idempotent, replayable, and safe against live writes."
+          - id: reflection-and-insight
+            title: "Reflection and Insight"
+            stage: evolve
+            objective: "Derive higher-order beliefs while suppressing attractive hallucinated inferences."
+          - id: promotion-as-release
+            title: "Promotion as a Release"
+            stage: evolve
+            objective: "Stage, review, and roll back consolidation like a controlled deploy."
+
+      - id: multi-agent
+        title: "Multi-Agent & Shared Memory"
+        lessons:
+          - id: memory-topologies
+            title: "Memory Topologies"
+            stage: store
+            objective: "Choose between private, shared, hierarchical, and blackboard memory."
+          - id: provenance-and-trust
+            title: "Provenance and Trust"
+            stage: govern
+            objective: "Record who wrote a memory and decide whether to believe it."
+          - id: cross-agent-write-conflicts
+            title: "Cross-Agent Write Conflicts"
+            stage: evolve
+            objective: "Arbitrate concurrent writes from multiple agents."
+          - id: memory-access-control
+            title: "Memory Access Control"
+            stage: govern
+            objective: "Enforce read/write scopes and prevent cross-tenant leakage."
+
+      - id: personalization
+        title: "Personalization & User Modeling"
+        lessons:
+          - id: from-facts-to-a-user-model
+            title: "From Facts to a User Model"
+            stage: evolve
+            objective: "Assemble preferences, traits, and goals; separate stable from volatile."
+          - id: implicit-signals
+            title: "Behaviour as Memory"
+            stage: extract
+            objective: "Learn from corrections, repetitions, and abandonment."
+          - id: applying-the-model
+            title: "Personalization Without Creepiness"
+            stage: assemble
+            objective: "Apply the model with user-visible correction affordances."
+          - id: cold-start-and-shared-accounts
+            title: "Cold Start and Shared Accounts"
+            stage: retrieve
+            objective: "Handle sparsity, multi-persona accounts, and household devices."
+
+      - id: procedural
+        title: "Procedural Memory & Learning From Experience"
+        lessons:
+          - id: procedural-memory
+            title: "Procedural Memory"
+            stage: store
+            objective: "Treat skills, workflows, and tool-use traces as first-class memory."
+          - id: learning-from-outcomes
+            title: "Learning From Outcomes"
+            stage: evolve
+            objective: "Store corrections and failures as a lessons-learned store."
+          - id: retrieving-procedures
+            title: "Retrieving Procedures"
+            stage: retrieve
+            objective: "Use a different index, trigger, and injection point than facts."
+
+      - id: privacy
+        title: "Privacy, PII, Deletion & Right to Be Forgotten"
+        lessons:
+          - id: pii-on-the-write-path
+            title: "PII on the Write Path"
+            stage: govern
+            objective: "Detect, classify, and gate memory-worthiness before anything is stored."
+          - id: redaction-and-minimization
+            title: "Redaction and Minimization"
+            stage: govern
+            objective: "Store less on purpose; encrypt at the field level."
+          - id: deletion-that-actually-deletes
+            title: "Deletion That Actually Deletes"
+            stage: govern
+            objective: "Cascade a delete through summaries, embeddings, graph edges, and caches."
+          - id: rtbf-and-auditability
+            title: "Proving You Forgot"
+            stage: govern
+            objective: "Demonstrate deletion, retention policy, and regional constraints."
+          - id: memory-attacks
+            title: "Memory Attacks"
+            stage: govern
+            objective: "Defend against poisoning, injection, cross-user leakage, and extraction."
+
+      - id: evaluation
+        title: "Evaluating Memory Systems"
+        lessons:
+          - id: why-memory-eval-is-hard
+            title: "Why Memory Eval Is Hard"
+            stage: govern
+            objective: "Confront the absent corpus, moving ground truth, and unlabelled write path."
+          - id: component-metrics
+            title: "Component Metrics"
+            stage: govern
+            objective: "Measure extraction P/R, dedupe correctness, arbitration accuracy, and forgetting regret."
+          - id: end-to-end-eval
+            title: "Build Your Own Harness"
+            stage: govern
+            objective: "Score multi-session recall, knowledge update, and temporal reasoning on the canonical corpus."
+          - id: regression-testing-state
+            title: "Regression Testing a Stateful System"
+            stage: govern
+            objective: "Use golden conversations and snapshot tests in CI."
+          - id: llm-as-judge-for-memory
+            title: "LLM as Judge, and Its Failure Modes"
+            stage: govern
+            objective: "Use model grading where it works and recognise where it does not."
+          - id: reading-benchmark-claims
+            title: "Reading Benchmark Claims Critically"
+            stage: govern
+            objective: "Interpret public leaderboards, given the same system is cited at wildly different scores."
+
+      - id: scale
+        title: "Cost, Latency & Scale"
+        lessons:
+          - id: cost-model
+            title: "The Write Path Dominates"
+            stage: govern
+            objective: "Price per-turn extraction as the expensive part — the inverse of RAG's cost profile."
+          - id: latency-budget
+            title: "The Latency Budget"
+            stage: govern
+            objective: "Split synchronous from deferred work along what the user can wait for."
+          - id: caching-batching-routing
+            title: "Caching, Batching, Routing"
+            stage: govern
+            objective: "Put cheap models on the write path and cache embeddings."
+          - id: scaling-the-store
+            title: "Scaling the Store"
+            stage: store
+            objective: "Partition by owner; handle index growth, hot users, and archival tiers."
+
+      - id: production
+        title: "Production Failure Modes & Governance"
+        lessons:
+          - id: failure-field-guide
+            title: "The Failure Field Guide"
+            stage: govern
+            objective: "Recognise the seven production failure classes by symptom."
+          - id: memory-observability
+            title: "Memory Observability"
+            stage: govern
+            objective: "Answer 'why did you remember that?' with audit logs and memory diffs."
+          - id: invariants-and-drift-detection
+            title: "Invariants and Drift Detection"
+            stage: govern
+            objective: "Assert what must always be true of the store and detect when it stops being true."
+          - id: schema-migration-on-live-memory
+            title: "Migrating Live Memory"
+            stage: store
+            objective: "Evolve the record shape with backfills and history reprocessing."
+          - id: capstone-finale
+            title: "Hardening Pass"
+            stage: govern
+            objective: "Ship memlab v0.3 with an eval report and a cost profile."

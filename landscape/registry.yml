@@ -1,0 +1,39 @@
+# Names that may NOT appear in curriculum/ or concepts/ prose except inside a
+# marked <!-- landscape:begin/end --> block. The conceptual spine must survive
+# any of these being renamed, acquired, or abandoned.
+#
+# This list is deliberately generous. Add a name the moment it shows up in a draft.
+
+tools:
+  - Mem0
+  - Letta
+  - MemGPT
+  - Zep
+  - Graphiti
+  - LangMem
+  - LangGraph
+  - LangChain
+  - LlamaIndex
+  - Cognee
+  - Supermemory
+  - Chroma
+  - Pinecone
+  - Weaviate
+  - Qdrant
+  - Milvus
+  - pgvector
+  - Neo4j
+
+benchmarks:
+  - LoCoMo
+  - LongMemEval
+  - BEAM
+  - StreamMemBench
+  - ImplicitMemBench
+  - WorldLines
+
+vendors:
+  - OpenAI
+  - Anthropic
+  - Google
+  - Cohere

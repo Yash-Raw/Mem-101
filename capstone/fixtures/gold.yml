@@ -1,0 +1,151 @@
+# Ground truth for the canonical corpus.
+#
+# This file does double duty: it is the eval harness's answer key (A7) AND the
+# index every lesson uses to point at a concrete moment in a conversation the
+# learner already knows. Each seed names the lesson that first confronts it.
+
+persona:
+  user: priya
+  span: 2025-03-04 .. 2026-08-11
+  sessions: 14
+
+# --- Entity aliases: all one person -----------------------------------------
+entities:
+  - canonical: sam-partner
+    surface_forms: ["Sam", "Samira", "Sammy", "my partner", "she", "her"]
+    sessions: [2, 3, 5, 11]
+    lesson: entities-and-aliases
+    note: >-
+      Four surface forms, one node. A naive extractor produces four separate
+      people, and nothing downstream ever notices.
+
+# --- Facts that change, and how they change ---------------------------------
+supersessions:
+  - subject: employer
+    original: {value: "Northwind Labs", session: 1, valid_from: 2025-03-04}
+    replacement: {value: "Calico Systems", session: 8, valid_from: 2026-01-01}
+    kind: legitimate-change
+    lesson: contradiction-detection
+    note: >-
+      The high-salience staleness case. Session 1 states it strongly and it is
+      reinforced for nine months, so a salience-weighted retriever surfaces the
+      dead fact ahead of the live one. Session 9 is the user correcting the
+      assistant about it -- the failure is in the transcript, not hypothetical.
+
+  - subject: diet
+    original: {value: "vegetarian", session: 1}
+    replacement: {value: "pescatarian", session: 7}
+    kind: refinement
+    lesson: contradiction-detection
+    note: >-
+      NOT a contradiction. "Still no meat" narrows the earlier fact rather than
+      negating it. A system that treats every change as a contradiction
+      destroys the constraint that still holds.
+
+  - subject: diet
+    addition: {value: "gluten intolerance", session: 12}
+    kind: accumulation
+    lesson: memory-operations
+    note: Coexists with pescatarian. The correct operation is ADD, not UPDATE.
+
+  - subject: beverage
+    original: {value: "does not drink coffee, tea only", session: 4}
+    replacement: {value: "drinks three coffees a day", session: 10}
+    kind: genuine-contradiction
+    lesson: deterministic-freshness
+    note: >-
+      A flat reversal of an emphatic first-party claim ("never have"). Recency
+      wins, but the audit trail must survive -- see supersession-not-deletion.
+
+  - subject: response_style
+    original: {value: "wants detailed explanations", session: 1}
+    replacement: {value: "wants short answers", session: 10}
+    kind: genuine-contradiction
+    lesson: applying-the-model
+    note: A preference reversal that must actually change assistant behaviour.
+
+  - subject: commute
+    original: {value: "cycles to work", session: 11, implied_valid_until: 2025-08-02}
+    replacement: {value: "40 minute train", session: 11}
+    kind: retroactive-statement
+    lesson: two-clocks
+    note: >-
+      Both facts arrive in the SAME turn, one about the past. Event time and
+      ingestion time diverge here, which is why one timestamp cannot work.
+
+# --- Relative time references needing an anchor -----------------------------
+relative_time:
+  - {phrase: "last month", session: 3, resolves_to: 2025-03, lesson: relative-time-resolution}
+  - {phrase: "Before the move", session: 11, resolves_to: 2025-08-02, lesson: relative-time-resolution}
+  - {phrase: "last week", session: 12, resolves_to: 2026-05-08, lesson: relative-time-resolution}
+  - {phrase: "Very proud of her", session: 3, resolves_to: 2025-04-22, lesson: relative-time-resolution,
+     note: "no explicit time phrase; the promotion date must be inferred from ingestion time alone"}
+
+# --- PII, and the deletion request that must cascade ------------------------
+pii:
+  - {kind: address, value: "47 Halloway Road, Bristol", session: 5, lesson: pii-on-the-write-path}
+  - {kind: phone, value: "07700 900412", session: 5, lesson: pii-on-the-write-path}
+  - {kind: health, value: "gluten intolerance", session: 12, lesson: redaction-and-minimization}
+  - {kind: third_party_health, value: "Sam is a nurse", session: 2, lesson: pii-on-the-write-path}
+
+deletion_request:
+  session: 13
+  target: "old address"
+  lesson: deletion-that-actually-deletes
+  must_also_remove:
+    - the raw episode from session 5
+    - its embedding in the vector index
+    - any session-5 rolling summary that mentions Bristol
+    - the "moved house" entity edge dated 2025-08-02
+    - derived beliefs about commute that cite the address
+  note: >-
+    The whole point of the module. Deleting the record leaves the summary
+    knowing. And "old address" is ambiguous -- resolving it requires the
+    provenance written back in the-memory-record.
+
+# --- Procedural memory ------------------------------------------------------
+procedures:
+  - id: weekly-report
+    taught_session: 6
+    invoked_session: 13
+    ordered_steps:
+      - pull pipeline metrics from the warehouse
+      - diff against last week
+      - flag anything over 15% drift
+      - write up in the shared doc
+    critical_step: diff against last week
+    lesson: procedural-memory
+    note: >-
+      Order is load-bearing and the user says so. Stored as prose and retrieved
+      by similarity, the steps come back shuffled -- which is the lesson.
+
+# --- Multi-agent writes -----------------------------------------------------
+shared_memory:
+  - {agent: calendar-agent, session: 7, trust: high, lesson: provenance-and-trust}
+  - {agent: calendar-agent, session: 11, trust: high, lesson: provenance-and-trust}
+  - agent: travel-agent
+    session: 12
+    trust: low
+    lesson: provenance-and-trust
+    note: >-
+      Hearsay about a relocation, never confirmed by Priya. Stored at low
+      authority it is harmless; flattened to a plain fact it silently
+      contradicts her address and corrupts the user model.
+
+# --- The exam ---------------------------------------------------------------
+final_question:
+  session: 14
+  asks: "where do I work and what should I not eat?"
+  correct_answer:
+    employer: "Calico Systems"
+    avoid: ["meat", "gluten"]
+    permitted: ["fish"]
+  wrong_answers_and_their_causes:
+    - {answer: "Northwind Labs", cause: no supersession; salience keeps the stale fact on top}
+    - {answer: "avoid fish", cause: treated the session-7 refinement as a contradiction and dropped it}
+    - {answer: "omits gluten", cause: UPDATE instead of ADD collapsed two independent diet facts}
+    - {answer: "mentions Berlin", cause: low-authority hearsay flattened into a first-party belief}
+  note: >-
+    One question the naive Beginner system gets wrong in four distinct ways,
+    each traceable to a specific missing mechanism. This is the course's exam
+    and the eval harness's headline metric.

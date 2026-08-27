@@ -1,0 +1,3 @@
+{"session": 7, "ts": "2025-10-31T06:00:00Z", "agent": "calendar-agent", "scope": "shared", "text": "Priya has a recurring 1:1 every Tuesday 10:00.", "authority": 0.9}
+{"session": 11, "ts": "2026-04-09T06:00:00Z", "agent": "calendar-agent", "scope": "shared", "text": "Priya declined all Friday meetings since March 2026.", "authority": 0.9}
+{"session": 12, "ts": "2026-05-16T06:00:00Z", "agent": "travel-agent", "scope": "shared", "text": "Priya's colleague mentioned she is relocating to Berlin.", "authority": 0.3}

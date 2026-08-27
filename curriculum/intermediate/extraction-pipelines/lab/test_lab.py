@@ -49,15 +49,30 @@ def test_the_store_shifts_from_events_to_states(reports) -> None:
 
 
 def test_the_employer_state_goes_from_absent_to_rank_18(reports) -> None:
+    """18 is quoted in this lesson's prose, so it is pinned FOR THIS MODULE.
+
+    Unlike the Beginner figures, it is not a permanent invariant: a later
+    module that legitimately changes the intermediate store may move it, and
+    must then re-quote it in the prose. Beginner pins may never move at all.
+    """
     assert reports["beginner"].calico_state_rank is None
     assert reports["intermediate"].calico_state_rank == 18
 
 
 def test_but_the_exam_still_fails(reports) -> None:
-    """The honest half of the lesson. Fixed in supersession-not-deletion."""
+    """The honest half of the lesson. Fixed in supersession-not-deletion.
+
+    Asserts the RELATIONSHIP, not the ranks. I2 changes store composition, I3
+    shrinks it and I4 retires things -- every one legitimately moves these
+    integers, and pinning them here would train the habit of "updating the
+    number", which is exactly what the Beginner pins exist to forbid.
+    """
     for name in ("beginner", "intermediate"):
         assert reports[name].exam_employer == "Northwind Labs"
-    assert reports["intermediate"].northwind_rank == 6, (
+
+    i = reports["intermediate"]
+    assert i.northwind_rank is not None
+    assert i.calico_state_rank > i.northwind_rank, (
         "the dead fact still outranks the live one for 'where do I work?'"
     )
 

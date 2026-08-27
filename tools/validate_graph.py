@@ -83,12 +83,20 @@ def main() -> int:
     for d in ls:
         walk(d.id, [])
 
-    # 2 — no orphan concepts
+    # 2 — no orphan concepts, and no published lesson teaching a stub
+    concept_status = {c.id: c.meta.get("status", "published") for c in concepts()}
     for c in concepts():
         if c.meta.get("status") == "stub":
             continue
         if c.id not in taught:
             p.add(c.rel, "concept page is never taught by any lesson (orphan)")
+
+    for d in ls:
+        if d.meta.get("status") != "published":
+            continue
+        for c in d.meta.get("concepts_taught", []) or []:
+            if concept_status.get(c) == "stub":
+                p.add(d.rel, f"teaches '{c}', which is still a stub — write the page")
 
     # 5 — every authored lesson is reachable from the first
     if order:

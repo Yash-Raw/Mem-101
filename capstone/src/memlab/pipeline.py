@@ -94,7 +94,20 @@ def intermediate(through: str = "latest") -> Pipeline:
             consolidate=_resolve_dedupe_reconcile,  # + retire superseded beliefs
             live_only=True,                         # and stop retrieving them
         )
+    if "I5" in reached:
+        p = replace(p, decay=_score_and_decay)      # salience, ageing, tiering
     return p
+
+
+def _score_and_decay(memories):
+    """Importance, then ageing, then the tier cap. Nothing is removed."""
+    from .fixtures import load_turns
+    from .forget import budget, decay, salience
+
+    turns = {f"s{t['session']}:{t['ts']}": t["text"] for t in load_turns(user_only=True)}
+    aged = decay.apply(salience.apply(memories, turns))
+    capped, _evictions = budget.enforce(aged)
+    return capped
 
 
 def _resolve_then_dedupe(memories):

@@ -21,5 +21,7 @@ Without one, every transient fact is embedded, ranked and competing for token bu
 <!-- graph:begin -->
 **Taught in:** [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
 
+**Used in:** [Salience Scoring](../curriculum/intermediate/salience-scoring/index.md)
+
 **Do not confuse with:** [Salience](salience.md)
 <!-- graph:end -->

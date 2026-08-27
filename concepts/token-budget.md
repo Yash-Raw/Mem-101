@@ -21,5 +21,5 @@ The budget is what turns retrieval into a *selection* problem. With room for six
 <!-- graph:begin -->
 **Taught in:** [Context Is Not Memory](../curriculum/beginner/context-is-not-memory/index.md)
 
-**Used in:** [Getting Memories Into the Prompt](../curriculum/beginner/context-assembly-v0/index.md) · [Summarization and Compaction](../curriculum/intermediate/summarization-and-compaction/index.md)
+**Used in:** [Getting Memories Into the Prompt](../curriculum/beginner/context-assembly-v0/index.md) · [Summarization and Compaction](../curriculum/intermediate/summarization-and-compaction/index.md) · [Why Forgetting Is a Feature](../curriculum/intermediate/why-forgetting-is-a-feature/index.md)
 <!-- graph:end -->

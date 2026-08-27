@@ -84,6 +84,9 @@ def ingest(
     if pipeline.consolidate is not None:
         store.replace(pipeline.consolidate(store.all()))
 
+    if pipeline.decay is not None:
+        store.replace(pipeline.decay(store.all()))
+
     return added
 
 

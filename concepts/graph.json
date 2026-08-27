@@ -127,6 +127,15 @@
       "path": "curriculum/intermediate/atomic-memories/index.md"
     },
     {
+      "id": "budgeted-forgetting",
+      "type": "lesson",
+      "title": "Forgetting Under a Budget",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 31,
+      "path": "curriculum/intermediate/budgeted-forgetting/index.md"
+    },
+    {
       "id": "contradiction-detection",
       "type": "lesson",
       "title": "Contradiction Detection",
@@ -134,6 +143,15 @@
       "stage": "evolve",
       "order": 24,
       "path": "curriculum/intermediate/contradiction-detection/index.md"
+    },
+    {
+      "id": "decay-and-tiers",
+      "type": "lesson",
+      "title": "Decay and Memory Tiers",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 30,
+      "path": "curriculum/intermediate/decay-and-tiers/index.md"
     },
     {
       "id": "deduplication",
@@ -208,6 +226,15 @@
       "path": "curriculum/intermediate/memory-operations/index.md"
     },
     {
+      "id": "salience-scoring",
+      "type": "lesson",
+      "title": "Salience Scoring",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 29,
+      "path": "curriculum/intermediate/salience-scoring/index.md"
+    },
+    {
       "id": "scopes-and-namespaces",
       "type": "lesson",
       "title": "Scopes and Namespaces",
@@ -251,6 +278,15 @@
       "stage": "store",
       "order": 13,
       "path": "curriculum/intermediate/typed-memory-model/index.md"
+    },
+    {
+      "id": "why-forgetting-is-a-feature",
+      "type": "lesson",
+      "title": "Why Forgetting Is a Feature",
+      "level": "intermediate",
+      "stage": "evolve",
+      "order": 28,
+      "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md"
     },
     {
       "id": "append-only-log",
@@ -341,6 +377,14 @@
       "status": "published"
     },
     {
+      "id": "decay-function",
+      "type": "concept",
+      "title": "Decay",
+      "stage": "evolve",
+      "path": "concepts/decay-function.md",
+      "status": "published"
+    },
+    {
       "id": "deduplication",
       "type": "concept",
       "title": "Deduplication",
@@ -402,6 +446,14 @@
       "title": "Events and States",
       "stage": "extract",
       "path": "concepts/event-vs-state.md",
+      "status": "published"
+    },
+    {
+      "id": "eviction",
+      "type": "concept",
+      "title": "Eviction",
+      "stage": "evolve",
+      "path": "concepts/eviction.md",
       "status": "published"
     },
     {
@@ -509,6 +561,22 @@
       "status": "published"
     },
     {
+      "id": "reinforcement",
+      "type": "concept",
+      "title": "Reinforcement",
+      "stage": "evolve",
+      "path": "concepts/reinforcement.md",
+      "status": "published"
+    },
+    {
+      "id": "relevance-vs-truth",
+      "type": "concept",
+      "title": "Relevance vs Truth",
+      "stage": "evolve",
+      "path": "concepts/relevance-vs-truth.md",
+      "status": "published"
+    },
+    {
       "id": "retrieval-scoping",
       "type": "concept",
       "title": "Retrieval Scoping",
@@ -522,7 +590,7 @@
       "title": "Salience",
       "stage": "evolve",
       "path": "concepts/salience.md",
-      "status": "stub"
+      "status": "published"
     },
     {
       "id": "semantic-drift",
@@ -680,8 +748,18 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "budgeted-forgetting",
+      "to": "decay-and-tiers",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "contradiction-detection",
       "to": "episodic-to-semantic",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "decay-and-tiers",
+      "to": "salience-scoring",
       "kind": "requires_lesson"
     },
     {
@@ -725,6 +803,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "salience-scoring",
+      "to": "why-forgetting-is-a-feature",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "scopes-and-namespaces",
       "to": "entity-resolution",
       "kind": "requires_lesson"
@@ -747,6 +830,11 @@
     {
       "from": "typed-memory-model",
       "to": "watching-it-fail",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "why-forgetting-is-a-feature",
+      "to": "supersession-not-deletion",
       "kind": "requires_lesson"
     },
     {
@@ -880,6 +968,11 @@
       "kind": "teaches"
     },
     {
+      "from": "budgeted-forgetting",
+      "to": "eviction",
+      "kind": "teaches"
+    },
+    {
       "from": "contradiction-detection",
       "to": "slot",
       "kind": "teaches"
@@ -887,6 +980,11 @@
     {
       "from": "contradiction-detection",
       "to": "contradiction-vs-refinement",
+      "kind": "teaches"
+    },
+    {
+      "from": "decay-and-tiers",
+      "to": "decay-function",
       "kind": "teaches"
     },
     {
@@ -945,6 +1043,16 @@
       "kind": "teaches"
     },
     {
+      "from": "salience-scoring",
+      "to": "salience",
+      "kind": "teaches"
+    },
+    {
+      "from": "salience-scoring",
+      "to": "reinforcement",
+      "kind": "teaches"
+    },
+    {
       "from": "scopes-and-namespaces",
       "to": "namespace",
       "kind": "teaches"
@@ -977,6 +1085,11 @@
     {
       "from": "typed-memory-model",
       "to": "type-rules",
+      "kind": "teaches"
+    },
+    {
+      "from": "why-forgetting-is-a-feature",
+      "to": "relevance-vs-truth",
       "kind": "teaches"
     },
     {
@@ -1120,6 +1233,21 @@
       "kind": "uses"
     },
     {
+      "from": "budgeted-forgetting",
+      "to": "decay-function",
+      "kind": "uses"
+    },
+    {
+      "from": "budgeted-forgetting",
+      "to": "salience",
+      "kind": "uses"
+    },
+    {
+      "from": "budgeted-forgetting",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
       "from": "contradiction-detection",
       "to": "corroboration",
       "kind": "uses"
@@ -1132,6 +1260,21 @@
     {
       "from": "contradiction-detection",
       "to": "canonical-entity",
+      "kind": "uses"
+    },
+    {
+      "from": "decay-and-tiers",
+      "to": "salience",
+      "kind": "uses"
+    },
+    {
+      "from": "decay-and-tiers",
+      "to": "reinforcement",
+      "kind": "uses"
+    },
+    {
+      "from": "decay-and-tiers",
+      "to": "type-rules",
       "kind": "uses"
     },
     {
@@ -1250,6 +1393,21 @@
       "kind": "uses"
     },
     {
+      "from": "salience-scoring",
+      "to": "relevance-vs-truth",
+      "kind": "uses"
+    },
+    {
+      "from": "salience-scoring",
+      "to": "durability-gate",
+      "kind": "uses"
+    },
+    {
+      "from": "salience-scoring",
+      "to": "corroboration",
+      "kind": "uses"
+    },
+    {
       "from": "scopes-and-namespaces",
       "to": "retrieval-scoping",
       "kind": "uses"
@@ -1320,6 +1478,21 @@
       "kind": "uses"
     },
     {
+      "from": "why-forgetting-is-a-feature",
+      "to": "token-budget",
+      "kind": "uses"
+    },
+    {
+      "from": "why-forgetting-is-a-feature",
+      "to": "over-extraction",
+      "kind": "uses"
+    },
+    {
+      "from": "why-forgetting-is-a-feature",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
       "from": "belief-updating",
       "to": "deduplication",
       "kind": "contrasts_with"
@@ -1380,8 +1553,28 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "reinforcement",
+      "to": "corroboration",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "relevance-vs-truth",
+      "to": "belief-updating",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "retrieval-scoping",
       "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "salience",
+      "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "salience",
+      "to": "durability-gate",
       "kind": "contrasts_with"
     },
     {

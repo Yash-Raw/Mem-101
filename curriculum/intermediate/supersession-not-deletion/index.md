@@ -25,6 +25,8 @@ status: published
 **You need first:** [Deterministic Arbitration](../deterministic-freshness/index.md)
 
 **Concepts assumed:** [Belief Updating](../../../concepts/belief-updating.md) · [Memory Operations](../../../concepts/memory-operations.md) · [Episodic Memory](../../../concepts/episodic-memory.md)
+
+**This unlocks:** [Why Forgetting Is a Feature](../why-forgetting-is-a-feature/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -161,4 +163,6 @@ uv run python curriculum/intermediate/supersession-not-deletion/lab/lab.py
 **You need first:** [Deterministic Arbitration](../deterministic-freshness/index.md)
 
 **Concepts assumed:** [Belief Updating](../../../concepts/belief-updating.md) · [Memory Operations](../../../concepts/memory-operations.md) · [Episodic Memory](../../../concepts/episodic-memory.md)
+
+**This unlocks:** [Why Forgetting Is a Feature](../why-forgetting-is-a-feature/index.md)
 <!-- graph:end -->

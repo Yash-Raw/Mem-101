@@ -21,5 +21,5 @@ Costs compound quietly. Every junk memory is embedded, ranked, and competes for 
 <!-- graph:begin -->
 **Taught in:** [Naive Extraction](../curriculum/beginner/naive-extraction/index.md) · [Watching It Fail](../curriculum/beginner/watching-it-fail/index.md)
 
-**Used in:** [Precision and Recall on the Write Path](../curriculum/intermediate/extraction-quality/index.md)
+**Used in:** [Precision and Recall on the Write Path](../curriculum/intermediate/extraction-quality/index.md) · [Why Forgetting Is a Feature](../curriculum/intermediate/why-forgetting-is-a-feature/index.md)
 <!-- graph:end -->

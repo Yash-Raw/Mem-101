@@ -20,4 +20,6 @@ The weights are where a ranker is right or wrong, and they cannot be reasoned ou
 
 <!-- graph:begin -->
 **Taught in:** [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md)
+
+**Used in:** [The Packing Problem](../curriculum/intermediate/the-packing-problem/index.md)
 <!-- graph:end -->

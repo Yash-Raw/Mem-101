@@ -202,4 +202,4 @@ def rank(
         for m in memories
     ]
     scored.sort(key=lambda s: -s.total)
-    return [Hit(memory=s.memory, score=s.total) for s in scored[:k]]
+    return [Hit(memory=s.memory, score=s.total, query=query) for s in scored[:k]]

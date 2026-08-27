@@ -242,15 +242,15 @@ levels:
           - id: ordering-and-formatting
             title: "Ordering and Formatting"
             stage: assemble
-            objective: "Section, order, and pin so the model can actually use what you packed."
+            objective: "Price the line format, and check whether ordering by score costs anything."
           - id: compaction-safety
             title: "What Must Never Be Dropped"
             stage: assemble
-            objective: "Protect safety constraints and pinned identity from silent compaction loss."
+            objective: "Make coverage an invariant of the packer, derived from the question rather than a topic list."
           - id: slot-value
-            title: "Does This Memory Earn Its Tokens?"
+            title: "Does This Earn Its Tokens?"
             stage: assemble
-            objective: "Measure the marginal contribution of each retrieved memory."
+            objective: "Price every element of the context, including the ones that are not memories."
 
   - id: advanced
     title: "Time, Scale, Multiplicity, Trust"

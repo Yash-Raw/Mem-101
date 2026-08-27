@@ -156,12 +156,24 @@ mechanism fixes one, move its test and flip the expectation rather than deleting
 Landscape snapshot written and dated 2026-08-27 (8 pages; high-volatility pages
 fail CI at 180 days — re-verify rather than bumping the date).
 
-**Milestone 2a complete** — Intermediate modules I1–I4 (15 lessons), 45 concept
-pages, `memlab` v0.2-alpha. 244 tests.
+**The Intermediate level is complete** — I1–I8, 31 lessons, `memlab` v0.2.
+395 tests.
 
-The headline result: the session-14 exam passes under `--profile intermediate`
-and fails under every earlier snapshot. `uv run python -m memlab.app.chat
---profile intermediate --ingest --exam`.
+Three headline results, each with its own passing snapshot:
+
+| exam | question | passes from |
+|---|---|---|
+| **belief** | does the store *believe* the right thing? | `@I4` |
+| **context** (k=5) | would the model ever *say* it? | `@I6` |
+| **budgeted** (52 tokens) | does it survive a tight context? | `@I8` |
+
+```
+uv run python -m memlab.app.chat --profile intermediate --ingest --exam --budget 52
+```
+
+Correct at 52 and wrong at 50. The derived floor — a compact header plus the
+four required facts — is 43; the nine-token gap is one memory the packer has no
+information to reject.
 
 Two findings that shaped the design, both from measurement rather than
 reasoning — worth knowing before extending this:
@@ -185,6 +197,15 @@ Two more findings from 2b, both of which reversed an obvious approach:
   drops fourteen standing beliefs and breaks the exam. What decays is
   relevance, not truth.
 
-Remaining: Intermediate I7–I8 (8 lessons — stores, assembly), Advanced (40),
-and `mkdocs.yml` (Phase 7 — the CI step is present but gated on the file
-existing).
+Two from 2c, both of which are null results a lesson is built on:
+
+- **This corpus has one graph node and no edges.** `samira`, six memories;
+  `St. Aubyn's` is on the stop list. `graph-stores` teaches when a graph earns
+  its cost by measuring a corpus where it does not.
+- **Three of I8's four mechanisms move nothing.** Reservation, padding
+  suppression and pinning are each correct and each a no-op here; the only
+  lever is that the framing header was 38% of the context. Optimise the
+  elements you priced, not the ones you assumed mattered.
+
+Remaining: Advanced (40 lessons), and `mkdocs.yml` (Phase 7 — the CI step is
+present but gated on the file existing).

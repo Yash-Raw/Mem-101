@@ -21,5 +21,5 @@ Assembly is where retrieval quality becomes behaviour, and small choices have la
 <!-- graph:begin -->
 **Taught in:** [Getting Memories Into the Prompt](../curriculum/beginner/context-assembly-v0/index.md)
 
-**Used in:** [Session Memory vs Long-Term Memory](../curriculum/beginner/session-vs-longterm/index.md) · [Your First Memory Layer](../curriculum/beginner/your-first-memory-layer/index.md)
+**Used in:** [Session Memory vs Long-Term Memory](../curriculum/beginner/session-vs-longterm/index.md) · [Your First Memory Layer](../curriculum/beginner/your-first-memory-layer/index.md) · [Ordering and Formatting](../curriculum/intermediate/ordering-and-formatting/index.md) · [Does This Earn Its Tokens?](../curriculum/intermediate/slot-value/index.md) · [The Packing Problem](../curriculum/intermediate/the-packing-problem/index.md)
 <!-- graph:end -->

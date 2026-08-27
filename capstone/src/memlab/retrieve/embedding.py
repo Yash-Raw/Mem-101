@@ -20,6 +20,10 @@ from ..types import Memory, Scope
 class Hit:
     memory: Memory
     score: float
+    # Which sub-question surfaced this. Set by `scoped.search` after
+    # `query-formulation` splits a compound query; budgeting needs the
+    # attribution to guarantee every question a share of the tokens.
+    query: str | None = None
 
 
 class EmbeddingRetriever:

@@ -106,7 +106,20 @@ def intermediate(through: str = "latest") -> Pipeline:
         from .store.vector import VectorIndex
 
         p = replace(p, vectors=VectorIndex())       # embed once per memory, not per query
+    if "I8" in reached:
+        p = replace(p, assemble=_budgeted_assemble)  # priced elements, pinned coverage
     return p
+
+
+def _budgeted_assemble(hits, budget_tokens: int = 400) -> str:
+    """Compact framing, year-precision dates, slot coverage pinned."""
+    from .assemble.budget import pack
+    from .assemble.value import COMPACT_HEADER
+
+    return pack(
+        hits, budget_tokens=budget_tokens, header=COMPACT_HEADER, pin=True,
+        precision="year",
+    ).text
 
 
 def _hybrid_search(query, memories, scope, k=5, index=None):

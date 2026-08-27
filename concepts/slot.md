@@ -21,7 +21,7 @@ Slots are how conflict candidates are found, and the reason is measured rather t
 <!-- graph:begin -->
 **Taught in:** [Contradiction Detection](../curriculum/intermediate/contradiction-detection/index.md)
 
-**Used in:** [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md) · [ADD, UPDATE, MERGE, NOOP](../curriculum/intermediate/memory-operations/index.md) · [The Query Is Not the Last Message](../curriculum/intermediate/query-formulation/index.md)
+**Used in:** [What Must Never Be Dropped](../curriculum/intermediate/compaction-safety/index.md) · [Hybrid Ranking](../curriculum/intermediate/hybrid-ranking/index.md) · [ADD, UPDATE, MERGE, NOOP](../curriculum/intermediate/memory-operations/index.md) · [The Query Is Not the Last Message](../curriculum/intermediate/query-formulation/index.md)
 
 **Do not confuse with:** [Vector Search](vector-search.md)
 <!-- graph:end -->

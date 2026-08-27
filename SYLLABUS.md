@@ -146,9 +146,9 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
 | 41 | [The Packing Problem](curriculum/intermediate/the-packing-problem/index.md) | `assemble` | Treat the token budget as constrained selection, not truncation. |
-| 42 | [Ordering and Formatting](curriculum/intermediate/ordering-and-formatting/index.md) | `assemble` | Section, order, and pin so the model can actually use what you packed. |
-| 43 | [What Must Never Be Dropped](curriculum/intermediate/compaction-safety/index.md) | `assemble` | Protect safety constraints and pinned identity from silent compaction loss. |
-| 44 | [Does This Memory Earn Its Tokens?](curriculum/intermediate/slot-value/index.md) | `assemble` | Measure the marginal contribution of each retrieved memory. |
+| 42 | [Ordering and Formatting](curriculum/intermediate/ordering-and-formatting/index.md) | `assemble` | Price the line format, and check whether ordering by score costs anything. |
+| 43 | [What Must Never Be Dropped](curriculum/intermediate/compaction-safety/index.md) | `assemble` | Make coverage an invariant of the packer, derived from the question rather than a topic list. |
+| 44 | [Does This Earn Its Tokens?](curriculum/intermediate/slot-value/index.md) | `assemble` | Price every element of the context, including the ones that are not memories. |
 
 ### Time, Scale, Multiplicity, Trust
 

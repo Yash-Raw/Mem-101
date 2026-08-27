@@ -136,6 +136,15 @@
       "path": "curriculum/intermediate/budgeted-forgetting/index.md"
     },
     {
+      "id": "compaction-safety",
+      "type": "lesson",
+      "title": "What Must Never Be Dropped",
+      "level": "intermediate",
+      "stage": "assemble",
+      "order": 42,
+      "path": "curriculum/intermediate/compaction-safety/index.md"
+    },
+    {
       "id": "contradiction-detection",
       "type": "lesson",
       "title": "Contradiction Detection",
@@ -253,6 +262,15 @@
       "path": "curriculum/intermediate/memory-operations/index.md"
     },
     {
+      "id": "ordering-and-formatting",
+      "type": "lesson",
+      "title": "Ordering and Formatting",
+      "level": "intermediate",
+      "stage": "assemble",
+      "order": 41,
+      "path": "curriculum/intermediate/ordering-and-formatting/index.md"
+    },
+    {
       "id": "query-formulation",
       "type": "lesson",
       "title": "The Query Is Not the Last Message",
@@ -316,6 +334,15 @@
       "path": "curriculum/intermediate/semantic-drift/index.md"
     },
     {
+      "id": "slot-value",
+      "type": "lesson",
+      "title": "Does This Earn Its Tokens?",
+      "level": "intermediate",
+      "stage": "assemble",
+      "order": 43,
+      "path": "curriculum/intermediate/slot-value/index.md"
+    },
+    {
       "id": "summarization-and-compaction",
       "type": "lesson",
       "title": "Summarization and Compaction",
@@ -332,6 +359,15 @@
       "stage": "evolve",
       "order": 27,
       "path": "curriculum/intermediate/supersession-not-deletion/index.md"
+    },
+    {
+      "id": "the-packing-problem",
+      "type": "lesson",
+      "title": "The Packing Problem",
+      "level": "intermediate",
+      "stage": "assemble",
+      "order": 40,
+      "path": "curriculum/intermediate/the-packing-problem/index.md"
     },
     {
       "id": "typed-memory-model",
@@ -481,6 +517,14 @@
       "status": "published"
     },
     {
+      "id": "element-cost",
+      "type": "concept",
+      "title": "Element Cost",
+      "stage": "assemble",
+      "path": "concepts/element-cost.md",
+      "status": "published"
+    },
+    {
       "id": "entity-fragmentation",
       "type": "concept",
       "title": "Entity Fragmentation",
@@ -574,6 +618,14 @@
       "title": "Indexed Predicates",
       "stage": "store",
       "path": "concepts/indexed-predicate.md",
+      "status": "published"
+    },
+    {
+      "id": "irreducible-context",
+      "type": "concept",
+      "title": "The Irreducible Context",
+      "stage": "assemble",
+      "path": "concepts/irreducible-context.md",
       "status": "published"
     },
     {
@@ -761,6 +813,14 @@
       "status": "published"
     },
     {
+      "id": "token-reservation",
+      "type": "concept",
+      "title": "Token Reservation",
+      "stage": "assemble",
+      "path": "concepts/token-reservation.md",
+      "status": "published"
+    },
+    {
       "id": "tombstone",
       "type": "concept",
       "title": "Tombstone",
@@ -897,6 +957,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "compaction-safety",
+      "to": "ordering-and-formatting",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "contradiction-detection",
       "to": "episodic-to-semantic",
       "kind": "requires_lesson"
@@ -962,6 +1027,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "ordering-and-formatting",
+      "to": "the-packing-problem",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "query-formulation",
       "to": "hybrid-ranking",
       "kind": "requires_lesson"
@@ -997,6 +1067,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "slot-value",
+      "to": "compaction-safety",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "summarization-and-compaction",
       "to": "deduplication",
       "kind": "requires_lesson"
@@ -1004,6 +1079,11 @@
     {
       "from": "supersession-not-deletion",
       "to": "deterministic-freshness",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "the-packing-problem",
+      "to": "hybrid-architecture",
       "kind": "requires_lesson"
     },
     {
@@ -1287,6 +1367,16 @@
       "kind": "teaches"
     },
     {
+      "from": "slot-value",
+      "to": "element-cost",
+      "kind": "teaches"
+    },
+    {
+      "from": "slot-value",
+      "to": "irreducible-context",
+      "kind": "teaches"
+    },
+    {
       "from": "summarization-and-compaction",
       "to": "summarization",
       "kind": "teaches"
@@ -1299,6 +1389,11 @@
     {
       "from": "supersession-not-deletion",
       "to": "supersession",
+      "kind": "teaches"
+    },
+    {
+      "from": "the-packing-problem",
+      "to": "token-reservation",
       "kind": "teaches"
     },
     {
@@ -1474,6 +1569,21 @@
     {
       "from": "budgeted-forgetting",
       "to": "supersession",
+      "kind": "uses"
+    },
+    {
+      "from": "compaction-safety",
+      "to": "eviction",
+      "kind": "uses"
+    },
+    {
+      "from": "compaction-safety",
+      "to": "token-reservation",
+      "kind": "uses"
+    },
+    {
+      "from": "compaction-safety",
+      "to": "slot",
       "kind": "uses"
     },
     {
@@ -1682,6 +1792,21 @@
       "kind": "uses"
     },
     {
+      "from": "ordering-and-formatting",
+      "to": "token-reservation",
+      "kind": "uses"
+    },
+    {
+      "from": "ordering-and-formatting",
+      "to": "context-assembly",
+      "kind": "uses"
+    },
+    {
+      "from": "ordering-and-formatting",
+      "to": "relevance-vs-truth",
+      "kind": "uses"
+    },
+    {
       "from": "query-formulation",
       "to": "hybrid-ranking",
       "kind": "uses"
@@ -1782,6 +1907,16 @@
       "kind": "uses"
     },
     {
+      "from": "slot-value",
+      "to": "token-reservation",
+      "kind": "uses"
+    },
+    {
+      "from": "slot-value",
+      "to": "context-assembly",
+      "kind": "uses"
+    },
+    {
       "from": "summarization-and-compaction",
       "to": "deduplication",
       "kind": "uses"
@@ -1809,6 +1944,21 @@
     {
       "from": "supersession-not-deletion",
       "to": "episodic-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "the-packing-problem",
+      "to": "context-assembly",
+      "kind": "uses"
+    },
+    {
+      "from": "the-packing-problem",
+      "to": "token-budget",
+      "kind": "uses"
+    },
+    {
+      "from": "the-packing-problem",
+      "to": "score-fusion",
       "kind": "uses"
     },
     {
@@ -1889,6 +2039,11 @@
     {
       "from": "durability-gate",
       "to": "salience",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "element-cost",
+      "to": "token-budget",
       "kind": "contrasts_with"
     },
     {

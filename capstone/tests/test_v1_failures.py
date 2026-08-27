@@ -282,48 +282,42 @@ def test_the_exam_from_context(built, profile) -> None:
         assert answer.is_correct
 
 
-@pytest.mark.parametrize("budget", [400, 80, 60, 55, 50, 45])
+@pytest.mark.parametrize("budget", [400, 80, 67, 60, 55, 52, 50, 45])
 def test_the_exam_under_a_token_budget(built, budget) -> None:
     """Milestone 2c's target: does the answer survive a context worth paying for?
 
-    At k=5 the assembled context is 80 tokens, 29 of which are the framing
-    header. Expected to pass down to 50 exactly when the header has been
-    right-sized -- and to fail below the derived floor whatever happens, because
-    header plus four facts does not fit in 45.
+    At k=5 the assembled context was 80 tokens, 29 of which were framing.
+    Compact framing and year-precision dates take the achievable budget from 80
+    to 52 -- and 52 is not the floor. The floor is 43; the nine-token gap is one
+    memory (`Priya is a staff engineer`) that the packer has no general basis to
+    reject, because nothing tells it the employer question needs one fact while
+    the diet question needs three.
     """
     store, pipeline = built["intermediate"]
     answer = exam_from_context(store.all(), PRIYA, k=5, pipeline=pipeline, budget=budget)
 
-    trimmed = pipeline.assemble is not None
-    floor_ok = budget >= _derived_floor(store, pipeline)
+    if pipeline.assemble is None:
+        assert answer.is_correct if budget >= 80 else not answer.is_correct
+        return
 
-    if budget >= 80:
-        assert answer.is_correct
-    elif not trimmed:
-        assert not answer.is_correct, "the 29-token header undersizes the context"
-    elif floor_ok:
-        assert answer.is_correct
-    else:
-        assert not answer.is_correct, "below the floor, no policy can help"
+    assert answer.is_correct if budget >= 52 else not answer.is_correct
 
 
-def _derived_floor(store, pipeline) -> int:
-    """header + the four required lines, at the CURRENT line format.
-
-    Computed, never hardcoded: `ordering-and-formatting` changes the line
-    format, which moves the floor. A literal here would silently rot.
-    """
+def test_the_floor_is_below_what_any_policy_reaches(built) -> None:
+    """43 tokens would hold the answer; no general policy gets under 52."""
     from memlab.app.chat import ask
-    from memlab.assemble.simple import HEADER, estimate_tokens
+    from memlab.assemble.value import COMPACT_HEADER, floor_for
 
+    store, pipeline = built["intermediate"]
     needed = ("works at Calico", "does not eat meat", "eats fish", "gluten")
     _ctx, hits = ask(store, PRIYA, QUESTION, k=5, pipeline=pipeline)
-    lines = [
-        f"- [{h.memory.happened_at.date()}] {h.memory.content}"
-        for h in hits
-        if any(n in h.memory.content for n in needed)
-    ]
-    return estimate_tokens(HEADER) + sum(estimate_tokens(x) for x in lines)
+    required = [h for h in hits if any(n in h.memory.content for n in needed)]
+
+    floor = floor_for(required, COMPACT_HEADER)
+    assert floor == 43, "derived from the live formatter, not written down"
+    assert not exam_from_context(
+        store.all(), PRIYA, k=5, pipeline=pipeline, budget=floor
+    ).is_correct, "the floor is reachable in principle and not by any policy here"
 
 
 def test_belief_and_context_exams_can_disagree(built) -> None:

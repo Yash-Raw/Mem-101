@@ -25,6 +25,8 @@ status: published
 **You need first:** [Graph Stores](../graph-stores/index.md)
 
 **Concepts assumed:** [Vector Index](../../../concepts/vector-index.md) · [Indexed Predicates](../../../concepts/indexed-predicate.md) · [Graph Traversal](../../../concepts/graph-traversal.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [The Packing Problem](../the-packing-problem/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -139,4 +141,6 @@ uv run python curriculum/intermediate/hybrid-architecture/lab/lab.py
 **You need first:** [Graph Stores](../graph-stores/index.md)
 
 **Concepts assumed:** [Vector Index](../../../concepts/vector-index.md) · [Indexed Predicates](../../../concepts/indexed-predicate.md) · [Graph Traversal](../../../concepts/graph-traversal.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [The Packing Problem](../the-packing-problem/index.md)
 <!-- graph:end -->

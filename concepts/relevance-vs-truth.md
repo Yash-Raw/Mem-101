@@ -21,7 +21,7 @@ Confusing them produces both classic failures. Treat fading as falsification and
 <!-- graph:begin -->
 **Taught in:** [Why Forgetting Is a Feature](../curriculum/intermediate/why-forgetting-is-a-feature/index.md)
 
-**Used in:** [Salience Scoring](../curriculum/intermediate/salience-scoring/index.md)
+**Used in:** [Ordering and Formatting](../curriculum/intermediate/ordering-and-formatting/index.md) · [Salience Scoring](../curriculum/intermediate/salience-scoring/index.md)
 
 **Do not confuse with:** [Belief Updating](belief-updating.md)
 <!-- graph:end -->

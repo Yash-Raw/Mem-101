@@ -7,7 +7,6 @@ a target that asserts the broken behaviour says what is broken, in numbers.
 """
 from __future__ import annotations
 
-import json
 from datetime import UTC, datetime
 
 import pytest
@@ -39,17 +38,21 @@ def built(tmp_path_factory):
 
 @pytest.fixture(scope="module")
 def turn_timestamps():
-    return {
-        json.loads(line)["ts"][:19]
-        for line in open("capstone/fixtures/corpus.jsonl")
-        if line.strip()
-    }
+    """Every instant anything was written at -- agent writes included.
+
+    Counting only user turns makes the three calendar-agent memories look
+    like they carry a distinct event time. They do not; the agent stamps its
+    own clock exactly as the extractor does.
+    """
+    from memlab.temporal.clocks import turn_timestamps as ts
+
+    return ts()
 
 
 # --- A1 target 1: the second clock is a copy of the first -------------------
 @pytest.mark.parametrize("name", ["intermediate", "advanced"])
 def test_event_time_is_mostly_just_ingestion_time(built, turn_timestamps, name) -> None:
-    """34 of 37. The record has two clocks and one of them is not measuring."""
+    """37 of 37. Two clocks in the record, and neither reads the sentence."""
     store, pipeline = built[name]
     memories = store.all()
     copied = sum(
@@ -58,9 +61,10 @@ def test_event_time_is_mostly_just_ingestion_time(built, turn_timestamps, name) 
         if m.happened_at and m.happened_at.isoformat()[:19] in turn_timestamps
     )
     if pipeline.anchor is None:
-        assert (copied, len(memories)) == (34, 37)
+        assert (copied, len(memories)) == (37, 37)
+        assert not any(m.valid_to for m in memories), "and no fact has an end"
     else:
-        assert copied < 34, "anchoring moved at least one event time off the turn clock"
+        assert copied < 37, "anchoring moved at least one event time off the write clock"
 
 
 @pytest.mark.parametrize("fragment,truth", ANCHORS)

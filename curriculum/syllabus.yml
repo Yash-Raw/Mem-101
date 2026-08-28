@@ -266,7 +266,7 @@ levels:
           - id: two-clocks
             title: "Two Clocks"
             stage: store
-            objective: "Separate event time from ingestion time; one timestamp is a bug."
+            objective: "Audit which of the two clocks is actually running; four instants, not two."
           - id: validity-intervals
             title: "Validity Intervals"
             stage: store

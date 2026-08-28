@@ -156,7 +156,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
-| 45 | [Two Clocks](curriculum/advanced/two-clocks/index.md) | `store` | Separate event time from ingestion time; one timestamp is a bug. |
+| 45 | [Two Clocks](curriculum/advanced/two-clocks/index.md) | `store` | Audit which of the two clocks is actually running; four instants, not two. |
 | 46 | [Validity Intervals](curriculum/advanced/validity-intervals/index.md) | `store` | Model valid_at, invalid_at, and expired_at; answer as-of queries. |
 | 47 | [Three Temporal Questions](curriculum/advanced/temporal-questions/index.md) | `retrieve` | Answer what is true now, what I believed then, and when it changed. |
 | 48 | [Resolving 'Last Week'](curriculum/advanced/relative-time-resolution/index.md) | `extract` | Parse, anchor, and store relative time references. |

@@ -25,6 +25,8 @@ status: published
 **You need first:** [What Must Never Be Dropped](../compaction-safety/index.md)
 
 **Concepts assumed:** [Token Reservation](../../../concepts/token-reservation.md) · [Context Assembly](../../../concepts/context-assembly.md)
+
+**This unlocks:** [Two Clocks](../../advanced/two-clocks/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -144,4 +146,6 @@ uv run python curriculum/intermediate/slot-value/lab/lab.py
 **You need first:** [What Must Never Be Dropped](../compaction-safety/index.md)
 
 **Concepts assumed:** [Token Reservation](../../../concepts/token-reservation.md) · [Context Assembly](../../../concepts/context-assembly.md)
+
+**This unlocks:** [Two Clocks](../../advanced/two-clocks/index.md)
 <!-- graph:end -->

@@ -1,6 +1,15 @@
 {
   "nodes": [
     {
+      "id": "two-clocks",
+      "type": "lesson",
+      "title": "Two Clocks",
+      "level": "advanced",
+      "stage": "store",
+      "order": 44,
+      "path": "curriculum/advanced/two-clocks/index.md"
+    },
+    {
       "id": "anatomy-of-a-memory-layer",
       "type": "lesson",
       "title": "Anatomy of a Memory Layer",
@@ -426,7 +435,7 @@
       "title": "Bi-Temporal Modeling",
       "stage": "store",
       "path": "concepts/bi-temporal-modeling.md",
-      "status": "stub"
+      "status": "published"
     },
     {
       "id": "canonical-entity",
@@ -887,6 +896,11 @@
   ],
   "edges": [
     {
+      "from": "two-clocks",
+      "to": "slot-value",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "anatomy-of-a-memory-layer",
       "to": "context-is-not-memory",
       "kind": "requires_lesson"
@@ -1100,6 +1114,11 @@
       "from": "why-forgetting-is-a-feature",
       "to": "supersession-not-deletion",
       "kind": "requires_lesson"
+    },
+    {
+      "from": "two-clocks",
+      "to": "bi-temporal-modeling",
+      "kind": "teaches"
     },
     {
       "from": "anatomy-of-a-memory-layer",
@@ -1415,6 +1434,21 @@
       "from": "why-forgetting-is-a-feature",
       "to": "relevance-vs-truth",
       "kind": "teaches"
+    },
+    {
+      "from": "two-clocks",
+      "to": "event-time",
+      "kind": "uses"
+    },
+    {
+      "from": "two-clocks",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "two-clocks",
+      "to": "supersession",
+      "kind": "uses"
     },
     {
       "from": "anatomy-of-a-memory-layer",
@@ -2014,6 +2048,11 @@
     {
       "from": "belief-updating",
       "to": "deduplication",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "bi-temporal-modeling",
+      "to": "event-time",
       "kind": "contrasts_with"
     },
     {

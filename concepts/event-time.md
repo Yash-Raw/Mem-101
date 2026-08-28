@@ -21,5 +21,5 @@ One timestamp is a bug you cannot fix retroactively. "Before the move I used to 
 <!-- graph:begin -->
 **Taught in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md)
 
-**Used in:** [Deterministic Arbitration](../curriculum/intermediate/deterministic-freshness/index.md)
+**Used in:** [Two Clocks](../curriculum/advanced/two-clocks/index.md) · [Deterministic Arbitration](../curriculum/intermediate/deterministic-freshness/index.md)
 <!-- graph:end -->

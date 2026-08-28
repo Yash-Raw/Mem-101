@@ -25,6 +25,8 @@ status: published
 **You need first:** [Sleep-Time Compute](../sleep-time-compute/index.md)
 
 **Concepts assumed:** [Sleep-Time Compute](../../../concepts/sleep-time-compute.md) · [Consistency Window](../../../concepts/consistency-window.md) · [Deduplication](../../../concepts/deduplication.md)
+
+**This unlocks:** [Reflection and Insight](../reflection-and-insight/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -147,4 +149,6 @@ uv run python curriculum/advanced/background-job-mechanics/lab/lab.py
 **You need first:** [Sleep-Time Compute](../sleep-time-compute/index.md)
 
 **Concepts assumed:** [Sleep-Time Compute](../../../concepts/sleep-time-compute.md) · [Consistency Window](../../../concepts/consistency-window.md) · [Deduplication](../../../concepts/deduplication.md)
+
+**This unlocks:** [Reflection and Insight](../reflection-and-insight/index.md)
 <!-- graph:end -->

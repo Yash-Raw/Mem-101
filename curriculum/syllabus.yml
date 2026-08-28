@@ -298,7 +298,7 @@ levels:
           - id: reflection-and-insight
             title: "Reflection and Insight"
             stage: evolve
-            objective: "Derive higher-order beliefs while suppressing attractive hallucinated inferences."
+            objective: "Derive higher-order beliefs, and measure that storing them makes the answer worse."
           - id: promotion-as-release
             title: "Promotion as a Release"
             stage: evolve

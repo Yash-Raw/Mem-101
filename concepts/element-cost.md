@@ -21,5 +21,7 @@ The framing header on this course's context is **29 tokens — 38% of everything
 <!-- graph:begin -->
 **Taught in:** [Does This Earn Its Tokens?](../curriculum/intermediate/slot-value/index.md)
 
+**Used in:** [Reflection and Insight](../curriculum/advanced/reflection-and-insight/index.md)
+
 **Do not confuse with:** [Token Budget](token-budget.md)
 <!-- graph:end -->

@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/background-job-mechanics/index.md"
     },
     {
+      "id": "reflection-and-insight",
+      "type": "lesson",
+      "title": "Reflection and Insight",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 51,
+      "path": "curriculum/advanced/reflection-and-insight/index.md"
+    },
+    {
       "id": "relative-time-resolution",
       "type": "lesson",
       "title": "Resolving 'Last Week'",
@@ -516,6 +525,14 @@
       "status": "published"
     },
     {
+      "id": "composite-belief",
+      "type": "concept",
+      "title": "Composite Belief",
+      "stage": "evolve",
+      "path": "concepts/composite-belief.md",
+      "status": "published"
+    },
+    {
       "id": "consistency-window",
       "type": "concept",
       "title": "Consistency Window",
@@ -820,6 +837,14 @@
       "status": "published"
     },
     {
+      "id": "reflection",
+      "type": "concept",
+      "title": "Reflection",
+      "stage": "evolve",
+      "path": "concepts/reflection.md",
+      "status": "published"
+    },
+    {
       "id": "reinforcement",
       "type": "concept",
       "title": "Reinforcement",
@@ -1032,6 +1057,11 @@
     {
       "from": "background-job-mechanics",
       "to": "sleep-time-compute",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "reflection-and-insight",
+      "to": "background-job-mechanics",
       "kind": "requires_lesson"
     },
     {
@@ -1287,6 +1317,16 @@
     {
       "from": "background-job-mechanics",
       "to": "snapshot-isolation",
+      "kind": "teaches"
+    },
+    {
+      "from": "reflection-and-insight",
+      "to": "reflection",
+      "kind": "teaches"
+    },
+    {
+      "from": "reflection-and-insight",
+      "to": "composite-belief",
       "kind": "teaches"
     },
     {
@@ -1662,6 +1702,21 @@
     {
       "from": "background-job-mechanics",
       "to": "deduplication",
+      "kind": "uses"
+    },
+    {
+      "from": "reflection-and-insight",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "reflection-and-insight",
+      "to": "salience",
+      "kind": "uses"
+    },
+    {
+      "from": "reflection-and-insight",
+      "to": "element-cost",
       "kind": "uses"
     },
     {
@@ -2365,6 +2420,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "composite-belief",
+      "to": "element-cost",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "consistency-window",
       "to": "sleep-time-compute",
       "kind": "contrasts_with"
@@ -2452,6 +2512,11 @@
     {
       "from": "read-path",
       "to": "write-path",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "reflection",
+      "to": "summarization",
       "kind": "contrasts_with"
     },
     {

@@ -25,6 +25,8 @@ status: published
 **You need first:** [Promotion as a Release](../promotion-as-release/index.md)
 
 **Concepts assumed:** [Retrieval Scoping](../../../concepts/retrieval-scoping.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Provenance and Trust](../provenance-and-trust/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -133,4 +135,6 @@ uv run python curriculum/advanced/memory-topologies/lab/lab.py
 **You need first:** [Promotion as a Release](../promotion-as-release/index.md)
 
 **Concepts assumed:** [Retrieval Scoping](../../../concepts/retrieval-scoping.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Provenance and Trust](../provenance-and-trust/index.md)
 <!-- graph:end -->

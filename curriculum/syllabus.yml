@@ -314,7 +314,7 @@ levels:
           - id: provenance-and-trust
             title: "Provenance and Trust"
             stage: govern
-            objective: "Record who wrote a memory and decide whether to believe it."
+            objective: "Trust the claim, not the claimant -- and flag what cannot be assessed."
           - id: cross-agent-write-conflicts
             title: "Cross-Agent Write Conflicts"
             stage: evolve

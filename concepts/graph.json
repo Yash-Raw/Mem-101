@@ -28,6 +28,15 @@
       "path": "curriculum/advanced/promotion-as-release/index.md"
     },
     {
+      "id": "provenance-and-trust",
+      "type": "lesson",
+      "title": "Provenance and Trust",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 54,
+      "path": "curriculum/advanced/provenance-and-trust/index.md"
+    },
+    {
       "id": "reflection-and-insight",
       "type": "lesson",
       "title": "Reflection and Insight",
@@ -543,6 +552,14 @@
       "status": "published"
     },
     {
+      "id": "competence",
+      "type": "concept",
+      "title": "Competence",
+      "stage": "govern",
+      "path": "concepts/competence.md",
+      "status": "published"
+    },
+    {
       "id": "composite-belief",
       "type": "concept",
       "title": "Composite Belief",
@@ -1039,6 +1056,14 @@
       "status": "published"
     },
     {
+      "id": "unnameable-claim",
+      "type": "concept",
+      "title": "Unnameable Claim",
+      "stage": "govern",
+      "path": "concepts/unnameable-claim.md",
+      "status": "published"
+    },
+    {
       "id": "validity-interval",
       "type": "concept",
       "title": "Validity Interval",
@@ -1109,6 +1134,11 @@
     {
       "from": "promotion-as-release",
       "to": "reflection-and-insight",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "provenance-and-trust",
+      "to": "memory-topologies",
       "kind": "requires_lesson"
     },
     {
@@ -1384,6 +1414,16 @@
     {
       "from": "promotion-as-release",
       "to": "rollback",
+      "kind": "teaches"
+    },
+    {
+      "from": "provenance-and-trust",
+      "to": "competence",
+      "kind": "teaches"
+    },
+    {
+      "from": "provenance-and-trust",
+      "to": "unnameable-claim",
       "kind": "teaches"
     },
     {
@@ -1794,6 +1834,21 @@
     {
       "from": "promotion-as-release",
       "to": "supersession",
+      "kind": "uses"
+    },
+    {
+      "from": "provenance-and-trust",
+      "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "provenance-and-trust",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "provenance-and-trust",
+      "to": "memory-topology",
       "kind": "uses"
     },
     {
@@ -2512,6 +2567,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "competence",
+      "to": "provenance",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "composite-belief",
       "to": "element-cost",
       "kind": "contrasts_with"
@@ -2694,6 +2754,11 @@
     {
       "from": "type-rules",
       "to": "memory-record",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "unnameable-claim",
+      "to": "slot",
       "kind": "contrasts_with"
     },
     {

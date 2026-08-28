@@ -73,6 +73,15 @@
       "path": "curriculum/advanced/memory-topologies/index.md"
     },
     {
+      "id": "procedural-memory",
+      "type": "lesson",
+      "title": "Procedural Memory",
+      "level": "advanced",
+      "stage": "store",
+      "order": 61,
+      "path": "curriculum/advanced/procedural-memory/index.md"
+    },
+    {
       "id": "promotion-as-release",
       "type": "lesson",
       "title": "Promotion as a Release",
@@ -1110,6 +1119,14 @@
       "status": "published"
     },
     {
+      "id": "step-order",
+      "type": "concept",
+      "title": "Step Order",
+      "stage": "store",
+      "path": "concepts/step-order.md",
+      "status": "published"
+    },
+    {
       "id": "summarization",
       "type": "concept",
       "title": "Summarization",
@@ -1293,6 +1310,11 @@
     {
       "from": "memory-topologies",
       "to": "promotion-as-release",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "procedural-memory",
+      "to": "cold-start-and-shared-accounts",
       "kind": "requires_lesson"
     },
     {
@@ -1618,6 +1640,16 @@
     {
       "from": "memory-topologies",
       "to": "memory-topology",
+      "kind": "teaches"
+    },
+    {
+      "from": "procedural-memory",
+      "to": "procedural-memory",
+      "kind": "teaches"
+    },
+    {
+      "from": "procedural-memory",
+      "to": "step-order",
       "kind": "teaches"
     },
     {
@@ -2123,6 +2155,16 @@
     {
       "from": "memory-topologies",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "procedural-memory",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "procedural-memory",
+      "to": "extraction-pipeline",
       "kind": "uses"
     },
     {
@@ -3073,6 +3115,11 @@
     {
       "from": "standing-instruction",
       "to": "user-model",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "step-order",
+      "to": "extraction-pipeline",
       "kind": "contrasts_with"
     },
     {

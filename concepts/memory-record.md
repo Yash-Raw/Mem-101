@@ -21,5 +21,5 @@ The fields chosen here decide what is possible later. Without two clocks you can
 <!-- graph:begin -->
 **Taught in:** [Designing the Memory Record](../curriculum/beginner/the-memory-record/index.md)
 
-**Used in:** [Two Clocks](../curriculum/advanced/two-clocks/index.md) · [Naive Extraction](../curriculum/beginner/naive-extraction/index.md) · [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
+**Used in:** [Procedural Memory](../curriculum/advanced/procedural-memory/index.md) · [Two Clocks](../curriculum/advanced/two-clocks/index.md) · [Naive Extraction](../curriculum/beginner/naive-extraction/index.md) · [Writing Memories Down](../curriculum/beginner/writing-memories-down/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
 <!-- graph:end -->

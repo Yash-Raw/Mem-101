@@ -25,6 +25,8 @@ status: published
 **You need first:** [Personalization Without Creepiness](../applying-the-model/index.md)
 
 **Concepts assumed:** [User Model](../../../concepts/user-model.md) · [Entity Resolution](../../../concepts/entity-resolution.md) · [Disclosure](../../../concepts/disclosure.md)
+
+**This unlocks:** [Procedural Memory](../procedural-memory/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -131,4 +133,6 @@ uv run python curriculum/advanced/cold-start-and-shared-accounts/lab/lab.py
 **You need first:** [Personalization Without Creepiness](../applying-the-model/index.md)
 
 **Concepts assumed:** [User Model](../../../concepts/user-model.md) · [Entity Resolution](../../../concepts/entity-resolution.md) · [Disclosure](../../../concepts/disclosure.md)
+
+**This unlocks:** [Procedural Memory](../procedural-memory/index.md)
 <!-- graph:end -->

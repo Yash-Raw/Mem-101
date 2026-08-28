@@ -137,7 +137,7 @@ procedures:
       - pull pipeline metrics from the warehouse
       - diff against last week
       - flag anything over 15% drift
-      - write up in the shared doc
+      - write it up in the shared doc
     critical_step: diff against last week
     lesson: procedural-memory
     note: >-

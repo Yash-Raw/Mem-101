@@ -350,7 +350,7 @@ levels:
           - id: procedural-memory
             title: "Procedural Memory"
             stage: store
-            objective: "Treat skills, workflows, and tool-use traces as first-class memory."
+            objective: "Order survives by exception, and a comment about a workflow parses as one."
           - id: learning-from-outcomes
             title: "Learning From Outcomes"
             stage: evolve

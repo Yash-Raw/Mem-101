@@ -138,6 +138,27 @@ def test_the_audit_undercounts_in_the_safe_direction(after) -> None:
     assert "before the move" in missed[0].content
 
 
+def test_gold_is_the_answer_key_not_the_lesson(after) -> None:
+    """Every date this lab asserts is in gold.yml, including the null one."""
+    import yaml
+    from memlab.fixtures import load_gold
+
+    entries = {e["phrase"]: e["resolves_to"] for e in load_gold()["relative_time"]}
+    assert entries["last month"] == datetime(2025, 12, 1).date()
+    assert entries["since March 2026"] == datetime(2026, 3, 1).date()
+    assert entries["Before the move"] == datetime(2025, 8, 2).date()
+    assert entries["last week"] == datetime(2026, 5, 8).date()
+    assert entries["diff against last week"] is None, "the one that must not resolve"
+    _ = yaml
+
+
+def test_a_memory_with_no_phrase_keeps_the_ingestion_time(after) -> None:
+    """gold: the promotion date must be inferred from ingestion time alone."""
+    m = next(x for x in after if "promotion to charge nurse" in x.content)
+    assert m.valid_from is None
+    assert str(event_start(m).date()) == "2025-04-22"
+
+
 def test_happened_at_never_moves(before, after) -> None:
     """A dozen Level 1 and 2 figures are measured against it."""
     was = {m.id: m.happened_at for m in before}

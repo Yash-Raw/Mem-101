@@ -78,6 +78,30 @@ relative_time:
   - {phrase: "last month", session: 3, resolves_to: 2025-03, lesson: relative-time-resolution}
   - {phrase: "Before the move", session: 11, resolves_to: 2025-08-02, lesson: relative-time-resolution}
   - {phrase: "last week", session: 12, resolves_to: 2026-05-08, lesson: relative-time-resolution}
+  - phrase: "last month"
+    session: 9
+    resolves_to: 2025-12-01
+    lesson: relative-time-resolution
+    note: >-
+      Said on 2026-01-19, so "last month" is December -- a calendar unit, not
+      thirty days. Resolved as a delta it lands on 2025-12-20, nineteen days
+      out, and the answer silently gains a precision the phrase never had.
+  - phrase: "since March 2026"
+    session: agent
+    resolves_to: 2026-03-01
+    lesson: relative-time-resolution
+    note: >-
+      An interval opener rather than a point: it sets valid_from and leaves
+      valid_to open. Written by the calendar agent, so it also proves the
+      parser has to run over agent writes and not just user turns.
+  - phrase: "diff against last week"
+    session: 6
+    resolves_to: null
+    lesson: relative-time-resolution
+    note: >-
+      MUST NOT RESOLVE. A step inside a taught procedure, not a claim about
+      when the procedure is true. Anchoring it dates the recipe 2025-09-07 --
+      a well-formed record that no presence-of-dates check will ever flag.
   - {phrase: "Very proud of her", session: 3, resolves_to: 2025-04-22, lesson: relative-time-resolution,
      note: "no explicit time phrase; the promotion date must be inferred from ingestion time alone"}
 

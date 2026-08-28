@@ -85,15 +85,16 @@ def test_relative_phrases_are_not_resolved(built, name, fragment, truth) -> None
         assert off_by <= 1, f"{fragment!r} anchors to {truth.date()}"
 
 
-def test_the_worst_one_is_off_by_249_days(built) -> None:
-    """The size of the error is the argument. A fact about 2025 dated 2026."""
-    store, pipeline = built["advanced"]
-    if pipeline.anchor is not None:
-        pytest.skip("A1 has landed; the anchored assertion above covers this")
-    from memlab.temporal.clocks import event_start
+def test_the_worst_one_was_off_by_249_days(built) -> None:
+    """The size of the error is the argument. A fact about 2025 dated 2026.
 
+    Measured against the write clock, which A1's parser deliberately leaves
+    alone -- `happened_at` still means "when this was asserted". So this stays
+    a live assertion after the flip rather than becoming a permanent skip.
+    """
+    store, _ = built["advanced"]
     m = next(x for x in store.all() if "before the move" in x.content)
-    assert (event_start(m) - datetime(2025, 8, 2, tzinfo=UTC)).days == 249
+    assert (m.happened_at - datetime(2025, 8, 2, tzinfo=UTC)).days == 249
 
 
 # --- A1 target 2: as-of queries are not expressible -------------------------

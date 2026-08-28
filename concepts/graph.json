@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/relative-time-resolution/index.md"
     },
     {
+      "id": "sleep-time-compute",
+      "type": "lesson",
+      "title": "Sleep-Time Compute",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 49,
+      "path": "curriculum/advanced/sleep-time-compute/index.md"
+    },
+    {
       "id": "temporal-knowledge-graphs",
       "type": "lesson",
       "title": "Temporal Knowledge Graphs",
@@ -498,6 +507,14 @@
       "status": "published"
     },
     {
+      "id": "consistency-window",
+      "type": "concept",
+      "title": "Consistency Window",
+      "stage": "evolve",
+      "path": "concepts/consistency-window.md",
+      "status": "published"
+    },
+    {
       "id": "context-assembly",
       "type": "concept",
       "title": "Context Assembly",
@@ -858,6 +875,14 @@
       "status": "published"
     },
     {
+      "id": "sleep-time-compute",
+      "type": "concept",
+      "title": "Sleep-Time Compute",
+      "stage": "evolve",
+      "path": "concepts/sleep-time-compute.md",
+      "status": "published"
+    },
+    {
       "id": "slot",
       "type": "concept",
       "title": "Slot",
@@ -982,6 +1007,11 @@
     {
       "from": "relative-time-resolution",
       "to": "temporal-questions",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "temporal-knowledge-graphs",
       "kind": "requires_lesson"
     },
     {
@@ -1222,6 +1252,16 @@
     {
       "from": "relative-time-resolution",
       "to": "relative-time",
+      "kind": "teaches"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "sleep-time-compute",
+      "kind": "teaches"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "consistency-window",
       "kind": "teaches"
     },
     {
@@ -1582,6 +1622,21 @@
     {
       "from": "relative-time-resolution",
       "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "deduplication",
+      "kind": "uses"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "supersession",
       "kind": "uses"
     },
     {
@@ -2255,6 +2310,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "consistency-window",
+      "to": "sleep-time-compute",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "context-window",
       "to": "working-memory",
       "kind": "contrasts_with"
@@ -2367,6 +2427,11 @@
     {
       "from": "semantic-memory",
       "to": "episodic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "sleep-time-compute",
+      "to": "deduplication",
       "kind": "contrasts_with"
     },
     {

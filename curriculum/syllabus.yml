@@ -290,7 +290,7 @@ levels:
           - id: sleep-time-compute
             title: "Sleep-Time Compute"
             stage: evolve
-            objective: "Do memory work between conversations, and know when it pays off."
+            objective: "The window is the cost, not the compute -- and the gate that closes it is already computed."
           - id: background-job-mechanics
             title: "Background Job Mechanics"
             stage: evolve

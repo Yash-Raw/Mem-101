@@ -166,7 +166,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
-| 50 | [Sleep-Time Compute](curriculum/advanced/sleep-time-compute/index.md) | `evolve` | Do memory work between conversations, and know when it pays off. |
+| 50 | [Sleep-Time Compute](curriculum/advanced/sleep-time-compute/index.md) | `evolve` | The window is the cost, not the compute -- and the gate that closes it is already computed. |
 | 51 | [Background Job Mechanics](curriculum/advanced/background-job-mechanics/index.md) | `evolve` | Make consolidation idempotent, replayable, and safe against live writes. |
 | 52 | [Reflection and Insight](curriculum/advanced/reflection-and-insight/index.md) | `evolve` | Derive higher-order beliefs while suppressing attractive hallucinated inferences. |
 | 53 | [Promotion as a Release](curriculum/advanced/promotion-as-release/index.md) | `evolve` | Stage, review, and roll back consolidation like a controlled deploy. |

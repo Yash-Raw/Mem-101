@@ -48,6 +48,7 @@ class Pipeline:
     assemble: AssembleFn | None = None        # I8: budgeted packing; None = assemble.simple
     anchor: AnchorFn | None = None            # A1: resolve relative time against the turn clock
     bitemporal: bool = False                  # A1: split valid_to from invalid_at
+    sleep: object | None = None               # A2: a Schedule; None = consolidate inline
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -199,6 +200,13 @@ def advanced(through: str = "latest") -> Pipeline:
             bitemporal=True,     # valid_to and invalid_at are different instants
             anchor=anchor_all,   # and valid_from is read off the sentence
         )
+    if "A2" in reached:
+        from .sleep.schedule import Schedule
+
+        # Consolidate on the turns that contest a slot, and defer the rest.
+        # `None` keeps the batch behaviour every earlier snapshot was
+        # measured against -- `ingest()` consolidates once regardless.
+        p = replace(p, sleep=Schedule.default())
     return p
 
 

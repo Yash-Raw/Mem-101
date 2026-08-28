@@ -25,6 +25,8 @@ status: published
 **You need first:** [Resolving 'Last Week'](../relative-time-resolution/index.md)
 
 **Concepts assumed:** [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Validity Interval](../../../concepts/validity-interval.md) · [Graph Traversal](../../../concepts/graph-traversal.md)
+
+**This unlocks:** [Sleep-Time Compute](../sleep-time-compute/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -134,4 +136,6 @@ uv run python curriculum/advanced/temporal-knowledge-graphs/lab/lab.py
 **You need first:** [Resolving 'Last Week'](../relative-time-resolution/index.md)
 
 **Concepts assumed:** [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Validity Interval](../../../concepts/validity-interval.md) · [Graph Traversal](../../../concepts/graph-traversal.md)
+
+**This unlocks:** [Sleep-Time Compute](../sleep-time-compute/index.md)
 <!-- graph:end -->

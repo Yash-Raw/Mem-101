@@ -25,6 +25,8 @@ status: published
 **You need first:** [From Facts to a User Model](../from-facts-to-a-user-model/index.md)
 
 **Concepts assumed:** [User Model](../../../concepts/user-model.md) · [Consistency Window](../../../concepts/consistency-window.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Personalization Without Creepiness](../applying-the-model/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -135,4 +137,6 @@ uv run python curriculum/advanced/implicit-signals/lab/lab.py
 **You need first:** [From Facts to a User Model](../from-facts-to-a-user-model/index.md)
 
 **Concepts assumed:** [User Model](../../../concepts/user-model.md) · [Consistency Window](../../../concepts/consistency-window.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Personalization Without Creepiness](../applying-the-model/index.md)
 <!-- graph:end -->

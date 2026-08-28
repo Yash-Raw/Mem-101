@@ -1,6 +1,15 @@
 {
   "nodes": [
     {
+      "id": "applying-the-model",
+      "type": "lesson",
+      "title": "Personalization Without Creepiness",
+      "level": "advanced",
+      "stage": "assemble",
+      "order": 59,
+      "path": "curriculum/advanced/applying-the-model/index.md"
+    },
+    {
       "id": "background-job-mechanics",
       "type": "lesson",
       "title": "Background Job Mechanics",
@@ -708,6 +717,14 @@
       "status": "published"
     },
     {
+      "id": "disclosure",
+      "type": "concept",
+      "title": "Disclosure",
+      "stage": "assemble",
+      "path": "concepts/disclosure.md",
+      "status": "published"
+    },
+    {
       "id": "durability-gate",
       "type": "concept",
       "title": "The Durability Gate",
@@ -1068,6 +1085,14 @@
       "status": "published"
     },
     {
+      "id": "standing-instruction",
+      "type": "concept",
+      "title": "Standing Instruction",
+      "stage": "assemble",
+      "path": "concepts/standing-instruction.md",
+      "status": "published"
+    },
+    {
       "id": "summarization",
       "type": "concept",
       "title": "Summarization",
@@ -1213,6 +1238,11 @@
     }
   ],
   "edges": [
+    {
+      "from": "applying-the-model",
+      "to": "implicit-signals",
+      "kind": "requires_lesson"
+    },
     {
       "from": "background-job-mechanics",
       "to": "sleep-time-compute",
@@ -1502,6 +1532,16 @@
       "from": "why-forgetting-is-a-feature",
       "to": "supersession-not-deletion",
       "kind": "requires_lesson"
+    },
+    {
+      "from": "applying-the-model",
+      "to": "disclosure",
+      "kind": "teaches"
+    },
+    {
+      "from": "applying-the-model",
+      "to": "standing-instruction",
+      "kind": "teaches"
     },
     {
       "from": "background-job-mechanics",
@@ -1942,6 +1982,21 @@
       "from": "why-forgetting-is-a-feature",
       "to": "relevance-vs-truth",
       "kind": "teaches"
+    },
+    {
+      "from": "applying-the-model",
+      "to": "user-model",
+      "kind": "uses"
+    },
+    {
+      "from": "applying-the-model",
+      "to": "element-cost",
+      "kind": "uses"
+    },
+    {
+      "from": "applying-the-model",
+      "to": "retrieval-scoping",
+      "kind": "uses"
     },
     {
       "from": "background-job-mechanics",
@@ -2824,6 +2879,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "disclosure",
+      "to": "memory-observability",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "durability-gate",
       "to": "salience",
       "kind": "contrasts_with"
@@ -2961,6 +3021,11 @@
     {
       "from": "staged-change",
       "to": "snapshot-isolation",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "standing-instruction",
+      "to": "user-model",
       "kind": "contrasts_with"
     },
     {

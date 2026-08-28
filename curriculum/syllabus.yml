@@ -338,7 +338,7 @@ levels:
           - id: applying-the-model
             title: "Personalization Without Creepiness"
             stage: assemble
-            objective: "Apply the model with user-visible correction affordances."
+            objective: "Split the model by how each attribute is used, and report what was withheld."
           - id: cold-start-and-shared-accounts
             title: "Cold Start and Shared Accounts"
             stage: retrieve

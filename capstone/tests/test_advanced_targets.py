@@ -214,3 +214,130 @@ def test_but_it_converges_to_the_same_store(tmp_path) -> None:
     assert live == sum(m.is_live for m in eager.all()) == 30, (
         "and on the same live set as the shipped batch ingest"
     )
+
+
+# --- A3 target: an unauthorised write does damage without being believed ----
+def _with_agent_write(tmp_path, tag, when=None, content="Priya works at Meridian Health"):
+    """Ingest with one extra agent-written memory, through the real path."""
+    from memlab.app import chat
+    from memlab.types import Memory, MemoryType, Provenance
+
+    original = chat._agent_memories
+    if when is not None:
+        def patched(scope):
+            return [
+                *original(scope),
+                Memory(
+                    content=content,
+                    type=MemoryType.SEMANTIC,
+                    # The user's own namespace, not the agent's. Nothing checks.
+                    scope=Scope(user=scope.user),
+                    happened_at=when,
+                    provenance=Provenance(
+                        source_id="travel-agent:z",
+                        speaker="travel-agent",
+                        authority=0.3,
+                    ),
+                    confidence=0.3,
+                ),
+            ]
+        chat._agent_memories = patched
+    try:
+        pipeline = get("advanced")
+        store = JsonlStore(tmp_path / f"{tag}.jsonl")
+        store.clear()
+        ingest(store, PRIYA, pipeline)
+        if pipeline.vectors is not None:
+            pipeline.vectors.index(store.all())
+        return store, pipeline
+    finally:
+        chat._agent_memories = original
+
+
+def _eligible_count(store):
+    from memlab.retrieve.scoped import eligible
+
+    return len(eligible(store.all(), PRIYA))
+
+
+def test_a_low_trust_agent_can_write_into_the_users_own_namespace(tmp_path) -> None:
+    """Read isolation is enforced; write authorisation does not exist."""
+    from memlab.store.scopes import leak_check, visible
+
+    store, _p = _with_agent_write(tmp_path, "rogue", datetime(2026, 5, 1, tzinfo=UTC))
+    rogue = next(m for m in store.all() if "Meridian" in m.content)
+    assert rogue.scope.agent is None, "filed as though the user had said it"
+    assert any(m.id == rogue.id for m in visible(store.all(), PRIYA))
+    assert not any(m.id == rogue.id for m in leak_check(store.all(), PRIYA)), (
+        "leak_check catches cross-USER reads; this is not one"
+    )
+
+
+def test_a_future_dated_write_re_ages_the_whole_store(tmp_path) -> None:
+    """The claim is never believed. Its timestamp does the damage.
+
+    `forget.decay.reference_now` is the newest event in the store, so one
+    record dated ahead ages everything else past the LONG_TERM threshold --
+    before arbitration has looked at the claim at all.
+    """
+    from memlab.app.chat import ask
+
+    clean, clean_pipe = _with_agent_write(tmp_path, "clean")
+    inside, _ = _with_agent_write(tmp_path, "inside", datetime(2026, 5, 1, tzinfo=UTC))
+    ahead, ahead_pipe = _with_agent_write(
+        tmp_path, "ahead", datetime(2027, 5, 16, tzinfo=UTC)
+    )
+
+    assert (len(clean.all()), _eligible_count(clean)) == (37, 18)
+    assert (len(inside.all()), _eligible_count(inside)) == (38, 18)
+    assert (len(ahead.all()), _eligible_count(ahead)) == (38, 5)
+
+    def top2(store, pipeline):
+        return [h.memory.content for h in ask(store, PRIYA, "where do I work?",
+                                              k=2, pipeline=pipeline)[1]]
+
+    assert "Calico Systems" in top2(clean, clean_pipe)[0]
+    assert not any("Calico" in c for c in top2(ahead, ahead_pipe)), (
+        "the employer fact is no longer retrievable"
+    )
+
+
+# --- A4 target: there is no user model, and the naive one is wrong ----------
+def test_the_naive_user_model_is_mostly_not_about_the_user(built) -> None:
+    from memlab.evolve.conflict import slot_of
+    from memlab.types import MemoryType
+
+    store, _ = built["advanced"]
+    naive = [
+        m for m in store.all() if m.type is MemoryType.SEMANTIC and m.is_live
+    ]
+    assert len(naive) == 19
+    third_party = [m for m in naive if m.entities]
+    assert len(third_party) == 2, "Samira's job, in a model of Priya"
+    assert sum(1 for m in naive if not slot_of(m)) == 6, "no attribute to key on"
+
+
+# --- A5 target: the procedure is stored, live, and unreachable --------------
+def test_the_procedure_is_never_retrieved(built) -> None:
+    """gold predicts the steps come back shuffled. They do not come back."""
+    from memlab.app.chat import ask
+    from memlab.types import MemoryType
+
+    store, pipeline = built["advanced"]
+    if pipeline.vectors is not None:
+        pipeline.vectors.index(store.all())
+    procedures = [m for m in store.all() if m.type is MemoryType.PROCEDURAL]
+    assert len(procedures) == 2
+    assert all(m.is_live for m in procedures)
+
+    hits = ask(store, PRIYA, "how do I do the weekly report?", k=5, pipeline=pipeline)[1]
+    assert not any(h.memory.type is MemoryType.PROCEDURAL for h in hits), (
+        "not ranked low -- absent"
+    )
+
+    hits = ask(store, PRIYA, "what are the steps for the weekly report",
+               k=5, pipeline=pipeline)[1]
+    assert hits[0].memory.type is MemoryType.PROCEDURAL
+    assert "diff step matters most" in hits[0].memory.content, (
+        "and it is the commentary, not the recipe"
+    )

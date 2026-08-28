@@ -25,6 +25,8 @@ status: published
 **You need first:** [LLM as Judge, and Its Failure Modes](../llm-as-judge-for-memory/index.md)
 
 **Concepts assumed:** [Eval Suite](../../../concepts/eval-suite.md) · [Flat Metric](../../../concepts/flat-metric.md) · [Component Metric](../../../concepts/component-metric.md)
+
+**This unlocks:** [The Write Path Dominates](../cost-model/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -124,4 +126,6 @@ uv run python curriculum/advanced/reading-benchmark-claims/lab/lab.py
 **You need first:** [LLM as Judge, and Its Failure Modes](../llm-as-judge-for-memory/index.md)
 
 **Concepts assumed:** [Eval Suite](../../../concepts/eval-suite.md) · [Flat Metric](../../../concepts/flat-metric.md) · [Component Metric](../../../concepts/component-metric.md)
+
+**This unlocks:** [The Write Path Dominates](../cost-model/index.md)
 <!-- graph:end -->

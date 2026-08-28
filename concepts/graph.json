@@ -37,6 +37,15 @@
       "path": "curriculum/advanced/component-metrics/index.md"
     },
     {
+      "id": "cost-model",
+      "type": "lesson",
+      "title": "The Write Path Dominates",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 75,
+      "path": "curriculum/advanced/cost-model/index.md"
+    },
+    {
       "id": "cross-agent-write-conflicts",
       "type": "lesson",
       "title": "Cross-Agent Write Conflicts",
@@ -860,6 +869,14 @@
       "status": "published"
     },
     {
+      "id": "cost-profile",
+      "type": "concept",
+      "title": "Cost Profile",
+      "stage": "govern",
+      "path": "concepts/cost-profile.md",
+      "status": "published"
+    },
+    {
       "id": "coverage-vs-knowledge",
       "type": "concept",
       "title": "Coverage vs Knowledge",
@@ -1572,6 +1589,14 @@
       "status": "published"
     },
     {
+      "id": "write-path-dominance",
+      "type": "concept",
+      "title": "Write-Path Dominance",
+      "stage": "govern",
+      "path": "concepts/write-path-dominance.md",
+      "status": "published"
+    },
+    {
       "id": "write-path-recall",
       "type": "concept",
       "title": "Write-Path Recall",
@@ -1607,6 +1632,11 @@
     {
       "from": "component-metrics",
       "to": "why-memory-eval-is-hard",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "cost-model",
+      "to": "reading-benchmark-claims",
       "kind": "requires_lesson"
     },
     {
@@ -1992,6 +2022,16 @@
     {
       "from": "component-metrics",
       "to": "unlocated-assertion",
+      "kind": "teaches"
+    },
+    {
+      "from": "cost-model",
+      "to": "cost-profile",
+      "kind": "teaches"
+    },
+    {
+      "from": "cost-model",
+      "to": "write-path-dominance",
       "kind": "teaches"
     },
     {
@@ -2607,6 +2647,21 @@
     {
       "from": "component-metrics",
       "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "cost-model",
+      "to": "extraction-pipeline",
+      "kind": "uses"
+    },
+    {
+      "from": "cost-model",
+      "to": "vector-index",
+      "kind": "uses"
+    },
+    {
+      "from": "cost-model",
+      "to": "element-cost",
       "kind": "uses"
     },
     {
@@ -3675,6 +3730,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "cost-profile",
+      "to": "write-path-dominance",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "coverage-vs-knowledge",
       "to": "user-model",
       "kind": "contrasts_with"
@@ -4002,6 +4062,11 @@
     {
       "from": "write-authorisation",
       "to": "retrieval-scoping",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "write-path-dominance",
+      "to": "cost-profile",
       "kind": "contrasts_with"
     },
     {

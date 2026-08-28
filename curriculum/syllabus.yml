@@ -418,7 +418,7 @@ levels:
           - id: cost-model
             title: "The Write Path Dominates"
             stage: govern
-            objective: "Price per-turn extraction as the expensive part — the inverse of RAG's cost profile."
+            objective: "Count the calls: the read path makes none, and the write path makes two per turn."
           - id: latency-budget
             title: "The Latency Budget"
             stage: govern

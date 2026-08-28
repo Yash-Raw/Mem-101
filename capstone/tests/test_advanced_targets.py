@@ -332,11 +332,19 @@ def test_the_write_policy_refuses_the_future_dated_write(tmp_path) -> None:
 
 
 # --- A4 target: there is no user model, and the naive one is wrong ----------
-def test_the_naive_user_model_is_mostly_not_about_the_user(built) -> None:
+def test_the_naive_user_model_is_mostly_not_about_the_user(tmp_path) -> None:
+    """Pinned to @A3, not to `latest`.
+
+    The count is over live semantic memories, so anything a later Advanced
+    module changes about what stays live moves it as a side effect. A4 is
+    where this flips; until then it should fail for its own reasons only.
+    """
     from memlab.evolve.conflict import slot_of
     from memlab.types import MemoryType
 
-    store, _ = built["advanced"]
+    store = JsonlStore(tmp_path / "naive.jsonl")
+    store.clear()
+    ingest(store, PRIYA, at("A3"))
     naive = [
         m for m in store.all() if m.type is MemoryType.SEMANTIC and m.is_live
     ]

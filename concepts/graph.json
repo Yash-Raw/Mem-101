@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/background-job-mechanics/index.md"
     },
     {
+      "id": "cross-agent-write-conflicts",
+      "type": "lesson",
+      "title": "Cross-Agent Write Conflicts",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 55,
+      "path": "curriculum/advanced/cross-agent-write-conflicts/index.md"
+    },
+    {
       "id": "memory-topologies",
       "type": "lesson",
       "title": "Memory Topologies",
@@ -624,6 +633,14 @@
       "status": "published"
     },
     {
+      "id": "cross-writer-conflict",
+      "type": "concept",
+      "title": "Cross-Writer Conflict",
+      "stage": "evolve",
+      "path": "concepts/cross-writer-conflict.md",
+      "status": "published"
+    },
+    {
       "id": "decay-function",
       "type": "concept",
       "title": "Decay",
@@ -1127,6 +1144,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "cross-agent-write-conflicts",
+      "to": "provenance-and-trust",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "memory-topologies",
       "to": "promotion-as-release",
       "kind": "requires_lesson"
@@ -1399,6 +1421,11 @@
     {
       "from": "background-job-mechanics",
       "to": "snapshot-isolation",
+      "kind": "teaches"
+    },
+    {
+      "from": "cross-agent-write-conflicts",
+      "to": "cross-writer-conflict",
       "kind": "teaches"
     },
     {
@@ -1809,6 +1836,21 @@
     {
       "from": "background-job-mechanics",
       "to": "deduplication",
+      "kind": "uses"
+    },
+    {
+      "from": "cross-agent-write-conflicts",
+      "to": "competence",
+      "kind": "uses"
+    },
+    {
+      "from": "cross-agent-write-conflicts",
+      "to": "memory-operations",
+      "kind": "uses"
+    },
+    {
+      "from": "cross-agent-write-conflicts",
+      "to": "provenance",
       "kind": "uses"
     },
     {
@@ -2589,6 +2631,11 @@
     {
       "from": "corroboration",
       "to": "deduplication",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "cross-writer-conflict",
+      "to": "memory-operations",
       "kind": "contrasts_with"
     },
     {

@@ -109,3 +109,14 @@ def unchecked(memories: list[Memory]) -> list[Memory]:
         for m in memories
         if m.provenance.speaker not in ("user", "assistant") and slot_of(m) is None
     ]
+
+
+def claim_trust(memory: Memory) -> float:
+    """The score arbitration weighs, in place of `provenance.authority`.
+
+    `arbitrate`'s first rule is a threshold, not a gradient: 0.9 and 1.0 are
+    the same number to it. So an agent above the line wins on recency against
+    the user's own statement, and the only thing that puts an out-of-domain
+    claim back below it is scoring the claim.
+    """
+    return assess(memory).trust

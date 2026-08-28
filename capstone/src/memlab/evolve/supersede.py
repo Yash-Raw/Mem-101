@@ -56,7 +56,7 @@ def _found_out(loser: Memory, winner: Memory) -> datetime:
 
 
 def reconcile(
-    memories: list[Memory], scope: Scope, bitemporal: bool = False
+    memories: list[Memory], scope: Scope, bitemporal: bool = False, trust=None
 ) -> Reconciliation:
     """Detect, decide, and apply -- retiring losers, corroborating restatements.
 
@@ -65,7 +65,7 @@ def reconcile(
     found out. Off, both get the winner's event time -- which is what every
     Level 2 figure was measured against.
     """
-    decisions = decide_all(detect(memories, scope))
+    decisions = decide_all(detect(memories, scope), trust)
 
     retire: dict[str, tuple[str, datetime, datetime]] = {}
     support: dict[str, list[Memory]] = {}

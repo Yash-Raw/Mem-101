@@ -25,6 +25,8 @@ status: published
 **You need first:** [Memory Topologies](../memory-topologies/index.md)
 
 **Concepts assumed:** [Provenance](../../../concepts/provenance.md) · [Slot](../../../concepts/slot.md) · [Memory Topology](../../../concepts/memory-topology.md)
+
+**This unlocks:** [Cross-Agent Write Conflicts](../cross-agent-write-conflicts/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -115,6 +117,8 @@ uv run python curriculum/advanced/provenance-and-trust/lab/lab.py
 
 `memlab.agents.trust` — `Verdict`, `Assessment`, `COMPETENCE`, `competence`, `assess`, `unchecked`. Reads `SLOTS` and `slot_of` from `evolve.conflict` rather than restating them, so the vocabulary has one definition and this lesson's gap is the same gap arbitration has.
 
+**`assess` ships unwired.** The write policy already live in `ingest` admits the calendar agent's unnameable writes at full authority and says nothing, which is exactly what this lesson argues it should do — the flag belongs where two claims are being weighed against each other, not where one is being let in. `cross-agent-write-conflicts` is where trust replaces raw authority in arbitration, and it is the next lesson. Until then this module computes a verdict nothing consumes, and saying so is cheaper than a reader discovering it.
+
 ## Failure modes
 
 | Symptom | Cause | How to detect | Mitigation |
@@ -144,4 +148,6 @@ uv run python curriculum/advanced/provenance-and-trust/lab/lab.py
 **You need first:** [Memory Topologies](../memory-topologies/index.md)
 
 **Concepts assumed:** [Provenance](../../../concepts/provenance.md) · [Slot](../../../concepts/slot.md) · [Memory Topology](../../../concepts/memory-topology.md)
+
+**This unlocks:** [Cross-Agent Write Conflicts](../cross-agent-write-conflicts/index.md)
 <!-- graph:end -->

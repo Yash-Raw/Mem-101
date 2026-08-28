@@ -318,7 +318,7 @@ levels:
           - id: cross-agent-write-conflicts
             title: "Cross-Agent Write Conflicts"
             stage: evolve
-            objective: "Arbitrate concurrent writes from multiple agents."
+            objective: "The precedence rule is a threshold -- and above it, recency decides."
           - id: memory-access-control
             title: "Memory Access Control"
             stage: govern

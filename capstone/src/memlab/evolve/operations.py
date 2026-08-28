@@ -47,15 +47,15 @@ class Decision:
         return self.verdict.loser if self.operation is Operation.UPDATE else None
 
 
-def decide(conflict: Conflict) -> Decision:
+def decide(conflict: Conflict, trust=None) -> Decision:
     operation = POLICY[conflict.relation]
     verdict = (
-        arbitrate(conflict.a, conflict.b)
+        arbitrate(conflict.a, conflict.b, trust)
         if operation in (Operation.UPDATE, Operation.MERGE)
         else None
     )
     return Decision(conflict=conflict, operation=operation, verdict=verdict)
 
 
-def decide_all(conflicts: list[Conflict]) -> list[Decision]:
-    return [decide(c) for c in conflicts]
+def decide_all(conflicts: list[Conflict], trust=None) -> list[Decision]:
+    return [decide(c, trust) for c in conflicts]

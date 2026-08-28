@@ -21,5 +21,5 @@ The standard mistake is letting a model pick from this list directly. Asked what
 <!-- graph:begin -->
 **Taught in:** [ADD, UPDATE, MERGE, NOOP](../curriculum/intermediate/memory-operations/index.md)
 
-**Used in:** [Deterministic Arbitration](../curriculum/intermediate/deterministic-freshness/index.md) · [Supersede, Never Destroy](../curriculum/intermediate/supersession-not-deletion/index.md)
+**Used in:** [Cross-Agent Write Conflicts](../curriculum/advanced/cross-agent-write-conflicts/index.md) · [Deterministic Arbitration](../curriculum/intermediate/deterministic-freshness/index.md) · [Supersede, Never Destroy](../curriculum/intermediate/supersession-not-deletion/index.md)
 <!-- graph:end -->

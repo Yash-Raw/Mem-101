@@ -35,11 +35,19 @@ def _when(memory: Memory):
     return memory.happened_at or memory.recorded_at
 
 
-def arbitrate(a: Memory, b: Memory) -> Verdict:
-    """Rules in priority order. The first that discriminates decides."""
+def arbitrate(a: Memory, b: Memory, trust=None) -> Verdict:
+    """Rules in priority order. The first that discriminates decides.
+
+    `trust` (A3) is a per-claim score replacing raw authority in rule 1.
+    `FIRST_PARTY` is a threshold, not a gradient, so 0.9 and 1.0 are the same
+    number to it -- and a 0.9 agent that is merely *newer* than the user then
+    wins on recency. Scoring the claim rather than the claimant is what puts
+    an out-of-domain assertion back below the line.
+    """
+    weight = trust or (lambda m: m.provenance.authority)
     # 1. Authority. A relayed claim never beats a first-party one.
-    a_first = a.provenance.authority >= FIRST_PARTY
-    b_first = b.provenance.authority >= FIRST_PARTY
+    a_first = weight(a) >= FIRST_PARTY
+    b_first = weight(b) >= FIRST_PARTY
     if a_first != b_first:
         winner, loser = (a, b) if a_first else (b, a)
         return Verdict(winner, loser, "authority")

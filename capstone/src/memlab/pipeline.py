@@ -50,6 +50,7 @@ class Pipeline:
     bitemporal: bool = False                  # A1: split valid_to from invalid_at
     sleep: object | None = None               # A2: a Schedule; None = consolidate inline
     admit: object | None = None               # A3: a WritePolicy; None = accept any write
+    trust: object | None = None               # A3: per-claim trust; None = raw authority
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -163,7 +164,7 @@ def _resolve_dedupe_reconcile(memories):
     return _reconcile(memories, bitemporal=False)
 
 
-def _reconcile(memories, bitemporal: bool):
+def _reconcile(memories, bitemporal: bool, trust=None):
     from .types import Scope
 
     consolidated = _resolve_then_dedupe(memories)
@@ -172,7 +173,7 @@ def _reconcile(memories, bitemporal: bool):
         return consolidated
     from .evolve.supersede import reconcile
 
-    return reconcile(consolidated, scope, bitemporal=bitemporal).memories
+    return reconcile(consolidated, scope, bitemporal=bitemporal, trust=trust).memories
 
 
 def advanced(through: str = "latest") -> Pipeline:
@@ -213,7 +214,14 @@ def advanced(through: str = "latest") -> Pipeline:
 
         # Who may write what, where. `None` accepts anything, which is what
         # every earlier snapshot was measured against.
-        p = replace(p, admit=WritePolicy.default())
+        from .agents.trust import claim_trust
+
+        p = replace(
+            p,
+            admit=WritePolicy.default(),
+            trust=claim_trust,                    # arbitrate on the claim, not the claimant
+            consolidate=_anchor_reconcile_trusted,
+        )
     return p
 
 
@@ -226,6 +234,19 @@ def _resolve_dedupe_reconcile_bitemporal(memories):
     measure the model before the parser closed the gap.
     """
     return _reconcile(memories, bitemporal=True)
+
+
+def _anchor_reconcile_trusted(memories):
+    """A1's write path, with arbitration weighing the claim rather than the writer."""
+    from .agents.trust import claim_trust
+
+    return _reconcile(_anchor(memories), bitemporal=True, trust=claim_trust)
+
+
+def _anchor(memories):
+    from .temporal.anchor import anchor_all
+
+    return anchor_all(memories)
 
 
 def _anchor_then_reconcile(memories):

@@ -25,7 +25,7 @@ The shape that leaks nothing leaves an agent able to read one memory: its own. I
 <!-- graph:begin -->
 **Taught in:** [Memory Topologies](../curriculum/advanced/memory-topologies/index.md)
 
-**Used in:** [Provenance and Trust](../curriculum/advanced/provenance-and-trust/index.md)
+**Used in:** [Memory Access Control](../curriculum/advanced/memory-access-control/index.md) · [Provenance and Trust](../curriculum/advanced/provenance-and-trust/index.md)
 
 **Do not confuse with:** [Retrieval Scoping](retrieval-scoping.md)
 <!-- graph:end -->

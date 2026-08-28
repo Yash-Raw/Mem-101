@@ -25,6 +25,8 @@ status: published
 **You need first:** [Provenance and Trust](../provenance-and-trust/index.md)
 
 **Concepts assumed:** [Competence](../../../concepts/competence.md) · [Memory Operations](../../../concepts/memory-operations.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Memory Access Control](../memory-access-control/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -66,7 +68,7 @@ Both are above 0.5, so rule 1 does not discriminate, and arbitration falls throu
 ### And it changes nothing here
 
 ```
-@A3 store contents == @A2, byte for byte
+@A3 store contents == @A2 -- same ids, same validity, same supersessions
 ```
 
 The one real cross-writer pair is a 0.3 relay, and its out-of-domain discount lands exactly on the authority it already had. **The mechanism is correct and this corpus cannot demonstrate it**, which is worth stating rather than staging — the same call `graph-stores` made about a corpus with one node.
@@ -129,4 +131,6 @@ uv run python curriculum/advanced/cross-agent-write-conflicts/lab/lab.py
 **You need first:** [Provenance and Trust](../provenance-and-trust/index.md)
 
 **Concepts assumed:** [Competence](../../../concepts/competence.md) · [Memory Operations](../../../concepts/memory-operations.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Memory Access Control](../memory-access-control/index.md)
 <!-- graph:end -->

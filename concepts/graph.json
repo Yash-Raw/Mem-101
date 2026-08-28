@@ -19,6 +19,15 @@
       "path": "curriculum/advanced/cross-agent-write-conflicts/index.md"
     },
     {
+      "id": "memory-access-control",
+      "type": "lesson",
+      "title": "Memory Access Control",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 56,
+      "path": "curriculum/advanced/memory-access-control/index.md"
+    },
+    {
       "id": "memory-topologies",
       "type": "lesson",
       "title": "Memory Topologies",
@@ -793,6 +802,14 @@
       "status": "published"
     },
     {
+      "id": "leak-assertion",
+      "type": "concept",
+      "title": "Leak Assertion",
+      "stage": "govern",
+      "path": "concepts/leak-assertion.md",
+      "status": "published"
+    },
+    {
       "id": "lost-update",
       "type": "concept",
       "title": "Lost Update",
@@ -1113,6 +1130,14 @@
       "status": "published"
     },
     {
+      "id": "write-authorisation",
+      "type": "concept",
+      "title": "Write Authorisation",
+      "stage": "govern",
+      "path": "concepts/write-authorisation.md",
+      "status": "published"
+    },
+    {
       "id": "write-fan-out",
       "type": "concept",
       "title": "Write Fan-Out",
@@ -1146,6 +1171,11 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "provenance-and-trust",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "memory-access-control",
+      "to": "cross-agent-write-conflicts",
       "kind": "requires_lesson"
     },
     {
@@ -1426,6 +1456,16 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "cross-writer-conflict",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-access-control",
+      "to": "write-authorisation",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-access-control",
+      "to": "leak-assertion",
       "kind": "teaches"
     },
     {
@@ -1851,6 +1891,21 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-access-control",
+      "to": "memory-topology",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-access-control",
+      "to": "competence",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-access-control",
+      "to": "retrieval-scoping",
       "kind": "uses"
     },
     {
@@ -2689,6 +2744,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "leak-assertion",
+      "to": "write-authorisation",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "lost-update",
       "to": "snapshot-isolation",
       "kind": "contrasts_with"
@@ -2821,6 +2881,11 @@
     {
       "from": "working-memory",
       "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "write-authorisation",
+      "to": "retrieval-scoping",
       "kind": "contrasts_with"
     },
     {

@@ -322,7 +322,7 @@ levels:
           - id: memory-access-control
             title: "Memory Access Control"
             stage: govern
-            objective: "Enforce read/write scopes and prevent cross-tenant leakage."
+            objective: "Say no to a write, and assert the filter that says no to a read."
 
       - id: personalization
         title: "Personalization & User Modeling"

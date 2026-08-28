@@ -17,7 +17,9 @@ jobs:
       MEMLAB_LLM: fake      # the whole course runs with no API key
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      # setup-uv stopped publishing floating major tags after v7,
+      # so this one is pinned exactly while the rest track their major.
+      - uses: astral-sh/setup-uv@v10.0.1
       # Matches the documented setup in README.md. The `live` extra pulls the
       # anthropic SDK, which nothing imports under MEMLAB_LLM=fake.
       - run: uv sync --dev
@@ -51,7 +53,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.0.1
       - run: uv sync --dev
       - run: uv run mkdocs build --strict
       - uses: actions/upload-pages-artifact@v5

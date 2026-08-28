@@ -25,6 +25,8 @@ status: published
 **You need first:** [Cold Start and Shared Accounts](../cold-start-and-shared-accounts/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [The Extraction Pipeline](../../../concepts/extraction-pipeline.md)
+
+**This unlocks:** [Learning From Outcomes](../learning-from-outcomes/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -137,4 +139,6 @@ uv run python curriculum/advanced/procedural-memory/lab/lab.py
 **You need first:** [Cold Start and Shared Accounts](../cold-start-and-shared-accounts/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [The Extraction Pipeline](../../../concepts/extraction-pipeline.md)
+
+**This unlocks:** [Learning From Outcomes](../learning-from-outcomes/index.md)
 <!-- graph:end -->

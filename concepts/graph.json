@@ -55,6 +55,15 @@
       "path": "curriculum/advanced/implicit-signals/index.md"
     },
     {
+      "id": "learning-from-outcomes",
+      "type": "lesson",
+      "title": "Learning From Outcomes",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 62,
+      "path": "curriculum/advanced/learning-from-outcomes/index.md"
+    },
+    {
       "id": "memory-access-control",
       "type": "lesson",
       "title": "Memory Access Control",
@@ -751,6 +760,14 @@
       "status": "published"
     },
     {
+      "id": "dropped-clause",
+      "type": "concept",
+      "title": "Dropped Clause",
+      "stage": "extract",
+      "path": "concepts/dropped-clause.md",
+      "status": "published"
+    },
+    {
       "id": "durability-gate",
       "type": "concept",
       "title": "The Durability Gate",
@@ -884,6 +901,14 @@
       "title": "Leak Assertion",
       "stage": "govern",
       "path": "concepts/leak-assertion.md",
+      "status": "published"
+    },
+    {
+      "id": "lessons-learned",
+      "type": "concept",
+      "title": "Lessons Learned",
+      "stage": "evolve",
+      "path": "concepts/lessons-learned.md",
       "status": "published"
     },
     {
@@ -1303,6 +1328,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "learning-from-outcomes",
+      "to": "procedural-memory",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "memory-access-control",
       "to": "cross-agent-write-conflicts",
       "kind": "requires_lesson"
@@ -1625,6 +1655,16 @@
     {
       "from": "implicit-signals",
       "to": "correction-as-label",
+      "kind": "teaches"
+    },
+    {
+      "from": "learning-from-outcomes",
+      "to": "lessons-learned",
+      "kind": "teaches"
+    },
+    {
+      "from": "learning-from-outcomes",
+      "to": "dropped-clause",
       "kind": "teaches"
     },
     {
@@ -2130,6 +2170,21 @@
     {
       "from": "implicit-signals",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "learning-from-outcomes",
+      "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "learning-from-outcomes",
+      "to": "step-order",
+      "kind": "uses"
+    },
+    {
+      "from": "learning-from-outcomes",
+      "to": "extraction-pipeline",
       "kind": "uses"
     },
     {
@@ -2973,6 +3028,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "dropped-clause",
+      "to": "over-extraction",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "durability-gate",
       "to": "salience",
       "kind": "contrasts_with"
@@ -3015,6 +3075,11 @@
     {
       "from": "leak-assertion",
       "to": "write-authorisation",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "lessons-learned",
+      "to": "procedural-memory",
       "kind": "contrasts_with"
     },
     {

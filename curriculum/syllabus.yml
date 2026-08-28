@@ -354,7 +354,7 @@ levels:
           - id: learning-from-outcomes
             title: "Learning From Outcomes"
             stage: evolve
-            objective: "Store corrections and failures as a lessons-learned store."
+            objective: "The conclusion survives and the evidence does not -- measured from the transcript."
           - id: retrieving-procedures
             title: "Retrieving Procedures"
             stage: retrieve

@@ -21,5 +21,5 @@ One prompt doing four jobs cannot be debugged — when a fact is missing you can
 <!-- graph:begin -->
 **Taught in:** [Extraction Pipelines](../curriculum/intermediate/extraction-pipelines/index.md)
 
-**Used in:** [Procedural Memory](../curriculum/advanced/procedural-memory/index.md) · [Atomic Memories](../curriculum/intermediate/atomic-memories/index.md) · [Entities and Aliases](../curriculum/intermediate/entities-and-aliases/index.md) · [Precision and Recall on the Write Path](../curriculum/intermediate/extraction-quality/index.md)
+**Used in:** [Learning From Outcomes](../curriculum/advanced/learning-from-outcomes/index.md) · [Procedural Memory](../curriculum/advanced/procedural-memory/index.md) · [Atomic Memories](../curriculum/intermediate/atomic-memories/index.md) · [Entities and Aliases](../curriculum/intermediate/entities-and-aliases/index.md) · [Precision and Recall on the Write Path](../curriculum/intermediate/extraction-quality/index.md)
 <!-- graph:end -->

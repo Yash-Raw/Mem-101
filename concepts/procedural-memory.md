@@ -25,7 +25,7 @@ The subtler problem is that a remark *about* a procedure gets the same type. On 
 <!-- graph:begin -->
 **Taught in:** [Procedural Memory](../curriculum/advanced/procedural-memory/index.md) · [The Taxonomy That Actually Routes](../curriculum/beginner/memory-taxonomy/index.md)
 
-**Used in:** [Resolving 'Last Week'](../curriculum/advanced/relative-time-resolution/index.md) · [Atomic Memories](../curriculum/intermediate/atomic-memories/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
+**Used in:** [Learning From Outcomes](../curriculum/advanced/learning-from-outcomes/index.md) · [Resolving 'Last Week'](../curriculum/advanced/relative-time-resolution/index.md) · [Atomic Memories](../curriculum/intermediate/atomic-memories/index.md) · [The Typed Memory Model](../curriculum/intermediate/typed-memory-model/index.md)
 
 **Do not confuse with:** [Semantic Memory](semantic-memory.md)
 <!-- graph:end -->

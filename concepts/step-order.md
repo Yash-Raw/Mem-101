@@ -25,5 +25,7 @@ And the step that matters most may be in the middle. Here it is second of four, 
 <!-- graph:begin -->
 **Taught in:** [Procedural Memory](../curriculum/advanced/procedural-memory/index.md)
 
+**Used in:** [Learning From Outcomes](../curriculum/advanced/learning-from-outcomes/index.md)
+
 **Do not confuse with:** [The Extraction Pipeline](extraction-pipeline.md)
 <!-- graph:end -->

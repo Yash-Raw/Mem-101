@@ -207,5 +207,54 @@ Two from 2c, both of which are null results a lesson is built on:
   lever is that the framing header was 38% of the context. Optimise the
   elements you priced, not the ones you assumed mattered.
 
-Remaining: Advanced (40 lessons), and `mkdocs.yml` (Phase 7 — the CI step is
-present but gated on the file existing).
+**Milestone 3a complete** — Advanced modules A1–A2 (9 lessons), `memlab`
+v0.3-alpha. 519 tests.
+
+Level 3 layers on top of Level 2 rather than replacing it: `advanced("A1")` is
+`intermediate("latest")` plus A1's switches, `ADVANCED_MODULES` runs A1–A9, and
+`at()` dispatches on the prefix so `at("I3")` and `at("A1")` both mean "as that
+module left it". A1 carries two switches (`bitemporal`, `anchor`) against the
+one-per-module convention; a lesson needing a sub-state pins it explicitly with
+`at("A1").with_stage(anchor=None, ...)`.
+
+**`uv run python tools/dump_snapshots.py`** is the before/after proof for every
+shared-code change. It covers `@I1`–`@I8` *and* the landed `@A*`, plus
+`valid_from` / `valid_to` / distinct `recorded_at` / every event time — the
+fields A1 added, which an ids-and-scores dump would not have caught moving.
+
+Three shared-code changes landed under Level 2, all proven snapshot-safe and
+none visible from lesson prose: `recorded_at` now comes from the turn clock in
+both extract paths (v0.2 records are **deterministic between runs**, which they
+were not); `evolve/promote.py` writes memory ids into `derived_from` rather than
+source ids, matching `summarize`; and `retrieve.scoped.eligible`/`search` gained
+`live_only` and `retrievable_only`, both defaulting to today's behaviour.
+
+Findings from 3a, each a lesson's spine:
+
+- **Two clocks in the record, and neither read the sentence.** 37 of 37 event
+  times were the instant the record was written. The first audit reported 34/37
+  by counting only user turns — agent writes stamp their own clock too, so a
+  denominator chosen without checking turned a 100% failure into 92%.
+- **`invalid_at` was answering two questions**, retiring the Berlin hearsay nine
+  months before it was recorded. `valid_to` is when a fact stopped being true;
+  `invalid_at` is when the store found out.
+- **The read path assumed *now* in three places.** Routing a dated question
+  fixes nothing until both `live_only` and the I5 tier cap are released: 0 → 0 →
+  1 → 4 of 4. A memory demoted for being stale is the memory a question about
+  the past wants.
+- **A relative-time parser must be able to decline.** Four classes of phrase and
+  the fifth answer is "not a time reference" — `diff against last week` is a
+  step inside a taught procedure, and resolving it dates the recipe.
+- **Deferred consolidation costs the window, not the compute.** 13× cheaper,
+  identical store, and 11 of 24 turns believing a job she had already left. The
+  gate that closes it is `slot_of` — already computed by the write path.
+- **`store.replace(consolidate(store.all()))` destroys 33 memories** when a turn
+  lands mid-job, worst case the whole session-8 job change. A write-back must
+  record *which ids* it read: absence means both "merged away" and "never seen".
+- **Reflection derives three correct beliefs and every way of storing them is
+  worse** — lowest passing budget 51 → 55 joined, → 56 replacing. The packer
+  selects memories, so composition destroys its ability to drop what the
+  question does not need. Ships unwired, like `promote()`.
+
+Remaining: Advanced A3–A9 (31 lessons), and `mkdocs.yml` (Phase 7 — the CI step
+is present but gated on the file existing).

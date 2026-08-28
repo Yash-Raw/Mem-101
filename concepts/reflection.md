@@ -23,5 +23,7 @@ Similarity is the obvious generator and the wrong one. On this course's corpus i
 <!-- graph:begin -->
 **Taught in:** [Reflection and Insight](../curriculum/advanced/reflection-and-insight/index.md)
 
+**Used in:** [Promotion as a Release](../curriculum/advanced/promotion-as-release/index.md)
+
 **Do not confuse with:** [Summarization](summarization.md)
 <!-- graph:end -->

@@ -169,7 +169,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | 50 | [Sleep-Time Compute](curriculum/advanced/sleep-time-compute/index.md) | `evolve` | The window is the cost, not the compute -- and the gate that closes it is already computed. |
 | 51 | [Background Job Mechanics](curriculum/advanced/background-job-mechanics/index.md) | `evolve` | Write back only what the job read -- absence means two opposite things. |
 | 52 | [Reflection and Insight](curriculum/advanced/reflection-and-insight/index.md) | `evolve` | Derive higher-order beliefs, and measure that storing them makes the answer worse. |
-| 53 | [Promotion as a Release](curriculum/advanced/promotion-as-release/index.md) | `evolve` | Stage, review, and roll back consolidation like a controlled deploy. |
+| 53 | [Promotion as a Release](curriculum/advanced/promotion-as-release/index.md) | `evolve` | Measure a consolidation before applying it, and be able to take it back. |
 
 **Multi-Agent & Shared Memory**
 

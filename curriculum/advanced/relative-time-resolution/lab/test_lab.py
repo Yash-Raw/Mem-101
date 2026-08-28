@@ -1,7 +1,7 @@
 """Four classes of relative reference, and the one you must not resolve."""
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
 
 import pytest
 from memlab import labkit
@@ -143,10 +143,10 @@ def test_gold_is_the_answer_key_not_the_lesson(after) -> None:
     from memlab.fixtures import load_gold
 
     entries = {e["phrase"]: e["resolves_to"] for e in load_gold()["relative_time"]}
-    assert entries["last month"] == datetime(2025, 12, 1).date()
-    assert entries["since March 2026"] == datetime(2026, 3, 1).date()
-    assert entries["Before the move"] == datetime(2025, 8, 2).date()
-    assert entries["last week"] == datetime(2026, 5, 8).date()
+    assert entries["last month"] == date(2025, 12, 1)
+    assert entries["since March 2026"] == date(2026, 3, 1)
+    assert entries["Before the move"] == date(2025, 8, 2)
+    assert entries["last week"] == date(2026, 5, 8)
     assert entries["diff against last week"] is None, "the one that must not resolve"
 
 

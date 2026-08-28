@@ -302,7 +302,7 @@ levels:
           - id: promotion-as-release
             title: "Promotion as a Release"
             stage: evolve
-            objective: "Stage, review, and roll back consolidation like a controlled deploy."
+            objective: "Measure a consolidation before applying it, and be able to take it back."
 
       - id: multi-agent
         title: "Multi-Agent & Shared Memory"

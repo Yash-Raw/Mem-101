@@ -172,6 +172,18 @@ def test_both_policies_make_the_budget_worse(tmp_path_factory) -> None:
     assert _lowest_passing(store.all(), pipeline) == 56
 
 
+def test_slot_values_52_and_this_lessons_51_agree(tmp_path_factory) -> None:
+    """slot-value swept discrete budgets and never tried 51. Both pass."""
+    store, pipeline = _fresh(tmp_path_factory.mktemp("boundary"), "b")
+    for budget in (52, 51):
+        assert exam_from_context(
+            store.all(), PRIYA, k=5, pipeline=pipeline, budget=budget
+        ).is_correct
+    assert not exam_from_context(
+        store.all(), PRIYA, k=5, pipeline=pipeline, budget=50
+    ).is_correct
+
+
 def test_reflection_is_not_wired_into_any_pipeline() -> None:
     """Like promote() before it: the deferral stays visible in code."""
     for module in ("I8", "A1", "A2"):

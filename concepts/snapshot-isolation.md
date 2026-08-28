@@ -25,5 +25,7 @@ A lock would also work and would block the conversation for a full pass over the
 <!-- graph:begin -->
 **Taught in:** [Background Job Mechanics](../curriculum/advanced/background-job-mechanics/index.md)
 
+**Used in:** [Promotion as a Release](../curriculum/advanced/promotion-as-release/index.md)
+
 **Do not confuse with:** [Lost Update](lost-update.md)
 <!-- graph:end -->

@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/background-job-mechanics/index.md"
     },
     {
+      "id": "promotion-as-release",
+      "type": "lesson",
+      "title": "Promotion as a Release",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 52,
+      "path": "curriculum/advanced/promotion-as-release/index.md"
+    },
+    {
       "id": "reflection-and-insight",
       "type": "lesson",
       "title": "Reflection and Insight",
@@ -885,6 +894,14 @@
       "status": "published"
     },
     {
+      "id": "rollback",
+      "type": "concept",
+      "title": "Rollback",
+      "stage": "evolve",
+      "path": "concepts/rollback.md",
+      "status": "published"
+    },
+    {
       "id": "salience",
       "type": "concept",
       "title": "Salience",
@@ -938,6 +955,14 @@
       "title": "Snapshot Isolation",
       "stage": "evolve",
       "path": "concepts/snapshot-isolation.md",
+      "status": "published"
+    },
+    {
+      "id": "staged-change",
+      "type": "concept",
+      "title": "Staged Change",
+      "stage": "evolve",
+      "path": "concepts/staged-change.md",
       "status": "published"
     },
     {
@@ -1057,6 +1082,11 @@
     {
       "from": "background-job-mechanics",
       "to": "sleep-time-compute",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "promotion-as-release",
+      "to": "reflection-and-insight",
       "kind": "requires_lesson"
     },
     {
@@ -1317,6 +1347,16 @@
     {
       "from": "background-job-mechanics",
       "to": "snapshot-isolation",
+      "kind": "teaches"
+    },
+    {
+      "from": "promotion-as-release",
+      "to": "staged-change",
+      "kind": "teaches"
+    },
+    {
+      "from": "promotion-as-release",
+      "to": "rollback",
       "kind": "teaches"
     },
     {
@@ -1702,6 +1742,21 @@
     {
       "from": "background-job-mechanics",
       "to": "deduplication",
+      "kind": "uses"
+    },
+    {
+      "from": "promotion-as-release",
+      "to": "reflection",
+      "kind": "uses"
+    },
+    {
+      "from": "promotion-as-release",
+      "to": "snapshot-isolation",
+      "kind": "uses"
+    },
+    {
+      "from": "promotion-as-release",
+      "to": "supersession",
       "kind": "uses"
     },
     {
@@ -2540,6 +2595,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "rollback",
+      "to": "deletion",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "salience",
       "to": "vector-search",
       "kind": "contrasts_with"
@@ -2567,6 +2627,11 @@
     {
       "from": "snapshot-isolation",
       "to": "lost-update",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "staged-change",
+      "to": "snapshot-isolation",
       "kind": "contrasts_with"
     },
     {

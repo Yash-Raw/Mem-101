@@ -208,7 +208,14 @@ Two from 2c, both of which are null results a lesson is built on:
   elements you priced, not the ones you assumed mattered.
 
 **Milestone 3a complete** — Advanced modules A1–A2 (9 lessons), `memlab`
-v0.3-alpha. 519 tests.
+v0.3-alpha. 520 tests.
+
+```
+uv run python -m memlab.app.chat --profile advanced --ingest --exam --budget 51
+```
+
+Correct at 51, wrong at 50. (`slot-value` reports 52 because its sweep tested
+discrete budgets and never tried 51 — both pass.)
 
 Level 3 layers on top of Level 2 rather than replacing it: `advanced("A1")` is
 `intermediate("latest")` plus A1's switches, `ADVANCED_MODULES` runs A1–A9, and

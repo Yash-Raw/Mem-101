@@ -17,7 +17,7 @@ from pathlib import Path
 
 from ..assemble.simple import assemble
 from ..fixtures import load_agent_writes, load_turns
-from ..pipeline import Pipeline, beginner, get
+from ..pipeline import PROFILES, Pipeline, beginner, get
 from ..retrieve.embedding import EmbeddingRetriever, Hit
 from ..store.jsonl import JsonlStore
 from ..types import Memory, MemoryType, Provenance, Scope
@@ -125,7 +125,9 @@ def ask(
 def main() -> None:
     ap = argparse.ArgumentParser(prog="memlab.app.chat")
     ap.add_argument("--store", default=str(DEFAULT_STORE))
-    ap.add_argument("--profile", default="beginner", choices=["beginner", "intermediate"])
+    # Read the choices from the registry rather than restating them -- a
+    # profile that exists but cannot be selected is not shipped.
+    ap.add_argument("--profile", default="beginner", choices=sorted(PROFILES))
     ap.add_argument("--ingest", action="store_true", help="rebuild the store from the corpus")
     ap.add_argument("--ask", help="a question to answer from memory")
     ap.add_argument("--exam", action="store_true",

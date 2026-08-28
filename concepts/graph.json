@@ -19,6 +19,15 @@
       "path": "curriculum/advanced/cross-agent-write-conflicts/index.md"
     },
     {
+      "id": "from-facts-to-a-user-model",
+      "type": "lesson",
+      "title": "From Facts to a User Model",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 57,
+      "path": "curriculum/advanced/from-facts-to-a-user-model/index.md"
+    },
+    {
       "id": "memory-access-control",
       "type": "lesson",
       "title": "Memory Access Control",
@@ -1098,6 +1107,14 @@
       "status": "published"
     },
     {
+      "id": "user-model",
+      "type": "concept",
+      "title": "User Model",
+      "stage": "evolve",
+      "path": "concepts/user-model.md",
+      "status": "published"
+    },
+    {
       "id": "validity-interval",
       "type": "concept",
       "title": "Validity Interval",
@@ -1119,6 +1136,14 @@
       "title": "Vector Search",
       "stage": "retrieve",
       "path": "concepts/vector-search.md",
+      "status": "published"
+    },
+    {
+      "id": "volatility",
+      "type": "concept",
+      "title": "Volatility",
+      "stage": "evolve",
+      "path": "concepts/volatility.md",
       "status": "published"
     },
     {
@@ -1171,6 +1196,11 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "provenance-and-trust",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "from-facts-to-a-user-model",
+      "to": "memory-access-control",
       "kind": "requires_lesson"
     },
     {
@@ -1456,6 +1486,16 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "cross-writer-conflict",
+      "kind": "teaches"
+    },
+    {
+      "from": "from-facts-to-a-user-model",
+      "to": "user-model",
+      "kind": "teaches"
+    },
+    {
+      "from": "from-facts-to-a-user-model",
+      "to": "volatility",
       "kind": "teaches"
     },
     {
@@ -1891,6 +1931,21 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "from-facts-to-a-user-model",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "from-facts-to-a-user-model",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
+      "from": "from-facts-to-a-user-model",
+      "to": "unnameable-claim",
       "kind": "uses"
     },
     {
@@ -2869,6 +2924,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "user-model",
+      "to": "memory-record",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "validity-interval",
       "to": "supersession",
       "kind": "contrasts_with"
@@ -2876,6 +2936,11 @@
     {
       "from": "vector-index",
       "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "volatility",
+      "to": "salience",
       "kind": "contrasts_with"
     },
     {

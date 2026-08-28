@@ -330,7 +330,7 @@ levels:
           - id: from-facts-to-a-user-model
             title: "From Facts to a User Model"
             stage: evolve
-            objective: "Assemble preferences, traits, and goals; separate stable from volatile."
+            objective: "Key the model on attributes, and keep what does not fit."
           - id: implicit-signals
             title: "Behaviour as Memory"
             stage: extract

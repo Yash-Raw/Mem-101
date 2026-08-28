@@ -25,6 +25,8 @@ status: published
 **You need first:** [Cross-Agent Write Conflicts](../cross-agent-write-conflicts/index.md)
 
 **Concepts assumed:** [Memory Topology](../../../concepts/memory-topology.md) · [Competence](../../../concepts/competence.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [From Facts to a User Model](../from-facts-to-a-user-model/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -143,4 +145,6 @@ Every write the corpus actually contains is admitted, so `@A3` is identical to `
 **You need first:** [Cross-Agent Write Conflicts](../cross-agent-write-conflicts/index.md)
 
 **Concepts assumed:** [Memory Topology](../../../concepts/memory-topology.md) · [Competence](../../../concepts/competence.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [From Facts to a User Model](../from-facts-to-a-user-model/index.md)
 <!-- graph:end -->

@@ -145,123 +145,115 @@ number to match a memory of what it used to be.**
 
 ## Status
 
-**Milestone 1 complete.** Scaffold, validator suite, the 84-lesson syllabus, all
-13 Beginner lessons with labs, 28 concept pages, and `memlab` v0.1 (extract →
-store → retrieve → assemble, with a CLI).
-
-`capstone/tests/test_v1_failures.py` pins the seven ways v0.1 is broken. Those
-tests are the baseline every Level 2 claim is measured against — when a level-2
-mechanism fixes one, move its test and flip the expectation rather than deleting it.
-
-Landscape snapshot written and dated 2026-08-27 (8 pages; high-volatility pages
-fail CI at 180 days — re-verify rather than bumping the date).
-
-**The Intermediate level is complete** — I1–I8, 31 lessons, `memlab` v0.2.
-395 tests.
-
-Three headline results, each with its own passing snapshot:
-
-| exam | question | passes from |
-|---|---|---|
-| **belief** | does the store *believe* the right thing? | `@I4` |
-| **context** (k=5) | would the model ever *say* it? | `@I6` |
-| **budgeted** (52 tokens) | does it survive a tight context? | `@I8` |
-
-```
-uv run python -m memlab.app.chat --profile intermediate --ingest --exam --budget 52
-```
-
-Correct at 52 and wrong at 50. The derived floor — a compact header plus the
-four required facts — is 43; the nine-token gap is one memory the packer has no
-information to reject.
-
-Two findings that shaped the design, both from measurement rather than
-reasoning — worth knowing before extending this:
-
-- **Similarity cannot generate conflict candidates.** The employer
-  contradiction scores 0.285, below unrelated noise at 0.478. Candidates are
-  grouped by `SLOT` (the attribute claimed) instead. Removing a slot silently
-  reverts the exam.
-- **Similarity cannot identify corroboration either.** A refinement scores
-  0.669, a genuine corroboration 0.505, a contradiction 0.439. No threshold
-  separates them, which is why `evolve/promote.py` promotes nothing and defers
-  to conflict detection.
-
-Two more findings from 2b, both of which reversed an obvious approach:
-
-- **Salience must not be added to a relevance score.** It moves the correct
-  answer *down* and promotes a taught procedure to first place. Importance and
-  relevance are different axes; salience is for forgetting, and only earns a
-  ranking term alongside type and slot.
-- **Decay rate must be scaled by memory type.** One half-life for everything
-  drops fourteen standing beliefs and breaks the exam. What decays is
-  relevance, not truth.
-
-Two from 2c, both of which are null results a lesson is built on:
-
-- **This corpus has one graph node and no edges.** `samira`, six memories;
-  `St. Aubyn's` is on the stop list. `graph-stores` teaches when a graph earns
-  its cost by measuring a corpus where it does not.
-- **Three of I8's four mechanisms move nothing.** Reservation, padding
-  suppression and pinning are each correct and each a no-op here; the only
-  lever is that the framing header was 38% of the context. Optimise the
-  elements you priced, not the ones you assumed mattered.
-
-**Milestone 3a complete** — Advanced modules A1–A2 (9 lessons), `memlab`
-v0.3-alpha. 520 tests.
+**The course is complete.** 84 lessons across three levels, 818 tests, 10
+validators, `memlab` v0.3. `uv run mkdocs build --strict` produces the site.
 
 ```
 uv run python -m memlab.app.chat --profile advanced --ingest --exam --budget 51
 ```
 
-Correct at 51, wrong at 50. (`slot-value` reports 52 because its sweep tested
-discrete budgets and never tried 51 — both pass.)
+Three exams, each with its own passing snapshot, and each answering a
+different question:
 
-Level 3 layers on top of Level 2 rather than replacing it: `advanced("A1")` is
-`intermediate("latest")` plus A1's switches, `ADVANCED_MODULES` runs A1–A9, and
-`at()` dispatches on the prefix so `at("I3")` and `at("A1")` both mean "as that
-module left it". A1 carries two switches (`bitemporal`, `anchor`) against the
-one-per-module convention; a lesson needing a sub-state pins it explicitly with
-`at("A1").with_stage(anchor=None, ...)`.
+| exam | question | passes from |
+|---|---|---|
+| **belief** | does the store *believe* the right thing? | `@I4` |
+| **context** (k=5) | would the model ever *say* it? | `@I6` |
+| **budgeted** | does it survive a tight context? | `@I8`, at 51 tokens |
+
+`capstone/tests/test_advanced_targets.py` holds Level 3's targets the way
+`test_v1_failures.py` holds Beginner's: assert what is broken, gate the
+expectation on a pipeline capability, and let the module that fixes it flip
+its own test.
+
+## Architecture added in Level 3
+
+`advanced(through=...)` layers on `intermediate("latest")`; `ADVANCED_MODULES`
+runs A1–A9; `at()` dispatches on the prefix, so `at("I3")` and `at("A1")` both
+mean "as that module left it". A1 carries two switches (`bitemporal`,
+`anchor`) against the one-per-module convention — a lesson needing a sub-state
+pins it explicitly with `at("A1").with_stage(anchor=None, ...)` **and says so
+in its own Design decisions**, because a stale column label there was one of
+three seams a cold read caught.
 
 **`uv run python tools/dump_snapshots.py`** is the before/after proof for every
-shared-code change. It covers `@I1`–`@I8` *and* the landed `@A*`, plus
-`valid_from` / `valid_to` / distinct `recorded_at` / every event time — the
-fields A1 added, which an ids-and-scores dump would not have caught moving.
+shared-code change. Extend its `LANDED` tuple in the same commit as the module
+— during A2 it still said `("A1",)`, so four lessons' worth of "snapshots
+UNCHANGED" was silent about `@A2`.
 
-Three shared-code changes landed under Level 2, all proven snapshot-safe and
-none visible from lesson prose: `recorded_at` now comes from the turn clock in
-both extract paths (v0.2 records are **deterministic between runs**, which they
-were not); `evolve/promote.py` writes memory ids into `derived_from` rather than
-source ids, matching `summarize`; and `retrieve.scoped.eligible`/`search` gained
-`live_only` and `retrievable_only`, both defaulting to today's behaviour.
+`tools/render_nav.py` generates mkdocs' nav from `syllabus.yml`. Ordering has
+one source of truth and the site is its third view, after `SYLLABUS.md` and the
+prerequisite graph.
 
-Findings from 3a, each a lesson's spine:
+## What the course established
 
-- **Two clocks in the record, and neither read the sentence.** 37 of 37 event
-  times were the instant the record was written. The first audit reported 34/37
-  by counting only user turns — agent writes stamp their own clock too, so a
-  denominator chosen without checking turned a 100% failure into 92%.
-- **`invalid_at` was answering two questions**, retiring the Berlin hearsay nine
-  months before it was recorded. `valid_to` is when a fact stopped being true;
+Three claims survived every measurement, and none was obvious at the start.
+
+- **The write path dominates.** 2.0 model calls per turn on writes; the read
+  path makes **none**. That is a consequence of decisions argued on correctness
+  grounds — arbitration refuses a model for explainability, ranking is
+  arithmetic for determinism — not an optimisation.
+- **Similarity cannot carry any write-path decision.** It cannot generate
+  conflict candidates (a contradiction scores 0.285, below unrelated noise at
+  0.478), identify corroboration, or retrieve a procedure. Every stage that
+  works is keyed on structure, and `SLOT` now has five callers.
+- **Most of the valuable results are null results.** Reflection makes the
+  budgeted answer worse; three of I8's four mechanisms move nothing; the entity
+  graph has one node; per-type scheduling barely helps. A measurement saying
+  *this did nothing* is what saves the next person a month.
+
+## Findings that reversed an obvious approach
+
+Worth reading before extending any of these.
+
+- **Salience must not be added to a relevance score.** It moves the correct
+  answer *down*. Importance and relevance are different axes.
+- **Decay rate must be scaled by memory type.** One half-life drops fourteen
+  standing beliefs. What decays is relevance, not truth.
+- **`invalid_at` was answering two questions**, retiring a claim nine months
+  before it was recorded. `valid_to` is when a fact stopped being true;
   `invalid_at` is when the store found out.
 - **The read path assumed *now* in three places.** Routing a dated question
-  fixes nothing until both `live_only` and the I5 tier cap are released: 0 → 0 →
-  1 → 4 of 4. A memory demoted for being stale is the memory a question about
-  the past wants.
-- **A relative-time parser must be able to decline.** Four classes of phrase and
-  the fifth answer is "not a time reference" — `diff against last week` is a
-  step inside a taught procedure, and resolving it dates the recipe.
+  fixes nothing until `live_only` *and* the I5 tier cap are released: 0 → 0 →
+  1 → 4 of 4.
+- **A relative-time parser must be able to decline.** `diff against last week`
+  is a step inside a taught procedure; resolving it dates the recipe.
 - **Deferred consolidation costs the window, not the compute.** 13× cheaper,
-  identical store, and 11 of 24 turns believing a job she had already left. The
-  gate that closes it is `slot_of` — already computed by the write path.
-- **`store.replace(consolidate(store.all()))` destroys 33 memories** when a turn
-  lands mid-job, worst case the whole session-8 job change. A write-back must
-  record *which ids* it read: absence means both "merged away" and "never seen".
-- **Reflection derives three correct beliefs and every way of storing them is
-  worse** — lowest passing budget 51 → 55 joined, → 56 replacing. The packer
-  selects memories, so composition destroys its ability to drop what the
-  question does not need. Ships unwired, like `promote()`.
+  identical store, 11 of 24 turns wrong. The gate that closes it is `slot_of`,
+  already computed by the write path.
+- **`store.replace(consolidate(store.all()))` destroys 33 memories** when a
+  turn lands mid-job. A write-back must record *which ids* it read: absence
+  means both "merged away" and "never seen".
+- **Competence needs three verdicts, not two.** An unnameable claim is outside
+  the *vocabulary*, not the writer's domain; discounting it punishes a reliable
+  agent for a gap in your slot table.
+- **`FIRST_PARTY` is a threshold, so 0.9 and 1.0 are the same number.** An
+  agent above the line overwrites the user's own belief by being newer.
+- **`leak_check` cannot catch a leak** — only a bug in the filter that prevents
+  leaks. Always zero, and valuable entirely for the day it is not.
+- **An invariant computed over the data it checks cannot catch an outlier**
+  that moves the reference. Leave-one-out.
+- **Component metrics are wrong first.** The first version scored a working
+  system at 0.733, 0.600 and 0.500; every number was the metric.
 
-Remaining: Advanced A3–A9 (31 lessons), and `mkdocs.yml` (Phase 7 — the CI step
-is present but gated on the file existing).
+## Discipline that produced all of it
+
+Land code, **run it**, then write prose quoting measured output. Every number
+guessed in this project has been wrong — including *"twenty months"* that
+measured 249 days, an audit denominator that reported a 100% failure as 92%,
+and *"four tokens of headroom"* where the delta is five.
+
+- Commit per lesson. **Cold-read each module in syllabus order, reading the
+  Mechanism and Design-decisions sections in full, before its last commit.** An
+  opener scan is not a cold read; every seam found in Level 3 was in a middle.
+- `validate_expected_output.py` runs all 84 labs and checks every quoted figure
+  against what the lab printed. It has caught a claim in nearly every module.
+- Anything reachable from the CLI must be **selectable** from it — `--profile
+  advanced` was in `PROFILES` and rejected by argparse for two modules.
+
+## What v0.3 still gets wrong
+
+Six open items, each measured and each naming the lesson that found it. Run
+`curriculum/advanced/capstone-finale/lab/lab.py` for the current list; two of
+them are the same stage — extraction — seen from different lessons, which is
+visible only in the collected report.

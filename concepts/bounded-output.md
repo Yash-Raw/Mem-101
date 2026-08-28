@@ -18,7 +18,7 @@ Three properties make a model judgement acceptable, and they only work together:
 
 On this course the single judgement site returns one of four relation labels, is scored by a component metric against `gold.yml`, and is fixture-backed. Widen it to free text and the metric has nothing to compare, which is the same sentence as *cannot be trusted*.
 
-The alternative to a judge is authored fixtures: **75** here, each a decision made once and visible in a diff, rather than one remade on every run and different when the model changes. Without them the course's 331 pinned assertions would be measuring the model's mood.
+The alternative to a judge is authored fixtures: **75** here, each a decision made once and visible in a diff, rather than one remade on every run and different when the model changes. Without them the course's 376 pinned assertions would be measuring the model's mood.
 
 ## Connections
 

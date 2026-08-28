@@ -15,7 +15,7 @@ status: published
 
 # Regression Testing a Stateful System
 
-> **In one line.** This repository has a 331-assertion regression suite that nobody designed — it was assembled one lesson at a time by writing down what was measured.
+> **In one line.** This repository has a 376-assertion regression suite that nobody designed — it was assembled one lesson at a time by writing down what was measured.
 
 ## Where this sits
 
@@ -36,10 +36,10 @@ status: published
 Count what already stands in the way:
 
 ```
-lab test files      72
+lab test files      84
 capstone test files 3
-test functions      646
-pinned literals     331   (51% of tests)
+test functions      752
+pinned literals     376   (50% of tests)
 module snapshots    17
 ```
 
@@ -57,16 +57,16 @@ A memory layer's state is the accumulated product of every write that came befor
 
 **Module snapshots make a regression attributable.** Seventeen checkpoints, and `at("I3")` is the system as I3 left it — so a moved number can be bisected rather than reasoned about. Every measured claim in this course is anchored to one, which is why *"I3's dedupe changed the store size"* did not silently invalidate every count I1 quoted.
 
-**A golden conversation is what makes 331 literals tolerable.**
+**A golden conversation is what makes 376 literals tolerable.**
 
 ```
-331 pinned literals are only maintainable against a fixed corpus;
+376 pinned literals are only maintainable against a fixed corpus;
 with a changing one, each is two claims at once
 ```
 
 With a deterministic corpus a pinned literal is a claim about the system. Without one it is a claim about the corpus *and* the system, failing on every ingest for reasons nobody can attribute — and the rational response is to delete the assertions, which removes the only regression suite there was.
 
-**The suite is emergent, and that is a weakness as well as a strength.** Nobody chose which 331 numbers to pin, so coverage follows whatever each lesson happened to measure. `end-to-end-eval` found three component metrics flat across every profile; the pinned literals have the same property and no report that surfaces it.
+**The suite is emergent, and that is a weakness as well as a strength.** Nobody chose which 376 numbers to pin, so coverage follows whatever each lesson happened to measure. `end-to-end-eval` found three component metrics flat across every profile; the pinned literals have the same property and no report that surfaces it.
 
 ## Design decisions
 
@@ -85,7 +85,7 @@ With a deterministic corpus a pinned literal is a claim about the system. Withou
 uv run python curriculum/advanced/regression-testing-state/lab/lab.py
 ```
 
-**Expected output:** **72** lab test files, **3** capstone files, **646** test functions, **331** pinned literals at **51%**, and **17** module snapshots.
+**Expected output:** **84** lab test files, **3** capstone files, **752** test functions, **376** pinned literals at **50%**, and **17** module snapshots.
 
 **Stretch:** change one number in `capstone/fixtures/corpus.jsonl` — a timestamp will do — and run the suite. Dozens of assertions fail across lessons that have nothing to do with each other, and none of the failures names the corpus. **A golden conversation is load-bearing in proportion to how many numbers you pinned against it.**
 
@@ -109,7 +109,7 @@ uv run python curriculum/advanced/regression-testing-state/lab/lab.py
     It is the shape the problem forces. A memory system emits counts, ranks and token budgets, so the only faithful record of correct behaviour is the number that was measured — and this course's most valuable findings were exactly such numbers. The smell would be *updating* them to match a change, which is why every one is anchored to a module snapshot that can be bisected instead.
 
 ??? question "Why does a fixed corpus matter more here than in a stateless system?"
-    Because a pinned literal is a joint claim about the system and its input. Freeze the input and the claim is about the system alone, which is checkable. Let the input drift and every one of the 331 assertions fails periodically for unattributable reasons, and the rational response — deleting them — removes the entire regression suite.
+    Because a pinned literal is a joint claim about the system and its input. Freeze the input and the claim is about the system alone, which is checkable. Let the input drift and every one of the 376 assertions fails periodically for unattributable reasons, and the rational response — deleting them — removes the entire regression suite.
 
 ??? question "The suite was never designed. What is missing because of that?"
     A statement of what it does *not* cover. Coverage followed whatever each lesson happened to measure, so the pinned literals cluster where numbers were interesting and thin out where behaviour was obviously correct — the same shape `end-to-end-eval` found in the component metrics, with no report that surfaces it. The count is a health signal, not a coverage claim.

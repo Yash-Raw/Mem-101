@@ -36,10 +36,10 @@ def test_stub_is_runnable() -> None:
 
 def test_the_counts_only_grow(counts) -> None:
     """Floors, taken when this lesson was written."""
-    assert counts.lab_files >= 72
+    assert counts.lab_files >= 84
     assert counts.capstone_files >= 3
-    assert counts.tests >= 646
-    assert counts.pinned >= 331
+    assert counts.tests >= 752
+    assert counts.pinned >= 376
 
 
 def test_about_half_the_tests_pin_a_literal(counts) -> None:

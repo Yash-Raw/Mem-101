@@ -126,7 +126,7 @@ uv run python curriculum/advanced/llm-as-judge-for-memory/lab/lab.py
     Because its output is state. A model deciding which of two beliefs survives produces a store whose contents depend on sampling, so the same conversation ingested twice yields different beliefs and nothing records why. Every other decision in the system can be re-derived; this one destroys the alternative.
 
 ??? question "Seventy-five hand-authored fixtures is a lot of work. What does it buy?"
-    Reproducibility, which is what every number in this course rests on. A fixture is decided once and visible in a diff; a judge is re-decided on each run and changes when the model does. Without the fixtures, the 331 pinned assertions from the previous lesson would be measuring the model's mood.
+    Reproducibility, which is what every number in this course rests on. A fixture is decided once and visible in a diff; a judge is re-decided on each run and changes when the model does. Without the fixtures, the 376 pinned assertions from the previous lesson would be measuring the model's mood.
 
 ## Connections
 

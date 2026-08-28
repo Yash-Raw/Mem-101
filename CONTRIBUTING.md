@@ -91,3 +91,8 @@ Every page needs `last_verified`, `category`, and `volatility`. High-volatility
 pages **fail CI at 180 days**. Re-verify or delete; do not extend the date
 without re-checking. Mark vendor-reported figures with
 `claims_are_vendor_sourced: true`.
+
+## Licensing of contributions
+
+Contributions are offered under the same split as the repository: CC BY 4.0 for
+prose, MIT for code. See [LICENSE](LICENSE) and [LICENSE-CONTENT](LICENSE-CONTENT).

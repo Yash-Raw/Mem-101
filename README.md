@@ -53,3 +53,15 @@ Intermediate, you are fixing a contradiction you created yourself in Beginner.
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). `uv run python tools/check.py` before every commit.
+
+## Licence
+
+Two licences, split by what the file is.
+
+| Path | Licence | |
+|---|---|---|
+| `curriculum/`, `concepts/`, `landscape/`, `SYLLABUS.md`, `README.md`, `CONTRIBUTING.md` | **CC BY 4.0** | [LICENSE-CONTENT](LICENSE-CONTENT) |
+| `capstone/`, `tools/`, and every `lab/*.py` | **MIT** | [LICENSE](LICENSE) |
+
+Teach from it, translate it, adapt it, use it inside a paid course — all fine,
+with credit. Lift `memlab` into your own system — fine, no credit required.

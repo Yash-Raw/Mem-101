@@ -2,6 +2,10 @@
 name = "memory-layer-course"
 version = "0.1.0"
 description = "A structured, hands-on curriculum for building an agent memory layer."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Yash Chaurasia" }]
 requires-python = ">=3.11"
 dependencies = ["pyyaml>=6.0"]
 

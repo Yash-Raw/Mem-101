@@ -231,7 +231,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
-| 80 | [The Failure Field Guide](curriculum/advanced/failure-field-guide/index.md) | `govern` | Recognise the seven production failure classes by symptom. |
+| 80 | [The Failure Field Guide](curriculum/advanced/failure-field-guide/index.md) | `govern` | Five of seven symptoms are ambiguous, so the useful column is the tell. |
 | 81 | [Memory Observability](curriculum/advanced/memory-observability/index.md) | `govern` | Answer 'why did you remember that?' with audit logs and memory diffs. |
 | 82 | [Invariants and Drift Detection](curriculum/advanced/invariants-and-drift-detection/index.md) | `govern` | Assert what must always be true of the store and detect when it stops being true. |
 | 83 | [Migrating Live Memory](curriculum/advanced/schema-migration-on-live-memory/index.md) | `store` | Evolve the record shape with backfills and history reprocessing. |

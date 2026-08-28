@@ -25,7 +25,7 @@ On this course's corpus **nine of thirty-seven** memories are unnameable and sev
 <!-- graph:begin -->
 **Taught in:** [Provenance and Trust](../curriculum/advanced/provenance-and-trust/index.md)
 
-**Used in:** [From Facts to a User Model](../curriculum/advanced/from-facts-to-a-user-model/index.md)
+**Used in:** [The Failure Field Guide](../curriculum/advanced/failure-field-guide/index.md) · [From Facts to a User Model](../curriculum/advanced/from-facts-to-a-user-model/index.md)
 
 **Do not confuse with:** [Slot](slot.md)
 <!-- graph:end -->

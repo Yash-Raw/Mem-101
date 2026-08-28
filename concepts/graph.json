@@ -82,6 +82,15 @@
       "path": "curriculum/advanced/end-to-end-eval/index.md"
     },
     {
+      "id": "failure-field-guide",
+      "type": "lesson",
+      "title": "The Failure Field Guide",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 79,
+      "path": "curriculum/advanced/failure-field-guide/index.md"
+    },
+    {
       "id": "from-facts-to-a-user-model",
       "type": "lesson",
       "title": "From Facts to a User Model",
@@ -976,6 +985,14 @@
       "status": "published"
     },
     {
+      "id": "differential-diagnosis",
+      "type": "concept",
+      "title": "Differential Diagnosis",
+      "stage": "govern",
+      "path": "concepts/differential-diagnosis.md",
+      "status": "published"
+    },
+    {
       "id": "disclosure",
       "type": "concept",
       "title": "Disclosure",
@@ -1077,6 +1094,14 @@
       "title": "Extraction",
       "stage": "extract",
       "path": "concepts/extraction.md",
+      "status": "published"
+    },
+    {
+      "id": "failure-class",
+      "type": "concept",
+      "title": "Failure Class",
+      "stage": "govern",
+      "path": "concepts/failure-class.md",
       "status": "published"
     },
     {
@@ -1735,6 +1760,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "failure-field-guide",
+      "to": "scaling-the-store",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "from-facts-to-a-user-model",
       "to": "memory-access-control",
       "kind": "requires_lesson"
@@ -2157,6 +2187,16 @@
     {
       "from": "end-to-end-eval",
       "to": "flat-metric",
+      "kind": "teaches"
+    },
+    {
+      "from": "failure-field-guide",
+      "to": "failure-class",
+      "kind": "teaches"
+    },
+    {
+      "from": "failure-field-guide",
+      "to": "differential-diagnosis",
       "kind": "teaches"
     },
     {
@@ -2842,6 +2882,21 @@
     {
       "from": "end-to-end-eval",
       "to": "absent-corpus",
+      "kind": "uses"
+    },
+    {
+      "from": "failure-field-guide",
+      "to": "consistency-window",
+      "kind": "uses"
+    },
+    {
+      "from": "failure-field-guide",
+      "to": "unnameable-claim",
+      "kind": "uses"
+    },
+    {
+      "from": "failure-field-guide",
+      "to": "cascade-deletion",
       "kind": "uses"
     },
     {
@@ -3940,6 +3995,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "differential-diagnosis",
+      "to": "failure-class",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "disclosure",
       "to": "memory-observability",
       "kind": "contrasts_with"
@@ -3972,6 +4032,11 @@
     {
       "from": "eval-suite",
       "to": "component-metric",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "failure-class",
+      "to": "differential-diagnosis",
       "kind": "contrasts_with"
     },
     {

@@ -438,7 +438,7 @@ levels:
           - id: failure-field-guide
             title: "The Failure Field Guide"
             stage: govern
-            objective: "Recognise the seven production failure classes by symptom."
+            objective: "Five of seven symptoms are ambiguous, so the useful column is the tell."
           - id: memory-observability
             title: "Memory Observability"
             stage: govern

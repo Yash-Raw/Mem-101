@@ -25,6 +25,8 @@ status: published
 **You need first:** [Caching, Batching, Routing](../caching-batching-routing/index.md)
 
 **Concepts assumed:** [Cost Profile](../../../concepts/cost-profile.md) · [Slot](../../../concepts/slot.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [The Failure Field Guide](../failure-field-guide/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -120,4 +122,6 @@ uv run python curriculum/advanced/scaling-the-store/lab/lab.py
 **You need first:** [Caching, Batching, Routing](../caching-batching-routing/index.md)
 
 **Concepts assumed:** [Cost Profile](../../../concepts/cost-profile.md) · [Slot](../../../concepts/slot.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [The Failure Field Guide](../failure-field-guide/index.md)
 <!-- graph:end -->

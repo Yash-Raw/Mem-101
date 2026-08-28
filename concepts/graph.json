@@ -154,6 +154,15 @@
       "path": "curriculum/advanced/memory-attacks/index.md"
     },
     {
+      "id": "memory-observability",
+      "type": "lesson",
+      "title": "Memory Observability",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 80,
+      "path": "curriculum/advanced/memory-observability/index.md"
+    },
+    {
       "id": "memory-topologies",
       "type": "lesson",
       "title": "Memory Topologies",
@@ -1225,11 +1234,27 @@
       "status": "published"
     },
     {
+      "id": "memory-diff",
+      "type": "concept",
+      "title": "Memory Diff",
+      "stage": "govern",
+      "path": "concepts/memory-diff.md",
+      "status": "published"
+    },
+    {
       "id": "memory-lifecycle",
       "type": "concept",
       "title": "The Memory Lifecycle",
       "stage": "orientation",
       "path": "concepts/memory-lifecycle.md",
+      "status": "published"
+    },
+    {
+      "id": "memory-observability",
+      "type": "concept",
+      "title": "Memory Observability",
+      "stage": "govern",
+      "path": "concepts/memory-observability.md",
       "status": "published"
     },
     {
@@ -1800,6 +1825,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "memory-observability",
+      "to": "failure-field-guide",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "memory-topologies",
       "to": "promotion-as-release",
       "kind": "requires_lesson"
@@ -2267,6 +2297,16 @@
     {
       "from": "memory-attacks",
       "to": "accidental-control",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-observability",
+      "to": "memory-diff",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-observability",
+      "to": "memory-observability",
       "kind": "teaches"
     },
     {
@@ -3002,6 +3042,21 @@
     {
       "from": "memory-attacks",
       "to": "competence",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-observability",
+      "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-observability",
+      "to": "bi-temporal-modeling",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-observability",
+      "to": "derivation-graph",
       "kind": "uses"
     },
     {
@@ -4102,6 +4157,16 @@
     {
       "from": "lost-update",
       "to": "snapshot-isolation",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "memory-diff",
+      "to": "memory-observability",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "memory-observability",
+      "to": "disclosure",
       "kind": "contrasts_with"
     },
     {

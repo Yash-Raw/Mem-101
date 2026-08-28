@@ -25,6 +25,8 @@ status: published
 **You need first:** [Scaling the Store](../scaling-the-store/index.md)
 
 **Concepts assumed:** [Consistency Window](../../../concepts/consistency-window.md) · [Unnameable Claim](../../../concepts/unnameable-claim.md) · [Cascade Deletion](../../../concepts/cascade-deletion.md)
+
+**This unlocks:** [Memory Observability](../memory-observability/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -124,4 +126,6 @@ uv run python curriculum/advanced/failure-field-guide/lab/lab.py
 **You need first:** [Scaling the Store](../scaling-the-store/index.md)
 
 **Concepts assumed:** [Consistency Window](../../../concepts/consistency-window.md) · [Unnameable Claim](../../../concepts/unnameable-claim.md) · [Cascade Deletion](../../../concepts/cascade-deletion.md)
+
+**This unlocks:** [Memory Observability](../memory-observability/index.md)
 <!-- graph:end -->

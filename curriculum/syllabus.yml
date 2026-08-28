@@ -442,7 +442,7 @@ levels:
           - id: memory-observability
             title: "Memory Observability"
             stage: govern
-            objective: "Answer 'why did you remember that?' with audit logs and memory diffs."
+            objective: "Six answers from the record with no logging, and three that need a read-time write."
           - id: invariants-and-drift-detection
             title: "Invariants and Drift Detection"
             stage: govern

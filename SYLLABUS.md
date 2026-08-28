@@ -160,7 +160,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | 46 | [Validity Intervals](curriculum/advanced/validity-intervals/index.md) | `store` | Separate when a fact was true from when it was believed, and query both. |
 | 47 | [Three Temporal Questions](curriculum/advanced/temporal-questions/index.md) | `retrieve` | Route the three temporal questions, and release every filter that assumed now. |
 | 48 | [Resolving 'Last Week'](curriculum/advanced/relative-time-resolution/index.md) | `extract` | Four classes of relative reference, and the one you must not resolve. |
-| 49 | [Temporal Knowledge Graphs](curriculum/advanced/temporal-knowledge-graphs/index.md) | `store` | Carry validity on edges and cascade invalidation through derived facts. |
+| 49 | [Temporal Knowledge Graphs](curriculum/advanced/temporal-knowledge-graphs/index.md) | `store` | Cascade invalidation through the derivation graph -- the one that actually has edges. |
 
 **Offline Consolidation**
 

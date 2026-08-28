@@ -130,7 +130,11 @@ def corroborate(memory: Memory, supporters: list[Memory]) -> Memory:
     return replace(
         memory,
         confidence=min(1.0, memory.confidence + 0.05 * len(supporters)),
+        # Memory ids, not source ids. `summarize` writes ids here and this
+        # wrote source ids, so a cascade walking `derived_from` could follow
+        # one edge and not the other -- and the failure is silent, because a
+        # reference into the wrong namespace simply matches nothing.
         derived_from=tuple(sorted(
-            set(memory.derived_from) | {s.provenance.source_id for s in supporters}
+            set(memory.derived_from) | {s.id for s in supporters}
         )),
     )

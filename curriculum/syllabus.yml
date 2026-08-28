@@ -282,7 +282,7 @@ levels:
           - id: temporal-knowledge-graphs
             title: "Temporal Knowledge Graphs"
             stage: store
-            objective: "Carry validity on edges and cascade invalidation through derived facts."
+            objective: "Cascade invalidation through the derivation graph -- the one that actually has edges."
 
       - id: sleep-time
         title: "Offline Consolidation"

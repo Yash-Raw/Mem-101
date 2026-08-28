@@ -21,7 +21,7 @@ It pays exactly when there are relations to follow, and recognising that you hav
 <!-- graph:begin -->
 **Taught in:** [Graph Stores](../curriculum/intermediate/graph-stores/index.md)
 
-**Used in:** [Hybrid Architecture](../curriculum/intermediate/hybrid-architecture/index.md)
+**Used in:** [Temporal Knowledge Graphs](../curriculum/advanced/temporal-knowledge-graphs/index.md) · [Hybrid Architecture](../curriculum/intermediate/hybrid-architecture/index.md)
 
 **Do not confuse with:** [Indexed Predicates](indexed-predicate.md)
 <!-- graph:end -->

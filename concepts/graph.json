@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/relative-time-resolution/index.md"
     },
     {
+      "id": "temporal-knowledge-graphs",
+      "type": "lesson",
+      "title": "Temporal Knowledge Graphs",
+      "level": "advanced",
+      "stage": "store",
+      "order": 48,
+      "path": "curriculum/advanced/temporal-knowledge-graphs/index.md"
+    },
+    {
       "id": "temporal-questions",
       "type": "lesson",
       "title": "Three Temporal Questions",
@@ -481,6 +490,14 @@
       "status": "published"
     },
     {
+      "id": "cascade-invalidation",
+      "type": "concept",
+      "title": "Cascade Invalidation",
+      "stage": "evolve",
+      "path": "concepts/cascade-invalidation.md",
+      "status": "published"
+    },
+    {
       "id": "context-assembly",
       "type": "concept",
       "title": "Context Assembly",
@@ -542,6 +559,14 @@
       "title": "Deduplication",
       "stage": "evolve",
       "path": "concepts/deduplication.md",
+      "status": "published"
+    },
+    {
+      "id": "derivation-graph",
+      "type": "concept",
+      "title": "Derivation Graph",
+      "stage": "store",
+      "path": "concepts/derivation-graph.md",
       "status": "published"
     },
     {
@@ -960,6 +985,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "temporal-knowledge-graphs",
+      "to": "relative-time-resolution",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "temporal-questions",
       "to": "validity-intervals",
       "kind": "requires_lesson"
@@ -1192,6 +1222,16 @@
     {
       "from": "relative-time-resolution",
       "to": "relative-time",
+      "kind": "teaches"
+    },
+    {
+      "from": "temporal-knowledge-graphs",
+      "to": "derivation-graph",
+      "kind": "teaches"
+    },
+    {
+      "from": "temporal-knowledge-graphs",
+      "to": "cascade-invalidation",
       "kind": "teaches"
     },
     {
@@ -1542,6 +1582,21 @@
     {
       "from": "relative-time-resolution",
       "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "temporal-knowledge-graphs",
+      "to": "bi-temporal-modeling",
+      "kind": "uses"
+    },
+    {
+      "from": "temporal-knowledge-graphs",
+      "to": "validity-interval",
+      "kind": "uses"
+    },
+    {
+      "from": "temporal-knowledge-graphs",
+      "to": "graph-traversal",
       "kind": "uses"
     },
     {
@@ -2195,6 +2250,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "cascade-invalidation",
+      "to": "supersession",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "context-window",
       "to": "working-memory",
       "kind": "contrasts_with"
@@ -2212,6 +2272,11 @@
     {
       "from": "deduplication",
       "to": "idempotency",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "derivation-graph",
+      "to": "graph-traversal",
       "kind": "contrasts_with"
     },
     {

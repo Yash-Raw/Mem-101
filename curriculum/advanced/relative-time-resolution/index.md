@@ -25,6 +25,8 @@ status: published
 **You need first:** [Three Temporal Questions](../temporal-questions/index.md)
 
 **Concepts assumed:** [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Validity Interval](../../../concepts/validity-interval.md) · [Procedural Memory](../../../concepts/procedural-memory.md)
+
+**This unlocks:** [Temporal Knowledge Graphs](../temporal-knowledge-graphs/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -146,4 +148,6 @@ uv run python curriculum/advanced/relative-time-resolution/lab/lab.py
 **You need first:** [Three Temporal Questions](../temporal-questions/index.md)
 
 **Concepts assumed:** [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Validity Interval](../../../concepts/validity-interval.md) · [Procedural Memory](../../../concepts/procedural-memory.md)
+
+**This unlocks:** [Temporal Knowledge Graphs](../temporal-knowledge-graphs/index.md)
 <!-- graph:end -->

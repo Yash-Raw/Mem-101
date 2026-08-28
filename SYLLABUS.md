@@ -223,7 +223,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
 | 76 | [The Write Path Dominates](curriculum/advanced/cost-model/index.md) | `govern` | Count the calls: the read path makes none, and the write path makes two per turn. |
-| 77 | [The Latency Budget](curriculum/advanced/latency-budget/index.md) | `govern` | Split synchronous from deferred work along what the user can wait for. |
+| 77 | [The Latency Budget](curriculum/advanced/latency-budget/index.md) | `govern` | 81% of the per-turn cost blocks, and it is the stage nobody proposes deferring. |
 | 78 | [Caching, Batching, Routing](curriculum/advanced/caching-batching-routing/index.md) | `govern` | Put cheap models on the write path and cache embeddings. |
 | 79 | [Scaling the Store](curriculum/advanced/scaling-the-store/index.md) | `store` | Partition by owner; handle index growth, hot users, and archival tiers. |
 

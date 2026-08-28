@@ -25,6 +25,8 @@ status: published
 **You need first:** [Reading Benchmark Claims Critically](../reading-benchmark-claims/index.md)
 
 **Concepts assumed:** [The Extraction Pipeline](../../../concepts/extraction-pipeline.md) · [Vector Index](../../../concepts/vector-index.md) · [Element Cost](../../../concepts/element-cost.md)
+
+**This unlocks:** [The Latency Budget](../latency-budget/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -113,4 +115,6 @@ uv run python curriculum/advanced/cost-model/lab/lab.py
 **You need first:** [Reading Benchmark Claims Critically](../reading-benchmark-claims/index.md)
 
 **Concepts assumed:** [The Extraction Pipeline](../../../concepts/extraction-pipeline.md) · [Vector Index](../../../concepts/vector-index.md) · [Element Cost](../../../concepts/element-cost.md)
+
+**This unlocks:** [The Latency Budget](../latency-budget/index.md)
 <!-- graph:end -->

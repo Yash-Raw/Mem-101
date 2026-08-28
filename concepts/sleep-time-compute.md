@@ -23,7 +23,7 @@ What it costs is the window. Deferred, the store spends **11 of 24 turns** belie
 <!-- graph:begin -->
 **Taught in:** [Sleep-Time Compute](../curriculum/advanced/sleep-time-compute/index.md)
 
-**Used in:** [Background Job Mechanics](../curriculum/advanced/background-job-mechanics/index.md)
+**Used in:** [Background Job Mechanics](../curriculum/advanced/background-job-mechanics/index.md) · [The Latency Budget](../curriculum/advanced/latency-budget/index.md)
 
 **Do not confuse with:** [Deduplication](deduplication.md)
 <!-- graph:end -->

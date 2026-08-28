@@ -91,6 +91,15 @@
       "path": "curriculum/advanced/implicit-signals/index.md"
     },
     {
+      "id": "latency-budget",
+      "type": "lesson",
+      "title": "The Latency Budget",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 76,
+      "path": "curriculum/advanced/latency-budget/index.md"
+    },
+    {
       "id": "learning-from-outcomes",
       "type": "lesson",
       "title": "Learning From Outcomes",
@@ -885,6 +894,14 @@
       "status": "published"
     },
     {
+      "id": "critical-path",
+      "type": "concept",
+      "title": "Critical Path",
+      "stage": "govern",
+      "path": "concepts/critical-path.md",
+      "status": "published"
+    },
+    {
       "id": "cross-writer-conflict",
       "type": "concept",
       "title": "Cross-Writer Conflict",
@@ -1114,6 +1131,14 @@
       "title": "Label, Not Permission",
       "stage": "govern",
       "path": "concepts/label-not-permission.md",
+      "status": "published"
+    },
+    {
+      "id": "latency-budget",
+      "type": "concept",
+      "title": "Latency Budget",
+      "stage": "govern",
+      "path": "concepts/latency-budget.md",
       "status": "published"
     },
     {
@@ -1665,6 +1690,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "latency-budget",
+      "to": "cost-model",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "learning-from-outcomes",
       "to": "procedural-memory",
       "kind": "requires_lesson"
@@ -2077,6 +2107,16 @@
     {
       "from": "implicit-signals",
       "to": "correction-as-label",
+      "kind": "teaches"
+    },
+    {
+      "from": "latency-budget",
+      "to": "latency-budget",
+      "kind": "teaches"
+    },
+    {
+      "from": "latency-budget",
+      "to": "critical-path",
       "kind": "teaches"
     },
     {
@@ -2737,6 +2777,21 @@
     {
       "from": "implicit-signals",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "latency-budget",
+      "to": "cost-profile",
+      "kind": "uses"
+    },
+    {
+      "from": "latency-budget",
+      "to": "sleep-time-compute",
+      "kind": "uses"
+    },
+    {
+      "from": "latency-budget",
+      "to": "consistency-window",
       "kind": "uses"
     },
     {
@@ -3740,6 +3795,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "critical-path",
+      "to": "latency-budget",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "cross-writer-conflict",
       "to": "memory-operations",
       "kind": "contrasts_with"
@@ -3837,6 +3897,11 @@
     {
       "from": "label-not-permission",
       "to": "write-authorisation",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "latency-budget",
+      "to": "cost-profile",
       "kind": "contrasts_with"
     },
     {

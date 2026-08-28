@@ -422,7 +422,7 @@ levels:
           - id: latency-budget
             title: "The Latency Budget"
             stage: govern
-            objective: "Split synchronous from deferred work along what the user can wait for."
+            objective: "81% of the per-turn cost blocks, and it is the stage nobody proposes deferring."
           - id: caching-batching-routing
             title: "Caching, Batching, Routing"
             stage: govern

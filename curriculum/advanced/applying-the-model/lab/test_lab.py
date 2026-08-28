@@ -93,6 +93,10 @@ def test_restraint_is_cheaper(built) -> None:
         )))
     assert costs == [44, 30, 21, 7]
     assert all(c < everything for c in costs)
+    savings = [everything - c for c in costs]
+    assert (min(savings), max(savings)) == (31, 68), (
+        "volunteering the whole model costs 31 to 68 extra tokens"
+    )
 
 
 def test_against_retrieval_it_is_a_tie(built) -> None:

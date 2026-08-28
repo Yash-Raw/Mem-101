@@ -145,8 +145,19 @@ number to match a memory of what it used to be.**
 
 ## Status
 
-**The course is complete.** 84 lessons across three levels, 823 tests, 10
-validators, `memlab` v0.3. `uv run mkdocs build --strict` produces the site.
+**The course is complete and published.** 84 lessons across three levels, 823
+tests, 10 validators, `memlab` v0.3. Public at
+[github.com/Yash-Raw/Mem-101](https://github.com/Yash-Raw/Mem-101), site at
+<https://yash-raw.github.io/Mem-101/>, deployed by CI from `main` only after
+`check` is green — the site is never newer than the validators that vouch for
+it. Dual licence: CC BY 4.0 on prose, MIT on code.
+
+`tools/show.py <lesson-id>` prints what a lab produces when solved. It exists
+because a clean-clone test found the README's first command was `lab.py`
+itself, which raises `NotImplementedError` by design — the "run it yourself"
+promise opened with a traceback and no test could catch it, since the stub
+raising is what `test_stub_is_runnable` asserts. It reuses
+`validate_expected_output.lab_output`, so learner and CI share one code path.
 
 ```
 uv run python -m memlab.app.chat --profile advanced --ingest --exam --budget 51

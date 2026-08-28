@@ -25,7 +25,7 @@ On this course's corpus that distinction is the whole result: the calendar agent
 <!-- graph:begin -->
 **Taught in:** [Provenance and Trust](../curriculum/advanced/provenance-and-trust/index.md)
 
-**Used in:** [Cross-Agent Write Conflicts](../curriculum/advanced/cross-agent-write-conflicts/index.md) · [Memory Access Control](../curriculum/advanced/memory-access-control/index.md)
+**Used in:** [Cross-Agent Write Conflicts](../curriculum/advanced/cross-agent-write-conflicts/index.md) · [Memory Access Control](../curriculum/advanced/memory-access-control/index.md) · [Memory Attacks](../curriculum/advanced/memory-attacks/index.md)
 
 **Do not confuse with:** [Provenance](provenance.md)
 <!-- graph:end -->

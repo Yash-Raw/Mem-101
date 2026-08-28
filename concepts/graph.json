@@ -82,6 +82,15 @@
       "path": "curriculum/advanced/memory-access-control/index.md"
     },
     {
+      "id": "memory-attacks",
+      "type": "lesson",
+      "title": "Memory Attacks",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 68,
+      "path": "curriculum/advanced/memory-attacks/index.md"
+    },
+    {
       "id": "memory-topologies",
       "type": "lesson",
       "title": "Memory Topologies",
@@ -611,6 +620,14 @@
       "stage": "evolve",
       "order": 28,
       "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md"
+    },
+    {
+      "id": "accidental-control",
+      "type": "concept",
+      "title": "Accidental Control",
+      "stage": "govern",
+      "path": "concepts/accidental-control.md",
+      "status": "published"
     },
     {
       "id": "append-only-log",
@@ -1293,6 +1310,14 @@
       "status": "published"
     },
     {
+      "id": "threat-model",
+      "type": "concept",
+      "title": "Threat Model",
+      "stage": "govern",
+      "path": "concepts/threat-model.md",
+      "status": "published"
+    },
+    {
       "id": "token-budget",
       "type": "concept",
       "title": "Token Budget",
@@ -1457,6 +1482,11 @@
     {
       "from": "memory-access-control",
       "to": "cross-agent-write-conflicts",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "memory-attacks",
+      "to": "rtbf-and-auditability",
       "kind": "requires_lesson"
     },
     {
@@ -1827,6 +1857,16 @@
     {
       "from": "memory-access-control",
       "to": "leak-assertion",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-attacks",
+      "to": "threat-model",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-attacks",
+      "to": "accidental-control",
       "kind": "teaches"
     },
     {
@@ -2405,6 +2445,21 @@
       "kind": "uses"
     },
     {
+      "from": "memory-attacks",
+      "to": "cascade-deletion",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-attacks",
+      "to": "write-authorisation",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-attacks",
+      "to": "competence",
+      "kind": "uses"
+    },
+    {
       "from": "memory-topologies",
       "to": "retrieval-scoping",
       "kind": "uses"
@@ -3210,6 +3265,11 @@
       "kind": "uses"
     },
     {
+      "from": "accidental-control",
+      "to": "threat-model",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "as-of-query",
       "to": "recency-bias",
       "kind": "contrasts_with"
@@ -3502,6 +3562,11 @@
     {
       "from": "temporal-routing",
       "to": "retrieval-scoping",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "threat-model",
+      "to": "accidental-control",
       "kind": "contrasts_with"
     },
     {

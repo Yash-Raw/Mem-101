@@ -382,7 +382,7 @@ levels:
           - id: memory-attacks
             title: "Memory Attacks"
             stage: govern
-            objective: "Defend against poisoning, injection, cross-user leakage, and extraction."
+            objective: "Three defences exist, all accidental, and the fourth attack has none."
 
       - id: evaluation
         title: "Evaluating Memory Systems"

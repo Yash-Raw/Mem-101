@@ -25,6 +25,8 @@ status: published
 **You need first:** [Deletion That Actually Deletes](../deletion-that-actually-deletes/index.md)
 
 **Concepts assumed:** [Cascade Deletion](../../../concepts/cascade-deletion.md) · [Request Resolution](../../../concepts/request-resolution.md) · [The Memory Record](../../../concepts/memory-record.md)
+
+**This unlocks:** [Memory Attacks](../memory-attacks/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -129,4 +131,6 @@ uv run python curriculum/advanced/rtbf-and-auditability/lab/lab.py
 **You need first:** [Deletion That Actually Deletes](../deletion-that-actually-deletes/index.md)
 
 **Concepts assumed:** [Cascade Deletion](../../../concepts/cascade-deletion.md) · [Request Resolution](../../../concepts/request-resolution.md) · [The Memory Record](../../../concepts/memory-record.md)
+
+**This unlocks:** [Memory Attacks](../memory-attacks/index.md)
 <!-- graph:end -->

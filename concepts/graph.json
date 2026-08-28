@@ -226,6 +226,15 @@
       "path": "curriculum/advanced/validity-intervals/index.md"
     },
     {
+      "id": "why-memory-eval-is-hard",
+      "type": "lesson",
+      "title": "Why Memory Eval Is Hard",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 69,
+      "path": "curriculum/advanced/why-memory-eval-is-hard/index.md"
+    },
+    {
       "id": "anatomy-of-a-memory-layer",
       "type": "lesson",
       "title": "Anatomy of a Memory Layer",
@@ -620,6 +629,14 @@
       "stage": "evolve",
       "order": 28,
       "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md"
+    },
+    {
+      "id": "absent-corpus",
+      "type": "concept",
+      "title": "The Absent Corpus",
+      "stage": "govern",
+      "path": "concepts/absent-corpus.md",
+      "status": "published"
     },
     {
       "id": "accidental-control",
@@ -1059,6 +1076,14 @@
       "title": "Minimisation",
       "stage": "govern",
       "path": "concepts/minimisation.md",
+      "status": "published"
+    },
+    {
+      "id": "moving-ground-truth",
+      "type": "concept",
+      "title": "Moving Ground Truth",
+      "stage": "govern",
+      "path": "concepts/moving-ground-truth.md",
       "status": "published"
     },
     {
@@ -1565,6 +1590,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "why-memory-eval-is-hard",
+      "to": "memory-attacks",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "anatomy-of-a-memory-layer",
       "to": "context-is-not-memory",
       "kind": "requires_lesson"
@@ -1992,6 +2022,16 @@
     {
       "from": "validity-intervals",
       "to": "as-of-query",
+      "kind": "teaches"
+    },
+    {
+      "from": "why-memory-eval-is-hard",
+      "to": "absent-corpus",
+      "kind": "teaches"
+    },
+    {
+      "from": "why-memory-eval-is-hard",
+      "to": "moving-ground-truth",
       "kind": "teaches"
     },
     {
@@ -2670,6 +2710,21 @@
       "kind": "uses"
     },
     {
+      "from": "why-memory-eval-is-hard",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "why-memory-eval-is-hard",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
+      "from": "why-memory-eval-is-hard",
+      "to": "as-of-query",
+      "kind": "uses"
+    },
+    {
       "from": "anatomy-of-a-memory-layer",
       "to": "memory-lifecycle",
       "kind": "uses"
@@ -3265,6 +3320,11 @@
       "kind": "uses"
     },
     {
+      "from": "absent-corpus",
+      "to": "moving-ground-truth",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "accidental-control",
       "to": "threat-model",
       "kind": "contrasts_with"
@@ -3432,6 +3492,11 @@
     {
       "from": "minimisation",
       "to": "personal-data",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "moving-ground-truth",
+      "to": "absent-corpus",
       "kind": "contrasts_with"
     },
     {

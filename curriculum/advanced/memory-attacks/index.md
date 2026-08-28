@@ -25,6 +25,8 @@ status: published
 **You need first:** [Proving You Forgot](../rtbf-and-auditability/index.md)
 
 **Concepts assumed:** [Cascade Deletion](../../../concepts/cascade-deletion.md) · [Write Authorisation](../../../concepts/write-authorisation.md) · [Competence](../../../concepts/competence.md)
+
+**This unlocks:** [Why Memory Eval Is Hard](../why-memory-eval-is-hard/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -147,4 +149,6 @@ uv run python curriculum/advanced/memory-attacks/lab/lab.py
 **You need first:** [Proving You Forgot](../rtbf-and-auditability/index.md)
 
 **Concepts assumed:** [Cascade Deletion](../../../concepts/cascade-deletion.md) · [Write Authorisation](../../../concepts/write-authorisation.md) · [Competence](../../../concepts/competence.md)
+
+**This unlocks:** [Why Memory Eval Is Hard](../why-memory-eval-is-hard/index.md)
 <!-- graph:end -->

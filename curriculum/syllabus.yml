@@ -390,7 +390,7 @@ levels:
           - id: why-memory-eval-is-hard
             title: "Why Memory Eval Is Hard"
             stage: govern
-            objective: "Confront the absent corpus, moving ground truth, and unlabelled write path."
+            objective: "Count what can be scored at all, before scoring anything."
           - id: component-metrics
             title: "Component Metrics"
             stage: govern

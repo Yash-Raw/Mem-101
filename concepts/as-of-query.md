@@ -23,5 +23,5 @@ Without either, a question about the past is answered by whatever filter the rea
 <!-- graph:begin -->
 **Taught in:** [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
 
-**Used in:** [Three Temporal Questions](../curriculum/advanced/temporal-questions/index.md)
+**Used in:** [Three Temporal Questions](../curriculum/advanced/temporal-questions/index.md) · [Why Memory Eval Is Hard](../curriculum/advanced/why-memory-eval-is-hard/index.md)
 <!-- graph:end -->

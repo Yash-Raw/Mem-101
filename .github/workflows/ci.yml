@@ -6,6 +6,10 @@ on:
   schedule:
     - cron: "0 6 * * 1"   # weekly: catch landscape pages ageing past their SLA
 
+# Read-only by default; the deploy job widens this for itself alone.
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -14,15 +18,44 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
-      - run: uv sync --all-extras --dev
+      # Matches the documented setup in README.md. The `live` extra pulls the
+      # anthropic SDK, which nothing imports under MEMLAB_LLM=fake.
+      - run: uv sync --dev
       - name: lint
         run: uv run ruff check .
       - name: validators
         run: uv run python tools/check.py
       - name: labs and capstone tests
         run: uv run pytest -q
-      # Enabled in Phase 7, when mkdocs.yml lands. Keeping it here but inert
-      # so the step is not forgotten, and CI is not committed red.
+      # Runs on pull requests too, so a broken site is caught before merge.
       - name: site builds
-        if: hashFiles('mkdocs.yml') != ''
         run: uv run mkdocs build --strict
+
+  # Publishes to GitHub Pages, but only from main and only once `check` is
+  # green -- the site is never newer than the validators that vouch for it.
+  deploy:
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # Serialised rather than cancelled: a half-finished Pages deploy is worse
+    # than a queued one.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv sync --dev
+      - run: uv run mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

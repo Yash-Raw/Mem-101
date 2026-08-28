@@ -1,12 +1,19 @@
-# The site is generated from the repository as it stands -- no docs/ directory,
-# no copies. Every lesson and concept page is already valid Markdown with
-# relative links ending in .md, which is the form that works on GitHub and
-# here, and C5 exists to keep it that way.
+# The site is generated from the repository as it stands -- no copies, no
+# build step that rewrites content. Every lesson and concept page is already
+# valid Markdown with relative links ending in .md, which is the form that
+# works on GitHub and here, and C5 exists to keep it that way.
 site_name: Building an Agent Memory Layer
 site_description: >-
   A hands-on course in the write path -- extraction, resolution, conflict
   detection, belief updating, consolidation, decay, governance -- with a
   runnable capstone that grows across three levels.
+site_url: https://yash-raw.github.io/Mem-101/
+repo_url: https://github.com/Yash-Raw/Mem-101
+repo_name: Yash-Raw/Mem-101
+# `docs/` holds symlinks rather than copies, so a page's path relative to
+# docs_dir is already its real path in the repository -- edit links resolve
+# with no special-casing. The layout chosen for C5 pays off a second time.
+edit_uri: edit/main/
 # `docs/` holds symlinks to the content directories rather than copies. The
 # course is authored at the repository root -- C1 and C5 depend on those paths
 # and so does every validator -- and a build step that copied files would make
@@ -21,6 +28,7 @@ theme:
     - navigation.top
     - content.code.copy
     - toc.follow
+    - content.action.edit   # needs edit_uri; see the note above it
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -35,7 +43,13 @@ markdown_extensions:
   - tables
   - toc: {permalink: true}
   - pymdownx.details        # the ??? question blocks in every lesson
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        # C6 makes every diagram a ```mermaid fence. GitHub renders those
+        # natively; Material needs to be told, or they ship as <code> blocks.
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight
 
 # Everything that is not course content. `capstone/` is a Python package and

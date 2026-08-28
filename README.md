@@ -36,6 +36,60 @@ Then read [SYLLABUS.md](SYLLABUS.md) for the full map.
 embeddings are genuinely responsive to wording, so retrieval lessons teach real
 behaviour offline and in CI. Set `MEMLAB_LLM=anthropic` if you want live calls.
 
+## How to take this course
+
+**You need** Python 3.11+ and [uv](https://docs.astral.sh/uv/). The system
+`python3` on many machines is 3.9, so every command here is `uv run` — that is
+not a style choice, it is what makes the version right. You never need an API
+key, at any level.
+
+**The loop, for each of the 84 lessons:**
+
+1. **Read the lesson** — `curriculum/<level>/<lesson>/index.md`. Every one ends
+   with a `Why this isn't RAG` section; if you read nothing else, read those.
+2. **Open its lab** — `lab/lab.py`. Exactly one function is stubbed with
+   `raise NotImplementedError` and a `TODO` describing what it must return.
+3. **Fill the stub, then run the file:**
+   ```bash
+   uv run python curriculum/beginner/memory-is-not-rag/lab/lab.py
+   ```
+   It prints a table. **The lesson quotes that same table.** Matching it is how
+   you know you are right — the fake model is deterministic, so your numbers
+   should be identical to the ones on the page, not merely similar.
+4. **Then read `solution.py`**, which sits next to the stub on purpose. This is
+   not a test you can cheat; it is a course you can get stuck in. Read it when
+   comparing beats grinding.
+
+**About `pytest`.** Each lab ships a `test_lab.py`, but it is not a grader — it
+pins the *lesson's claims* against the reference solution, so a lesson's numbers
+cannot silently rot. One consequence surprises people: every lab's first test is
+`test_stub_is_runnable`, which asserts the stub still raises `NotImplementedError`.
+**Implement the stub correctly and that test goes red.** That is the exercise
+working, not you breaking it. Run the suite to check the repo is healthy:
+
+```bash
+uv run pytest -q                                              # all 823
+uv run pytest curriculum/beginner/memory-is-not-rag/lab/ -q   # one lesson
+```
+
+**Three ways in:**
+
+- **Thirty minutes** — run the lab above and read `memory-is-not-rag`. That is
+  the whole argument, demonstrated rather than asserted.
+- **Front to back** — [SYLLABUS.md](SYLLABUS.md) is the order, and it is proven
+  to be a valid topological sort of the prerequisite graph, so nothing ever
+  depends on something you have not met.
+- **Straight at your bug** — scan the syllabus for the failure you are actually
+  hitting. Roughly half the course is `evolve` and `govern`; only about 11% is
+  retrieval.
+
+**If a number moves under you.** Lessons quote measured output, and shared code
+changes as the capstone grows — so each lesson pins itself to a *module
+snapshot* (`pipeline.at("I3")` is "the system as module I3 left it"). If you
+edit `memlab` and a later lesson's figure shifts, that is the snapshot doing its
+job. `uv run python tools/dump_snapshots.py` shows what moved.
+
+
 ## How it is organised
 
 | Path | What it holds |

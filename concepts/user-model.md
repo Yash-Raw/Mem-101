@@ -25,5 +25,7 @@ Return what did not fit. A model that silently omits a third of its input looks 
 <!-- graph:begin -->
 **Taught in:** [From Facts to a User Model](../curriculum/advanced/from-facts-to-a-user-model/index.md)
 
+**Used in:** [Behaviour as Memory](../curriculum/advanced/implicit-signals/index.md)
+
 **Do not confuse with:** [The Memory Record](memory-record.md)
 <!-- graph:end -->

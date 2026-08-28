@@ -28,6 +28,15 @@
       "path": "curriculum/advanced/from-facts-to-a-user-model/index.md"
     },
     {
+      "id": "implicit-signals",
+      "type": "lesson",
+      "title": "Behaviour as Memory",
+      "level": "advanced",
+      "stage": "extract",
+      "order": 58,
+      "path": "curriculum/advanced/implicit-signals/index.md"
+    },
+    {
       "id": "memory-access-control",
       "type": "lesson",
       "title": "Memory Access Control",
@@ -643,6 +652,14 @@
       "status": "published"
     },
     {
+      "id": "correction-as-label",
+      "type": "concept",
+      "title": "Correction as Label",
+      "stage": "extract",
+      "path": "concepts/correction-as-label.md",
+      "status": "published"
+    },
+    {
       "id": "corroboration",
       "type": "concept",
       "title": "Corroboration",
@@ -792,6 +809,14 @@
       "title": "Idempotent Writes",
       "stage": "store",
       "path": "concepts/idempotency.md",
+      "status": "published"
+    },
+    {
+      "id": "implicit-signal",
+      "type": "concept",
+      "title": "Implicit Signal",
+      "stage": "extract",
+      "path": "concepts/implicit-signal.md",
       "status": "published"
     },
     {
@@ -1204,6 +1229,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "implicit-signals",
+      "to": "from-facts-to-a-user-model",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "memory-access-control",
       "to": "cross-agent-write-conflicts",
       "kind": "requires_lesson"
@@ -1496,6 +1526,16 @@
     {
       "from": "from-facts-to-a-user-model",
       "to": "volatility",
+      "kind": "teaches"
+    },
+    {
+      "from": "implicit-signals",
+      "to": "implicit-signal",
+      "kind": "teaches"
+    },
+    {
+      "from": "implicit-signals",
+      "to": "correction-as-label",
       "kind": "teaches"
     },
     {
@@ -1946,6 +1986,21 @@
     {
       "from": "from-facts-to-a-user-model",
       "to": "unnameable-claim",
+      "kind": "uses"
+    },
+    {
+      "from": "implicit-signals",
+      "to": "user-model",
+      "kind": "uses"
+    },
+    {
+      "from": "implicit-signals",
+      "to": "consistency-window",
+      "kind": "uses"
+    },
+    {
+      "from": "implicit-signals",
+      "to": "provenance",
       "kind": "uses"
     },
     {
@@ -2739,6 +2794,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "correction-as-label",
+      "to": "implicit-signal",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "corroboration",
       "to": "deduplication",
       "kind": "contrasts_with"
@@ -2791,6 +2851,11 @@
     {
       "from": "hybrid-ranking",
       "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "implicit-signal",
+      "to": "memory-record",
       "kind": "contrasts_with"
     },
     {

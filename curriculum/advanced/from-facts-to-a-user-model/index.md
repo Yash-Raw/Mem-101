@@ -25,6 +25,8 @@ status: published
 **You need first:** [Memory Access Control](../memory-access-control/index.md)
 
 **Concepts assumed:** [Slot](../../../concepts/slot.md) · [Supersession](../../../concepts/supersession.md) · [Unnameable Claim](../../../concepts/unnameable-claim.md)
+
+**This unlocks:** [Behaviour as Memory](../implicit-signals/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -136,4 +138,6 @@ uv run python curriculum/advanced/from-facts-to-a-user-model/lab/lab.py
 **You need first:** [Memory Access Control](../memory-access-control/index.md)
 
 **Concepts assumed:** [Slot](../../../concepts/slot.md) · [Supersession](../../../concepts/supersession.md) · [Unnameable Claim](../../../concepts/unnameable-claim.md)
+
+**This unlocks:** [Behaviour as Memory](../implicit-signals/index.md)
 <!-- graph:end -->

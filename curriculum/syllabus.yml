@@ -334,7 +334,7 @@ levels:
           - id: implicit-signals
             title: "Behaviour as Memory"
             stage: extract
-            objective: "Learn from corrections, repetitions, and abandonment."
+            objective: "A correction is a labelled negative example, and it always arrives late."
           - id: applying-the-model
             title: "Personalization Without Creepiness"
             stage: assemble

@@ -34,6 +34,8 @@ CREATE TABLE IF NOT EXISTS memories (
     source_id    TEXT NOT NULL,
     authority    REAL NOT NULL,
     happened_at  TEXT,
+    valid_from   TEXT,
+    valid_to     TEXT,
     recorded_at  TEXT NOT NULL,
     invalid_at   TEXT,
     superseded_by TEXT,
@@ -73,7 +75,7 @@ class SqliteStore:
         self.db.executemany(
             "INSERT OR IGNORE INTO memories VALUES "
             "(:id,:content,:type,:user,:agent,:session,:speaker,:source_id,:authority,"
-            ":happened_at,:recorded_at,:invalid_at,:superseded_by,:confidence,:salience,"
+            ":happened_at,:valid_from,:valid_to,:recorded_at,:invalid_at,:superseded_by,:confidence,:salience,"
             ":tier,:access_count,:entities,:derived_from)",
             rows,
         )
@@ -85,7 +87,7 @@ class SqliteStore:
         self.db.executemany(
             "INSERT INTO memories VALUES "
             "(:id,:content,:type,:user,:agent,:session,:speaker,:source_id,:authority,"
-            ":happened_at,:recorded_at,:invalid_at,:superseded_by,:confidence,:salience,"
+            ":happened_at,:valid_from,:valid_to,:recorded_at,:invalid_at,:superseded_by,:confidence,:salience,"
             ":tier,:access_count,:entities,:derived_from)",
             [self._row(m) for m in memories],
         )
@@ -140,6 +142,8 @@ class SqliteStore:
             "speaker": m.provenance.speaker, "source_id": m.provenance.source_id,
             "authority": m.provenance.authority,
             "happened_at": m.happened_at.isoformat() if m.happened_at else None,
+            "valid_from": m.valid_from.isoformat() if m.valid_from else None,
+            "valid_to": m.valid_to.isoformat() if m.valid_to else None,
             "recorded_at": m.recorded_at.isoformat(),
             "invalid_at": m.invalid_at.isoformat() if m.invalid_at else None,
             "superseded_by": m.superseded_by, "confidence": m.confidence,
@@ -157,6 +161,7 @@ class SqliteStore:
             provenance=Provenance(source_id=r["source_id"], speaker=r["speaker"],
                                   authority=r["authority"]),
             happened_at=_dt(r["happened_at"]), recorded_at=_dt(r["recorded_at"]),
+            valid_from=_dt(r["valid_from"]), valid_to=_dt(r["valid_to"]),
             invalid_at=_dt(r["invalid_at"]), superseded_by=r["superseded_by"],
             confidence=r["confidence"], salience=r["salience"],
             tier=Tier(r["tier"]), access_count=r["access_count"],

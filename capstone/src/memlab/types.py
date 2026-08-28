@@ -64,6 +64,8 @@ class Memory:
     provenance: Provenance
     happened_at: datetime | None = None   # event time -- when it was true
     recorded_at: datetime = field(default_factory=lambda: datetime.now(UTC))
+    valid_from: datetime | None = None    # A1: when the fact became true in the world
+    valid_to: datetime | None = None      # A1: when it stopped being true -- NOT invalid_at
     invalid_at: datetime | None = None    # set on supersession; never delete
     superseded_by: str | None = None
     confidence: float = 1.0
@@ -100,6 +102,6 @@ class Memory:
         d = asdict(self)
         d["type"] = self.type.value
         d["tier"] = self.tier.value
-        for k in ("happened_at", "recorded_at", "invalid_at"):
+        for k in ("happened_at", "recorded_at", "invalid_at", "valid_from", "valid_to"):
             d[k] = d[k].isoformat() if d[k] else None
         return json.dumps(d, sort_keys=True)

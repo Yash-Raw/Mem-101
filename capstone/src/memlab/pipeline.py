@@ -29,6 +29,7 @@ DecayFn = Callable[[list[Memory]], list[Memory]]
 RankFn = Callable[[str, list[Memory], Scope], list]
 
 AssembleFn = Callable[..., str]
+AnchorFn = Callable[[list[Memory], dict], list[Memory]]
 
 
 @dataclass(frozen=True)
@@ -45,6 +46,7 @@ class Pipeline:
     rank: RankFn | None = None                # I6: hybrid scoring; None = plain cosine
     vectors: object | None = None             # I7: a VectorIndex; None = recompute
     assemble: AssembleFn | None = None        # I8: budgeted packing; None = assemble.simple
+    anchor: AnchorFn | None = None            # A1: resolve relative time against the turn clock
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -66,6 +68,11 @@ def beginner() -> Pipeline:
 # is attributable to it alone -- and so a lesson's measured numbers stay true
 # after later modules land. `at("I1")` is the system as I1 left it, forever.
 MODULES = ("I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8")
+
+# Level 3 layers on top of Level 2 rather than replacing it: `advanced("A1")`
+# is `intermediate("latest")` plus A1's one capability. The same rule holds --
+# one module, one switch, so a claimed improvement is attributable to it alone.
+ADVANCED_MODULES = ("A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9")
 
 
 def intermediate(through: str = "latest") -> Pipeline:
@@ -161,14 +168,38 @@ def _resolve_dedupe_reconcile(memories):
     return reconcile(consolidated, scope).memories
 
 
+def advanced(through: str = "latest") -> Pipeline:
+    """Level 3, optionally as it stood at the end of a given module.
+
+    Starts from Level 2 complete. Every `@I*` snapshot must stay byte-identical
+    after this function grows -- an Advanced capability that moves an
+    Intermediate figure is a build break, not a number to re-quote.
+    """
+    if through != "latest" and through not in ADVANCED_MODULES:
+        raise ValueError(
+            f"unknown module {through!r} (known: {', '.join(ADVANCED_MODULES)})"
+        )
+    reached = (
+        ADVANCED_MODULES
+        if through == "latest"
+        else ADVANCED_MODULES[: ADVANCED_MODULES.index(through) + 1]
+    )
+    p = replace(intermediate(), name=f"advanced@{through}")
+    _ = reached  # each module fills this in as it lands
+    return p
+
+
 def at(module: str) -> Pipeline:
-    """The intermediate pipeline as it stood at the end of `module`."""
+    """The pipeline as it stood at the end of `module` -- `I*` or `A*`."""
+    if module.startswith("A"):
+        return advanced(through=module)
     return intermediate(through=module)
 
 
 PROFILES: dict[str, Callable[[], Pipeline]] = {
     "beginner": beginner,
     "intermediate": intermediate,
+    "advanced": advanced,
 }
 
 

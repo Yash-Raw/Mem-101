@@ -64,6 +64,8 @@ class JsonlStore:
             scope=Scope(**d["scope"]),
             provenance=Provenance(**d["provenance"]),
             happened_at=_parse_dt(d["happened_at"]),
+            valid_from=_parse_dt(d.get("valid_from")),
+            valid_to=_parse_dt(d.get("valid_to")),
             recorded_at=_parse_dt(d["recorded_at"]),
             invalid_at=_parse_dt(d["invalid_at"]),
             superseded_by=d.get("superseded_by"),

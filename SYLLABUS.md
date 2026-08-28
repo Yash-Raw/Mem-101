@@ -235,6 +235,6 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | 81 | [Memory Observability](curriculum/advanced/memory-observability/index.md) | `govern` | Six answers from the record with no logging, and three that need a read-time write. |
 | 82 | [Invariants and Drift Detection](curriculum/advanced/invariants-and-drift-detection/index.md) | `govern` | Collect the invariants, label the kind, and stop an outlier moving its own reference. |
 | 83 | [Migrating Live Memory](curriculum/advanced/schema-migration-on-live-memory/index.md) | `store` | The id hashes identity, not state -- which is why this migration was one phase. |
-| 84 | [Hardening Pass](curriculum/advanced/capstone-finale/index.md) | `govern` | Ship memlab v0.3 with an eval report and a cost profile. |
+| 84 | [Hardening Pass](curriculum/advanced/capstone-finale/index.md) | `govern` | Ship v0.3 with its six open items -- the section that makes the rest checkable. |
 
 <!-- generated:end -->

@@ -28,6 +28,15 @@
       "path": "curriculum/advanced/caching-batching-routing/index.md"
     },
     {
+      "id": "capstone-finale",
+      "type": "lesson",
+      "title": "Hardening Pass",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 83,
+      "path": "curriculum/advanced/capstone-finale/index.md"
+    },
+    {
       "id": "cold-start-and-shared-accounts",
       "type": "lesson",
       "title": "Cold Start and Shared Accounts",
@@ -1364,6 +1373,14 @@
       "status": "published"
     },
     {
+      "id": "open-item",
+      "type": "concept",
+      "title": "Open Item",
+      "stage": "govern",
+      "path": "concepts/open-item.md",
+      "status": "published"
+    },
+    {
       "id": "over-extraction",
       "type": "concept",
       "title": "Over-Extraction",
@@ -1473,6 +1490,14 @@
       "title": "Relative Time Resolution",
       "stage": "extract",
       "path": "concepts/relative-time.md",
+      "status": "published"
+    },
+    {
+      "id": "release-report",
+      "type": "concept",
+      "title": "Release Report",
+      "stage": "govern",
+      "path": "concepts/release-report.md",
       "status": "published"
     },
     {
@@ -1802,6 +1827,11 @@
     {
       "from": "caching-batching-routing",
       "to": "latency-budget",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "capstone-finale",
+      "to": "schema-migration-on-live-memory",
       "kind": "requires_lesson"
     },
     {
@@ -2227,6 +2257,16 @@
     {
       "from": "caching-batching-routing",
       "to": "model-routing",
+      "kind": "teaches"
+    },
+    {
+      "from": "capstone-finale",
+      "to": "release-report",
+      "kind": "teaches"
+    },
+    {
+      "from": "capstone-finale",
+      "to": "open-item",
       "kind": "teaches"
     },
     {
@@ -2912,6 +2952,21 @@
     {
       "from": "caching-batching-routing",
       "to": "vector-index",
+      "kind": "uses"
+    },
+    {
+      "from": "capstone-finale",
+      "to": "store-invariant",
+      "kind": "uses"
+    },
+    {
+      "from": "capstone-finale",
+      "to": "cost-profile",
+      "kind": "uses"
+    },
+    {
+      "from": "capstone-finale",
+      "to": "benchmark-claim",
       "kind": "uses"
     },
     {
@@ -4315,6 +4370,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "open-item",
+      "to": "release-report",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "partition-key",
       "to": "growth-curve",
       "kind": "contrasts_with"
@@ -4372,6 +4432,11 @@
     {
       "from": "relative-time",
       "to": "event-time",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "release-report",
+      "to": "benchmark-claim",
       "kind": "contrasts_with"
     },
     {

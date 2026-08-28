@@ -25,5 +25,7 @@ And test the checker. Running this course's seven against an earlier profile pro
 <!-- graph:begin -->
 **Taught in:** [Invariants and Drift Detection](../curriculum/advanced/invariants-and-drift-detection/index.md)
 
+**Used in:** [Hardening Pass](../curriculum/advanced/capstone-finale/index.md)
+
 **Do not confuse with:** [Leave-One-Out](leave-one-out.md)
 <!-- graph:end -->

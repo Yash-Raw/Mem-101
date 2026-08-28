@@ -25,6 +25,8 @@ status: published
 **You need first:** [Invariants and Drift Detection](../invariants-and-drift-detection/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Relative Time Resolution](../../../concepts/relative-time.md)
+
+**This unlocks:** [Hardening Pass](../capstone-finale/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -118,4 +120,6 @@ uv run python curriculum/advanced/schema-migration-on-live-memory/lab/lab.py
 **You need first:** [Invariants and Drift Detection](../invariants-and-drift-detection/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Relative Time Resolution](../../../concepts/relative-time.md)
+
+**This unlocks:** [Hardening Pass](../capstone-finale/index.md)
 <!-- graph:end -->

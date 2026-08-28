@@ -25,5 +25,7 @@ Apply the reading to your own claim first. The most defensible one this course c
 <!-- graph:begin -->
 **Taught in:** [Reading Benchmark Claims Critically](../curriculum/advanced/reading-benchmark-claims/index.md)
 
+**Used in:** [Hardening Pass](../curriculum/advanced/capstone-finale/index.md)
+
 **Do not confuse with:** [Saturated Metric](saturated-metric.md)
 <!-- graph:end -->

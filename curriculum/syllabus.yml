@@ -454,4 +454,4 @@ levels:
           - id: capstone-finale
             title: "Hardening Pass"
             stage: govern
-            objective: "Ship memlab v0.3 with an eval report and a cost profile."
+            objective: "Ship v0.3 with its six open items -- the section that makes the rest checkable."

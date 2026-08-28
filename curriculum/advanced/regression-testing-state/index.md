@@ -25,6 +25,8 @@ status: published
 **You need first:** [Build Your Own Harness](../end-to-end-eval/index.md)
 
 **Concepts assumed:** [Eval Suite](../../../concepts/eval-suite.md) · [Flat Metric](../../../concepts/flat-metric.md) · [The Memory Record](../../../concepts/memory-record.md)
+
+**This unlocks:** [LLM as Judge, and Its Failure Modes](../llm-as-judge-for-memory/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -120,4 +122,6 @@ uv run python curriculum/advanced/regression-testing-state/lab/lab.py
 **You need first:** [Build Your Own Harness](../end-to-end-eval/index.md)
 
 **Concepts assumed:** [Eval Suite](../../../concepts/eval-suite.md) · [Flat Metric](../../../concepts/flat-metric.md) · [The Memory Record](../../../concepts/memory-record.md)
+
+**This unlocks:** [LLM as Judge, and Its Failure Modes](../llm-as-judge-for-memory/index.md)
 <!-- graph:end -->

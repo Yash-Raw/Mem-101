@@ -91,6 +91,15 @@
       "path": "curriculum/advanced/learning-from-outcomes/index.md"
     },
     {
+      "id": "llm-as-judge-for-memory",
+      "type": "lesson",
+      "title": "LLM as Judge, and Its Failure Modes",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 73,
+      "path": "curriculum/advanced/llm-as-judge-for-memory/index.md"
+    },
+    {
       "id": "memory-access-control",
       "type": "lesson",
       "title": "Memory Access Control",
@@ -714,6 +723,14 @@
       "status": "published"
     },
     {
+      "id": "bounded-output",
+      "type": "concept",
+      "title": "Bounded Output",
+      "stage": "govern",
+      "path": "concepts/bounded-output.md",
+      "status": "published"
+    },
+    {
       "id": "canonical-entity",
       "type": "concept",
       "title": "Canonical Entity",
@@ -1047,6 +1064,14 @@
       "title": "The Irreducible Context",
       "stage": "assemble",
       "path": "concepts/irreducible-context.md",
+      "status": "published"
+    },
+    {
+      "id": "judge-role",
+      "type": "concept",
+      "title": "Judge Role",
+      "stage": "govern",
+      "path": "concepts/judge-role.md",
       "status": "published"
     },
     {
@@ -1590,6 +1615,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "llm-as-judge-for-memory",
+      "to": "regression-testing-state",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "memory-access-control",
       "to": "cross-agent-write-conflicts",
       "kind": "requires_lesson"
@@ -1987,6 +2017,16 @@
     {
       "from": "learning-from-outcomes",
       "to": "dropped-clause",
+      "kind": "teaches"
+    },
+    {
+      "from": "llm-as-judge-for-memory",
+      "to": "judge-role",
+      "kind": "teaches"
+    },
+    {
+      "from": "llm-as-judge-for-memory",
+      "to": "bounded-output",
       "kind": "teaches"
     },
     {
@@ -2617,6 +2657,21 @@
     {
       "from": "learning-from-outcomes",
       "to": "extraction-pipeline",
+      "kind": "uses"
+    },
+    {
+      "from": "llm-as-judge-for-memory",
+      "to": "eval-suite",
+      "kind": "uses"
+    },
+    {
+      "from": "llm-as-judge-for-memory",
+      "to": "memory-operations",
+      "kind": "uses"
+    },
+    {
+      "from": "llm-as-judge-for-memory",
+      "to": "provenance",
       "kind": "uses"
     },
     {
@@ -3510,6 +3565,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "bounded-output",
+      "to": "judge-role",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "cascade-deletion",
       "to": "supersession",
       "kind": "contrasts_with"
@@ -3647,6 +3707,11 @@
     {
       "from": "indexed-predicate",
       "to": "vector-index",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "judge-role",
+      "to": "memory-operations",
       "kind": "contrasts_with"
     },
     {

@@ -406,7 +406,7 @@ levels:
           - id: llm-as-judge-for-memory
             title: "LLM as Judge, and Its Failure Modes"
             stage: govern
-            objective: "Use model grading where it works and recognise where it does not."
+            objective: "One judgement of three model calls -- and arbitration is never one of them."
           - id: reading-benchmark-claims
             title: "Reading Benchmark Claims Critically"
             stage: govern

@@ -25,7 +25,7 @@ Print the empty regression list. Six rows and eight columns is more than anyone 
 <!-- graph:begin -->
 **Taught in:** [Build Your Own Harness](../curriculum/advanced/end-to-end-eval/index.md)
 
-**Used in:** [Regression Testing a Stateful System](../curriculum/advanced/regression-testing-state/index.md)
+**Used in:** [LLM as Judge, and Its Failure Modes](../curriculum/advanced/llm-as-judge-for-memory/index.md) · [Regression Testing a Stateful System](../curriculum/advanced/regression-testing-state/index.md)
 
 **Do not confuse with:** [Component Metric](component-metric.md)
 <!-- graph:end -->

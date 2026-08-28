@@ -25,6 +25,8 @@ status: published
 **You need first:** [Memory Observability](../memory-observability/index.md)
 
 **Concepts assumed:** [Leak Assertion](../../../concepts/leak-assertion.md) · [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Derivation Graph](../../../concepts/derivation-graph.md)
+
+**This unlocks:** [Migrating Live Memory](../schema-migration-on-live-memory/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -136,4 +138,6 @@ uv run python curriculum/advanced/invariants-and-drift-detection/lab/lab.py
 **You need first:** [Memory Observability](../memory-observability/index.md)
 
 **Concepts assumed:** [Leak Assertion](../../../concepts/leak-assertion.md) · [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Derivation Graph](../../../concepts/derivation-graph.md)
+
+**This unlocks:** [Migrating Live Memory](../schema-migration-on-live-memory/index.md)
 <!-- graph:end -->

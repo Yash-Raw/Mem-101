@@ -289,6 +289,15 @@
       "path": "curriculum/advanced/scaling-the-store/index.md"
     },
     {
+      "id": "schema-migration-on-live-memory",
+      "type": "lesson",
+      "title": "Migrating Live Memory",
+      "level": "advanced",
+      "stage": "store",
+      "order": 82,
+      "path": "curriculum/advanced/schema-migration-on-live-memory/index.md"
+    },
+    {
       "id": "sleep-time-compute",
       "type": "lesson",
       "title": "Sleep-Time Compute",
@@ -776,6 +785,14 @@
       "title": "Atomicity",
       "stage": "extract",
       "path": "concepts/atomic-fact.md",
+      "status": "published"
+    },
+    {
+      "id": "backfill",
+      "type": "concept",
+      "title": "Backfill",
+      "stage": "store",
+      "path": "concepts/backfill.md",
       "status": "published"
     },
     {
@@ -1539,6 +1556,14 @@
       "status": "published"
     },
     {
+      "id": "shape-change",
+      "type": "concept",
+      "title": "Shape Change",
+      "stage": "store",
+      "path": "concepts/shape-change.md",
+      "status": "published"
+    },
+    {
       "id": "sleep-time-compute",
       "type": "concept",
       "title": "Sleep-Time Compute",
@@ -1922,6 +1947,11 @@
     {
       "from": "scaling-the-store",
       "to": "caching-batching-routing",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "schema-migration-on-live-memory",
+      "to": "invariants-and-drift-detection",
       "kind": "requires_lesson"
     },
     {
@@ -2462,6 +2492,16 @@
     {
       "from": "scaling-the-store",
       "to": "partition-key",
+      "kind": "teaches"
+    },
+    {
+      "from": "schema-migration-on-live-memory",
+      "to": "shape-change",
+      "kind": "teaches"
+    },
+    {
+      "from": "schema-migration-on-live-memory",
+      "to": "backfill",
       "kind": "teaches"
     },
     {
@@ -3300,6 +3340,21 @@
       "kind": "uses"
     },
     {
+      "from": "schema-migration-on-live-memory",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "schema-migration-on-live-memory",
+      "to": "bi-temporal-modeling",
+      "kind": "uses"
+    },
+    {
+      "from": "schema-migration-on-live-memory",
+      "to": "relative-time",
+      "kind": "uses"
+    },
+    {
       "from": "sleep-time-compute",
       "to": "deduplication",
       "kind": "uses"
@@ -3995,6 +4050,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "backfill",
+      "to": "shape-change",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "belief-updating",
       "to": "deduplication",
       "kind": "contrasts_with"
@@ -4352,6 +4412,11 @@
     {
       "from": "semantic-memory",
       "to": "episodic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "shape-change",
+      "to": "backfill",
       "kind": "contrasts_with"
     },
     {

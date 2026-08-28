@@ -23,7 +23,7 @@ Having the fields is not the same as populating them. Audited on this course's c
 <!-- graph:begin -->
 **Taught in:** [Two Clocks](../curriculum/advanced/two-clocks/index.md)
 
-**Used in:** [Invariants and Drift Detection](../curriculum/advanced/invariants-and-drift-detection/index.md) · [Memory Observability](../curriculum/advanced/memory-observability/index.md) · [Resolving 'Last Week'](../curriculum/advanced/relative-time-resolution/index.md) · [Temporal Knowledge Graphs](../curriculum/advanced/temporal-knowledge-graphs/index.md) · [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
+**Used in:** [Invariants and Drift Detection](../curriculum/advanced/invariants-and-drift-detection/index.md) · [Memory Observability](../curriculum/advanced/memory-observability/index.md) · [Resolving 'Last Week'](../curriculum/advanced/relative-time-resolution/index.md) · [Migrating Live Memory](../curriculum/advanced/schema-migration-on-live-memory/index.md) · [Temporal Knowledge Graphs](../curriculum/advanced/temporal-knowledge-graphs/index.md) · [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
 
 **Do not confuse with:** [Event Time vs Ingestion Time](event-time.md)
 <!-- graph:end -->

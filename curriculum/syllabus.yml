@@ -450,7 +450,7 @@ levels:
           - id: schema-migration-on-live-memory
             title: "Migrating Live Memory"
             stage: store
-            objective: "Evolve the record shape with backfills and history reprocessing."
+            objective: "The id hashes identity, not state -- which is why this migration was one phase."
           - id: capstone-finale
             title: "Hardening Pass"
             stage: govern

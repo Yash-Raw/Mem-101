@@ -23,5 +23,7 @@ The classes are not interchangeable. An offset is arithmetic — but *"last mont
 <!-- graph:begin -->
 **Taught in:** [Resolving 'Last Week'](../curriculum/advanced/relative-time-resolution/index.md)
 
+**Used in:** [Migrating Live Memory](../curriculum/advanced/schema-migration-on-live-memory/index.md)
+
 **Do not confuse with:** [Event Time vs Ingestion Time](event-time.md)
 <!-- graph:end -->

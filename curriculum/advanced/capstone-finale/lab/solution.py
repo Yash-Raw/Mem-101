@@ -77,7 +77,7 @@ def report(lessons: int, tests: int) -> Release:
         cost={
             "write path": "2.0 model calls and 1.6 embeddings per turn",
             "read path": "no model calls; 2 embeddings warm",
-            "blocking": "81% of per-turn cost, all of it extraction",
+            "blocking": "50% of per-turn cost; the other half is deferred",
         },
         open_items=OPEN_ITEMS,
     )

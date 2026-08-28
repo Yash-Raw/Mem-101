@@ -42,7 +42,7 @@ memlab v0.3 — 84 lessons, 742 tests
   cost
     write path      2.0 model calls and 1.6 embeddings per turn
     read path       no model calls; 2 embeddings warm
-    blocking        81% of per-turn cost, all of it extraction
+    blocking        50% of per-turn cost; the other half is deferred
 
   open (6)
     extraction          a conditional clause is dropped; the reason a step matters is lost
@@ -74,7 +74,7 @@ There is no such agreement here, and `reading-benchmark-claims` measured why —
 Three claims survived every measurement, and none was obvious at the start:
 
 - **The write path dominates**, and the read path makes no model calls at all — a design outcome of decisions argued on correctness grounds, not an optimisation.
-- **Similarity cannot carry any of the write path's decisions.** It cannot generate conflict candidates, identify corroboration, or find a procedure. Every stage that works is keyed on structure — the `SLOT` table, now with five callers.
+- **Similarity cannot carry any of the write path's decisions.** It cannot generate conflict candidates, identify corroboration, or find a procedure. Every stage that works is keyed on structure — the `SLOT` table, which nine modules outside its own now import.
 - **Most of the interesting results are null results.** Reflection made the answer worse; three of I8's four mechanisms moved nothing; the graph has one node; per-type scheduling barely helped. **The measurement that says "this did nothing" is the one that saves the next person a month.**
 
 ## Design decisions
@@ -123,7 +123,7 @@ uv run python curriculum/advanced/capstone-finale/lab/lab.py
     Because they are the expensive knowledge. *Reflection makes the budgeted answer worse* and *three of four packing mechanisms move nothing* are results nobody can get without building the thing and measuring it, and they are what stops the next person spending a month on a mechanism that has already been shown not to pay.
 
 ??? question "What would you build next, given the open list?"
-    Extraction. It drops the conditional clause that explains a procedure, its parser leaks a deleted record's timestamp into four others, and it is 81% of the blocking cost — so two of the six items are the same stage seen from different lessons, and a third of the cost argument points at it too. That overlap is the kind of thing only a collected list makes visible; from inside either lesson it looks like a local problem.
+    Extraction. It drops the conditional clause that explains a procedure, its parser leaks a deleted record's timestamp into four others, and it is the entire blocking half of the per-turn cost — so two of the six items are the same stage seen from different lessons, and the cost argument points at it too. That overlap is the kind of thing only a collected list makes visible; from inside either lesson it looks like a local problem.
 
     Note what is *not* on that list: the nine unnameable memories are a gap in the `SLOT` table's coverage, not in extraction. The memories were extracted correctly and there is no attribute to file them under.
 

@@ -25,8 +25,8 @@ def test_stub_is_runnable() -> None:
         _lab.assess(48, 38, 0)
 
 
-def test_three_of_five_apply(tactics) -> None:
-    assert headroom(tactics) == (3, 5)
+def test_four_of_six_apply(tactics) -> None:
+    assert headroom(tactics) == (4, 6)
 
 
 def test_the_completion_cache_never_hits() -> None:
@@ -99,7 +99,21 @@ def test_batching_reports_the_unit(tactics) -> None:
     assert "backfill" in tactic.why
 
 
-def test_routing_targets_the_blocking_cost(tactics) -> None:
-    tactic = next(t for t in tactics if t.name.startswith("route extraction"))
-    assert tactic.applies
-    assert "81%" in tactic.saving
+def test_routing_has_two_targets(tactics) -> None:
+    """Both halves of the write path are bounded tasks."""
+    extraction = next(t for t in tactics if t.name.startswith("route extraction"))
+    detection = next(t for t in tactics if t.name == "route conflict detection")
+    assert extraction.applies and detection.applies
+    assert "50%" in extraction.saving
+    assert "50%" in detection.saving
+
+
+def test_detection_is_a_model_call_and_arbitration_is_not() -> None:
+    """One word apart, and an earlier version confused them."""
+    import pathlib as _pathlib
+
+    import memlab
+
+    root = _pathlib.Path(memlab.__file__).parent
+    assert "client.complete" in (root / "evolve" / "conflict.py").read_text()
+    assert "client.complete" not in (root / "evolve" / "arbitrate.py").read_text()

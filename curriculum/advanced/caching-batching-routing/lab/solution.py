@@ -37,8 +37,14 @@ def assess(write_calls: int, write_embeds: int, read_calls: int) -> list[Tactic]
         Tactic(
             "route extraction to a small model",
             True,
-            "81% of the per-turn cost",
+            "50% of the per-turn cost",
             "bounded, schema-constrained output -- the shape small models fit",
+        ),
+        Tactic(
+            "route conflict detection",
+            True,
+            "the other 50%",
+            "four labels out -- A7.5's one judgement site, bounded by design",
         ),
         Tactic(
             "route arbitration",

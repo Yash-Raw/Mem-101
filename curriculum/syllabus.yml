@@ -422,11 +422,11 @@ levels:
           - id: latency-budget
             title: "The Latency Budget"
             stage: govern
-            objective: "81% of the per-turn cost blocks, and it is the stage nobody proposes deferring."
+            objective: "Half the per-turn cost blocks -- and the other half is a model call in a stage called deferrable."
           - id: caching-batching-routing
             title: "Caching, Batching, Routing"
             stage: govern
-            objective: "Two of five tactics do not apply, and the one that works shipped two levels ago."
+            objective: "Two of six tactics do not apply, and routing has two targets rather than one."
           - id: scaling-the-store
             title: "Scaling the Store"
             stage: store

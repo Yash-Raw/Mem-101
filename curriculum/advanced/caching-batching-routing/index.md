@@ -38,10 +38,11 @@ tactic                                applies  saving
 cache completions                       False  nothing
 cache embeddings                         True  18 embeds per read
 batch extraction                         True  48 calls -> fewer, same work
-route extraction to a small model        True  81% of the per-turn cost
+route extraction to a small model        True  50% of the per-turn cost
+route conflict detection                 True  the other 50%
 route arbitration                       False  nothing
 
-apply: 3 of 5
+apply: 4 of 6
 already shipped: ['cache embeddings']
 ```
 
@@ -59,15 +60,17 @@ A memory layer's expensive path is the write path, and **every write is unique b
 
 **Batching changes the count, not the work — and only on a backfill.** Live turns arrive one at a time, so extraction cannot be batched without waiting, which is a latency decision rather than a cost one. A backfill or a migration can batch, and that is where the tactic belongs.
 
-**Routing is where the headroom is.** `latency-budget` measured 81% of the per-turn cost as extraction, and extraction is the *shape* small models are good at: bounded output, a schema, no reasoning about policy. The remaining 19% is arbitration on contested slots — which `deterministic-freshness` made rules, so **there is no call there to route**.
+**Routing has two targets, not one.** `latency-budget` measured the per-turn cost as an even split — extraction, synchronous, and `conflict.classify`, entirely deferred — and **both are bounded tasks**: a schema on one side, four labels on the other. That is the shape small models fit.
 
-**Two of five tactics do not apply, and that is the deliverable.** A cost review that lists five tactics and recommends all five has not looked at a profile.
+The stage with nothing to route is *arbitration*, which `deterministic-freshness` made rules. An earlier version of this lesson confused arbitration with conflict **detection** and reported one target covering 81%; detection is a model call, and it is the other half.
+
+**Two of six tactics do not apply, and that is the deliverable.** A cost review that lists six tactics and recommends all six has not looked at a profile.
 
 ## Design decisions
 
 **Why is "cache completions" listed if it does not apply?** Because it is the default proposal, and a lesson that only lists the tactics that work leaves the reader to rediscover why the obvious one fails. The reason — every turn's text differs — is one sentence and it generalises to any conversational write path.
 
-**Why not implement routing?** Because this course runs against a deterministic fake with no notion of model size, so an implementation would be a config flag with nothing behind it. What is measurable is *where* routing would apply and how much it covers, and that is 81% with a stated reason.
+**Why not implement routing?** Because this course runs against a deterministic fake with no notion of model size, so an implementation would be a config flag with nothing behind it. What is measurable is *where* routing would apply and how much it covers, and that is both halves of the write path, with a stated reason for each.
 
 **Why does batching's saving say "same work"?** Because it is fewer calls over the same tokens, and which of those a bill is denominated in varies. Reporting it as a call reduction without that qualifier is how a batching change gets adopted for a saving that does not appear.
 
@@ -80,7 +83,7 @@ A memory layer's expensive path is the write path, and **every write is unique b
 uv run python curriculum/advanced/caching-batching-routing/lab/lab.py
 ```
 
-**Expected output:** the five tactics with two marked inapplicable, **3 of 5** applying, and `cache embeddings` reported as already shipped.
+**Expected output:** the six tactics with two marked inapplicable, **4 of 6** applying, and `cache embeddings` reported as already shipped.
 
 **Stretch:** compute the completion cache's hit rate over the corpus by keying on turn text. It is **zero** — 24 turns, 24 distinct keys — and the same computation over the *memory* ids finds the reuse the vector index is already exploiting. **The cache that works is keyed on what persists, not on what arrives.**
 
@@ -94,7 +97,7 @@ uv run python curriculum/advanced/caching-batching-routing/lab/lab.py
 |---|---|---|---|
 | Completion cache with no hits | Key is the incoming turn | Count distinct keys over the corpus | Key on what persists |
 | Batching adopted, bill unchanged | Fewer calls, same tokens | Ask what the bill is denominated in | State the unit |
-| Routing applied to rules | Assumed a stage calls a model | Grep the stage for a client call | Check before routing |
+| Routing applied to rules | Confused arbitration with conflict detection | Grep each stage for a client call | Check before routing |
 | Every tactic recommended | No profile consulted | Ask which ones do not apply | Report the inapplicable |
 | Cost win claimed for old work | Mechanism built for another reason | Check when it shipped | Attribute it honestly |
 
@@ -106,8 +109,8 @@ uv run python curriculum/advanced/caching-batching-routing/lab/lab.py
 ??? question "The embedding cache saves 18 embeddings per read. Was that a cost decision?"
     No — I7 built it to stop re-embedding the whole corpus on every query, which was a scaling problem measured as embed-calls-per-query. The cost saving is the identical mechanism viewed from a different column, and claiming it as a cost optimisation would misattribute work done two levels earlier for a different reason.
 
-??? question "Routing covers 81% of the per-turn cost. Why not just do it?"
-    Because "route to a small model" is a claim that a smaller model performs the task adequately, and that needs an evaluation this course has the machinery for and has not run. What the lesson establishes is that the target is well chosen — bounded output, a schema, no policy judgement — which is the part that is knowable from the profile alone.
+??? question "Routing covers the whole write path. Why not just do it?"
+    Because "route to a small model" is a claim that a smaller model performs the task adequately, and that needs an evaluation this course has the machinery for and has not run. What the lesson establishes is that both targets are well chosen — bounded output on each side — which is the part knowable from the profile alone. It also establishes which stage is *not* a target, and that one was got wrong first: arbitration is rules, conflict detection is a model call, and the names are one word apart.
 
 ## Connections
 

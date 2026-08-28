@@ -54,14 +54,16 @@ class Budget:
         return round(self.synchronous / self.total, 3) if self.total else 0.0
 
 
-def budget(extract_calls: int, consolidations: int, turns: int) -> Budget:
-    """Per-turn split, from counts the earlier modules already measured.
+def budget(extract_calls: int, consolidation_calls: int, turns: int) -> Budget:
+    """Per-turn split, counted by where each completion actually runs.
 
-    `consolidations` is the A2 gate's figure -- the turns on which
-    arbitration could not wait. Everything else in the write path is
-    deferred, so the blocking cost is extraction plus that fraction.
+    The first version of this took `cost-model`'s total -- 48 -- as the
+    extraction count and reported 81% blocking. Half of those 48 are
+    `conflict.classify`, and measuring where they fire settles it: **0**
+    during the per-turn loop and 24 during consolidation. Conflict detection
+    is a model call and it is entirely deferred.
     """
     return Budget(
         synchronous=round(extract_calls / turns, 2),
-        deferred=round(consolidations / turns, 2),
+        deferred=round(consolidation_calls / turns, 2),
     )

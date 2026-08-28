@@ -19,10 +19,13 @@ The measurement worth having is how many calls a batched ingest makes, and
 whether the fake's fixture keying survives it -- which it does not, and that
 is the finding.
 
-**Routing is the one with headroom.** `latency-budget` measured 81% of the
-per-turn cost as extraction, which is a bounded, schema-constrained task --
-exactly the shape that runs on a small model. The other 19% is arbitration on
-contested slots, which is already rules.
+**Routing is the one with headroom, and there are two targets rather than
+one.** `latency-budget` measured the per-turn cost as an even split:
+extraction, synchronous, and `conflict.classify`, entirely deferred. Both are
+bounded tasks -- a schema and four labels -- which is the shape small models
+fit. *Arbitration* is the stage with nothing to route, because
+`deterministic-freshness` made it rules; conflict **detection** is a model
+call, and an earlier version of this file confused the two.
 """
 from __future__ import annotations
 
@@ -61,8 +64,14 @@ def assess(write_calls: int, write_embeds: int, read_calls: int) -> list[Tactic]
         Tactic(
             "route extraction to a small model",
             True,
-            "81% of the per-turn cost",
+            "50% of the per-turn cost",
             "bounded, schema-constrained output -- the shape small models fit",
+        ),
+        Tactic(
+            "route conflict detection",
+            True,
+            "the other 50%",
+            "four labels out -- A7.5's one judgement site, bounded by design",
         ),
         Tactic(
             "route arbitration",

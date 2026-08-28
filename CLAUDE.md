@@ -145,7 +145,7 @@ number to match a memory of what it used to be.**
 
 ## Status
 
-**The course is complete.** 84 lessons across three levels, 818 tests, 10
+**The course is complete.** 84 lessons across three levels, 823 tests, 10
 validators, `memlab` v0.3. `uv run mkdocs build --strict` produces the site.
 
 ```
@@ -189,14 +189,15 @@ prerequisite graph.
 
 Three claims survived every measurement, and none was obvious at the start.
 
-- **The write path dominates.** 2.0 model calls per turn on writes; the read
-  path makes **none**. That is a consequence of decisions argued on correctness
+- **The write path dominates.** 2.0 model calls per turn on writes — half
+  extraction, half conflict detection — and the read path makes **none**. That is a consequence of decisions argued on correctness
   grounds — arbitration refuses a model for explainability, ranking is
   arithmetic for determinism — not an optimisation.
 - **Similarity cannot carry any write-path decision.** It cannot generate
   conflict candidates (a contradiction scores 0.285, below unrelated noise at
   0.478), identify corroboration, or retrieve a procedure. Every stage that
-  works is keyed on structure, and `SLOT` now has five callers.
+  works is keyed on structure, and `SLOT` is imported by nine modules
+  outside the one that defines it.
 - **Most of the valuable results are null results.** Reflection makes the
   budgeted answer worse; three of I8's four mechanisms move nothing; the entity
   graph has one node; per-type scheduling barely helps. A measurement saying

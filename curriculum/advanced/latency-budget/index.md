@@ -15,7 +15,7 @@ status: published
 
 # The Latency Budget
 
-> **In one line.** 81% of the per-turn model cost is on the critical path, and it is the stage nobody proposes deferring.
+> **In one line.** Half the per-turn model cost is on the critical path — and the other half is a model call in a stage everyone calls deferrable.
 
 ## Where this sits
 
@@ -43,11 +43,18 @@ summarise  deferred      nothing reads a summary that does not exist yet
 reflect    deferred      and unwired anyway -- A2.3 measured it as a regression
 
 synchronous stages: 3 of 7
-per turn: synchronous 2.0  deferred 0.46  total 2.46
-blocking share: 81%
+per turn: synchronous 1.0  deferred 1.0  total 2.0
+blocking share: 50%
 ```
 
-**The expensive-sounding stage is the deferrable one.** Consolidation is the pass over the whole store, and the A2 gate already pulls only 11 turns of 24 back onto the critical path — 0.46 calls per turn. Extraction, which is one call per turn and sounds cheap, is the entire blocking cost.
+**The split is even, and the deferred half is not free.** `cost-model` counted 48 completions over 24 turns. Half are extraction and half are `conflict.classify` — and measuring *where* they fire settles which bucket each belongs in:
+
+```
+classify calls during the per-turn loop : 0
+classify calls during consolidation     : 24
+```
+
+Conflict detection is a model call, it is one per turn on average, and **all of it is deferred**. Consolidation is not the cheap half; it is the half you already moved.
 
 ## Why this isn't RAG
 
@@ -66,7 +73,9 @@ Here the read path is arithmetic over a cached index and the *write* path is whe
 
 **`arbitrate` is the only conditional entry**, and that is the interesting one. It is not synchronous or deferred by nature; it is synchronous **when the turn contests something**, which is a property of the turn rather than the stage. Every other row is a property of the stage.
 
-**81% blocking, and the honest reading is that there is little left to move.** Extraction is 2.0 of the 2.46 calls, and deferring it is not an optimisation — it is a system that cannot answer a question about the sentence it just heard. The remaining 0.46 is what A2's gate already decided to pay deliberately.
+**50% blocking, and the half that remains cannot move.** Extraction is 1.0 of the 2.0 calls, and deferring it is not an optimisation — it is a system that cannot answer a question about the sentence it just heard. The other 1.0 is already off the turn, which is what A2's gate was for.
+
+The first version of this lesson reported **81%**, because it passed `cost-model`'s *total* to `budget()` as though every completion were extraction. The stage names made that plausible — consolidation sounds like the expensive one — and the only thing that caught it was counting where each call fires.
 
 ## Design decisions
 
@@ -85,9 +94,9 @@ Here the read path is arithmetic over a cached index and the *write* path is whe
 uv run python curriculum/advanced/latency-budget/lab/lab.py
 ```
 
-**Expected output:** the seven stages with their classifications, **3 of 7** synchronous, per turn **2.0** synchronous against **0.46** deferred, and an **81%** blocking share.
+**Expected output:** the seven stages with their classifications, **3 of 7** synchronous, per turn **1.0** synchronous against **1.0** deferred, and a **50%** blocking share.
 
-**Stretch:** classify `extract` as deferred and re-read `sleep-time-compute`'s table. The consistency window stops being 11 turns and becomes every turn, because nothing has been written to be inconsistent about. **A stage you cannot defer is one whose latency you can only reduce, and extraction is the only one in this system.**
+**Stretch:** pass `cost-model`'s total of 48 as `extract_calls`, as the first version of this lesson did. You get **81%** blocking, a plausible story about consolidation being cheap, and no test failure — the number is internally consistent and describes a system that does not exist. **A per-turn figure is only meaningful once you have counted where each call fires.**
 
 ## What this adds to the capstone
 
@@ -105,14 +114,14 @@ uv run python curriculum/advanced/latency-budget/lab/lab.py
 
 ## Check yourself
 
-??? question "Consolidation is the pass over the whole store. Why is it not the latency problem?"
-    Because nothing reads its output before the next turn unless the turn contested a slot. `sleep-time-compute` measured that: gating on contested slots runs it 11 times in 24 turns, which is 0.46 calls per turn against extraction's 2.0. The expensive stage is the one you can move; the cheap one is the one you cannot.
+??? question "Consolidation makes as many model calls as extraction. Why is it still the deferrable half?"
+    Because of *when* they fire, not how many there are. Zero `conflict.classify` calls happen during the per-turn loop and all 24 happen during consolidation, so the cost is real and already off the critical path. Volume and deadline are independent, and the stage names suggest the opposite of both.
 
 ??? question "What is different about `arbitrate`'s classification?"
     It is the only entry that depends on the *turn* rather than the stage. Extraction is always synchronous and summarisation always deferrable; arbitration is synchronous exactly when the turn claims a slot something live already claims. That is the A2 gate, and this lesson is where its cost is written down as a per-turn number.
 
-??? question "81% of the cost is unavoidable. What is the budget for, then?"
-    Knowing that. A latency budget's first job is to say how much room there is, and here the answer is 19% — so effort spent moving work off the turn has a ceiling, and effort spent making extraction cheaper does not. That is a routing decision about engineering time, and it is the opposite of what the stage names suggest.
+??? question "Half the cost is unavoidable. What is the budget for, then?"
+    Knowing which half. There is no room left to move work off the turn — the deferrable half is already deferred — so every remaining gain has to come from making extraction itself cheaper. That is a routing decision about engineering time, and getting it wrong by one input turned it into a plan to optimise a stage that is already off the critical path.
 
 ## Connections
 

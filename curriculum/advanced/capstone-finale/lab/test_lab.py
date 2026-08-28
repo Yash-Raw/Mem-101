@@ -83,7 +83,7 @@ def test_the_cost_lines_match_the_measured_profile(counts) -> None:
     cost = report(*counts).cost
     assert "2.0 model calls" in cost["write path"]
     assert "no model calls" in cost["read path"]
-    assert "81%" in cost["blocking"]
+    assert "50%" in cost["blocking"]
 
 
 def test_two_open_items_are_the_same_stage(counts) -> None:
@@ -94,6 +94,21 @@ def test_two_open_items_are_the_same_stage(counts) -> None:
     text = " ".join(f"{n} {d}" for n, d in items)
     assert "learning-from-outcomes" in text
     assert "memory-attacks" in text
+
+
+def test_the_slot_table_has_nine_importers() -> None:
+    """A claim about the source, so a test counts it rather than trusting it."""
+    import memlab
+
+    src = pathlib.Path(memlab.__file__).parent
+    importers = {
+        path.relative_to(src).as_posix()
+        for path in src.rglob("*.py")
+        if "conflict import" in path.read_text()
+        and ("slot_of" in path.read_text() or "SLOTS" in path.read_text())
+        and path.name != "conflict.py"
+    }
+    assert len(importers) == 9, sorted(importers)
 
 
 def test_the_report_renders(counts) -> None:

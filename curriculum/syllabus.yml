@@ -366,7 +366,7 @@ levels:
           - id: pii-on-the-write-path
             title: "PII on the Write Path"
             stage: govern
-            objective: "Detect, classify, and gate memory-worthiness before anything is stored."
+            objective: "Label personal data without deciding at the gate -- the strict policy breaks the exam."
           - id: redaction-and-minimization
             title: "Redaction and Minimization"
             stage: govern

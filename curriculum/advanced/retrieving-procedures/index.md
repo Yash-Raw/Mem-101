@@ -25,6 +25,8 @@ status: published
 **You need first:** [Learning From Outcomes](../learning-from-outcomes/index.md)
 
 **Concepts assumed:** [Procedural Memory](../../../concepts/procedural-memory.md) · [Temporal Routing](../../../concepts/temporal-routing.md) · [Element Cost](../../../concepts/element-cost.md)
+
+**This unlocks:** [PII on the Write Path](../pii-on-the-write-path/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -128,4 +130,6 @@ uv run python curriculum/advanced/retrieving-procedures/lab/lab.py
 **You need first:** [Learning From Outcomes](../learning-from-outcomes/index.md)
 
 **Concepts assumed:** [Procedural Memory](../../../concepts/procedural-memory.md) · [Temporal Routing](../../../concepts/temporal-routing.md) · [Element Cost](../../../concepts/element-cost.md)
+
+**This unlocks:** [PII on the Write Path](../pii-on-the-write-path/index.md)
 <!-- graph:end -->

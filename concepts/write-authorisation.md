@@ -25,5 +25,7 @@ Return the refusals rather than logging and dropping them. A write path that sil
 <!-- graph:begin -->
 **Taught in:** [Memory Access Control](../curriculum/advanced/memory-access-control/index.md)
 
+**Used in:** [PII on the Write Path](../curriculum/advanced/pii-on-the-write-path/index.md)
+
 **Do not confuse with:** [Retrieval Scoping](retrieval-scoping.md)
 <!-- graph:end -->

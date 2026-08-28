@@ -82,6 +82,15 @@
       "path": "curriculum/advanced/memory-topologies/index.md"
     },
     {
+      "id": "pii-on-the-write-path",
+      "type": "lesson",
+      "title": "PII on the Write Path",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 64,
+      "path": "curriculum/advanced/pii-on-the-write-path/index.md"
+    },
+    {
       "id": "procedural-memory",
       "type": "lesson",
       "title": "Procedural Memory",
@@ -905,6 +914,14 @@
       "status": "published"
     },
     {
+      "id": "label-not-permission",
+      "type": "concept",
+      "title": "Label, Not Permission",
+      "stage": "govern",
+      "path": "concepts/label-not-permission.md",
+      "status": "published"
+    },
+    {
       "id": "leak-assertion",
       "type": "concept",
       "title": "Leak Assertion",
@@ -990,6 +1007,14 @@
       "title": "Over-Extraction",
       "stage": "extract",
       "path": "concepts/over-extraction.md",
+      "status": "published"
+    },
+    {
+      "id": "personal-data",
+      "type": "concept",
+      "title": "Personal Data",
+      "stage": "govern",
+      "path": "concepts/personal-data.md",
       "status": "published"
     },
     {
@@ -1360,6 +1385,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "pii-on-the-write-path",
+      "to": "retrieving-procedures",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "procedural-memory",
       "to": "cold-start-and-shared-accounts",
       "kind": "requires_lesson"
@@ -1702,6 +1732,16 @@
     {
       "from": "memory-topologies",
       "to": "memory-topology",
+      "kind": "teaches"
+    },
+    {
+      "from": "pii-on-the-write-path",
+      "to": "personal-data",
+      "kind": "teaches"
+    },
+    {
+      "from": "pii-on-the-write-path",
+      "to": "label-not-permission",
       "kind": "teaches"
     },
     {
@@ -2237,6 +2277,21 @@
     {
       "from": "memory-topologies",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "pii-on-the-write-path",
+      "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "pii-on-the-write-path",
+      "to": "write-authorisation",
+      "kind": "uses"
+    },
+    {
+      "from": "pii-on-the-write-path",
+      "to": "entity-resolution",
       "kind": "uses"
     },
     {
@@ -3115,6 +3170,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "label-not-permission",
+      "to": "write-authorisation",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "leak-assertion",
       "to": "write-authorisation",
       "kind": "contrasts_with"
@@ -3137,6 +3197,11 @@
     {
       "from": "namespace",
       "to": "retrieval-scoping",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "personal-data",
+      "to": "memory-record",
       "kind": "contrasts_with"
     },
     {

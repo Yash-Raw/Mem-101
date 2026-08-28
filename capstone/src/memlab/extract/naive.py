@@ -11,7 +11,7 @@ subject of `watching-it-fail`.
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import datetime
 
 from ..llm.base import LLMClient, get_client
 from ..types import Memory, MemoryType, Provenance, Scope
@@ -54,7 +54,7 @@ def extract(
     raw = client.complete(build_messages(turn["text"]), SCHEMA)
     candidates = json.loads(raw) if isinstance(raw, str) else raw
 
-    recorded = datetime.now(UTC)
+    recorded = datetime.fromisoformat(turn["ts"])
     happened = datetime.fromisoformat(turn["ts"])
     source = f"s{turn['session']}:{turn['ts']}"
 

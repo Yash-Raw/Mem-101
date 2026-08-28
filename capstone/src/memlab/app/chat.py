@@ -51,6 +51,10 @@ def _agent_memories(scope: Scope) -> list[Memory]:
                     authority=row["authority"],
                 ),
                 happened_at=datetime.fromisoformat(row["ts"]),
+                # ...and the same clock on the belief axis. Left at now(),
+                # this row is recorded *after* the date it gets retired on --
+                # a store that stops believing something before it heard it.
+                recorded_at=datetime.fromisoformat(row["ts"]),
                 # A relayed claim is believed no more than its source is
                 # trusted. Storing hearsay at full confidence is how a
                 # colleague's guess outranks something the user actually said.

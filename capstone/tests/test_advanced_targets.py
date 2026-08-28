@@ -62,7 +62,8 @@ def test_event_time_is_mostly_just_ingestion_time(built, turn_timestamps, name) 
     )
     if pipeline.anchor is None:
         assert (copied, len(memories)) == (37, 37)
-        assert not any(m.valid_to for m in memories), "and no fact has an end"
+        if not pipeline.bitemporal:
+            assert not any(m.valid_to for m in memories), "and no fact has an end"
     else:
         assert copied < 37, "anchoring moved at least one event time off the write clock"
 

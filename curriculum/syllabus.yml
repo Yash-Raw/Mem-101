@@ -270,7 +270,7 @@ levels:
           - id: validity-intervals
             title: "Validity Intervals"
             stage: store
-            objective: "Model valid_at, invalid_at, and expired_at; answer as-of queries."
+            objective: "Separate when a fact was true from when it was believed, and query both."
           - id: temporal-questions
             title: "Three Temporal Questions"
             stage: retrieve

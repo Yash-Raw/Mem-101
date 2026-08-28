@@ -25,6 +25,8 @@ status: published
 **You need first:** [Does This Earn Its Tokens?](../../intermediate/slot-value/index.md)
 
 **Concepts assumed:** [Event Time vs Ingestion Time](../../../concepts/event-time.md) · [The Memory Record](../../../concepts/memory-record.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Validity Intervals](../validity-intervals/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -137,4 +139,6 @@ uv run python curriculum/advanced/two-clocks/lab/lab.py
 **You need first:** [Does This Earn Its Tokens?](../../intermediate/slot-value/index.md)
 
 **Concepts assumed:** [Event Time vs Ingestion Time](../../../concepts/event-time.md) · [The Memory Record](../../../concepts/memory-record.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Validity Intervals](../validity-intervals/index.md)
 <!-- graph:end -->

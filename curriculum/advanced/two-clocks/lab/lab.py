@@ -85,13 +85,13 @@ RELATIVE = [
 def main() -> None:
     from memlab.app.chat import ingest
     from memlab.fixtures import load_turns
-    from memlab.pipeline import get
+    from memlab.pipeline import at
     from memlab.store.jsonl import JsonlStore
     from memlab.types import Scope
 
     store = JsonlStore("/tmp/memlab-clocks.jsonl")
     store.clear()
-    ingest(store, Scope(user="priya"), get("advanced"))
+    ingest(store, Scope(user="priya"), at("I8"))  # the system Level 2 shipped
     memories = store.all()
 
     a = audit(memories, turn_timestamps())

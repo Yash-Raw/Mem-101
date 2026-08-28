@@ -7,7 +7,7 @@ import pytest
 from memlab import labkit
 from memlab.app.chat import ingest
 from memlab.fixtures import load_turns
-from memlab.pipeline import get
+from memlab.pipeline import at
 from memlab.store.jsonl import JsonlStore
 from memlab.types import Scope
 
@@ -23,7 +23,7 @@ turn_timestamps = _solution.turn_timestamps
 @pytest.fixture(scope="module")
 def memories(tmp_path_factory):
     s = JsonlStore(tmp_path_factory.mktemp("tc") / "m.jsonl")
-    ingest(s, Scope(user="priya"), get("advanced"))
+    ingest(s, Scope(user="priya"), at("I8"))  # the system Level 2 shipped
     return s.all()
 
 

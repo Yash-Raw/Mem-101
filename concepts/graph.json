@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/two-clocks/index.md"
     },
     {
+      "id": "validity-intervals",
+      "type": "lesson",
+      "title": "Validity Intervals",
+      "level": "advanced",
+      "stage": "store",
+      "order": 45,
+      "path": "curriculum/advanced/validity-intervals/index.md"
+    },
+    {
       "id": "anatomy-of-a-memory-layer",
       "type": "lesson",
       "title": "Anatomy of a Memory Layer",
@@ -411,6 +420,14 @@
       "title": "The Append-Only Log",
       "stage": "store",
       "path": "concepts/append-only-log.md",
+      "status": "published"
+    },
+    {
+      "id": "as-of-query",
+      "type": "concept",
+      "title": "As-Of Query",
+      "stage": "retrieve",
+      "path": "concepts/as-of-query.md",
       "status": "published"
     },
     {
@@ -846,6 +863,14 @@
       "status": "published"
     },
     {
+      "id": "validity-interval",
+      "type": "concept",
+      "title": "Validity Interval",
+      "stage": "store",
+      "path": "concepts/validity-interval.md",
+      "status": "published"
+    },
+    {
       "id": "vector-index",
       "type": "concept",
       "title": "Vector Index",
@@ -898,6 +923,11 @@
     {
       "from": "two-clocks",
       "to": "slot-value",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "validity-intervals",
+      "to": "two-clocks",
       "kind": "requires_lesson"
     },
     {
@@ -1118,6 +1148,16 @@
     {
       "from": "two-clocks",
       "to": "bi-temporal-modeling",
+      "kind": "teaches"
+    },
+    {
+      "from": "validity-intervals",
+      "to": "validity-interval",
+      "kind": "teaches"
+    },
+    {
+      "from": "validity-intervals",
+      "to": "as-of-query",
       "kind": "teaches"
     },
     {
@@ -1451,6 +1491,16 @@
       "kind": "uses"
     },
     {
+      "from": "validity-intervals",
+      "to": "bi-temporal-modeling",
+      "kind": "uses"
+    },
+    {
+      "from": "validity-intervals",
+      "to": "supersession",
+      "kind": "uses"
+    },
+    {
       "from": "anatomy-of-a-memory-layer",
       "to": "memory-lifecycle",
       "kind": "uses"
@@ -2046,6 +2096,11 @@
       "kind": "uses"
     },
     {
+      "from": "as-of-query",
+      "to": "recency-bias",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "belief-updating",
       "to": "deduplication",
       "kind": "contrasts_with"
@@ -2178,6 +2233,11 @@
     {
       "from": "type-rules",
       "to": "memory-record",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "validity-interval",
+      "to": "supersession",
       "kind": "contrasts_with"
     },
     {

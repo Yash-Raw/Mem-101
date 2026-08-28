@@ -71,6 +71,11 @@ def extract(turn: dict, scope: Scope, client: LLMClient | None = None) -> list[M
             scope=scope,
             provenance=provenance,
             happened_at=happened,
+            # The belief clock is when the system was TOLD, not when the
+            # ingest process happened to run. Defaulting it to now() collapses
+            # a 17-month conversation to a single instant and makes the
+            # record non-deterministic between runs.
+            recorded_at=happened,
             # A single unconfirmed source is not certainty. Leaving headroom is
             # what lets corroboration mean anything -- a claim that starts at
             # 1.0 can never be strengthened by independent evidence.

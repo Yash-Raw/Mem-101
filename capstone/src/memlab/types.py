@@ -94,9 +94,30 @@ class Memory:
     def is_live(self) -> bool:
         return self.invalid_at is None
 
-    def supersede(self, by: str, at: datetime) -> Memory:
-        """Retire a belief without destroying the audit trail."""
-        return replace(self, invalid_at=at, superseded_by=by)
+    def supersede(
+        self,
+        by: str,
+        at: datetime,
+        found_out: datetime | None = None,
+        event_end: bool = False,
+    ) -> Memory:
+        """Retire a belief without destroying the audit trail.
+
+        `at` is when the fact stopped being true; `found_out` is when the store
+        learned that. They are different instants and the gap between them is
+        the interesting part -- a store that cannot report it cannot answer
+        "how long were you wrong?".
+
+        `found_out` defaults to `at`, and `event_end` is off, which together
+        are what every caller meant before the two axes were separated -- one
+        instant, written to one field.
+        """
+        return replace(
+            self,
+            valid_to=at if event_end else self.valid_to,
+            invalid_at=found_out if found_out is not None else at,
+            superseded_by=by,
+        )
 
     def to_json(self) -> str:
         d = asdict(self)

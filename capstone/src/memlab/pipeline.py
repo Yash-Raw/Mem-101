@@ -47,6 +47,7 @@ class Pipeline:
     vectors: object | None = None             # I7: a VectorIndex; None = recompute
     assemble: AssembleFn | None = None        # I8: budgeted packing; None = assemble.simple
     anchor: AnchorFn | None = None            # A1: resolve relative time against the turn clock
+    bitemporal: bool = False                  # A1: split valid_to from invalid_at
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -157,6 +158,10 @@ def _resolve_then_dedupe(memories):
 def _resolve_dedupe_reconcile(memories):
     """The full write path. Resolve identities, collapse restatements, then
     reconcile what genuinely disagrees."""
+    return _reconcile(memories, bitemporal=False)
+
+
+def _reconcile(memories, bitemporal: bool):
     from .types import Scope
 
     consolidated = _resolve_then_dedupe(memories)
@@ -165,7 +170,7 @@ def _resolve_dedupe_reconcile(memories):
         return consolidated
     from .evolve.supersede import reconcile
 
-    return reconcile(consolidated, scope).memories
+    return reconcile(consolidated, scope, bitemporal=bitemporal).memories
 
 
 def advanced(through: str = "latest") -> Pipeline:
@@ -185,8 +190,18 @@ def advanced(through: str = "latest") -> Pipeline:
         else ADVANCED_MODULES[: ADVANCED_MODULES.index(through) + 1]
     )
     p = replace(intermediate(), name=f"advanced@{through}")
-    _ = reached  # each module fills this in as it lands
+    if "A1" in reached:
+        p = replace(
+            p,
+            consolidate=_resolve_dedupe_reconcile_bitemporal,
+            bitemporal=True,                  # valid_to and invalid_at are different instants
+        )
     return p
+
+
+def _resolve_dedupe_reconcile_bitemporal(memories):
+    """The Level 2 write path, with the two retirement clocks kept apart."""
+    return _reconcile(memories, bitemporal=True)
 
 
 def at(module: str) -> Pipeline:

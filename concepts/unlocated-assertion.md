@@ -25,5 +25,7 @@ Report `correct`, `located` and `entries` separately. On this course three of th
 <!-- graph:begin -->
 **Taught in:** [Component Metrics](../curriculum/advanced/component-metrics/index.md)
 
+**Used in:** [Build Your Own Harness](../curriculum/advanced/end-to-end-eval/index.md)
+
 **Do not confuse with:** [Component Metric](component-metric.md)
 <!-- graph:end -->

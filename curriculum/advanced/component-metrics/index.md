@@ -25,6 +25,8 @@ status: published
 **You need first:** [Why Memory Eval Is Hard](../why-memory-eval-is-hard/index.md)
 
 **Concepts assumed:** [The Absent Corpus](../../../concepts/absent-corpus.md) · [Moving Ground Truth](../../../concepts/moving-ground-truth.md) · [Slot](../../../concepts/slot.md)
+
+**This unlocks:** [Build Your Own Harness](../end-to-end-eval/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -135,4 +137,6 @@ uv run python curriculum/advanced/component-metrics/lab/lab.py
 **You need first:** [Why Memory Eval Is Hard](../why-memory-eval-is-hard/index.md)
 
 **Concepts assumed:** [The Absent Corpus](../../../concepts/absent-corpus.md) · [Moving Ground Truth](../../../concepts/moving-ground-truth.md) · [Slot](../../../concepts/slot.md)
+
+**This unlocks:** [Build Your Own Harness](../end-to-end-eval/index.md)
 <!-- graph:end -->

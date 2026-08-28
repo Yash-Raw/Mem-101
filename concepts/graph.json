@@ -55,6 +55,15 @@
       "path": "curriculum/advanced/deletion-that-actually-deletes/index.md"
     },
     {
+      "id": "end-to-end-eval",
+      "type": "lesson",
+      "title": "Build Your Own Harness",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 71,
+      "path": "curriculum/advanced/end-to-end-eval/index.md"
+    },
+    {
       "id": "from-facts-to-a-user-model",
       "type": "lesson",
       "title": "From Facts to a User Model",
@@ -920,6 +929,14 @@
       "status": "published"
     },
     {
+      "id": "eval-suite",
+      "type": "concept",
+      "title": "Eval Suite",
+      "stage": "govern",
+      "path": "concepts/eval-suite.md",
+      "status": "published"
+    },
+    {
       "id": "event-time",
       "type": "concept",
       "title": "Event Time vs Ingestion Time",
@@ -957,6 +974,14 @@
       "title": "Extraction",
       "stage": "extract",
       "path": "concepts/extraction.md",
+      "status": "published"
+    },
+    {
+      "id": "flat-metric",
+      "type": "concept",
+      "title": "Flat Metric",
+      "stage": "govern",
+      "path": "concepts/flat-metric.md",
       "status": "published"
     },
     {
@@ -1520,6 +1545,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "end-to-end-eval",
+      "to": "component-metrics",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "from-facts-to-a-user-model",
       "to": "memory-access-control",
       "kind": "requires_lesson"
@@ -1887,6 +1917,16 @@
     {
       "from": "deletion-that-actually-deletes",
       "to": "request-resolution",
+      "kind": "teaches"
+    },
+    {
+      "from": "end-to-end-eval",
+      "to": "eval-suite",
+      "kind": "teaches"
+    },
+    {
+      "from": "end-to-end-eval",
+      "to": "flat-metric",
       "kind": "teaches"
     },
     {
@@ -2477,6 +2517,21 @@
     {
       "from": "deletion-that-actually-deletes",
       "to": "derivation-graph",
+      "kind": "uses"
+    },
+    {
+      "from": "end-to-end-eval",
+      "to": "component-metric",
+      "kind": "uses"
+    },
+    {
+      "from": "end-to-end-eval",
+      "to": "unlocated-assertion",
+      "kind": "uses"
+    },
+    {
+      "from": "end-to-end-eval",
+      "to": "absent-corpus",
       "kind": "uses"
     },
     {
@@ -3502,6 +3557,16 @@
     {
       "from": "episodic-memory",
       "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "eval-suite",
+      "to": "component-metric",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "flat-metric",
+      "to": "eval-suite",
       "kind": "contrasts_with"
     },
     {

@@ -25,7 +25,7 @@ This course's answer key covers **23 of 25 assertions** in machine-checkable for
 <!-- graph:begin -->
 **Taught in:** [Why Memory Eval Is Hard](../curriculum/advanced/why-memory-eval-is-hard/index.md)
 
-**Used in:** [Component Metrics](../curriculum/advanced/component-metrics/index.md)
+**Used in:** [Component Metrics](../curriculum/advanced/component-metrics/index.md) · [Build Your Own Harness](../curriculum/advanced/end-to-end-eval/index.md)
 
 **Do not confuse with:** [Moving Ground Truth](moving-ground-truth.md)
 <!-- graph:end -->

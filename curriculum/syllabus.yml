@@ -398,7 +398,7 @@ levels:
           - id: end-to-end-eval
             title: "Build Your Own Harness"
             stage: govern
-            objective: "Score multi-session recall, knowledge update, and temporal reasoning on the canonical corpus."
+            objective: "One battery across every profile -- and name what it cannot see."
           - id: regression-testing-state
             title: "Regression Testing a Stateful System"
             stage: govern

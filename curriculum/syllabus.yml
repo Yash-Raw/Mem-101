@@ -402,7 +402,7 @@ levels:
           - id: regression-testing-state
             title: "Regression Testing a Stateful System"
             stage: govern
-            objective: "Use golden conversations and snapshot tests in CI."
+            objective: "Half the tests pin a measured number -- and a frozen corpus is what makes that affordable."
           - id: llm-as-judge-for-memory
             title: "LLM as Judge, and Its Failure Modes"
             stage: govern

@@ -25,5 +25,7 @@ Flatness also has an innocent cause worth separating from failure: some changes 
 <!-- graph:begin -->
 **Taught in:** [Build Your Own Harness](../curriculum/advanced/end-to-end-eval/index.md)
 
+**Used in:** [Regression Testing a Stateful System](../curriculum/advanced/regression-testing-state/index.md)
+
 **Do not confuse with:** [Eval Suite](eval-suite.md)
 <!-- graph:end -->

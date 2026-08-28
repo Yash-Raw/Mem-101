@@ -25,6 +25,8 @@ status: published
 **You need first:** [Component Metrics](../component-metrics/index.md)
 
 **Concepts assumed:** [Component Metric](../../../concepts/component-metric.md) · [Unlocated Assertion](../../../concepts/unlocated-assertion.md) · [The Absent Corpus](../../../concepts/absent-corpus.md)
+
+**This unlocks:** [Regression Testing a Stateful System](../regression-testing-state/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -121,4 +123,6 @@ uv run python curriculum/advanced/end-to-end-eval/lab/lab.py
 **You need first:** [Component Metrics](../component-metrics/index.md)
 
 **Concepts assumed:** [Component Metric](../../../concepts/component-metric.md) · [Unlocated Assertion](../../../concepts/unlocated-assertion.md) · [The Absent Corpus](../../../concepts/absent-corpus.md)
+
+**This unlocks:** [Regression Testing a Stateful System](../regression-testing-state/index.md)
 <!-- graph:end -->

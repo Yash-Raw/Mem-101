@@ -172,6 +172,15 @@
       "path": "curriculum/advanced/reflection-and-insight/index.md"
     },
     {
+      "id": "regression-testing-state",
+      "type": "lesson",
+      "title": "Regression Testing a Stateful System",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 72,
+      "path": "curriculum/advanced/regression-testing-state/index.md"
+    },
+    {
       "id": "relative-time-resolution",
       "type": "lesson",
       "title": "Resolving 'Last Week'",
@@ -985,6 +994,14 @@
       "status": "published"
     },
     {
+      "id": "golden-conversation",
+      "type": "concept",
+      "title": "Golden Conversation",
+      "stage": "govern",
+      "path": "concepts/golden-conversation.md",
+      "status": "published"
+    },
+    {
       "id": "graph-traversal",
       "type": "concept",
       "title": "Graph Traversal",
@@ -1150,6 +1167,14 @@
       "title": "Personal Data",
       "stage": "govern",
       "path": "concepts/personal-data.md",
+      "status": "published"
+    },
+    {
+      "id": "pinned-assertion",
+      "type": "concept",
+      "title": "Pinned Assertion",
+      "stage": "govern",
+      "path": "concepts/pinned-assertion.md",
       "status": "published"
     },
     {
@@ -1610,6 +1635,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "regression-testing-state",
+      "to": "end-to-end-eval",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "relative-time-resolution",
       "to": "temporal-questions",
       "kind": "requires_lesson"
@@ -2042,6 +2072,16 @@
     {
       "from": "reflection-and-insight",
       "to": "composite-belief",
+      "kind": "teaches"
+    },
+    {
+      "from": "regression-testing-state",
+      "to": "pinned-assertion",
+      "kind": "teaches"
+    },
+    {
+      "from": "regression-testing-state",
+      "to": "golden-conversation",
       "kind": "teaches"
     },
     {
@@ -2702,6 +2742,21 @@
     {
       "from": "reflection-and-insight",
       "to": "element-cost",
+      "kind": "uses"
+    },
+    {
+      "from": "regression-testing-state",
+      "to": "eval-suite",
+      "kind": "uses"
+    },
+    {
+      "from": "regression-testing-state",
+      "to": "flat-metric",
+      "kind": "uses"
+    },
+    {
+      "from": "regression-testing-state",
+      "to": "memory-record",
       "kind": "uses"
     },
     {
@@ -3570,6 +3625,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "golden-conversation",
+      "to": "pinned-assertion",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "graph-traversal",
       "to": "indexed-predicate",
       "kind": "contrasts_with"
@@ -3632,6 +3692,11 @@
     {
       "from": "personal-data",
       "to": "memory-record",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "pinned-assertion",
+      "to": "golden-conversation",
       "kind": "contrasts_with"
     },
     {

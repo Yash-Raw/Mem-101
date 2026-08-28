@@ -217,7 +217,9 @@ def test_but_it_converges_to_the_same_store(tmp_path) -> None:
 
 
 # --- A3 target: an unauthorised write does damage without being believed ----
-def _with_agent_write(tmp_path, tag, when=None, content="Priya works at Meridian Health"):
+def _with_agent_write(
+    tmp_path, tag, when=None, content="Priya works at Meridian Health", pipeline=None
+):
     """Ingest with one extra agent-written memory, through the real path."""
     from memlab.app import chat
     from memlab.types import Memory, MemoryType, Provenance
@@ -243,7 +245,7 @@ def _with_agent_write(tmp_path, tag, when=None, content="Priya works at Meridian
             ]
         chat._agent_memories = patched
     try:
-        pipeline = get("advanced")
+        pipeline = pipeline or get("advanced")
         store = JsonlStore(tmp_path / f"{tag}.jsonl")
         store.clear()
         ingest(store, PRIYA, pipeline)
@@ -260,17 +262,33 @@ def _eligible_count(store):
     return len(eligible(store.all(), PRIYA))
 
 
+UNGUARDED = get("advanced").with_stage(admit=None)
+
+
 def test_a_low_trust_agent_can_write_into_the_users_own_namespace(tmp_path) -> None:
-    """Read isolation is enforced; write authorisation does not exist."""
+    """Read isolation is enforced; write authorisation is A3's job.
+
+    Unguarded, the rogue lands in the user's own namespace and `leak_check`
+    does not flag it -- correctly, since that function catches cross-*user*
+    reads and this is an impersonation inside a namespace already trusted.
+    """
     from memlab.store.scopes import leak_check, visible
 
-    store, _p = _with_agent_write(tmp_path, "rogue", datetime(2026, 5, 1, tzinfo=UTC))
+    store, _p = _with_agent_write(
+        tmp_path, "rogue", datetime(2026, 5, 1, tzinfo=UTC), pipeline=UNGUARDED
+    )
     rogue = next(m for m in store.all() if "Meridian" in m.content)
     assert rogue.scope.agent is None, "filed as though the user had said it"
     assert any(m.id == rogue.id for m in visible(store.all(), PRIYA))
-    assert not any(m.id == rogue.id for m in leak_check(store.all(), PRIYA)), (
-        "leak_check catches cross-USER reads; this is not one"
+    assert not any(m.id == rogue.id for m in leak_check(store.all(), PRIYA))
+
+
+def test_and_the_write_policy_refuses_it(tmp_path) -> None:
+    store, pipeline = _with_agent_write(
+        tmp_path, "rogue-guarded", datetime(2026, 5, 1, tzinfo=UTC)
     )
+    assert pipeline.admit is not None
+    assert not any("Meridian" in m.content for m in store.all())
 
 
 def test_a_future_dated_write_re_ages_the_whole_store(tmp_path) -> None:
@@ -282,10 +300,12 @@ def test_a_future_dated_write_re_ages_the_whole_store(tmp_path) -> None:
     """
     from memlab.app.chat import ask
 
-    clean, clean_pipe = _with_agent_write(tmp_path, "clean")
-    inside, _ = _with_agent_write(tmp_path, "inside", datetime(2026, 5, 1, tzinfo=UTC))
+    clean, clean_pipe = _with_agent_write(tmp_path, "clean", pipeline=UNGUARDED)
+    inside, _ = _with_agent_write(
+        tmp_path, "inside", datetime(2026, 5, 1, tzinfo=UTC), pipeline=UNGUARDED
+    )
     ahead, ahead_pipe = _with_agent_write(
-        tmp_path, "ahead", datetime(2027, 5, 16, tzinfo=UTC)
+        tmp_path, "ahead", datetime(2027, 5, 16, tzinfo=UTC), pipeline=UNGUARDED
     )
 
     assert (len(clean.all()), _eligible_count(clean)) == (37, 18)
@@ -300,6 +320,15 @@ def test_a_future_dated_write_re_ages_the_whole_store(tmp_path) -> None:
     assert not any("Calico" in c for c in top2(ahead, ahead_pipe)), (
         "the employer fact is no longer retrievable"
     )
+
+
+def test_the_write_policy_refuses_the_future_dated_write(tmp_path) -> None:
+    """The store's clock stays where the corpus put it."""
+    guarded, pipeline = _with_agent_write(
+        tmp_path, "ahead-guarded", datetime(2027, 5, 16, tzinfo=UTC)
+    )
+    assert pipeline.admit is not None
+    assert (len(guarded.all()), _eligible_count(guarded)) == (37, 18)
 
 
 # --- A4 target: there is no user model, and the naive one is wrong ----------

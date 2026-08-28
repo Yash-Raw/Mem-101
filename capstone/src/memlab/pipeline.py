@@ -49,6 +49,7 @@ class Pipeline:
     anchor: AnchorFn | None = None            # A1: resolve relative time against the turn clock
     bitemporal: bool = False                  # A1: split valid_to from invalid_at
     sleep: object | None = None               # A2: a Schedule; None = consolidate inline
+    admit: object | None = None               # A3: a WritePolicy; None = accept any write
 
     def with_stage(self, **changes) -> Pipeline:
         """Turn a stage on. Lessons use this rather than editing the factories."""
@@ -207,6 +208,12 @@ def advanced(through: str = "latest") -> Pipeline:
         # `None` keeps the batch behaviour every earlier snapshot was
         # measured against -- `ingest()` consolidates once regardless.
         p = replace(p, sleep=Schedule.default())
+    if "A3" in reached:
+        from .agents.authorise import WritePolicy
+
+        # Who may write what, where. `None` accepts anything, which is what
+        # every earlier snapshot was measured against.
+        p = replace(p, admit=WritePolicy.default())
     return p
 
 

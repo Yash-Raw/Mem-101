@@ -83,7 +83,12 @@ def ingest(
         added += store.add(memories)
 
     if pipeline.ingest_agent_writes:
-        added += store.add(_agent_memories(scope))
+        writes = _agent_memories(scope)
+        if pipeline.admit is not None:
+            # A3: authorise before storing. Refusals are returned rather than
+            # dropped silently -- see agents/authorise.py.
+            writes, _refused = pipeline.admit.admit(writes, scope, store.all())
+        added += store.add(writes)
 
     if pipeline.consolidate is not None:
         if pipeline.sleep is not None:

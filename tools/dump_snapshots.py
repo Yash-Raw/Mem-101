@@ -25,7 +25,7 @@ from memlab.temporal.clocks import event_start
 from memlab.types import Scope
 
 PRIYA = Scope(user="priya")
-LANDED = ("A1", "A2")  # extend as each Advanced module lands
+LANDED = ("A1", "A2", "A3")  # extend as each Advanced module lands
 
 
 def main() -> None:

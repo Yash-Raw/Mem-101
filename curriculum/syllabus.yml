@@ -410,7 +410,7 @@ levels:
           - id: reading-benchmark-claims
             title: "Reading Benchmark Claims Critically"
             stage: govern
-            objective: "Interpret public leaderboards, given the same system is cited at wildly different scores."
+            objective: "Four questions for any score -- applied to your own claim first."
 
       - id: scale
         title: "Cost, Latency & Scale"

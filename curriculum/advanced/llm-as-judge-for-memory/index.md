@@ -25,6 +25,8 @@ status: published
 **You need first:** [Regression Testing a Stateful System](../regression-testing-state/index.md)
 
 **Concepts assumed:** [Eval Suite](../../../concepts/eval-suite.md) · [Memory Operations](../../../concepts/memory-operations.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Reading Benchmark Claims Critically](../reading-benchmark-claims/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -134,4 +136,6 @@ uv run python curriculum/advanced/llm-as-judge-for-memory/lab/lab.py
 **You need first:** [Regression Testing a Stateful System](../regression-testing-state/index.md)
 
 **Concepts assumed:** [Eval Suite](../../../concepts/eval-suite.md) · [Memory Operations](../../../concepts/memory-operations.md) · [Provenance](../../../concepts/provenance.md)
+
+**This unlocks:** [Reading Benchmark Claims Critically](../reading-benchmark-claims/index.md)
 <!-- graph:end -->

@@ -163,6 +163,15 @@
       "path": "curriculum/advanced/provenance-and-trust/index.md"
     },
     {
+      "id": "reading-benchmark-claims",
+      "type": "lesson",
+      "title": "Reading Benchmark Claims Critically",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 74,
+      "path": "curriculum/advanced/reading-benchmark-claims/index.md"
+    },
+    {
       "id": "redaction-and-minimization",
       "type": "lesson",
       "title": "Redaction and Minimization",
@@ -712,6 +721,14 @@
       "title": "Belief Updating",
       "stage": "evolve",
       "path": "concepts/belief-updating.md",
+      "status": "published"
+    },
+    {
+      "id": "benchmark-claim",
+      "type": "concept",
+      "title": "Benchmark Claim",
+      "stage": "govern",
+      "path": "concepts/benchmark-claim.md",
       "status": "published"
     },
     {
@@ -1331,6 +1348,14 @@
       "status": "published"
     },
     {
+      "id": "saturated-metric",
+      "type": "concept",
+      "title": "Saturated Metric",
+      "stage": "govern",
+      "path": "concepts/saturated-metric.md",
+      "status": "published"
+    },
+    {
       "id": "score-fusion",
       "type": "concept",
       "title": "Score Fusion",
@@ -1652,6 +1677,11 @@
     {
       "from": "provenance-and-trust",
       "to": "memory-topologies",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "reading-benchmark-claims",
+      "to": "llm-as-judge-for-memory",
       "kind": "requires_lesson"
     },
     {
@@ -2092,6 +2122,16 @@
     {
       "from": "provenance-and-trust",
       "to": "unnameable-claim",
+      "kind": "teaches"
+    },
+    {
+      "from": "reading-benchmark-claims",
+      "to": "benchmark-claim",
+      "kind": "teaches"
+    },
+    {
+      "from": "reading-benchmark-claims",
+      "to": "saturated-metric",
       "kind": "teaches"
     },
     {
@@ -2767,6 +2807,21 @@
     {
       "from": "provenance-and-trust",
       "to": "memory-topology",
+      "kind": "uses"
+    },
+    {
+      "from": "reading-benchmark-claims",
+      "to": "eval-suite",
+      "kind": "uses"
+    },
+    {
+      "from": "reading-benchmark-claims",
+      "to": "flat-metric",
+      "kind": "uses"
+    },
+    {
+      "from": "reading-benchmark-claims",
+      "to": "component-metric",
       "kind": "uses"
     },
     {
@@ -3560,6 +3615,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "benchmark-claim",
+      "to": "saturated-metric",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "bi-temporal-modeling",
       "to": "event-time",
       "kind": "contrasts_with"
@@ -3837,6 +3897,11 @@
     {
       "from": "salience",
       "to": "durability-gate",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "saturated-metric",
+      "to": "benchmark-claim",
       "kind": "contrasts_with"
     },
     {

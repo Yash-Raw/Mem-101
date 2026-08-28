@@ -25,7 +25,7 @@ Locate by **session and slot**, never by the key's prose. Print what the metric 
 <!-- graph:begin -->
 **Taught in:** [Component Metrics](../curriculum/advanced/component-metrics/index.md)
 
-**Used in:** [Build Your Own Harness](../curriculum/advanced/end-to-end-eval/index.md)
+**Used in:** [Build Your Own Harness](../curriculum/advanced/end-to-end-eval/index.md) · [Reading Benchmark Claims Critically](../curriculum/advanced/reading-benchmark-claims/index.md)
 
 **Do not confuse with:** [The Absent Corpus](absent-corpus.md)
 <!-- graph:end -->

@@ -216,7 +216,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | 72 | [Build Your Own Harness](curriculum/advanced/end-to-end-eval/index.md) | `govern` | One battery across every profile -- and name what it cannot see. |
 | 73 | [Regression Testing a Stateful System](curriculum/advanced/regression-testing-state/index.md) | `govern` | Half the tests pin a measured number -- and a frozen corpus is what makes that affordable. |
 | 74 | [LLM as Judge, and Its Failure Modes](curriculum/advanced/llm-as-judge-for-memory/index.md) | `govern` | One judgement of three model calls -- and arbitration is never one of them. |
-| 75 | [Reading Benchmark Claims Critically](curriculum/advanced/reading-benchmark-claims/index.md) | `govern` | Interpret public leaderboards, given the same system is cited at wildly different scores. |
+| 75 | [Reading Benchmark Claims Critically](curriculum/advanced/reading-benchmark-claims/index.md) | `govern` | Four questions for any score -- applied to your own claim first. |
 
 **Cost, Latency & Scale**
 

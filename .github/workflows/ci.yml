@@ -16,8 +16,8 @@ jobs:
     env:
       MEMLAB_LLM: fake      # the whole course runs with no API key
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v3
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
       # Matches the documented setup in README.md. The `live` extra pulls the
       # anthropic SDK, which nothing imports under MEMLAB_LLM=fake.
       - run: uv sync --dev
@@ -50,12 +50,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v3
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
       - run: uv sync --dev
       - run: uv run mkdocs build --strict
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

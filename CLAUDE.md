@@ -91,8 +91,8 @@ reference*, reported as a note rather than a failure — authoring is incrementa
 
 Labs must run offline, in CI, with no API key. `memlab.llm.fake.FakeLLM`
 provides deterministic hashed-n-gram embeddings that are genuinely responsive to
-wording (near-paraphrase ≈0.79, unrelated ≈0.07), so retrieval labs teach real
-behaviour. It is a *lexical* model, and that limit is itself teaching material.
+wording (measured: near-paraphrase 0.69-0.82, unrelated 0.02-0.04), so retrieval
+labs teach real behaviour. It is a *lexical* model, and that limit is itself teaching material.
 
 Completions are fixture-backed. Author fixtures with
 `memlab.llm.fake.register_fixture(messages, response, schema)` — it computes the

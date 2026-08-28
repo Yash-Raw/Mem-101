@@ -118,6 +118,15 @@
       "path": "curriculum/advanced/provenance-and-trust/index.md"
     },
     {
+      "id": "redaction-and-minimization",
+      "type": "lesson",
+      "title": "Redaction and Minimization",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 65,
+      "path": "curriculum/advanced/redaction-and-minimization/index.md"
+    },
+    {
       "id": "reflection-and-insight",
       "type": "lesson",
       "title": "Reflection and Insight",
@@ -994,6 +1003,14 @@
       "status": "published"
     },
     {
+      "id": "minimisation",
+      "type": "concept",
+      "title": "Minimisation",
+      "stage": "govern",
+      "path": "concepts/minimisation.md",
+      "status": "published"
+    },
+    {
       "id": "namespace",
       "type": "concept",
       "title": "Namespace",
@@ -1055,6 +1072,14 @@
       "title": "The Read Path",
       "stage": "retrieve",
       "path": "concepts/read-path.md",
+      "status": "published"
+    },
+    {
+      "id": "redaction",
+      "type": "concept",
+      "title": "Redaction",
+      "stage": "govern",
+      "path": "concepts/redaction.md",
       "status": "published"
     },
     {
@@ -1402,6 +1427,11 @@
     {
       "from": "provenance-and-trust",
       "to": "memory-topologies",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "redaction-and-minimization",
+      "to": "pii-on-the-write-path",
       "kind": "requires_lesson"
     },
     {
@@ -1772,6 +1802,16 @@
     {
       "from": "provenance-and-trust",
       "to": "unnameable-claim",
+      "kind": "teaches"
+    },
+    {
+      "from": "redaction-and-minimization",
+      "to": "minimisation",
+      "kind": "teaches"
+    },
+    {
+      "from": "redaction-and-minimization",
+      "to": "redaction",
       "kind": "teaches"
     },
     {
@@ -2332,6 +2372,21 @@
     {
       "from": "provenance-and-trust",
       "to": "memory-topology",
+      "kind": "uses"
+    },
+    {
+      "from": "redaction-and-minimization",
+      "to": "personal-data",
+      "kind": "uses"
+    },
+    {
+      "from": "redaction-and-minimization",
+      "to": "label-not-permission",
+      "kind": "uses"
+    },
+    {
+      "from": "redaction-and-minimization",
+      "to": "element-cost",
       "kind": "uses"
     },
     {
@@ -3195,6 +3250,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "minimisation",
+      "to": "personal-data",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "namespace",
       "to": "retrieval-scoping",
       "kind": "contrasts_with"
@@ -3222,6 +3282,11 @@
     {
       "from": "read-path",
       "to": "write-path",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "redaction",
+      "to": "deletion",
       "kind": "contrasts_with"
     },
     {

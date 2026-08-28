@@ -21,7 +21,7 @@ The framing header on this course's context is **29 tokens — 38% of everything
 <!-- graph:begin -->
 **Taught in:** [Does This Earn Its Tokens?](../curriculum/intermediate/slot-value/index.md)
 
-**Used in:** [Personalization Without Creepiness](../curriculum/advanced/applying-the-model/index.md) · [Reflection and Insight](../curriculum/advanced/reflection-and-insight/index.md) · [Retrieving Procedures](../curriculum/advanced/retrieving-procedures/index.md)
+**Used in:** [Personalization Without Creepiness](../curriculum/advanced/applying-the-model/index.md) · [Redaction and Minimization](../curriculum/advanced/redaction-and-minimization/index.md) · [Reflection and Insight](../curriculum/advanced/reflection-and-insight/index.md) · [Retrieving Procedures](../curriculum/advanced/retrieving-procedures/index.md)
 
 **Do not confuse with:** [Token Budget](token-budget.md)
 <!-- graph:end -->

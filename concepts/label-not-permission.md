@@ -25,5 +25,7 @@ Use patterns rather than a classifier on this path. A false negative is a missed
 <!-- graph:begin -->
 **Taught in:** [PII on the Write Path](../curriculum/advanced/pii-on-the-write-path/index.md)
 
+**Used in:** [Redaction and Minimization](../curriculum/advanced/redaction-and-minimization/index.md)
+
 **Do not confuse with:** [Write Authorisation](write-authorisation.md)
 <!-- graph:end -->

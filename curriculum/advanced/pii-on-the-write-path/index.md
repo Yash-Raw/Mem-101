@@ -25,6 +25,8 @@ status: published
 **You need first:** [Retrieving Procedures](../retrieving-procedures/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [Write Authorisation](../../../concepts/write-authorisation.md) · [Entity Resolution](../../../concepts/entity-resolution.md)
+
+**This unlocks:** [Redaction and Minimization](../redaction-and-minimization/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -128,4 +130,6 @@ uv run python curriculum/advanced/pii-on-the-write-path/lab/lab.py
 **You need first:** [Retrieving Procedures](../retrieving-procedures/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [Write Authorisation](../../../concepts/write-authorisation.md) · [Entity Resolution](../../../concepts/entity-resolution.md)
+
+**This unlocks:** [Redaction and Minimization](../redaction-and-minimization/index.md)
 <!-- graph:end -->

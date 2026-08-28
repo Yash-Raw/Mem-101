@@ -370,7 +370,7 @@ levels:
           - id: redaction-and-minimization
             title: "Redaction and Minimization"
             stage: govern
-            objective: "Store less on purpose; encrypt at the field level."
+            objective: "Coarsen per kind, and measure what each level costs the answer."
           - id: deletion-that-actually-deletes
             title: "Deletion That Actually Deletes"
             stage: govern

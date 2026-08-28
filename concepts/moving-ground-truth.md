@@ -25,5 +25,7 @@ The related trap is attribution. A wrong answer implicates every stage between t
 <!-- graph:begin -->
 **Taught in:** [Why Memory Eval Is Hard](../curriculum/advanced/why-memory-eval-is-hard/index.md)
 
+**Used in:** [Component Metrics](../curriculum/advanced/component-metrics/index.md)
+
 **Do not confuse with:** [The Absent Corpus](absent-corpus.md)
 <!-- graph:end -->

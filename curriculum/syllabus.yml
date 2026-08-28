@@ -394,7 +394,7 @@ levels:
           - id: component-metrics
             title: "Component Metrics"
             stage: govern
-            objective: "Measure extraction P/R, dedupe correctness, arbitration accuracy, and forgetting regret."
+            objective: "Score the stages -- and debug the metric before believing it about the system."
           - id: end-to-end-eval
             title: "Build Your Own Harness"
             stage: govern

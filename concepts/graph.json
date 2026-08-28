@@ -28,6 +28,15 @@
       "path": "curriculum/advanced/cold-start-and-shared-accounts/index.md"
     },
     {
+      "id": "component-metrics",
+      "type": "lesson",
+      "title": "Component Metrics",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 70,
+      "path": "curriculum/advanced/component-metrics/index.md"
+    },
+    {
       "id": "cross-agent-write-conflicts",
       "type": "lesson",
       "title": "Cross-Agent Write Conflicts",
@@ -719,6 +728,14 @@
       "status": "published"
     },
     {
+      "id": "component-metric",
+      "type": "concept",
+      "title": "Component Metric",
+      "stage": "govern",
+      "path": "concepts/component-metric.md",
+      "status": "published"
+    },
+    {
       "id": "composite-belief",
       "type": "concept",
       "title": "Composite Belief",
@@ -1375,6 +1392,14 @@
       "status": "published"
     },
     {
+      "id": "unlocated-assertion",
+      "type": "concept",
+      "title": "Unlocated Assertion",
+      "stage": "govern",
+      "path": "concepts/unlocated-assertion.md",
+      "status": "published"
+    },
+    {
       "id": "unnameable-claim",
       "type": "concept",
       "title": "Unnameable Claim",
@@ -1477,6 +1502,11 @@
     {
       "from": "cold-start-and-shared-accounts",
       "to": "applying-the-model",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "component-metrics",
+      "to": "why-memory-eval-is-hard",
       "kind": "requires_lesson"
     },
     {
@@ -1832,6 +1862,16 @@
     {
       "from": "cold-start-and-shared-accounts",
       "to": "coverage-vs-knowledge",
+      "kind": "teaches"
+    },
+    {
+      "from": "component-metrics",
+      "to": "component-metric",
+      "kind": "teaches"
+    },
+    {
+      "from": "component-metrics",
+      "to": "unlocated-assertion",
       "kind": "teaches"
     },
     {
@@ -2392,6 +2432,21 @@
     {
       "from": "cold-start-and-shared-accounts",
       "to": "disclosure",
+      "kind": "uses"
+    },
+    {
+      "from": "component-metrics",
+      "to": "absent-corpus",
+      "kind": "uses"
+    },
+    {
+      "from": "component-metrics",
+      "to": "moving-ground-truth",
+      "kind": "uses"
+    },
+    {
+      "from": "component-metrics",
+      "to": "slot",
       "kind": "uses"
     },
     {
@@ -3360,6 +3415,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "component-metric",
+      "to": "absent-corpus",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "composite-belief",
       "to": "element-cost",
       "kind": "contrasts_with"
@@ -3642,6 +3702,11 @@
     {
       "from": "type-rules",
       "to": "memory-record",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "unlocated-assertion",
+      "to": "component-metric",
       "kind": "contrasts_with"
     },
     {

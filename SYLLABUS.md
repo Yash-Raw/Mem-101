@@ -212,7 +212,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
 | 70 | [Why Memory Eval Is Hard](curriculum/advanced/why-memory-eval-is-hard/index.md) | `govern` | Count what can be scored at all, before scoring anything. |
-| 71 | [Component Metrics](curriculum/advanced/component-metrics/index.md) | `govern` | Measure extraction P/R, dedupe correctness, arbitration accuracy, and forgetting regret. |
+| 71 | [Component Metrics](curriculum/advanced/component-metrics/index.md) | `govern` | Score the stages -- and debug the metric before believing it about the system. |
 | 72 | [Build Your Own Harness](curriculum/advanced/end-to-end-eval/index.md) | `govern` | Score multi-session recall, knowledge update, and temporal reasoning on the canonical corpus. |
 | 73 | [Regression Testing a Stateful System](curriculum/advanced/regression-testing-state/index.md) | `govern` | Use golden conversations and snapshot tests in CI. |
 | 74 | [LLM as Judge, and Its Failure Modes](curriculum/advanced/llm-as-judge-for-memory/index.md) | `govern` | Use model grading where it works and recognise where it does not. |

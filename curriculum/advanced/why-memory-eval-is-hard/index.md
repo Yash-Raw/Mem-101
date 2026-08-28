@@ -25,6 +25,8 @@ status: published
 **You need first:** [Memory Attacks](../memory-attacks/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [Supersession](../../../concepts/supersession.md) · [As-Of Query](../../../concepts/as-of-query.md)
+
+**This unlocks:** [Component Metrics](../component-metrics/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -132,4 +134,6 @@ uv run python curriculum/advanced/why-memory-eval-is-hard/lab/lab.py
 **You need first:** [Memory Attacks](../memory-attacks/index.md)
 
 **Concepts assumed:** [The Memory Record](../../../concepts/memory-record.md) · [Supersession](../../../concepts/supersession.md) · [As-Of Query](../../../concepts/as-of-query.md)
+
+**This unlocks:** [Component Metrics](../component-metrics/index.md)
 <!-- graph:end -->

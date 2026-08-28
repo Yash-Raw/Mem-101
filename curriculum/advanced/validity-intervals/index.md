@@ -73,7 +73,11 @@ distinct recorded_at dates    1  ->  15
 
 **3 · Nothing recorded that anything stopped.**
 
-| | `@I8` | `@A1` |
+Both columns are measured *before this module's parser lands* — `at("A1")`
+with `anchor=None`, which is the state the next two lessons build on. Shipped
+`at("A1")` anchors four phrases and moves the last row.
+
+| | `@I8` | this module |
 |---|--:|--:|
 | facts with a recorded end | 0 | **7** |
 | beliefs retired before they were recorded | **1** | **0** |
@@ -85,7 +89,8 @@ Note which row the split fixes. The past was already answerable once the query e
 
 ### And they are the same. Every day, for 549 days.
 
-Sweep the corpus and compare the two questions on each date:
+Sweep the corpus and compare the two questions on each date — still with the
+parser off, since nothing has yet written a `valid_from`:
 
 ```
 dates where "true then" and "believed then" differ:   0 of 549
@@ -106,6 +111,8 @@ One parsed date separates the axes on **46% of the days in the corpus**. The mac
 **Why fix the clocks here rather than in `two-clocks`?** Because until this query existed there was no way to see that they were broken. A single `recorded_at` looks fine in every Level 2 test; it fails only when something asks a question along that axis. Fixing an input to a query you cannot run is how you get a parser that is confidently wrong for two modules.
 
 **Why is the split gated behind A1 rather than just applied?** Because 31 Intermediate lessons quote figures measured against the old single-instant semantics. `pipeline.bitemporal` switches it, `@I1`–`@I8` are verified identical by snapshot diff, and `two-clocks` audits `at("I8")` — the system as Level 2 actually shipped. An Advanced improvement that silently moves an Intermediate number is a build break, not an improvement.
+
+**And this lesson pins its own sub-state.** A1 switches on two things: the bi-temporal split, here, and the relative-time parser two lessons later. Every figure above is measured with `at("A1").with_stage(anchor=None, ...)`, because `relative-time-resolution` exists precisely to move the last one — from 0 of 549 to 257. Quoting `at("A1")` for both would make one of the two lessons wrong the moment the other landed.
 
 **Why not close every interval by inferring from supersession?** Because the retirement date is when the *system found out*, not when the world moved. The corpus says she left Northwind in December and told you in January; deriving `valid_to` from `invalid_at` puts the end of the job on the day she mentioned it and reintroduces precisely the conflation this module exists to remove. It would look correct here, which is what makes it dangerous.
 

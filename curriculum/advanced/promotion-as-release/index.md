@@ -15,7 +15,7 @@ status: published
 
 # Promotion as a Release
 
-> **In one line.** The preview said the change costs four tokens; without one missing step it actually breaks the exam at every budget — and the whole point of a release is that you find that out before shipping.
+> **In one line.** The preview said the change costs five tokens; without one missing step it actually breaks the exam at every budget — and the whole point of a release is that you find that out before shipping.
 
 ## Where this sits
 
@@ -51,7 +51,7 @@ Consolidation destroys. It retires beliefs, moves confidences, merges records �
 staged: derive+3   adds 3   retires 8   base 37
 ```
 
-**Evaluate on the measurement that matters.** Not pass/fail at one budget — the lowest budget at which the exam still passes. A change that keeps the exam correct while eating four tokens of headroom is a regression that a single-budget check reports as green.
+**Evaluate on the measurement that matters.** Not pass/fail at one budget — the lowest budget at which the exam still passes. A change that keeps the exam correct while eating five tokens of headroom is a regression that a single-budget check reports as green.
 
 ```
 before 51    after 56    delta +5    better=False

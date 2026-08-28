@@ -97,7 +97,7 @@ Ranks 3–5 are the composites' own members. The insight **joined** its sources 
 | insights added alongside | 55 | 40 |
 | insights retire their sources | **56** | 40 |
 
-(`slot-value` reported 52 because it swept discrete budgets and never tried 51. Sweeping every value gives 51, and the finer metric is what this lesson needs — a change that costs four tokens of headroom is invisible to a check at one budget.)
+(`slot-value` reported 52 because it swept discrete budgets and never tried 51. Sweeping every value gives 51, and the finer metric is what this lesson needs — a change that costs five tokens of headroom is invisible to a check at one budget.)
 
 **Both policies are worse, and retiring the sources is the worse of the two.** The reason is the one I8 spent a module on: the packer selects *memories*. It can take three of the four diet facts and drop the one the question does not need. It cannot take three quarters of a composite. **Composition destroys the packer's ability to drop things** — the property that made 51 reachable at all.
 

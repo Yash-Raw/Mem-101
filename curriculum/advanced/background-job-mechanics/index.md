@@ -84,7 +84,7 @@ Three cases, and the id set is what distinguishes them:
 
 Rows 2 and 3 are indistinguishable in the output: both are simply absent. **Without the recorded id set there is no way to tell "the job deleted this" from "the job never saw it"**, which is precisely why `replace` destroys data — it treats every absence as a deletion.
 
-**The merge is not merely non-destructive; it is correct.** Racing a job against every fourth turn and merging gives a store byte-identical to the serialised run — same 37 memories, same 30 live, same ids:
+**The merge is not merely non-destructive; it is correct.** Racing a job against every fourth turn and merging gives a store identical to the serialised run — same 37 memories, same 30 live, the same set of ids:
 
 ```
 memories destroyed, replace (as shipped)     33

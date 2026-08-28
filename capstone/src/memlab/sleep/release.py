@@ -87,7 +87,7 @@ def preview(
 
     Leave it out of one and not the other and the release measures a
     different program than it ships: derived beliefs are scored in the
-    preview, unscored on disk, and a change that previewed as "four tokens
+    preview, unscored on disk, and a change that previewed as "five tokens
     worse" arrives as an exam that never passes at any budget.
     """
     retired = set(staged.retired)
@@ -108,7 +108,7 @@ def evaluate(before: list[Memory], after: list[Memory], measure) -> Verdict:
 
     The measurement has to be the one that matters, and on this corpus that
     is the lowest passing budget rather than a pass/fail at one budget --
-    a change that keeps the exam correct while costing four tokens of
+    a change that keeps the exam correct while costing five tokens of
     headroom is a regression that a single-budget check reports as green.
     """
     return Verdict(before=measure(before), after=measure(after))

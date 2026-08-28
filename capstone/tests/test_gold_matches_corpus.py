@@ -23,14 +23,27 @@ AGENT_TEXT = " ".join(w["text"] for w in load_agent_writes())
 SESSIONS = {t["session"] for t in load_turns()}
 
 
-def session_text(n: int) -> str:
+def session_text(n: int, agent: str | None = None) -> str:
+    """Everything written in a session -- by the user, or by a named agent.
+
+    Agent writes live in their own fixture, so a gold row that names one has
+    to be checked against that file. Without the `written_by` branch the only
+    way to make such a row pass is to point it at a session it is not in.
+    """
+    if agent:
+        return " ".join(
+            w["text"] for w in load_agent_writes()
+            if w["session"] == n and w["agent"] == agent
+        )
     return " ".join(t["text"] for t in load_turns() if t["session"] == n)
 
 
 @pytest.mark.parametrize("row", GOLD["relative_time"], ids=lambda r: r["phrase"])
 def test_relative_time_phrases_are_real(row) -> None:
-    assert row["phrase"] in session_text(row["session"]), (
+    where = session_text(row["session"], row.get("written_by"))
+    assert row["phrase"] in where, (
         f"{row['phrase']!r} is not in session {row['session']}"
+        f"{' (' + row['written_by'] + ')' if row.get('written_by') else ''}"
     )
 
 

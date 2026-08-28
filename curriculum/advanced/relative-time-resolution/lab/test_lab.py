@@ -140,7 +140,6 @@ def test_the_audit_undercounts_in_the_safe_direction(after) -> None:
 
 def test_gold_is_the_answer_key_not_the_lesson(after) -> None:
     """Every date this lab asserts is in gold.yml, including the null one."""
-    import yaml
     from memlab.fixtures import load_gold
 
     entries = {e["phrase"]: e["resolves_to"] for e in load_gold()["relative_time"]}
@@ -149,7 +148,6 @@ def test_gold_is_the_answer_key_not_the_lesson(after) -> None:
     assert entries["Before the move"] == datetime(2025, 8, 2).date()
     assert entries["last week"] == datetime(2026, 5, 8).date()
     assert entries["diff against last week"] is None, "the one that must not resolve"
-    _ = yaml
 
 
 def test_a_memory_with_no_phrase_keeps_the_ingestion_time(after) -> None:

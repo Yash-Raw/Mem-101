@@ -378,7 +378,7 @@ levels:
           - id: rtbf-and-auditability
             title: "Proving You Forgot"
             stage: govern
-            objective: "Demonstrate deletion, retention policy, and regional constraints."
+            objective: "Prove a deletion using the content-addressed id, and keep none of the content."
           - id: memory-attacks
             title: "Memory Attacks"
             stage: govern

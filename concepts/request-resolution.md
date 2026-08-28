@@ -27,5 +27,7 @@ Search generously. A wide candidate set gets reviewed; a narrow one gets acted o
 <!-- graph:begin -->
 **Taught in:** [Deletion That Actually Deletes](../curriculum/advanced/deletion-that-actually-deletes/index.md)
 
+**Used in:** [Proving You Forgot](../curriculum/advanced/rtbf-and-auditability/index.md)
+
 **Do not confuse with:** [Cascade Deletion](cascade-deletion.md)
 <!-- graph:end -->

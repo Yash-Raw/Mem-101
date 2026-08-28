@@ -27,5 +27,7 @@ Deletion cannot share a mechanism with supersession, which is designed never to 
 <!-- graph:begin -->
 **Taught in:** [Deletion That Actually Deletes](../curriculum/advanced/deletion-that-actually-deletes/index.md)
 
+**Used in:** [Proving You Forgot](../curriculum/advanced/rtbf-and-auditability/index.md)
+
 **Do not confuse with:** [Supersession](supersession.md)
 <!-- graph:end -->

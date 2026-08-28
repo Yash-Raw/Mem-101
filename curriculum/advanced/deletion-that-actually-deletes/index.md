@@ -25,6 +25,8 @@ status: published
 **You need first:** [Redaction and Minimization](../redaction-and-minimization/index.md)
 
 **Concepts assumed:** [Personal Data](../../../concepts/personal-data.md) · [Label, Not Permission](../../../concepts/label-not-permission.md) · [Derivation Graph](../../../concepts/derivation-graph.md)
+
+**This unlocks:** [Proving You Forgot](../rtbf-and-auditability/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -131,4 +133,6 @@ uv run python curriculum/advanced/deletion-that-actually-deletes/lab/lab.py
 **You need first:** [Redaction and Minimization](../redaction-and-minimization/index.md)
 
 **Concepts assumed:** [Personal Data](../../../concepts/personal-data.md) · [Label, Not Permission](../../../concepts/label-not-permission.md) · [Derivation Graph](../../../concepts/derivation-graph.md)
+
+**This unlocks:** [Proving You Forgot](../rtbf-and-auditability/index.md)
 <!-- graph:end -->

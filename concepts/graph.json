@@ -163,6 +163,15 @@
       "path": "curriculum/advanced/retrieving-procedures/index.md"
     },
     {
+      "id": "rtbf-and-auditability",
+      "type": "lesson",
+      "title": "Proving You Forgot",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 67,
+      "path": "curriculum/advanced/rtbf-and-auditability/index.md"
+    },
+    {
       "id": "sleep-time-compute",
       "type": "lesson",
       "title": "Sleep-Time Compute",
@@ -780,6 +789,14 @@
       "status": "published"
     },
     {
+      "id": "deletion-receipt",
+      "type": "concept",
+      "title": "Deletion Receipt",
+      "stage": "govern",
+      "path": "concepts/deletion-receipt.md",
+      "status": "published"
+    },
+    {
       "id": "derivation-graph",
       "type": "concept",
       "title": "Derivation Graph",
@@ -1065,6 +1082,14 @@
       "title": "Procedural Retrieval",
       "stage": "retrieve",
       "path": "concepts/procedural-retrieval.md",
+      "status": "published"
+    },
+    {
+      "id": "proof-without-retention",
+      "type": "concept",
+      "title": "Proof Without Retention",
+      "stage": "govern",
+      "path": "concepts/proof-without-retention.md",
       "status": "published"
     },
     {
@@ -1480,6 +1505,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "rtbf-and-auditability",
+      "to": "deletion-that-actually-deletes",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "sleep-time-compute",
       "to": "temporal-knowledge-graphs",
       "kind": "requires_lesson"
@@ -1872,6 +1902,16 @@
     {
       "from": "retrieving-procedures",
       "to": "procedural-retrieval",
+      "kind": "teaches"
+    },
+    {
+      "from": "rtbf-and-auditability",
+      "to": "deletion-receipt",
+      "kind": "teaches"
+    },
+    {
+      "from": "rtbf-and-auditability",
+      "to": "proof-without-retention",
       "kind": "teaches"
     },
     {
@@ -2487,6 +2527,21 @@
     {
       "from": "retrieving-procedures",
       "to": "element-cost",
+      "kind": "uses"
+    },
+    {
+      "from": "rtbf-and-auditability",
+      "to": "cascade-deletion",
+      "kind": "uses"
+    },
+    {
+      "from": "rtbf-and-auditability",
+      "to": "request-resolution",
+      "kind": "uses"
+    },
+    {
+      "from": "rtbf-and-auditability",
+      "to": "memory-record",
       "kind": "uses"
     },
     {
@@ -3230,6 +3285,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "deletion-receipt",
+      "to": "cascade-deletion",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "derivation-graph",
       "to": "graph-traversal",
       "kind": "contrasts_with"
@@ -3332,6 +3392,11 @@
     {
       "from": "procedural-retrieval",
       "to": "hybrid-ranking",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "proof-without-retention",
+      "to": "deletion-receipt",
       "kind": "contrasts_with"
     },
     {

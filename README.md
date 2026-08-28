@@ -2,6 +2,8 @@
 
 > The write path is the part the tutorials skip.
 
+**Read it online: <https://yash-raw.github.io/Mem-101/>**
+
 Search for how to build an agent memory layer and you mostly find RAG tutorials
 wearing a different hat: chunk, embed, retrieve, done. That answers a different
 question. Retrieval is a **read path over a corpus someone else wrote**. A
@@ -27,10 +29,15 @@ That is lesson 00, and you run it yourself in the first thirty minutes.
 
 ```bash
 uv sync --dev
-uv run python curriculum/beginner/memory-is-not-rag/lab/lab.py
+uv run python tools/show.py memory-is-not-rag
 ```
 
-Then read [SYLLABUS.md](SYLLABUS.md) for the full map.
+That prints the table above for real, from the corpus, on your machine. Then
+read [SYLLABUS.md](SYLLABUS.md) for the full map.
+
+(`show.py` runs a lab with its reference solution filled in. The lab file
+itself, `lab/lab.py`, is a stub that raises `NotImplementedError` until *you*
+fill it in — that is the exercise, and the section below is how it works.)
 
 **No API key is needed.** Labs run against a deterministic local model whose
 embeddings are genuinely responsive to wording, so retrieval lessons teach real
@@ -56,6 +63,9 @@ key, at any level.
    It prints a table. **The lesson quotes that same table.** Matching it is how
    you know you are right — the fake model is deterministic, so your numbers
    should be identical to the ones on the page, not merely similar.
+   Stuck, or want to see the target first?
+   `uv run python tools/show.py <lesson-id>` prints what the lab produces when
+   it is solved — the same code path CI uses to check the lesson's prose.
 4. **Then read `solution.py`**, which sits next to the stub on purpose. This is
    not a test you can cheat; it is a course you can get stuck in. Read it when
    comparing beats grinding.

@@ -10,6 +10,15 @@
       "path": "curriculum/advanced/background-job-mechanics/index.md"
     },
     {
+      "id": "memory-topologies",
+      "type": "lesson",
+      "title": "Memory Topologies",
+      "level": "advanced",
+      "stage": "store",
+      "order": 53,
+      "path": "curriculum/advanced/memory-topologies/index.md"
+    },
+    {
       "id": "promotion-as-release",
       "type": "lesson",
       "title": "Promotion as a Release",
@@ -798,6 +807,14 @@
       "status": "published"
     },
     {
+      "id": "memory-topology",
+      "type": "concept",
+      "title": "Memory Topology",
+      "stage": "store",
+      "path": "concepts/memory-topology.md",
+      "status": "published"
+    },
+    {
       "id": "namespace",
       "type": "concept",
       "title": "Namespace",
@@ -1085,6 +1102,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "memory-topologies",
+      "to": "promotion-as-release",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "promotion-as-release",
       "to": "reflection-and-insight",
       "kind": "requires_lesson"
@@ -1347,6 +1369,11 @@
     {
       "from": "background-job-mechanics",
       "to": "snapshot-isolation",
+      "kind": "teaches"
+    },
+    {
+      "from": "memory-topologies",
+      "to": "memory-topology",
       "kind": "teaches"
     },
     {
@@ -1742,6 +1769,16 @@
     {
       "from": "background-job-mechanics",
       "to": "deduplication",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-topologies",
+      "to": "retrieval-scoping",
+      "kind": "uses"
+    },
+    {
+      "from": "memory-topologies",
+      "to": "provenance",
       "kind": "uses"
     },
     {
@@ -2547,6 +2584,11 @@
     {
       "from": "lost-update",
       "to": "snapshot-isolation",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "memory-topology",
+      "to": "retrieval-scoping",
       "kind": "contrasts_with"
     },
     {

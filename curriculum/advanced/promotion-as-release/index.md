@@ -25,6 +25,8 @@ status: published
 **You need first:** [Reflection and Insight](../reflection-and-insight/index.md)
 
 **Concepts assumed:** [Reflection](../../../concepts/reflection.md) · [Snapshot Isolation](../../../concepts/snapshot-isolation.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Memory Topologies](../memory-topologies/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -138,4 +140,6 @@ uv run python curriculum/advanced/promotion-as-release/lab/lab.py
 **You need first:** [Reflection and Insight](../reflection-and-insight/index.md)
 
 **Concepts assumed:** [Reflection](../../../concepts/reflection.md) · [Snapshot Isolation](../../../concepts/snapshot-isolation.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Memory Topologies](../memory-topologies/index.md)
 <!-- graph:end -->

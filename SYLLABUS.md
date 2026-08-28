@@ -175,7 +175,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 
 | # | Lesson | Stage | You will be able to |
 |--:|---|---|---|
-| 54 | [Memory Topologies](curriculum/advanced/memory-topologies/index.md) | `store` | Choose between private, shared, hierarchical, and blackboard memory. |
+| 54 | [Memory Topologies](curriculum/advanced/memory-topologies/index.md) | `store` | Price each shape by what a reader loses -- and by what it leaks. |
 | 55 | [Provenance and Trust](curriculum/advanced/provenance-and-trust/index.md) | `govern` | Record who wrote a memory and decide whether to believe it. |
 | 56 | [Cross-Agent Write Conflicts](curriculum/advanced/cross-agent-write-conflicts/index.md) | `evolve` | Arbitrate concurrent writes from multiple agents. |
 | 57 | [Memory Access Control](curriculum/advanced/memory-access-control/index.md) | `govern` | Enforce read/write scopes and prevent cross-tenant leakage. |

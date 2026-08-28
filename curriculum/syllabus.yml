@@ -310,7 +310,7 @@ levels:
           - id: memory-topologies
             title: "Memory Topologies"
             stage: store
-            objective: "Choose between private, shared, hierarchical, and blackboard memory."
+            objective: "Price each shape by what a reader loses -- and by what it leaks."
           - id: provenance-and-trust
             title: "Provenance and Trust"
             stage: govern

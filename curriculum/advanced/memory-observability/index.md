@@ -25,6 +25,8 @@ status: published
 **You need first:** [The Failure Field Guide](../failure-field-guide/index.md)
 
 **Concepts assumed:** [Provenance](../../../concepts/provenance.md) · [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Derivation Graph](../../../concepts/derivation-graph.md)
+
+**This unlocks:** [Invariants and Drift Detection](../invariants-and-drift-detection/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -134,4 +136,6 @@ uv run python curriculum/advanced/memory-observability/lab/lab.py
 **You need first:** [The Failure Field Guide](../failure-field-guide/index.md)
 
 **Concepts assumed:** [Provenance](../../../concepts/provenance.md) · [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Derivation Graph](../../../concepts/derivation-graph.md)
+
+**This unlocks:** [Invariants and Drift Detection](../invariants-and-drift-detection/index.md)
 <!-- graph:end -->

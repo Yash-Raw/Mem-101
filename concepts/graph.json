@@ -109,6 +109,15 @@
       "path": "curriculum/advanced/implicit-signals/index.md"
     },
     {
+      "id": "invariants-and-drift-detection",
+      "type": "lesson",
+      "title": "Invariants and Drift Detection",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 81,
+      "path": "curriculum/advanced/invariants-and-drift-detection/index.md"
+    },
+    {
       "id": "latency-budget",
       "type": "lesson",
       "title": "The Latency Budget",
@@ -1218,6 +1227,14 @@
       "status": "published"
     },
     {
+      "id": "leave-one-out",
+      "type": "concept",
+      "title": "Leave-One-Out",
+      "stage": "govern",
+      "path": "concepts/leave-one-out.md",
+      "status": "published"
+    },
+    {
       "id": "lessons-learned",
       "type": "concept",
       "title": "Lessons Learned",
@@ -1570,6 +1587,14 @@
       "status": "published"
     },
     {
+      "id": "store-invariant",
+      "type": "concept",
+      "title": "Store Invariant",
+      "stage": "govern",
+      "path": "concepts/store-invariant.md",
+      "status": "published"
+    },
+    {
       "id": "summarization",
       "type": "concept",
       "title": "Summarization",
@@ -1797,6 +1822,11 @@
     {
       "from": "implicit-signals",
       "to": "from-facts-to-a-user-model",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "invariants-and-drift-detection",
+      "to": "memory-observability",
       "kind": "requires_lesson"
     },
     {
@@ -2247,6 +2277,16 @@
     {
       "from": "implicit-signals",
       "to": "correction-as-label",
+      "kind": "teaches"
+    },
+    {
+      "from": "invariants-and-drift-detection",
+      "to": "store-invariant",
+      "kind": "teaches"
+    },
+    {
+      "from": "invariants-and-drift-detection",
+      "to": "leave-one-out",
       "kind": "teaches"
     },
     {
@@ -2967,6 +3007,21 @@
     {
       "from": "implicit-signals",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "invariants-and-drift-detection",
+      "to": "leak-assertion",
+      "kind": "uses"
+    },
+    {
+      "from": "invariants-and-drift-detection",
+      "to": "bi-temporal-modeling",
+      "kind": "uses"
+    },
+    {
+      "from": "invariants-and-drift-detection",
+      "to": "derivation-graph",
       "kind": "uses"
     },
     {
@@ -4150,6 +4205,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "leave-one-out",
+      "to": "store-invariant",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "lessons-learned",
       "to": "procedural-memory",
       "kind": "contrasts_with"
@@ -4322,6 +4382,11 @@
     {
       "from": "step-order",
       "to": "extraction-pipeline",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "store-invariant",
+      "to": "leave-one-out",
       "kind": "contrasts_with"
     },
     {

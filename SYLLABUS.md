@@ -233,7 +233,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 |--:|---|---|---|
 | 80 | [The Failure Field Guide](curriculum/advanced/failure-field-guide/index.md) | `govern` | Five of seven symptoms are ambiguous, so the useful column is the tell. |
 | 81 | [Memory Observability](curriculum/advanced/memory-observability/index.md) | `govern` | Six answers from the record with no logging, and three that need a read-time write. |
-| 82 | [Invariants and Drift Detection](curriculum/advanced/invariants-and-drift-detection/index.md) | `govern` | Assert what must always be true of the store and detect when it stops being true. |
+| 82 | [Invariants and Drift Detection](curriculum/advanced/invariants-and-drift-detection/index.md) | `govern` | Collect the invariants, label the kind, and stop an outlier moving its own reference. |
 | 83 | [Migrating Live Memory](curriculum/advanced/schema-migration-on-live-memory/index.md) | `store` | Evolve the record shape with backfills and history reprocessing. |
 | 84 | [Hardening Pass](curriculum/advanced/capstone-finale/index.md) | `govern` | Ship memlab v0.3 with an eval report and a cost profile. |
 

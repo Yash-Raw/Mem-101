@@ -23,5 +23,7 @@ So it is an assertion about the filter rather than about the data, which is exac
 <!-- graph:begin -->
 **Taught in:** [Memory Access Control](../curriculum/advanced/memory-access-control/index.md)
 
+**Used in:** [Invariants and Drift Detection](../curriculum/advanced/invariants-and-drift-detection/index.md)
+
 **Do not confuse with:** [Write Authorisation](write-authorisation.md)
 <!-- graph:end -->

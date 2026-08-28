@@ -446,7 +446,7 @@ levels:
           - id: invariants-and-drift-detection
             title: "Invariants and Drift Detection"
             stage: govern
-            objective: "Assert what must always be true of the store and detect when it stops being true."
+            objective: "Collect the invariants, label the kind, and stop an outlier moving its own reference."
           - id: schema-migration-on-live-memory
             title: "Migrating Live Memory"
             stage: store

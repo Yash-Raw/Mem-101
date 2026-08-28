@@ -127,6 +127,15 @@
       "path": "curriculum/advanced/relative-time-resolution/index.md"
     },
     {
+      "id": "retrieving-procedures",
+      "type": "lesson",
+      "title": "Retrieving Procedures",
+      "level": "advanced",
+      "stage": "retrieve",
+      "order": 63,
+      "path": "curriculum/advanced/retrieving-procedures/index.md"
+    },
+    {
       "id": "sleep-time-compute",
       "type": "lesson",
       "title": "Sleep-Time Compute",
@@ -992,6 +1001,14 @@
       "status": "published"
     },
     {
+      "id": "procedural-retrieval",
+      "type": "concept",
+      "title": "Procedural Retrieval",
+      "stage": "retrieve",
+      "path": "concepts/procedural-retrieval.md",
+      "status": "published"
+    },
+    {
       "id": "provenance",
       "type": "concept",
       "title": "Provenance",
@@ -1368,6 +1385,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "retrieving-procedures",
+      "to": "learning-from-outcomes",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "sleep-time-compute",
       "to": "temporal-knowledge-graphs",
       "kind": "requires_lesson"
@@ -1725,6 +1747,11 @@
     {
       "from": "relative-time-resolution",
       "to": "relative-time",
+      "kind": "teaches"
+    },
+    {
+      "from": "retrieving-procedures",
+      "to": "procedural-retrieval",
       "kind": "teaches"
     },
     {
@@ -2280,6 +2307,21 @@
     {
       "from": "relative-time-resolution",
       "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieving-procedures",
+      "to": "procedural-memory",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieving-procedures",
+      "to": "temporal-routing",
+      "kind": "uses"
+    },
+    {
+      "from": "retrieving-procedures",
+      "to": "element-cost",
       "kind": "uses"
     },
     {
@@ -3100,6 +3142,11 @@
     {
       "from": "procedural-memory",
       "to": "semantic-memory",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "procedural-retrieval",
+      "to": "hybrid-ranking",
       "kind": "contrasts_with"
     },
     {

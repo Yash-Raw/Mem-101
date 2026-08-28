@@ -25,6 +25,8 @@ status: published
 **You need first:** [Procedural Memory](../procedural-memory/index.md)
 
 **Concepts assumed:** [Procedural Memory](../../../concepts/procedural-memory.md) · [Step Order](../../../concepts/step-order.md) · [The Extraction Pipeline](../../../concepts/extraction-pipeline.md)
+
+**This unlocks:** [Retrieving Procedures](../retrieving-procedures/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -131,4 +133,6 @@ uv run python curriculum/advanced/learning-from-outcomes/lab/lab.py
 **You need first:** [Procedural Memory](../procedural-memory/index.md)
 
 **Concepts assumed:** [Procedural Memory](../../../concepts/procedural-memory.md) · [Step Order](../../../concepts/step-order.md) · [The Extraction Pipeline](../../../concepts/extraction-pipeline.md)
+
+**This unlocks:** [Retrieving Procedures](../retrieving-procedures/index.md)
 <!-- graph:end -->

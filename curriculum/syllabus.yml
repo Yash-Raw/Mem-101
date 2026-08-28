@@ -358,7 +358,7 @@ levels:
           - id: retrieving-procedures
             title: "Retrieving Procedures"
             stage: retrieve
-            objective: "Use a different index, trigger, and injection point than facts."
+            objective: "A workflow loses to a comment about it, and no ranker tuning fixes that."
 
       - id: privacy
         title: "Privacy, PII, Deletion & Right to Be Forgotten"

@@ -195,7 +195,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 |--:|---|---|---|
 | 62 | [Procedural Memory](curriculum/advanced/procedural-memory/index.md) | `store` | Order survives by exception, and a comment about a workflow parses as one. |
 | 63 | [Learning From Outcomes](curriculum/advanced/learning-from-outcomes/index.md) | `evolve` | The conclusion survives and the evidence does not -- measured from the transcript. |
-| 64 | [Retrieving Procedures](curriculum/advanced/retrieving-procedures/index.md) | `retrieve` | Use a different index, trigger, and injection point than facts. |
+| 64 | [Retrieving Procedures](curriculum/advanced/retrieving-procedures/index.md) | `retrieve` | A workflow loses to a comment about it, and no ranker tuning fixes that. |
 
 **Privacy, PII, Deletion & Right to Be Forgotten**
 

@@ -23,5 +23,7 @@ Routing alone is not enough either. A read path accumulates assumptions that the
 <!-- graph:begin -->
 **Taught in:** [Three Temporal Questions](../curriculum/advanced/temporal-questions/index.md)
 
+**Used in:** [Retrieving Procedures](../curriculum/advanced/retrieving-procedures/index.md)
+
 **Do not confuse with:** [Retrieval Scoping](retrieval-scoping.md)
 <!-- graph:end -->

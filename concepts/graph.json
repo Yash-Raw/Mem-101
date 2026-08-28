@@ -1,6 +1,15 @@
 {
   "nodes": [
     {
+      "id": "background-job-mechanics",
+      "type": "lesson",
+      "title": "Background Job Mechanics",
+      "level": "advanced",
+      "stage": "evolve",
+      "order": 50,
+      "path": "curriculum/advanced/background-job-mechanics/index.md"
+    },
+    {
       "id": "relative-time-resolution",
       "type": "lesson",
       "title": "Resolving 'Last Week'",
@@ -715,6 +724,14 @@
       "status": "published"
     },
     {
+      "id": "lost-update",
+      "type": "concept",
+      "title": "Lost Update",
+      "stage": "evolve",
+      "path": "concepts/lost-update.md",
+      "status": "published"
+    },
+    {
       "id": "memory-lifecycle",
       "type": "concept",
       "title": "The Memory Lifecycle",
@@ -891,6 +908,14 @@
       "status": "published"
     },
     {
+      "id": "snapshot-isolation",
+      "type": "concept",
+      "title": "Snapshot Isolation",
+      "stage": "evolve",
+      "path": "concepts/snapshot-isolation.md",
+      "status": "published"
+    },
+    {
       "id": "summarization",
       "type": "concept",
       "title": "Summarization",
@@ -1004,6 +1029,11 @@
     }
   ],
   "edges": [
+    {
+      "from": "background-job-mechanics",
+      "to": "sleep-time-compute",
+      "kind": "requires_lesson"
+    },
     {
       "from": "relative-time-resolution",
       "to": "temporal-questions",
@@ -1248,6 +1278,16 @@
       "from": "why-forgetting-is-a-feature",
       "to": "supersession-not-deletion",
       "kind": "requires_lesson"
+    },
+    {
+      "from": "background-job-mechanics",
+      "to": "lost-update",
+      "kind": "teaches"
+    },
+    {
+      "from": "background-job-mechanics",
+      "to": "snapshot-isolation",
+      "kind": "teaches"
     },
     {
       "from": "relative-time-resolution",
@@ -1608,6 +1648,21 @@
       "from": "why-forgetting-is-a-feature",
       "to": "relevance-vs-truth",
       "kind": "teaches"
+    },
+    {
+      "from": "background-job-mechanics",
+      "to": "sleep-time-compute",
+      "kind": "uses"
+    },
+    {
+      "from": "background-job-mechanics",
+      "to": "consistency-window",
+      "kind": "uses"
+    },
+    {
+      "from": "background-job-mechanics",
+      "to": "deduplication",
+      "kind": "uses"
     },
     {
       "from": "relative-time-resolution",
@@ -2375,6 +2430,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "lost-update",
+      "to": "snapshot-isolation",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "namespace",
       "to": "retrieval-scoping",
       "kind": "contrasts_with"
@@ -2437,6 +2497,11 @@
     {
       "from": "slot",
       "to": "vector-search",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "snapshot-isolation",
+      "to": "lost-update",
       "kind": "contrasts_with"
     },
     {

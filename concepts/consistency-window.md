@@ -25,5 +25,7 @@ The failure mode to watch is a gate that half-works: pass the store *after* the 
 <!-- graph:begin -->
 **Taught in:** [Sleep-Time Compute](../curriculum/advanced/sleep-time-compute/index.md)
 
+**Used in:** [Background Job Mechanics](../curriculum/advanced/background-job-mechanics/index.md)
+
 **Do not confuse with:** [Sleep-Time Compute](sleep-time-compute.md)
 <!-- graph:end -->

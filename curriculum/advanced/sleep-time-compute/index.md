@@ -25,6 +25,8 @@ status: published
 **You need first:** [Temporal Knowledge Graphs](../temporal-knowledge-graphs/index.md)
 
 **Concepts assumed:** [Deduplication](../../../concepts/deduplication.md) · [Slot](../../../concepts/slot.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Background Job Mechanics](../background-job-mechanics/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -131,4 +133,6 @@ uv run python curriculum/advanced/sleep-time-compute/lab/lab.py
 **You need first:** [Temporal Knowledge Graphs](../temporal-knowledge-graphs/index.md)
 
 **Concepts assumed:** [Deduplication](../../../concepts/deduplication.md) · [Slot](../../../concepts/slot.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Background Job Mechanics](../background-job-mechanics/index.md)
 <!-- graph:end -->

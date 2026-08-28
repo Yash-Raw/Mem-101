@@ -294,7 +294,7 @@ levels:
           - id: background-job-mechanics
             title: "Background Job Mechanics"
             stage: evolve
-            objective: "Make consolidation idempotent, replayable, and safe against live writes."
+            objective: "Write back only what the job read -- absence means two opposite things."
           - id: reflection-and-insight
             title: "Reflection and Insight"
             stage: evolve

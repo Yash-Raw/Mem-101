@@ -86,7 +86,16 @@ def ingest(
         added += store.add(_agent_memories(scope))
 
     if pipeline.consolidate is not None:
-        store.replace(pipeline.consolidate(store.all()))
+        if pipeline.sleep is not None:
+            # A2: write back only what the job read. A batch ingest cannot
+            # race anything -- the corpus has finished arriving -- so this
+            # changes no figure here. It is wired so the shipped path and the
+            # one the lessons measure are the same path.
+            from ..sleep.job import run as run_job
+
+            run_job(store, pipeline.consolidate)
+        else:
+            store.replace(pipeline.consolidate(store.all()))
 
     if pipeline.decay is not None:
         store.replace(pipeline.decay(store.all()))

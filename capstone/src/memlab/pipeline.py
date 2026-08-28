@@ -191,17 +191,38 @@ def advanced(through: str = "latest") -> Pipeline:
     )
     p = replace(intermediate(), name=f"advanced@{through}")
     if "A1" in reached:
+        from .temporal.anchor import anchor_all
+
         p = replace(
             p,
-            consolidate=_resolve_dedupe_reconcile_bitemporal,
-            bitemporal=True,                  # valid_to and invalid_at are different instants
+            consolidate=_anchor_then_reconcile,
+            bitemporal=True,     # valid_to and invalid_at are different instants
+            anchor=anchor_all,   # and valid_from is read off the sentence
         )
     return p
 
 
 def _resolve_dedupe_reconcile_bitemporal(memories):
-    """The Level 2 write path, with the two retirement clocks kept apart."""
+    """The Level 2 write path, with the two retirement clocks kept apart.
+
+    A1 as `validity-intervals` left it: the axes separated, and nothing yet
+    reading an event date off the language. Lessons pin this explicitly with
+    `at("A1").with_stage(anchor=None, consolidate=...)` when they need to
+    measure the model before the parser closed the gap.
+    """
     return _reconcile(memories, bitemporal=True)
+
+
+def _anchor_then_reconcile(memories):
+    """Anchor relative references first -- reconciliation compares event times.
+
+    Order matters and it is not obvious. Arbitration is recency-wins on the
+    event clock, so resolving "last month" after the fact has already lost is
+    resolving it too late.
+    """
+    from .temporal.anchor import anchor_all
+
+    return _reconcile(anchor_all(memories), bitemporal=True)
 
 
 def at(module: str) -> Pipeline:

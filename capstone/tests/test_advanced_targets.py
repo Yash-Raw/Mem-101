@@ -54,11 +54,13 @@ def turn_timestamps():
 def test_event_time_is_mostly_just_ingestion_time(built, turn_timestamps, name) -> None:
     """37 of 37. Two clocks in the record, and neither reads the sentence."""
     store, pipeline = built[name]
+    from memlab.temporal.clocks import event_start
+
     memories = store.all()
     copied = sum(
         1
         for m in memories
-        if m.happened_at and m.happened_at.isoformat()[:19] in turn_timestamps
+        if event_start(m) and event_start(m).isoformat()[:19] in turn_timestamps
     )
     if pipeline.anchor is None:
         assert (copied, len(memories)) == (37, 37)
@@ -73,8 +75,10 @@ def test_event_time_is_mostly_just_ingestion_time(built, turn_timestamps, name) 
 def test_relative_phrases_are_not_resolved(built, name, fragment, truth) -> None:
     """`before the move` is stored as though it happened on the day she said it."""
     store, pipeline = built[name]
+    from memlab.temporal.clocks import event_start
+
     m = next(x for x in store.all() if fragment in x.content)
-    off_by = abs((m.happened_at - truth).days)
+    off_by = abs((event_start(m) - truth).days)
     if pipeline.anchor is None:
         assert off_by > 0, "the phrase was never parsed, so this cannot be right"
     else:
@@ -86,8 +90,10 @@ def test_the_worst_one_is_off_by_249_days(built) -> None:
     store, pipeline = built["advanced"]
     if pipeline.anchor is not None:
         pytest.skip("A1 has landed; the anchored assertion above covers this")
+    from memlab.temporal.clocks import event_start
+
     m = next(x for x in store.all() if "before the move" in x.content)
-    assert (m.happened_at - datetime(2025, 8, 2, tzinfo=UTC)).days == 249
+    assert (event_start(m) - datetime(2025, 8, 2, tzinfo=UTC)).days == 249
 
 
 # --- A1 target 2: as-of queries are not expressible -------------------------
@@ -117,10 +123,12 @@ def test_and_narrowing_by_event_time_returns_nothing(built) -> None:
     2025-12-08. The data is sufficient. The query is not expressible.
     """
     store, pipeline = built["advanced"]
+    from memlab.temporal.clocks import event_start
+
     narrowed = [
         m
         for m in store.live()
-        if m.happened_at <= AS_OF and ("Calico" in m.content or "Northwind" in m.content)
+        if event_start(m) <= AS_OF and ("Calico" in m.content or "Northwind" in m.content)
     ]
     if pipeline.anchor is None:
         assert narrowed == []

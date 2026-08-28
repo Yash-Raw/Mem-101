@@ -25,6 +25,8 @@ status: published
 **You need first:** [Validity Intervals](../validity-intervals/index.md)
 
 **Concepts assumed:** [As-Of Query](../../../concepts/as-of-query.md) · [Validity Interval](../../../concepts/validity-interval.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [Resolving 'Last Week'](../relative-time-resolution/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -142,4 +144,6 @@ uv run python curriculum/advanced/temporal-questions/lab/lab.py
 **You need first:** [Validity Intervals](../validity-intervals/index.md)
 
 **Concepts assumed:** [As-Of Query](../../../concepts/as-of-query.md) · [Validity Interval](../../../concepts/validity-interval.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [Resolving 'Last Week'](../relative-time-resolution/index.md)
 <!-- graph:end -->

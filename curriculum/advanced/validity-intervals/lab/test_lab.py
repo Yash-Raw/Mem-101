@@ -7,7 +7,7 @@ from datetime import UTC, datetime, timedelta
 import pytest
 from memlab import labkit
 from memlab.app.chat import ingest
-from memlab.pipeline import at
+from memlab.pipeline import _resolve_dedupe_reconcile_bitemporal, at
 from memlab.store.jsonl import JsonlStore
 from memlab.types import Scope
 
@@ -23,21 +23,30 @@ JUNE_2025 = datetime(2025, 6, 1, tzinfo=UTC)
 NOW = datetime(2026, 8, 27, tzinfo=UTC)
 EMPLOYER = ("Northwind", "Calico")
 
+# A1 as this lesson leaves it: the two axes separated, and nothing yet reading
+# an event date off the language. `relative-time-resolution` lands the parser
+# and moves these numbers on purpose, so the measurement is pinned explicitly
+# rather than to `at("A1")`.
+BEFORE_THE_PARSER = at("A1").with_stage(
+    anchor=None, consolidate=_resolve_dedupe_reconcile_bitemporal
+)
+
+
 
 def _build(tmp_path_factory, module):
-    s = JsonlStore(tmp_path_factory.mktemp(f"vi{module}") / "m.jsonl")
-    ingest(s, PRIYA, at(module))
+    s = JsonlStore(tmp_path_factory.mktemp(f"vi{module.name}") / "m.jsonl")
+    ingest(s, PRIYA, module)
     return s.all()
 
 
 @pytest.fixture(scope="module")
 def i8(tmp_path_factory):
-    return _build(tmp_path_factory, "I8")
+    return _build(tmp_path_factory, at("I8"))
 
 
 @pytest.fixture(scope="module")
 def a1(tmp_path_factory):
-    return _build(tmp_path_factory, "A1")
+    return _build(tmp_path_factory, BEFORE_THE_PARSER)
 
 
 def _employer(ms):

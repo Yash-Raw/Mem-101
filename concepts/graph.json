@@ -1,6 +1,15 @@
 {
   "nodes": [
     {
+      "id": "relative-time-resolution",
+      "type": "lesson",
+      "title": "Resolving 'Last Week'",
+      "level": "advanced",
+      "stage": "extract",
+      "order": 47,
+      "path": "curriculum/advanced/relative-time-resolution/index.md"
+    },
+    {
       "id": "temporal-questions",
       "type": "lesson",
       "title": "Three Temporal Questions",
@@ -760,6 +769,14 @@
       "status": "published"
     },
     {
+      "id": "relative-time",
+      "type": "concept",
+      "title": "Relative Time Resolution",
+      "stage": "extract",
+      "path": "concepts/relative-time.md",
+      "status": "published"
+    },
+    {
       "id": "relevance-vs-truth",
       "type": "concept",
       "title": "Relevance vs Truth",
@@ -937,6 +954,11 @@
     }
   ],
   "edges": [
+    {
+      "from": "relative-time-resolution",
+      "to": "temporal-questions",
+      "kind": "requires_lesson"
+    },
     {
       "from": "temporal-questions",
       "to": "validity-intervals",
@@ -1166,6 +1188,11 @@
       "from": "why-forgetting-is-a-feature",
       "to": "supersession-not-deletion",
       "kind": "requires_lesson"
+    },
+    {
+      "from": "relative-time-resolution",
+      "to": "relative-time",
+      "kind": "teaches"
     },
     {
       "from": "temporal-questions",
@@ -1501,6 +1528,21 @@
       "from": "why-forgetting-is-a-feature",
       "to": "relevance-vs-truth",
       "kind": "teaches"
+    },
+    {
+      "from": "relative-time-resolution",
+      "to": "bi-temporal-modeling",
+      "kind": "uses"
+    },
+    {
+      "from": "relative-time-resolution",
+      "to": "validity-interval",
+      "kind": "uses"
+    },
+    {
+      "from": "relative-time-resolution",
+      "to": "procedural-memory",
+      "kind": "uses"
     },
     {
       "from": "temporal-questions",
@@ -2230,6 +2272,11 @@
     {
       "from": "reinforcement",
       "to": "corroboration",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "relative-time",
+      "to": "event-time",
       "kind": "contrasts_with"
     },
     {

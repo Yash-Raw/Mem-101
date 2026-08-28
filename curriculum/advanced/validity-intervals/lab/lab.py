@@ -111,9 +111,13 @@ def _sweep(memories):
 def main() -> None:
     from dataclasses import replace as dc_replace
 
-    from memlab.pipeline import at
+    from memlab.pipeline import _resolve_dedupe_reconcile_bitemporal, at
 
-    i8, a1 = _build(at("I8")), _build(at("A1"))
+    # A1 before its parser lands -- see the lesson's "Design decisions".
+    before_the_parser = at("A1").with_stage(
+        anchor=None, consolidate=_resolve_dedupe_reconcile_bitemporal
+    )
+    i8, a1 = _build(at("I8")), _build(before_the_parser)
 
     print("\"what did you believe about my employer in June 2025?\"\n")
     for m in _employer(as_of(a1, JUNE_2025)):

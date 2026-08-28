@@ -23,7 +23,7 @@ Having the fields is not the same as populating them. Audited on this course's c
 <!-- graph:begin -->
 **Taught in:** [Two Clocks](../curriculum/advanced/two-clocks/index.md)
 
-**Used in:** [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
+**Used in:** [Resolving 'Last Week'](../curriculum/advanced/relative-time-resolution/index.md) · [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
 
 **Do not confuse with:** [Event Time vs Ingestion Time](event-time.md)
 <!-- graph:end -->

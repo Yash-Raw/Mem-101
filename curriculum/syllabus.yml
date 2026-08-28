@@ -278,7 +278,7 @@ levels:
           - id: relative-time-resolution
             title: "Resolving 'Last Week'"
             stage: extract
-            objective: "Parse, anchor, and store relative time references."
+            objective: "Four classes of relative reference, and the one you must not resolve."
           - id: temporal-knowledge-graphs
             title: "Temporal Knowledge Graphs"
             stage: store

@@ -253,6 +253,15 @@
       "path": "curriculum/advanced/rtbf-and-auditability/index.md"
     },
     {
+      "id": "scaling-the-store",
+      "type": "lesson",
+      "title": "Scaling the Store",
+      "level": "advanced",
+      "stage": "store",
+      "order": 78,
+      "path": "curriculum/advanced/scaling-the-store/index.md"
+    },
+    {
       "id": "sleep-time-compute",
       "type": "lesson",
       "title": "Sleep-Time Compute",
@@ -1095,6 +1104,14 @@
       "status": "published"
     },
     {
+      "id": "growth-curve",
+      "type": "concept",
+      "title": "Growth Curve",
+      "stage": "store",
+      "path": "concepts/growth-curve.md",
+      "status": "published"
+    },
+    {
       "id": "hybrid-ranking",
       "type": "concept",
       "title": "Hybrid Ranking",
@@ -1268,6 +1285,14 @@
       "title": "Over-Extraction",
       "stage": "extract",
       "path": "concepts/over-extraction.md",
+      "status": "published"
+    },
+    {
+      "id": "partition-key",
+      "type": "concept",
+      "title": "Partition Key",
+      "stage": "store",
+      "path": "concepts/partition-key.md",
       "status": "published"
     },
     {
@@ -1805,6 +1830,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "scaling-the-store",
+      "to": "caching-batching-routing",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "sleep-time-compute",
       "to": "temporal-knowledge-graphs",
       "kind": "requires_lesson"
@@ -2302,6 +2332,16 @@
     {
       "from": "rtbf-and-auditability",
       "to": "proof-without-retention",
+      "kind": "teaches"
+    },
+    {
+      "from": "scaling-the-store",
+      "to": "growth-curve",
+      "kind": "teaches"
+    },
+    {
+      "from": "scaling-the-store",
+      "to": "partition-key",
       "kind": "teaches"
     },
     {
@@ -3077,6 +3117,21 @@
     {
       "from": "rtbf-and-auditability",
       "to": "memory-record",
+      "kind": "uses"
+    },
+    {
+      "from": "scaling-the-store",
+      "to": "cost-profile",
+      "kind": "uses"
+    },
+    {
+      "from": "scaling-the-store",
+      "to": "slot",
+      "kind": "uses"
+    },
+    {
+      "from": "scaling-the-store",
+      "to": "retrieval-scoping",
       "kind": "uses"
     },
     {
@@ -3935,6 +3990,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "growth-curve",
+      "to": "partition-key",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "hybrid-ranking",
       "to": "vector-search",
       "kind": "contrasts_with"
@@ -4002,6 +4062,11 @@
     {
       "from": "namespace",
       "to": "retrieval-scoping",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "partition-key",
+      "to": "growth-curve",
       "kind": "contrasts_with"
     },
     {

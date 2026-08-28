@@ -430,7 +430,7 @@ levels:
           - id: scaling-the-store
             title: "Scaling the Store"
             stage: store
-            objective: "Partition by owner; handle index growth, hot users, and archival tiers."
+            objective: "Replicate and measure -- retrieval grows linearly, consolidation grows 104x."
 
       - id: production
         title: "Production Failure Modes & Governance"

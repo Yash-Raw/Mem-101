@@ -25,6 +25,8 @@ status: published
 **You need first:** [The Latency Budget](../latency-budget/index.md)
 
 **Concepts assumed:** [Cost Profile](../../../concepts/cost-profile.md) · [Latency Budget](../../../concepts/latency-budget.md) · [Vector Index](../../../concepts/vector-index.md)
+
+**This unlocks:** [Scaling the Store](../scaling-the-store/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -115,4 +117,6 @@ uv run python curriculum/advanced/caching-batching-routing/lab/lab.py
 **You need first:** [The Latency Budget](../latency-budget/index.md)
 
 **Concepts assumed:** [Cost Profile](../../../concepts/cost-profile.md) · [Latency Budget](../../../concepts/latency-budget.md) · [Vector Index](../../../concepts/vector-index.md)
+
+**This unlocks:** [Scaling the Store](../scaling-the-store/index.md)
 <!-- graph:end -->

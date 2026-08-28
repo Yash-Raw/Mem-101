@@ -25,6 +25,8 @@ status: published
 **You need first:** [Two Clocks](../two-clocks/index.md)
 
 **Concepts assumed:** [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Three Temporal Questions](../temporal-questions/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -155,4 +157,6 @@ uv run python curriculum/advanced/validity-intervals/lab/lab.py
 **You need first:** [Two Clocks](../two-clocks/index.md)
 
 **Concepts assumed:** [Bi-Temporal Modeling](../../../concepts/bi-temporal-modeling.md) · [Supersession](../../../concepts/supersession.md)
+
+**This unlocks:** [Three Temporal Questions](../temporal-questions/index.md)
 <!-- graph:end -->

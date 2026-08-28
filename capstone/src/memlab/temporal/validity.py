@@ -59,6 +59,27 @@ def as_of(
     return out
 
 
+def overlapping(
+    memories: list[Memory], start: datetime, end: datetime
+) -> list[Memory]:
+    """Facts true at any point in [start, end).
+
+    A question carries the precision it was asked at. "In 2025" names a year,
+    and answering it at 2025-01-01 -- the instant a year-precision parse
+    defaults to -- silently asks about the least likely day the person meant.
+    An interval question deserves an interval answer.
+    """
+    out = []
+    for m in memories:
+        vs = event_start(m)
+        if vs is None or vs >= end:
+            continue
+        ve = event_end(m)
+        if ve is None or ve > start:
+            out.append(m)
+    return out
+
+
 def changed_between(
     memories: list[Memory], start: datetime, end: datetime
 ) -> list[tuple[Memory, str]]:

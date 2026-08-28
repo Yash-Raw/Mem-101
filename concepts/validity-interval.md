@@ -23,5 +23,7 @@ Skip the interval and *"what is true now?"* has to be answered by proxy, usually
 <!-- graph:begin -->
 **Taught in:** [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
 
+**Used in:** [Three Temporal Questions](../curriculum/advanced/temporal-questions/index.md)
+
 **Do not confuse with:** [Supersession](supersession.md)
 <!-- graph:end -->

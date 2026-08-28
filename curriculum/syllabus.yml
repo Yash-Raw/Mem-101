@@ -274,7 +274,7 @@ levels:
           - id: temporal-questions
             title: "Three Temporal Questions"
             stage: retrieve
-            objective: "Answer what is true now, what I believed then, and when it changed."
+            objective: "Route the three temporal questions, and release every filter that assumed now."
           - id: relative-time-resolution
             title: "Resolving 'Last Week'"
             stage: extract

@@ -24,9 +24,25 @@ from .hybrid import rank as hybrid_rank
 from .query import formulate, in_slots, slots_for
 
 
-def eligible(memories: list[Memory], scope: Scope, retrievable_only: bool = True) -> list[Memory]:
-    """The hard filters, before anything is scored."""
-    out = [m for m in memories if m.scope.matches(scope) and m.is_live]
+def eligible(
+    memories: list[Memory],
+    scope: Scope,
+    retrievable_only: bool = True,
+    live_only: bool = True,
+) -> list[Memory]:
+    """The hard filters, before anything is scored.
+
+    `live_only` is a *belief-time* filter with its clock pinned to now, and it
+    is right for every question Level 2 asks. A temporal question has already
+    decided which memories are eligible on the event axis, and leaving this on
+    silently overrides that decision -- a question about June 2025 filtered to
+    what is believed today returns nothing at all.
+    """
+    out = [
+        m
+        for m in memories
+        if m.scope.matches(scope) and (m.is_live or not live_only)
+    ]
     if retrievable_only and any(m.tier is Tier.LONG_TERM for m in out):
         out = [m for m in out if m.tier is Tier.LONG_TERM]
     return out
@@ -66,9 +82,17 @@ def _merge(lists: list[list[Hit]], k: int) -> list[Hit]:
 
 
 def search(
-    query: str, memories: list[Memory], scope: Scope, k: int = 5, index=None
+    query: str,
+    memories: list[Memory],
+    scope: Scope,
+    k: int = 5,
+    index=None,
+    live_only: bool = True,
+    retrievable_only: bool = True,
 ) -> list[Hit]:
-    pool = eligible(memories, scope)
+    pool = eligible(
+        memories, scope, retrievable_only=retrievable_only, live_only=live_only
+    )
     if not pool:
         return []
 

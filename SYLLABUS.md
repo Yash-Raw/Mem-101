@@ -158,7 +158,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 |--:|---|---|---|
 | 45 | [Two Clocks](curriculum/advanced/two-clocks/index.md) | `store` | Audit which of the two clocks is actually running; four instants, not two. |
 | 46 | [Validity Intervals](curriculum/advanced/validity-intervals/index.md) | `store` | Separate when a fact was true from when it was believed, and query both. |
-| 47 | [Three Temporal Questions](curriculum/advanced/temporal-questions/index.md) | `retrieve` | Answer what is true now, what I believed then, and when it changed. |
+| 47 | [Three Temporal Questions](curriculum/advanced/temporal-questions/index.md) | `retrieve` | Route the three temporal questions, and release every filter that assumed now. |
 | 48 | [Resolving 'Last Week'](curriculum/advanced/relative-time-resolution/index.md) | `extract` | Parse, anchor, and store relative time references. |
 | 49 | [Temporal Knowledge Graphs](curriculum/advanced/temporal-knowledge-graphs/index.md) | `store` | Carry validity on edges and cascade invalidation through derived facts. |
 

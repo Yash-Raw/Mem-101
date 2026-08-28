@@ -1,6 +1,15 @@
 {
   "nodes": [
     {
+      "id": "temporal-questions",
+      "type": "lesson",
+      "title": "Three Temporal Questions",
+      "level": "advanced",
+      "stage": "retrieve",
+      "order": 46,
+      "path": "curriculum/advanced/temporal-questions/index.md"
+    },
+    {
       "id": "two-clocks",
       "type": "lesson",
       "title": "Two Clocks",
@@ -831,6 +840,14 @@
       "status": "published"
     },
     {
+      "id": "temporal-routing",
+      "type": "concept",
+      "title": "Temporal Routing",
+      "stage": "retrieve",
+      "path": "concepts/temporal-routing.md",
+      "status": "published"
+    },
+    {
       "id": "token-budget",
       "type": "concept",
       "title": "Token Budget",
@@ -920,6 +937,11 @@
     }
   ],
   "edges": [
+    {
+      "from": "temporal-questions",
+      "to": "validity-intervals",
+      "kind": "requires_lesson"
+    },
     {
       "from": "two-clocks",
       "to": "slot-value",
@@ -1144,6 +1166,11 @@
       "from": "why-forgetting-is-a-feature",
       "to": "supersession-not-deletion",
       "kind": "requires_lesson"
+    },
+    {
+      "from": "temporal-questions",
+      "to": "temporal-routing",
+      "kind": "teaches"
     },
     {
       "from": "two-clocks",
@@ -1474,6 +1501,21 @@
       "from": "why-forgetting-is-a-feature",
       "to": "relevance-vs-truth",
       "kind": "teaches"
+    },
+    {
+      "from": "temporal-questions",
+      "to": "as-of-query",
+      "kind": "uses"
+    },
+    {
+      "from": "temporal-questions",
+      "to": "validity-interval",
+      "kind": "uses"
+    },
+    {
+      "from": "temporal-questions",
+      "to": "retrieval-scoping",
+      "kind": "uses"
     },
     {
       "from": "two-clocks",
@@ -2223,6 +2265,11 @@
     {
       "from": "summarization",
       "to": "deduplication",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "temporal-routing",
+      "to": "retrieval-scoping",
       "kind": "contrasts_with"
     },
     {

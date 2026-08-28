@@ -24,4 +24,6 @@ Report what was withheld, not only what was used. A disclosure listing two attri
 
 <!-- graph:begin -->
 **Taught in:** [Personalization Without Creepiness](../curriculum/advanced/applying-the-model/index.md)
+
+**Used in:** [Cold Start and Shared Accounts](../curriculum/advanced/cold-start-and-shared-accounts/index.md)
 <!-- graph:end -->

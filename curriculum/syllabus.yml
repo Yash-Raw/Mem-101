@@ -342,7 +342,7 @@ levels:
           - id: cold-start-and-shared-accounts
             title: "Cold Start and Shared Accounts"
             stage: retrieve
-            objective: "Handle sparsity, multi-persona accounts, and household devices."
+            objective: "Coverage is not knowledge, and one field stands between two people."
 
       - id: procedural
         title: "Procedural Memory & Learning From Experience"

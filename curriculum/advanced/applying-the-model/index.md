@@ -25,6 +25,8 @@ status: published
 **You need first:** [Behaviour as Memory](../implicit-signals/index.md)
 
 **Concepts assumed:** [User Model](../../../concepts/user-model.md) · [Element Cost](../../../concepts/element-cost.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [Cold Start and Shared Accounts](../cold-start-and-shared-accounts/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -150,4 +152,6 @@ uv run python curriculum/advanced/applying-the-model/lab/lab.py
 **You need first:** [Behaviour as Memory](../implicit-signals/index.md)
 
 **Concepts assumed:** [User Model](../../../concepts/user-model.md) · [Element Cost](../../../concepts/element-cost.md) · [Retrieval Scoping](../../../concepts/retrieval-scoping.md)
+
+**This unlocks:** [Cold Start and Shared Accounts](../cold-start-and-shared-accounts/index.md)
 <!-- graph:end -->

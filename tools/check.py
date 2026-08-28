@@ -17,7 +17,11 @@ SUITE = [
     "validate_expected_output.py",
     "validate_freshness.py",
 ]
-GENERATED = [("render_syllabus.py", "--check"), ("build_graph.py", "--check")]
+GENERATED = [
+    ("render_syllabus.py", "--check"),
+    ("build_graph.py", "--check"),
+    ("render_nav.py", "--check"),
+]
 
 
 def main() -> int:

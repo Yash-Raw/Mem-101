@@ -52,11 +52,6 @@ def backfill(memories: list[Memory], anchor) -> tuple[list[Memory], Backfill]:
     from consolidation.
     """
     raise NotImplementedError("implement backfill")
-    return out, Backfill(
-        considered=len(memories),
-        updated=updated,
-        unchanged=len(memories) - updated,
-    )
 
 
 def strip(memories: list[Memory]) -> list[Memory]:

@@ -18,6 +18,7 @@ numbers measured by hand at different times.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import pairwise
 
 from ..app.chat import ingest
 from ..eval.components import report
@@ -96,12 +97,15 @@ def flat(rows: list[Row], stage: str) -> bool:
 def regressions(rows: list[Row]) -> list[tuple[str, str]]:
     """(profile, metric) pairs where a later profile scored worse."""
     out = []
-    for earlier, later in zip(rows, rows[1:], strict=False):
+    for earlier, later in pairwise(rows):
         for stage, value in later.components.items():
             was = earlier.get(stage)
             if was is not None and value is not None and value < was:
                 out.append((later.profile, stage))
-        if earlier.lowest_budget and later.lowest_budget:
-            if later.lowest_budget > earlier.lowest_budget:
-                out.append((later.profile, "lowest_budget"))
+        if (
+            earlier.lowest_budget
+            and later.lowest_budget
+            and later.lowest_budget > earlier.lowest_budget
+        ):
+            out.append((later.profile, "lowest_budget"))
     return out

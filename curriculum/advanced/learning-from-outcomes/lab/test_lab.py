@@ -61,7 +61,7 @@ def test_the_conclusion_did_survive(env) -> None:
 
 
 def test_the_pronoun_binds_only_with_the_annotation(env, lessons) -> None:
-    memories, procedure = env
+    _memories, procedure = env
     bound = attach(lessons[0], procedure.steps, procedure.critical)
     assert bound.trigger == "it"
     assert bound.step == "diff against last week"

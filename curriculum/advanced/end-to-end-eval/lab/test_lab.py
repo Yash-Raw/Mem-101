@@ -1,6 +1,8 @@
 """Six profiles, one battery, three distinguished."""
 from __future__ import annotations
 
+from itertools import pairwise
+
 import pytest
 from memlab import labkit
 from memlab.types import Scope
@@ -56,7 +58,7 @@ def test_the_budget_captures_i6_and_i8(rows) -> None:
 
 def test_the_battery_distinguishes_three_of_six(rows) -> None:
     moved = set()
-    for earlier, later in zip(rows, rows[1:], strict=False):
+    for earlier, later in pairwise(rows):
         if later.components != earlier.components:
             moved.add(later.profile)
         if later.lowest_budget != earlier.lowest_budget:

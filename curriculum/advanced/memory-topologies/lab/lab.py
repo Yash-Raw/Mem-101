@@ -36,7 +36,7 @@ class Shape:
 
     @property
     def agents(self) -> int:
-        return sum(1 for k in self.namespaces if not k.split("/")[1] == "*")
+        return sum(1 for k in self.namespaces if k.split("/")[1] != "*")
 
 
 def shape(memories: list[Memory]) -> Shape:

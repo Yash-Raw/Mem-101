@@ -32,57 +32,6 @@ class Violation:
 def check(memories: list[Memory], scope) -> list[Violation]:
     """Every invariant this course established, in one pass."""
     raise NotImplementedError("implement check")
-    dangling = [
-        m
-        for m in memories
-        for ref in m.derived_from
-        if ref not in {x.id for x in memories}
-    ]
-    orphan_supersede = [
-        m
-        for m in memories
-        if m.superseded_by
-        and m.superseded_by != "correction"
-        and m.superseded_by not in {x.id for x in memories}
-    ]
-    future = [
-        m
-        for m in memories
-        if runner_up
-        and event_start(m)
-        and event_start(m) > (runner_up if event_start(m) == latest else latest)
-        + timedelta(days=1)
-    ]
-    duplicate_ids = len(memories) - len({m.id for m in memories})
-    two_live_in_slot = [
-        slot
-        for slot in {slot_of(m) for m in live if slot_of(m)}
-        if sum(
-            1
-            for m in live
-            if slot_of(m) == slot
-            and m.type is MemoryType.SEMANTIC
-            and not m.entities
-        )
-        > 4
-    ]
-
-    return [
-        Violation("no cross-tenant memory is visible", Kind.STRUCTURAL,
-                  len(leak_check(memories, scope))),
-        Violation("no belief is retired before it was recorded", Kind.STRUCTURAL,
-                  len(retired_early)),
-        Violation("every derived_from reference resolves", Kind.STRUCTURAL,
-                  len(dangling)),
-        Violation("every superseded_by reference resolves", Kind.STRUCTURAL,
-                  len(orphan_supersede)),
-        Violation("ids are unique", Kind.STRUCTURAL, duplicate_ids),
-        Violation("no memory is dated past the store's clock", Kind.POLICY,
-                  len(future)),
-        Violation("no slot holds more than four live beliefs", Kind.POLICY,
-                  len(two_live_in_slot),
-                  ", ".join(two_live_in_slot)),
-    ]
 
 
 def failing(violations: list[Violation]) -> list[Violation]:

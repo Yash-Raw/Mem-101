@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from itertools import pairwise
 
 from memlab.types import Memory
 
@@ -39,7 +40,7 @@ def corrections(turns: list[dict]) -> list[Correction]:
     mind, which is an ordinary write, not evidence that a belief was wrong.
     """
     out = []
-    for previous, turn in zip(turns, turns[1:], strict=False):
+    for previous, turn in pairwise(turns):
         if turn.get("role") != "user" or previous.get("role") != "assistant":
             continue
         if _CORRECTION.search(turn["text"]):

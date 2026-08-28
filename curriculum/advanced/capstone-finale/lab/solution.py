@@ -4,6 +4,50 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+# Six defects, each with a number and the lesson that measured it. Kept at
+# module level so each entry is one readable pair rather than a nest.
+OPEN_ITEMS: tuple[tuple[str, str], ...] = (
+    (
+        "extraction",
+        (
+            "1 conditional clause stated in 24 turns, and it is dropped: the "
+            "reason a step matters is lost — learning-from-outcomes"
+        ),
+    ),
+    (
+        "vocabulary",
+        (
+            "9 of 37 memories claim no modelled slot, so nothing can "
+            "contradict them — provenance-and-trust"
+        ),
+    ),
+    (
+        "extraction leakage",
+        (
+            "a deleted record's timestamp survives in 4 other records with 0 "
+            "edges to follow — memory-attacks"
+        ),
+    ),
+    (
+        "observability",
+        (
+            "what was in the context is unrecorded; access_count is 0 of 37 — "
+            "memory-observability"
+        ),
+    ),
+    (
+        "consolidation cost",
+        "candidate pairs grow 104x for 8x the store — scaling-the-store",
+    ),
+    (
+        "evaluation",
+        (
+            "1 of 4 component metrics distinguishes any two profiles — "
+            "reading-benchmark-claims"
+        ),
+    ),
+)
+
 
 @dataclass(frozen=True)
 class Release:
@@ -35,22 +79,7 @@ def report(lessons: int, tests: int) -> Release:
             "read path": "no model calls; 2 embeddings warm",
             "blocking": "81% of per-turn cost, all of it extraction",
         },
-        open_items=(
-            ("extraction", "1 conditional clause stated in 24 turns, and it is "
-                           "dropped: the reason a step matters is lost — "
-                           "learning-from-outcomes"),
-            ("vocabulary", "9 of 37 memories claim no modelled slot, so nothing "
-                           "can contradict them — provenance-and-trust"),
-            ("extraction leakage", "a deleted record's timestamp survives in 4 "
-                                   "other records with 0 edges to follow — "
-                                   "memory-attacks"),
-            ("observability", "what was in the context is unrecorded; access_count "
-                              "is 0 of 37 — memory-observability"),
-            ("consolidation cost", "candidate pairs grow 104x for 8x the store — "
-                                   "scaling-the-store"),
-            ("evaluation", "1 of 4 component metrics distinguishes any two "
-                           "profiles — reading-benchmark-claims"),
-        ),
+        open_items=OPEN_ITEMS,
     )
 
 
@@ -59,8 +88,11 @@ def unfinished(release: Release) -> int:
 
 
 def lines(release: Release) -> list[str]:
-    out = [f"memlab v{release.version} — {release.lessons} lessons, "
-           f"{release.tests} tests", "", "  exams"]
+    headline = (
+        f"memlab v{release.version} — {release.lessons} lessons, "
+        f"{release.tests} tests"
+    )
+    out = [headline, "", "  exams"]
     out += [f"    {k:16}{v}" for k, v in release.exams.items()]
     out += ["", "  cost"]
     out += [f"    {k:16}{v}" for k, v in release.cost.items()]

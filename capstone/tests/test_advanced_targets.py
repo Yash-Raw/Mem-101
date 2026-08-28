@@ -145,3 +145,72 @@ def test_advanced_starts_as_intermediate_plus_nothing(built) -> None:
     inter, adv = built["intermediate"][0], built["advanced"][0]
     assert [m.id for m in inter.all()] == [m.id for m in adv.all()]
     assert at("A1").name == "advanced@A1"
+
+
+# --- A2 target: consolidation runs once, because the corpus arrives at once --
+def _walk(pipeline, consolidate_every_turn: bool, tmp_path):
+    """Replay the corpus turn by turn, the way a live system receives it."""
+    from memlab.app.chat import _agent_memories
+    from memlab.fixtures import load_turns
+
+    store = JsonlStore(tmp_path / f"walk-{consolidate_every_turn}.jsonl")
+    store.clear()
+    runs, divergent = 0, []
+    reference = JsonlStore(tmp_path / f"ref-{consolidate_every_turn}.jsonl")
+    reference.clear()
+
+    turns = [t for t in load_turns(user_only=True) if t["session"] < 14]
+    for n, turn in enumerate(turns, 1):
+        for st, eager in ((store, consolidate_every_turn), (reference, True)):
+            memories = pipeline.extract(turn, PRIYA)
+            if pipeline.resolve is not None:
+                memories = pipeline.resolve(memories, st.all())
+            st.add(memories)
+            if eager and pipeline.consolidate is not None:
+                st.replace(pipeline.consolidate(st.all()))
+                if st is store:
+                    runs += 1
+        if _stale(store) != _stale(reference):
+            divergent.append(n)
+
+    store.add(_agent_memories(PRIYA))
+    if pipeline.consolidate is not None:
+        store.replace(pipeline.consolidate(store.all()))
+        runs += 1
+    return store, runs, divergent, len(turns)
+
+
+def _stale(store) -> int:
+    return sum(
+        1 for m in store.all() if m.is_live and "data engineer at Northwind" in m.content
+    )
+
+
+def test_deferring_consolidation_leaves_the_store_wrong_for_eleven_turns(
+    tmp_path,
+) -> None:
+    """46% of the conversation believing a job she had already left.
+
+    The shipped `ingest()` consolidates once, at the end -- which is only
+    possible because the corpus arrives all at once. A live system receives
+    one turn at a time and has to choose: pay per turn, or be wrong in
+    between. The window is the cost, not the compute.
+    """
+    pipeline = get("advanced")
+    _store, runs, divergent, total = _walk(pipeline, False, tmp_path)
+    assert runs == 1, "one consolidation, at the end of the batch"
+    assert (len(divergent), total) == (11, 24)
+    assert (divergent[0], divergent[-1]) == (14, 24)
+
+
+def test_but_it_converges_to_the_same_store(tmp_path) -> None:
+    """Order-independent, measured. This is what makes deferral safe at all."""
+    pipeline = get("advanced")
+    deferred, _r, _d, _t = _walk(pipeline, False, tmp_path)
+    eager, runs, _d2, _t2 = _walk(pipeline, True, tmp_path)
+    assert runs == 25
+    assert {m.id for m in deferred.all()} == {m.id for m in eager.all()}
+    live = sum(m.is_live for m in deferred.all())
+    assert live == sum(m.is_live for m in eager.all()) == 30, (
+        "and on the same live set as the shipped batch ingest"
+    )

@@ -19,6 +19,15 @@
       "path": "curriculum/advanced/background-job-mechanics/index.md"
     },
     {
+      "id": "caching-batching-routing",
+      "type": "lesson",
+      "title": "Caching, Batching, Routing",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 77,
+      "path": "curriculum/advanced/caching-batching-routing/index.md"
+    },
+    {
       "id": "cold-start-and-shared-accounts",
       "type": "lesson",
       "title": "Cold Start and Shared Accounts",
@@ -766,6 +775,14 @@
       "status": "published"
     },
     {
+      "id": "cache-key",
+      "type": "concept",
+      "title": "Cache Key",
+      "stage": "govern",
+      "path": "concepts/cache-key.md",
+      "status": "published"
+    },
+    {
       "id": "canonical-entity",
       "type": "concept",
       "title": "Canonical Entity",
@@ -1222,6 +1239,14 @@
       "status": "published"
     },
     {
+      "id": "model-routing",
+      "type": "concept",
+      "title": "Model Routing",
+      "stage": "govern",
+      "path": "concepts/model-routing.md",
+      "status": "published"
+    },
+    {
       "id": "moving-ground-truth",
       "type": "concept",
       "title": "Moving Ground Truth",
@@ -1650,6 +1675,11 @@
       "kind": "requires_lesson"
     },
     {
+      "from": "caching-batching-routing",
+      "to": "latency-budget",
+      "kind": "requires_lesson"
+    },
+    {
       "from": "cold-start-and-shared-accounts",
       "to": "applying-the-model",
       "kind": "requires_lesson"
@@ -2037,6 +2067,16 @@
     {
       "from": "background-job-mechanics",
       "to": "snapshot-isolation",
+      "kind": "teaches"
+    },
+    {
+      "from": "caching-batching-routing",
+      "to": "cache-key",
+      "kind": "teaches"
+    },
+    {
+      "from": "caching-batching-routing",
+      "to": "model-routing",
       "kind": "teaches"
     },
     {
@@ -2657,6 +2697,21 @@
     {
       "from": "background-job-mechanics",
       "to": "deduplication",
+      "kind": "uses"
+    },
+    {
+      "from": "caching-batching-routing",
+      "to": "cost-profile",
+      "kind": "uses"
+    },
+    {
+      "from": "caching-batching-routing",
+      "to": "latency-budget",
+      "kind": "uses"
+    },
+    {
+      "from": "caching-batching-routing",
+      "to": "vector-index",
       "kind": "uses"
     },
     {
@@ -3740,6 +3795,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "cache-key",
+      "to": "model-routing",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "cascade-deletion",
       "to": "supersession",
       "kind": "contrasts_with"
@@ -3927,6 +3987,11 @@
     {
       "from": "minimisation",
       "to": "personal-data",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "model-routing",
+      "to": "cache-key",
       "kind": "contrasts_with"
     },
     {

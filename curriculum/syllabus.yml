@@ -426,7 +426,7 @@ levels:
           - id: caching-batching-routing
             title: "Caching, Batching, Routing"
             stage: govern
-            objective: "Put cheap models on the write path and cache embeddings."
+            objective: "Two of five tactics do not apply, and the one that works shipped two levels ago."
           - id: scaling-the-store
             title: "Scaling the Store"
             stage: store

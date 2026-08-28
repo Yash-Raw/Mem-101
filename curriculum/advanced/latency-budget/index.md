@@ -25,6 +25,8 @@ status: published
 **You need first:** [The Write Path Dominates](../cost-model/index.md)
 
 **Concepts assumed:** [Cost Profile](../../../concepts/cost-profile.md) · [Sleep-Time Compute](../../../concepts/sleep-time-compute.md) · [Consistency Window](../../../concepts/consistency-window.md)
+
+**This unlocks:** [Caching, Batching, Routing](../caching-batching-routing/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -120,4 +122,6 @@ uv run python curriculum/advanced/latency-budget/lab/lab.py
 **You need first:** [The Write Path Dominates](../cost-model/index.md)
 
 **Concepts assumed:** [Cost Profile](../../../concepts/cost-profile.md) · [Sleep-Time Compute](../../../concepts/sleep-time-compute.md) · [Consistency Window](../../../concepts/consistency-window.md)
+
+**This unlocks:** [Caching, Batching, Routing](../caching-batching-routing/index.md)
 <!-- graph:end -->

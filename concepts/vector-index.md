@@ -21,7 +21,7 @@ Without one, retrieval embeds every memory on every query — measured here, **2
 <!-- graph:begin -->
 **Taught in:** [Vector Stores for Data That Changes](../curriculum/intermediate/vector-stores-for-mutable-data/index.md)
 
-**Used in:** [The Write Path Dominates](../curriculum/advanced/cost-model/index.md) · [Hybrid Architecture](../curriculum/intermediate/hybrid-architecture/index.md) · [The Underrated Default](../curriculum/intermediate/relational-stores/index.md)
+**Used in:** [Caching, Batching, Routing](../curriculum/advanced/caching-batching-routing/index.md) · [The Write Path Dominates](../curriculum/advanced/cost-model/index.md) · [Hybrid Architecture](../curriculum/intermediate/hybrid-architecture/index.md) · [The Underrated Default](../curriculum/intermediate/relational-stores/index.md)
 
 **Do not confuse with:** [Vector Search](vector-search.md)
 <!-- graph:end -->

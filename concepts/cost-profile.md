@@ -25,7 +25,7 @@ Count calls rather than seconds. Seconds belong to the machine and the provider;
 <!-- graph:begin -->
 **Taught in:** [The Write Path Dominates](../curriculum/advanced/cost-model/index.md)
 
-**Used in:** [The Latency Budget](../curriculum/advanced/latency-budget/index.md)
+**Used in:** [Caching, Batching, Routing](../curriculum/advanced/caching-batching-routing/index.md) · [The Latency Budget](../curriculum/advanced/latency-budget/index.md)
 
 **Do not confuse with:** [Write-Path Dominance](write-path-dominance.md)
 <!-- graph:end -->

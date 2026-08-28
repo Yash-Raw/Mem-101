@@ -25,5 +25,7 @@ The result inverts the stage names. Consolidation is the pass over the whole sto
 <!-- graph:begin -->
 **Taught in:** [The Latency Budget](../curriculum/advanced/latency-budget/index.md)
 
+**Used in:** [Caching, Batching, Routing](../curriculum/advanced/caching-batching-routing/index.md)
+
 **Do not confuse with:** [Cost Profile](cost-profile.md)
 <!-- graph:end -->

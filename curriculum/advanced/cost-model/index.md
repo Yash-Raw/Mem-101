@@ -63,7 +63,7 @@ The numbers here happen to be identical either way, which is worse than if they 
 
 ## Design decisions
 
-**Why count calls rather than seconds?** Because seconds are a property of the machine and the provider, and this corpus runs against a deterministic fake. Calls are the invariant: they are what a bill is denominated in, and they do not change when the hardware does. `latency-budget` is where wall-clock enters, and it enters as a *budget* rather than a measurement.
+**Why count calls rather than seconds?** Because seconds are a property of the machine and the provider, and this corpus runs against a deterministic fake. Calls are the invariant: they are what a bill is denominated in, and they do not change when the hardware does. `latency-budget` splits the same calls by deadline rather than introducing a clock — nothing in this course measures wall-clock, because against a deterministic fake it would measure the laptop.
 
 **Why is the read path measured on one question?** Because that is the unit a user experiences. A per-session or per-day figure hides the thing that matters — what one answer costs — and the answer here is two embeddings and no model call, which is small enough to state without qualification.
 

@@ -87,7 +87,7 @@ rank    relevance judgements are what memory eval lacks by construction
 
 **Why is extraction recall-only?** Precision needs gold to enumerate everything that should *not* be extracted, which is unbounded. `over-extraction` measured the problem in Beginner and named no threshold, because there is not one — the boundary is a judgement, which puts it with `dedupe` and `decay`.
 
-**Why report `entries` as well as `located`?** Because 4-of-4 at 1.000 and 4-of-6 at 1.000 are different situations, and only the second tells you a third of the answer key is not exercised. A metric reporting a rate alone hides how much of the key it declined to look at.
+**Why report `entries` as well as `located`?** Because 4-of-4 at 1.000 and 4-of-6 at 1.000 are different situations, and only the second tells you a third of that seam's entries are never exercised. A metric reporting a rate alone hides how much of the key it declined to look at.
 
 **Why keep the unscorable stages in the report?** So that *"we measure the pipeline"* cannot be said without qualification. Three of seven stages have no component metric and never will; printing them with `--` is cheaper than a paragraph nobody reads.
 

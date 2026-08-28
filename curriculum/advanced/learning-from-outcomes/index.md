@@ -81,7 +81,7 @@ The right conclusion is not *"build a lessons-learned store"* — one row does n
 
 ## Design decisions
 
-**Why not change the extractor now?** Because the fixtures producing these memories are authored, and changing them moves a store shape that fifty-nine lessons quote figures against. What lands instead is the measurement and the structure, so the change has a test to satisfy when it happens. `procedural-memory` deferred the same decision for the same reason, and the two together are the argument for making it once.
+**Why not change the extractor now?** Because the fixtures producing these memories are authored, and changing them moves a store shape every level quotes figures against. What lands instead is the measurement and the structure, so the change has a test to satisfy when it happens. `procedural-memory` deferred the same decision for the same reason, and the two together are the argument for making it once.
 
 **Why a conditional pattern rather than a model call?** Because the failure mode of a classifier here is inventing a consequence that was never stated, attached to a step, presented as something the user said. Four regexes that find one real lesson beat a model that finds three and fabricates one — the same argument `implicit-signals` made about corrections, in the module where the fabricated item would be an instruction.
 

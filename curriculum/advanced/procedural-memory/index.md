@@ -89,7 +89,7 @@ Position 2 of 4 is the useful part: the step the user singled out is neither fir
 
 **Why not add a `Procedure` type to the record?** Because `MemoryType` has four members with distinct lifecycles and update rules, and a fifth for *"annotation about a procedure"* is a category the extractor cannot reliably assign — it would be wrong on the first unusual phrasing, and a mistyped record is harder to notice than an unparsed one. The check lives where the ambiguity is.
 
-**Why parse on read rather than fix extraction?** Fixing extraction is right and it is not free: the fixtures that produce these two memories are authored, and changing them moves the store shape that fifty-eight lessons are measured against. The recovery is honest about being a workaround, and `learning-from-outcomes` is where the representation earns a change.
+**Why parse on read rather than fix extraction?** Fixing extraction is right and it is not free: the fixtures that produce these two memories are authored, and changing them moves the store shape every level is measured against. The recovery is honest about being a workaround, and `learning-from-outcomes` is where the representation earns a change.
 
 **Why does `order_preserved` take the expected steps?** Because there is no way to verify an order against itself. The check is against `gold.yml`, which is the answer key precisely so that claims like *"the order survived"* are testable rather than asserted — and it caught a transcription error in gold on the way through: the corpus says *"write it up"* and gold said *"write up"*.
 

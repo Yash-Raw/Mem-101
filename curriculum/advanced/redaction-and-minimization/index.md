@@ -86,7 +86,7 @@ Every argument against minimisation is that it might cost something. Here it cos
 
 ## Design decisions
 
-**Why measure with the exam rather than by counting removed characters?** Because characters removed is a measure of how much you did, not of what it cost. Tokenising the phone number removes eleven digits and changes nothing; tokenising the health fact removes seven and breaks the answer. The only meaningful unit is whether the system still works.
+**Why measure with the exam rather than by counting what was removed?** Because the amount removed is a measure of how much you did, not of what it cost — and here the two point the same way and still tell you nothing. Tokenising the phone number drops **5 tokens** and changes nothing; tokenising the health fact drops **7** and breaks the answer. Two tokens apart, opposite outcomes. The only unit that discriminates is whether the system still works.
 
 **Why not tokenise everything and accept the loss?** Because the loss is the exam, and the exam is the reason the store exists. The point of measuring per kind is that *"minimise aggressively"* and *"keep what is needed"* are not in conflict here — they disagree about exactly one kind, and it is knowable which.
 

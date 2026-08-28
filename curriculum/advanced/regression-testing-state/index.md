@@ -70,7 +70,7 @@ With a deterministic corpus a pinned literal is a claim about the system. Withou
 
 ## Design decisions
 
-**Why not replace pinned literals with tolerances?** Because a tolerance is a decision about how much drift is acceptable, made once, applied everywhere, by someone who cannot know which numbers matter. `slot-value`'s budget moved by five tokens and that was the finding; a ±10% tolerance would have hidden it. Determinism makes exactness affordable, so exactness is the right default.
+**Why not replace pinned literals with tolerances?** Because a tolerance is a decision about how much drift is acceptable, made once, applied everywhere, by someone who cannot know which numbers matter. `promotion-as-release` measured a change that cost five tokens of headroom — 51 to 56 — and that was the whole result; a ±10% tolerance would have hidden it. Determinism makes exactness affordable, so exactness is the right default.
 
 **Why keep the count of pinned assertions rather than a list?** Because the list is the test files, and duplicating it produces a second thing to maintain that disagrees with the first. The count is a health signal — if it stops growing while lessons are added, the new lessons are not writing down what they measured.
 

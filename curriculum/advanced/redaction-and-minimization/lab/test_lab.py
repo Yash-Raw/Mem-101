@@ -84,6 +84,21 @@ def test_only_the_health_value_is_load_bearing(memories) -> None:
     assert not exam_answer(out, PRIYA).is_correct
 
 
+def test_the_amount_removed_does_not_discriminate(memories) -> None:
+    """5 tokens costs nothing; 7 costs the exam."""
+    from memlab.assemble.simple import estimate_tokens
+
+    phone = _of(memories, "07700 900412")
+    health = _of(memories, "diagnosed with a gluten")
+    dropped = {
+        "phone": estimate_tokens(phone.content)
+        - estimate_tokens(redact(phone, Level.TOKENISED).content),
+        "health": estimate_tokens(health.content)
+        - estimate_tokens(redact(health, Level.TOKENISED).content),
+    }
+    assert dropped == {"phone": 5, "health": 7}
+
+
 def test_redaction_changes_the_id(memories) -> None:
     """Content-addressed, so a redacted record is a different record."""
     health = _of(memories, "diagnosed with a gluten")

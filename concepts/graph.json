@@ -37,6 +37,15 @@
       "path": "curriculum/advanced/cross-agent-write-conflicts/index.md"
     },
     {
+      "id": "deletion-that-actually-deletes",
+      "type": "lesson",
+      "title": "Deletion That Actually Deletes",
+      "level": "advanced",
+      "stage": "govern",
+      "order": 66,
+      "path": "curriculum/advanced/deletion-that-actually-deletes/index.md"
+    },
+    {
       "id": "from-facts-to-a-user-model",
       "type": "lesson",
       "title": "From Facts to a User Model",
@@ -643,6 +652,14 @@
       "status": "published"
     },
     {
+      "id": "cascade-deletion",
+      "type": "concept",
+      "title": "Cascade Deletion",
+      "stage": "govern",
+      "path": "concepts/cascade-deletion.md",
+      "status": "published"
+    },
+    {
       "id": "cascade-invalidation",
       "type": "concept",
       "title": "Cascade Invalidation",
@@ -1115,6 +1132,14 @@
       "status": "published"
     },
     {
+      "id": "request-resolution",
+      "type": "concept",
+      "title": "Request Resolution",
+      "stage": "govern",
+      "path": "concepts/request-resolution.md",
+      "status": "published"
+    },
+    {
       "id": "retrieval-scoping",
       "type": "concept",
       "title": "Retrieval Scoping",
@@ -1382,6 +1407,11 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "provenance-and-trust",
+      "kind": "requires_lesson"
+    },
+    {
+      "from": "deletion-that-actually-deletes",
+      "to": "redaction-and-minimization",
       "kind": "requires_lesson"
     },
     {
@@ -1717,6 +1747,16 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "cross-writer-conflict",
+      "kind": "teaches"
+    },
+    {
+      "from": "deletion-that-actually-deletes",
+      "to": "cascade-deletion",
+      "kind": "teaches"
+    },
+    {
+      "from": "deletion-that-actually-deletes",
+      "to": "request-resolution",
       "kind": "teaches"
     },
     {
@@ -2247,6 +2287,21 @@
     {
       "from": "cross-agent-write-conflicts",
       "to": "provenance",
+      "kind": "uses"
+    },
+    {
+      "from": "deletion-that-actually-deletes",
+      "to": "personal-data",
+      "kind": "uses"
+    },
+    {
+      "from": "deletion-that-actually-deletes",
+      "to": "label-not-permission",
+      "kind": "uses"
+    },
+    {
+      "from": "deletion-that-actually-deletes",
+      "to": "derivation-graph",
       "kind": "uses"
     },
     {
@@ -3115,6 +3170,11 @@
       "kind": "contrasts_with"
     },
     {
+      "from": "cascade-deletion",
+      "to": "supersession",
+      "kind": "contrasts_with"
+    },
+    {
       "from": "cascade-invalidation",
       "to": "supersession",
       "kind": "contrasts_with"
@@ -3307,6 +3367,11 @@
     {
       "from": "relevance-vs-truth",
       "to": "belief-updating",
+      "kind": "contrasts_with"
+    },
+    {
+      "from": "request-resolution",
+      "to": "cascade-deletion",
       "kind": "contrasts_with"
     },
     {

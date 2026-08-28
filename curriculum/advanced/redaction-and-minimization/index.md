@@ -25,6 +25,8 @@ status: published
 **You need first:** [PII on the Write Path](../pii-on-the-write-path/index.md)
 
 **Concepts assumed:** [Personal Data](../../../concepts/personal-data.md) · [Label, Not Permission](../../../concepts/label-not-permission.md) · [Element Cost](../../../concepts/element-cost.md)
+
+**This unlocks:** [Deletion That Actually Deletes](../deletion-that-actually-deletes/index.md)
 <!-- graph:end -->
 
 ## The problem
@@ -136,4 +138,6 @@ uv run python curriculum/advanced/redaction-and-minimization/lab/lab.py
 **You need first:** [PII on the Write Path](../pii-on-the-write-path/index.md)
 
 **Concepts assumed:** [Personal Data](../../../concepts/personal-data.md) · [Label, Not Permission](../../../concepts/label-not-permission.md) · [Element Cost](../../../concepts/element-cost.md)
+
+**This unlocks:** [Deletion That Actually Deletes](../deletion-that-actually-deletes/index.md)
 <!-- graph:end -->

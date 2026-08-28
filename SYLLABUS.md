@@ -203,7 +203,7 @@ memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade delet
 |--:|---|---|---|
 | 65 | [PII on the Write Path](curriculum/advanced/pii-on-the-write-path/index.md) | `govern` | Label personal data without deciding at the gate -- the strict policy breaks the exam. |
 | 66 | [Redaction and Minimization](curriculum/advanced/redaction-and-minimization/index.md) | `govern` | Coarsen per kind, and measure what each level costs the answer. |
-| 67 | [Deletion That Actually Deletes](curriculum/advanced/deletion-that-actually-deletes/index.md) | `govern` | Cascade a delete through summaries, embeddings, graph edges, and caches. |
+| 67 | [Deletion That Actually Deletes](curriculum/advanced/deletion-that-actually-deletes/index.md) | `govern` | Resolve the request by label, then reach every structure -- and report the zeroes. |
 | 68 | [Proving You Forgot](curriculum/advanced/rtbf-and-auditability/index.md) | `govern` | Demonstrate deletion, retention policy, and regional constraints. |
 | 69 | [Memory Attacks](curriculum/advanced/memory-attacks/index.md) | `govern` | Defend against poisoning, injection, cross-user leakage, and extraction. |
 

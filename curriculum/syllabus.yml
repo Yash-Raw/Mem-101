@@ -374,7 +374,7 @@ levels:
           - id: deletion-that-actually-deletes
             title: "Deletion That Actually Deletes"
             stage: govern
-            objective: "Cascade a delete through summaries, embeddings, graph edges, and caches."
+            objective: "Resolve the request by label, then reach every structure -- and report the zeroes."
           - id: rtbf-and-auditability
             title: "Proving You Forgot"
             stage: govern

@@ -59,6 +59,21 @@ class VectorIndex:
         self.computed += 1
         return self.vectors[memory.id]
 
+    def forget(self, memory_id: str) -> bool:
+        """Destroy a vector. A6 -- the one case tombstoning does not cover.
+
+        `index` tombstones a retired belief and *keeps* its vector on purpose,
+        because an audit needs it. A deletion request is the case where the
+        audit requirement inverts: the thing that must be provable is that the
+        vector is gone. Returns whether there was one to remove.
+        """
+        self.tombstoned.discard(memory_id)
+        return self.vectors.pop(memory_id, None) is not None
+
+    def holds(self, memory_id: str) -> bool:
+        """Is there a vector for this id? Does not compute one."""
+        return memory_id in self.vectors
+
     def live(self, memories: list[Memory]) -> list[Memory]:
         return [m for m in memories if m.id not in self.tombstoned]
 

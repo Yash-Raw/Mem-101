@@ -23,5 +23,7 @@ Two things make it hard to audit. References must be in one namespace — this c
 <!-- graph:begin -->
 **Taught in:** [Temporal Knowledge Graphs](../curriculum/advanced/temporal-knowledge-graphs/index.md)
 
+**Used in:** [Deletion That Actually Deletes](../curriculum/advanced/deletion-that-actually-deletes/index.md)
+
 **Do not confuse with:** [Graph Traversal](graph-traversal.md)
 <!-- graph:end -->

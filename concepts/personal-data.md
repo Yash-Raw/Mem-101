@@ -25,7 +25,7 @@ Three of the seven are about the user's partner, detected by the `entities` link
 <!-- graph:begin -->
 **Taught in:** [PII on the Write Path](../curriculum/advanced/pii-on-the-write-path/index.md)
 
-**Used in:** [Redaction and Minimization](../curriculum/advanced/redaction-and-minimization/index.md)
+**Used in:** [Deletion That Actually Deletes](../curriculum/advanced/deletion-that-actually-deletes/index.md) · [Redaction and Minimization](../curriculum/advanced/redaction-and-minimization/index.md)
 
 **Do not confuse with:** [The Memory Record](memory-record.md)
 <!-- graph:end -->

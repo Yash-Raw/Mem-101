@@ -1,0 +1,327 @@
+/* Mem-101 design system.
+ *
+ * One stylesheet drives both surfaces: the generated pages (home hero, course
+ * map, concept atlas) and the 84 mkdocs-material lesson pages. That is the
+ * whole point of it being one file -- the risk in adding custom pages beside a
+ * themed site is two visual languages drifting apart, and the fix is to map our
+ * tokens onto Material's own --md-* variables rather than to keep two palettes
+ * in step by hand.
+ *
+ * Colour rule, enforced by eye and stated here because it is easy to break:
+ * --mem-faint, --mem-fainter and --mem-faintest are borders and fills ONLY.
+ * --mem-muted is the lightest colour any glyph may use.
+ */
+
+/* ---- tokens ---------------------------------------------------------------
+ * Two literals per theme. Everything else is mixed from them, so a theme is
+ * three declarations and the derived steps can never fall out of step.
+ */
+:root,
+[data-md-color-scheme="default"] {
+  --mem-bg: #fbfbfc;
+  --mem-fg: #14161a;
+  --mem-accent: oklch(0.50 0.11 250);
+  --mem-pass: oklch(0.52 0.13 150);
+  --mem-warn: oklch(0.58 0.13 68);
+  --mem-l1: oklch(0.52 0.10 235);
+  --mem-l2: oklch(0.52 0.10 285);
+  --mem-l3: oklch(0.52 0.10 330);
+  --mem-tint: 6%;
+}
+
+[data-md-color-scheme="slate"] {
+  --mem-bg: #0f1115;
+  --mem-fg: #e8eaed;
+  --mem-accent: oklch(0.76 0.10 250);
+  --mem-pass: oklch(0.74 0.13 150);
+  --mem-warn: oklch(0.80 0.11 72);
+  --mem-l1: oklch(0.74 0.09 235);
+  --mem-l2: oklch(0.74 0.09 285);
+  --mem-l3: oklch(0.74 0.09 330);
+  --mem-tint: 14%;
+}
+
+:root {
+  --mem-surface:   color-mix(in srgb, var(--mem-fg)  3%, var(--mem-bg));
+  --mem-sunk:      color-mix(in srgb, var(--mem-fg)  5%, var(--mem-bg));
+  --mem-alt:       color-mix(in srgb, var(--mem-fg) 86%, var(--mem-bg));
+  --mem-muted:     color-mix(in srgb, var(--mem-fg) 62%, var(--mem-bg));
+  --mem-faint:     color-mix(in srgb, var(--mem-fg) 44%, var(--mem-bg));
+  --mem-fainter:   color-mix(in srgb, var(--mem-fg) 26%, var(--mem-bg));
+  --mem-faintest:  color-mix(in srgb, var(--mem-fg) 12%, var(--mem-bg));
+  --mem-accent-low: color-mix(in srgb, var(--mem-accent) var(--mem-tint), var(--mem-bg));
+  --mem-warn-low:   color-mix(in srgb, var(--mem-warn)   var(--mem-tint), var(--mem-bg));
+  --mem-pass-low:   color-mix(in srgb, var(--mem-pass)   var(--mem-tint), var(--mem-bg));
+
+  --mem-serif: "Source Serif 4", Charter, "Iowan Old Style", Georgia, serif;
+  --mem-mono: "JetBrains Mono", Menlo, Consolas, ui-monospace, monospace;
+
+  --mem-r: 10px;
+  --mem-dur-ui: 180ms;
+  --mem-dur-teach: 700ms;
+  --mem-ease: cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/* ---- Material, wearing our palette ---------------------------------------- */
+:root {
+  --md-default-bg-color: var(--mem-bg);
+  --md-default-fg-color: var(--mem-fg);
+  --md-default-fg-color--light: var(--mem-muted);
+  --md-default-fg-color--lighter: var(--mem-faint);
+  --md-default-fg-color--lightest: var(--mem-faintest);
+  --md-typeset-color: var(--mem-alt);
+  --md-typeset-a-color: var(--mem-accent);
+  --md-primary-fg-color: var(--mem-accent);
+  --md-accent-fg-color: var(--mem-accent);
+  --md-code-bg-color: var(--mem-sunk);
+  --md-code-fg-color: var(--mem-alt);
+  --md-footer-bg-color: var(--mem-sunk);
+  --md-footer-fg-color: var(--mem-alt);
+}
+
+/* Material's header is the primary colour by default, which puts a saturated
+ * band across every page. The course reads better with the header as paper. */
+.md-header,
+.md-tabs { background-color: var(--mem-bg); color: var(--mem-fg);
+  box-shadow: 0 1px 0 var(--mem-faintest); }
+.md-header__title { font-family: var(--mem-mono); font-size: 0.78rem; letter-spacing: 0.02em; }
+.md-search__form { background-color: var(--mem-sunk); }
+.md-footer-meta { background-color: var(--mem-sunk); }
+
+/* ---- typography -----------------------------------------------------------
+ * 17px serif for prose; the measure is in ch so it survives a font change.
+ * Heading rhythm is asymmetric -- a heading binds to the text it introduces,
+ * which is what makes 84 long lessons scannable.
+ */
+.md-typeset {
+  font-family: var(--mem-serif);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.md-typeset > * { max-width: 68ch; }
+.md-typeset > .mem-hero,
+.md-typeset > .mem-wide,
+.md-typeset > table,
+.md-typeset > .md-typeset__table,
+.md-typeset > .mem-full { max-width: none; }
+
+.md-typeset h1 {
+  font-family: var(--mem-serif); font-weight: 600; font-size: 2.1rem;
+  line-height: 1.14; letter-spacing: -0.018em; color: var(--mem-fg);
+  margin: 0 0 1.1rem;
+}
+.md-typeset h2 {
+  font-family: var(--mem-serif); font-weight: 600; font-size: 1.44rem;
+  line-height: 1.22; letter-spacing: -0.01em; color: var(--mem-fg);
+  margin: 2em 0 1em;
+}
+.md-typeset h3 {
+  font-family: var(--mem-serif); font-weight: 600; font-size: 1.16rem;
+  line-height: 1.3; color: var(--mem-fg); margin: 1.6em 0 0.6em;
+}
+.md-typeset h1, .md-typeset h2,
+.md-typeset h3, .md-typeset h4 { scroll-margin-top: calc(2.4rem + 1.5rem); }
+
+.md-typeset code, .md-typeset pre { font-family: var(--mem-mono); }
+.md-typeset code { font-size: 0.82em; }
+.md-typeset pre > code { font-size: 13px; line-height: 1.55; }
+.md-typeset table:not([class]) { font-size: 14px; }
+.md-typeset table:not([class]) th { font-family: var(--mem-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--mem-muted); background: var(--mem-sunk); font-weight: 500; }
+.md-typeset blockquote { border-left: 2px solid var(--mem-accent);
+  color: var(--mem-alt); font-style: italic; }
+.md-nav { font-size: 0.72rem; }
+.md-nav__title { font-family: var(--mem-mono); font-size: 0.62rem;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--mem-muted); }
+
+/* ---- shared furniture ----------------------------------------------------- */
+.mem-lbl { font-family: var(--mem-mono); font-size: 11px; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--mem-muted); }
+.mem-panel { border: 1px solid var(--mem-faintest); border-radius: var(--mem-r);
+  background: var(--mem-surface); }
+.mem-card { border: 1px solid var(--mem-faintest); border-radius: var(--mem-r);
+  background: var(--mem-surface); padding: 13px 15px;
+  transition: border-color var(--mem-dur-ui) var(--mem-ease); }
+.mem-card:hover { border-color: var(--mem-faint); }
+.mem-card > :first-child { margin-top: 0; }
+.mem-card > :last-child { margin-bottom: 0; }
+.mem-chip { font-family: var(--mem-mono); font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; border: 1px solid var(--mem-faintest);
+  border-radius: 5px; padding: 3px 8px; color: var(--mem-muted);
+  background: var(--mem-bg); cursor: pointer; white-space: nowrap;
+  transition: color var(--mem-dur-ui) var(--mem-ease),
+              border-color var(--mem-dur-ui) var(--mem-ease); }
+.mem-chip:hover { border-color: var(--mem-faint); color: var(--mem-fg); }
+.mem-chip[aria-pressed="true"] { color: var(--mem-fg); border-color: var(--mem-faint);
+  background: var(--mem-sunk); }
+
+/* Stage carries the argument, so it carries colour: the two write-path stages
+ * and the one read-path stage are marked, everything else stays neutral. */
+.mem-stage { font-family: var(--mem-mono); font-size: 10px; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--mem-muted); }
+.mem-stage[data-stage="evolve"], .mem-stage[data-stage="govern"] { color: var(--mem-accent); }
+.mem-stage[data-stage="retrieve"] { color: var(--mem-warn); }
+.mem-rd { color: var(--mem-warn); }
+
+/* Level is a hue AND a glyph, so it survives greyscale and colour blindness. */
+.mem-lv { display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted); }
+.mem-lv::before { font-size: 10px; line-height: 1; }
+.mem-lv[data-level="beginner"]::before { content: "\25CF"; color: var(--mem-l1); }
+.mem-lv[data-level="intermediate"]::before { content: "\25D2"; color: var(--mem-l2); }
+.mem-lv[data-level="advanced"]::before { content: "\25CB"; color: var(--mem-l3); }
+
+/* ---- home hero ------------------------------------------------------------
+ * The README is the home page's source, so it supplies its own H1 and tagline.
+ * The hero states both with the figures attached, and the duplicates below it
+ * are hidden -- a sibling selector, because the partial is injected into the
+ * same flow as the rendered Markdown.
+ */
+.mem-hero ~ h1,
+.mem-hero ~ blockquote:first-of-type { display: none; }
+
+.mem-hero { margin: 0 0 2.4rem; }
+.mem-hero__kicker { font-family: var(--mem-mono); font-size: 11px;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--mem-muted);
+  margin: 0 0 1rem; }
+.mem-hero__h1 { font-family: var(--mem-serif); font-weight: 600;
+  font-size: clamp(2.2rem, 5.2vw, 3.4rem); line-height: 1.06;
+  letter-spacing: -0.022em; margin: 0 0 0.7rem; color: var(--mem-fg); }
+.mem-hero__tag { font-family: var(--mem-serif); font-style: italic;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem); line-height: 1.4;
+  color: var(--mem-alt); margin: 0 0 1.8rem; max-width: 34ch; }
+.mem-hero__tag span { font-family: var(--mem-mono); font-style: normal;
+  color: var(--mem-accent); margin-right: 0.4em; }
+.mem-hero__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem; align-items: start; }
+@media (max-width: 60em) { .mem-hero__grid { grid-template-columns: minmax(0, 1fr); } }
+
+.mem-chart { border: 1px solid var(--mem-faintest); border-radius: var(--mem-r);
+  background: var(--mem-surface); padding: 1rem 1.15rem; margin: 0; }
+.mem-chart figcaption { display: flex; flex-direction: column; margin-bottom: 0.9rem; }
+.mem-chart__title { font-family: var(--mem-mono); font-size: 11px;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--mem-muted); }
+.mem-chart__sub { font-family: var(--mem-mono); font-size: 11px;
+  color: var(--mem-muted); opacity: 0.8; }
+.mem-chart__read { font-size: 15px; line-height: 1.55; color: var(--mem-alt);
+  margin: 0.9rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--mem-faintest);
+  text-wrap: pretty; }
+.mem-chart__read b { color: var(--mem-accent); font-weight: 600; }
+.mem-chart__read b.mem-rd { color: var(--mem-warn); }
+
+.mem-bar { display: grid; grid-template-columns: 5.6em 1fr 1.8em; gap: 0.7rem;
+  align-items: center; margin: 0.42rem 0; }
+.mem-bar__name { font-family: var(--mem-mono); font-size: 12px; text-align: right;
+  color: var(--mem-muted); }
+.mem-bar__track { display: block; height: 9px; }
+.mem-bar__fill { display: block; height: 9px; border-radius: 2px;
+  background: var(--mem-faintest); }
+.mem-bar__n { font-family: var(--mem-mono); font-size: 12px; color: var(--mem-muted); }
+.mem-bar--wp .mem-bar__name, .mem-bar--wp .mem-bar__n { color: var(--mem-accent);
+  font-weight: 500; }
+.mem-bar--wp .mem-bar__fill { background: var(--mem-accent); }
+.mem-bar--rd .mem-bar__name, .mem-bar--rd .mem-bar__n { color: var(--mem-warn); }
+.mem-bar--rd .mem-bar__fill { background: var(--mem-warn); opacity: 0.8; }
+
+.mem-ways { display: flex; flex-direction: column; gap: 0.6rem; }
+.mem-path { display: flex; gap: 0.9rem; align-items: flex-start;
+  border: 1px solid var(--mem-faintest); border-radius: var(--mem-r);
+  background: var(--mem-surface); padding: 0.85rem 1rem; text-decoration: none;
+  transition: border-color var(--mem-dur-ui) var(--mem-ease); }
+.mem-path:hover { border-color: var(--mem-accent); }
+.mem-path__n { font-family: var(--mem-mono); font-size: 12px; font-weight: 700;
+  color: var(--mem-accent); padding-top: 3px; }
+.mem-path__t { display: block; font-size: 17px; font-weight: 600;
+  color: var(--mem-fg); margin-bottom: 2px; }
+.mem-path__d { display: block; font-size: 14.5px; line-height: 1.5;
+  color: var(--mem-muted); text-wrap: pretty; }
+.mem-path__d code { font-size: 0.86em; color: var(--mem-alt); }
+
+.mem-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px; background: var(--mem-faintest); border: 1px solid var(--mem-faintest);
+  border-radius: var(--mem-r); overflow: hidden; margin-top: 0.4rem; }
+.mem-stat { background: var(--mem-surface); padding: 0.7rem 0.6rem; }
+.mem-stat__n { font-family: var(--mem-mono); font-size: 21px; font-weight: 500;
+  color: var(--mem-fg); line-height: 1.1; }
+.mem-stat__unit { font-size: 13px; color: var(--mem-muted); }
+.mem-stat__l { font-family: var(--mem-mono); font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--mem-muted); margin-top: 3px; }
+
+/* ---- generated pages: shared shell ---------------------------------------- */
+.mem-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 0.8rem 0.95rem; border: 1px solid var(--mem-faintest);
+  border-radius: var(--mem-r); background: var(--mem-surface); margin-bottom: 1.4rem; }
+.mem-toolbar__sep { width: 1px; height: 20px; background: var(--mem-faintest);
+  margin: 0 4px; }
+.mem-search { flex: 1 1 12rem; min-width: 10rem; margin-left: auto;
+  font-family: var(--mem-mono); font-size: 12px; color: var(--mem-fg);
+  background: var(--mem-bg); border: 1px solid var(--mem-faintest);
+  border-radius: 6px; padding: 6px 10px; }
+.mem-search::placeholder { color: var(--mem-muted); }
+.mem-search:focus { outline: none; border-color: var(--mem-accent); }
+
+.mem-level-head { display: flex; align-items: baseline; gap: 0.75rem;
+  flex-wrap: wrap; padding-bottom: 0.6rem; margin: 2rem 0 0.9rem;
+  border-bottom: 1px solid var(--mem-faintest); }
+.mem-level-head__t { font-size: 1.3rem; font-weight: 600; color: var(--mem-fg); }
+.mem-level-head__q { font-size: 15px; font-style: italic; color: var(--mem-muted); }
+.mem-level-head__n { font-family: var(--mem-mono); font-size: 12px;
+  color: var(--mem-muted); margin-left: auto; }
+
+/* Container queries, so cards reflow to the column they are in rather than to
+ * the viewport -- Material's content width changes with the nav, not the window. */
+.mem-grid { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr);
+  container-type: inline-size; }
+.mem-grid-wrap { container-type: inline-size; }
+@container (min-width: 34rem) {
+  .mem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container (min-width: 52rem) {
+  .mem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.mem-lesson__top { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 0.5rem; }
+.mem-lesson__min { font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted); }
+.mem-lesson__t { font-size: 16px; font-weight: 600; line-height: 1.25;
+  margin: 7px 0 5px; color: var(--mem-fg); }
+.mem-lesson__o { font-size: 13px; line-height: 1.45; color: var(--mem-muted);
+  text-wrap: pretty; }
+a.mem-card { display: block; text-decoration: none; }
+.mem-empty { font-family: var(--mem-mono); font-size: 13px; color: var(--mem-muted);
+  padding: 2rem 0; }
+.mem-count { font-family: var(--mem-mono); font-size: 12px; color: var(--mem-muted); }
+
+/* ---- concept atlas -------------------------------------------------------- */
+.mem-legend { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap;
+  padding: 0.75rem 1.1rem; border: 1px solid var(--mem-faintest);
+  border-radius: var(--mem-r); background: var(--mem-surface); margin-bottom: 1rem; }
+.mem-legend__i { display: flex; align-items: center; gap: 0.6rem; font-size: 14px;
+  color: var(--mem-alt); }
+.mem-legend__i b { font-weight: 600; }
+.mem-atlas { border: 1px solid var(--mem-faintest); border-radius: var(--mem-r);
+  background: var(--mem-sunk); padding: 0.4rem; overflow: hidden; }
+.mem-atlas svg { display: block; width: 100%; height: auto; }
+.mem-atlas__edge { transition: opacity var(--mem-dur-teach) var(--mem-ease); }
+.mem-atlas__node { cursor: pointer;
+  transition: opacity var(--mem-dur-teach) var(--mem-ease); }
+.mem-atlas.is-focused .mem-atlas__edge:not(.is-lit),
+.mem-atlas.is-focused .mem-atlas__node:not(.is-lit) { opacity: 0.16; }
+.mem-detail { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1rem; margin-top: 1.1rem; }
+@media (max-width: 60em) { .mem-detail { grid-template-columns: minmax(0, 1fr); } }
+.mem-kv { display: flex; gap: 0.8rem; align-items: baseline; margin-bottom: 0.45rem; }
+.mem-kv__k { font-family: var(--mem-mono); font-size: 11px; width: 5.4rem;
+  flex-shrink: 0; color: var(--mem-muted); }
+.mem-kv__v { font-size: 14px; color: var(--mem-alt); }
+.mem-rank { display: grid; grid-template-columns: minmax(0, 1fr) 6rem 1.7rem;
+  gap: 0.6rem; align-items: center; margin-bottom: 0.5rem; font-size: 14px; }
+.mem-rank__bar { height: 7px; border-radius: 2px; background: var(--mem-fainter); }
+.mem-rank--top .mem-rank__bar { background: var(--mem-accent); }
+.mem-rank__n { font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted);
+  text-align: right; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}

@@ -210,8 +210,11 @@
 @media (max-width: 60em) { .mem-hero__grid { grid-template-columns: minmax(0, 1fr); } }
 
 .mem-chart { border: 1px solid var(--mem-faintest); border-radius: var(--mem-r);
-  background: var(--mem-surface); padding: 1rem 1.15rem; margin: 0; }
-.mem-chart figcaption { display: flex; flex-direction: column; margin-bottom: 0.9rem; }
+  background: var(--mem-surface); padding: 1rem 1.15rem; margin: 0; text-align: left; }
+/* Material centres figure captions and gives figures `margin: 1em auto`, which
+ * centred this heading and floated the panel off its grid column. */
+.md-typeset .mem-chart figcaption { display: flex; flex-direction: column;
+  margin: 0 0 0.9rem; text-align: left; max-width: none; }
 .mem-chart__title { font-family: var(--mem-mono); font-size: 11px;
   letter-spacing: 0.09em; text-transform: uppercase; color: var(--mem-muted); }
 .mem-chart__sub { font-family: var(--mem-mono); font-size: 11px;
@@ -243,7 +246,7 @@
   transition: border-color var(--mem-dur-ui) var(--mem-ease); }
 .mem-path:hover { border-color: var(--mem-accent); }
 .mem-path__n { font-family: var(--mem-mono); font-size: 12px; font-weight: 700;
-  color: var(--mem-accent); padding-top: 3px; }
+  color: var(--mem-accent); padding-top: 3px; flex: 0 0 auto; white-space: nowrap; }
 .mem-path__t { display: block; font-size: 17px; font-weight: 600;
   color: var(--mem-fg); margin-bottom: 2px; }
 .mem-path__d { display: block; font-size: 14.5px; line-height: 1.5;

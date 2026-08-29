@@ -23,7 +23,11 @@
   var BASE = new URL("../../", HERE);             /* site root */
   var SVGNS = "http://www.w3.org/2000/svg";
 
-  /* The one place the relation vocabulary is defined. The legend in
+  /* Amber is the retrieve stage everywhere else on this site, and a concept's
+   * stage shows in the detail panel below -- so contrast edges are neutral
+   * rather than amber, and stay told apart by dash and width.
+   *
+   * The one place the relation vocabulary is defined. The legend in
    * docs/atlas.md is hand-written and mirrors this table: each relation is a
    * dash pattern AND a stroke width AND a colour, so none of it is carried by
    * colour alone. */
@@ -32,7 +36,7 @@
   var REL = {
     taught:   { head: "TAUGHT HERE",         key: "TAUGHT HERE",   dash: null,      w: 2.2, colour: "var(--mem-accent)" },
     used:     { head: "USED HERE",           key: "USED HERE",     dash: "6 4",     w: 1.4, colour: "var(--mem-faint)" },
-    contrast: { head: "DO NOT CONFUSE WITH", key: "CONFUSED WITH", dash: "1.5 3.5", w: 1.1, colour: "var(--mem-warn)" }
+    contrast: { head: "DO NOT CONFUSE WITH", key: "CONFUSED WITH", dash: "1.5 3.5", w: 1.1, colour: "var(--mem-fainter)" }
   };
   /* Level is a glyph as well as a hue, the same pair .mem-lv uses in CSS. */
   var GLYPH = { beginner: "●", intermediate: "◒", advanced: "○", concept: "◇" };
@@ -352,18 +356,18 @@
   function kv(key, value) {
     return h("div", { "class": "mem-kv" }, [
       h("span", { "class": "mem-kv__k" }, [key]),
-      h("span", { "class": "mem-kv__v" }, [value])
+      h("div", { "class": "mem-kv__v" }, [value])
     ]);
   }
   function none() { return h("span", { "class": "mem-count" }, ["none"]); }
 
   function conceptPanel(c) {
     var taught = c.taught_in.length
-      ? h("span", {}, c.taught_in.map(lessonLine)) : none();
+      ? h("div", {}, c.taught_in.map(lessonLine)) : none();
     var used = c.used_in.length
-      ? h("span", {}, c.used_in.map(lessonLine)) : none();
+      ? h("div", {}, c.used_in.map(lessonLine)) : none();
     var contrast = c.contrasts_with.length
-      ? h("span", { style: "display: inline-flex; flex-wrap: wrap; gap: 5px" },
+      ? h("div", { style: "display: flex; flex-wrap: wrap; gap: 5px" },
           c.contrasts_with.map(conceptChip))
       : none();
     return h("div", { "class": "mem-panel", style: "padding: 0.95rem 1.1rem" }, [

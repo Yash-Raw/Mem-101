@@ -22,9 +22,11 @@ uv run ruff check .                 # lint
 
 uv run python tools/render_syllabus.py   # regenerate SYLLABUS.md after editing syllabus.yml
 uv run python tools/build_graph.py       # regenerate graph blocks + concepts/graph.json
+uv run python tools/build_site_data.py   # regenerate docs/assets/data/site.json + the home hero
+uv run python tools/render_nav.py        # regenerate mkdocs' nav from syllabus.yml
 ```
 
-Both generators take `--check` (used by CI) to fail on stale output instead of rewriting.
+Every generator takes `--check` (used by CI) to fail on stale output instead of rewriting.
 
 `MEMLAB_LLM` selects the backend: `fake` (default, no API key) or `anthropic`.
 
@@ -146,11 +148,12 @@ number to match a memory of what it used to be.**
 ## Status
 
 **The course is complete and published.** 84 lessons across three levels, 823
-tests, 10 validators, `memlab` v0.3. Public at
+tests, eight validators and four generated-file checks, `memlab` v0.3. Public at
 [github.com/Yash-Raw/Mem-101](https://github.com/Yash-Raw/Mem-101), site at
 <https://yash-raw.github.io/Mem-101/>, deployed by CI from `main` only after
 `check` is green — the site is never newer than the validators that vouch for
-it. Dual licence: CC BY 4.0 on prose, MIT on code.
+it. The site carries a generated home hero, a filterable course map at `/map/`
+and a concept atlas at `/atlas/`. Dual licence: CC BY 4.0 on prose, MIT on code.
 
 `tools/show.py <lesson-id>` prints what a lab produces when solved. It exists
 because a clean-clone test found the README's first command was `lab.py`
@@ -195,6 +198,35 @@ UNCHANGED" was silent about `@A2`.
 `tools/render_nav.py` generates mkdocs' nav from `syllabus.yml`. Ordering has
 one source of truth and the site is its third view, after `SYLLABUS.md` and the
 prerequisite graph.
+
+## The site is the fourth view
+
+`tools/build_site_data.py` writes two things and both are checked: an
+`assets/data/site.json` that the **course map** (`map.md`) and the **concept
+atlas** (`atlas.md`) render at runtime, and a generated Jinja partial the home
+page includes at *build* time. The hero is a partial rather than a fetch
+because its job is to show the thesis -- half the course is `evolve` and
+`govern`, a ninth is `retrieve` -- and a figure that arrives after paint, or
+not at all without JavaScript, is not showing it. No number on the site is
+typed; that is the same rule as the lesson prose, applied to templates.
+
+Three things about it that were each found the hard way:
+
+- **The atlas does not draw the prerequisite graph, and must not.** All 83
+  `requires_lesson` edges form one chain identical to reading order, so it
+  renders an 84-node snake. What branches is lesson<->concept.
+- **Material stamps `data-md-color-scheme` on `<body>`, not `<html>`.** A
+  custom property resolves `var()` against the element it is *declared* on, so
+  a palette derived on `:root` mixes from the light literals in both themes.
+  `docs/assets/css/mem101.css` declares the derivations wherever the literals
+  are; moving them back silently breaks dark mode.
+- **`var()` does not resolve in SVG presentation attributes.** `fill="var(--x)"`
+  falls back to the initial value -- black fill, no stroke. Colour in the atlas
+  goes through `style`.
+
+Site scripts derive their URLs from their own `src`, never from the site root:
+the published site is served from `/Mem-101/`, so a root-absolute fetch works
+under `mkdocs serve` and 404s in production. That is C5 applied to JavaScript.
 
 ## What the course established
 

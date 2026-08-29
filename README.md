@@ -4,6 +4,14 @@
 
 **Read it online: <https://yash-raw.github.io/Mem-101/>**
 
+Two ways to see the shape of it before you start: the
+[course map](https://yash-raw.github.io/Mem-101/map/) is all 84 lessons by
+level and pipeline stage, filterable; the
+[concept atlas](https://yash-raw.github.io/Mem-101/atlas/) is the concept web
+underneath the reading order — which lesson teaches an idea, and which later ones
+lean on it. Both are generated from `syllabus.yml` and the
+prerequisite graph, so neither can drift from the course.
+
 Search for how to build an agent memory layer and you mostly find RAG tutorials
 wearing a different hat: chunk, embed, retrieve, done. That answers a different
 question. Retrieval is a **read path over a corpus someone else wrote**. A
@@ -109,6 +117,7 @@ job. `uv run python tools/dump_snapshots.py` shows what moved.
 | `capstone/` | `memlab`, the system you build — plus the canonical corpus every lab uses. |
 | `landscape/` | Named tools and benchmarks, quarantined and dated, so the lessons never rot. |
 | `tools/` | Validators that keep all of the above honest. |
+| `docs/` | The site: its stylesheet, the two interactive pages' scripts, and symlinks to everything above. |
 
 One conversation — Priya, 14 sessions, March 2025 to August 2026 — runs through
 every lab at every level. By the time you are fixing belief updating in

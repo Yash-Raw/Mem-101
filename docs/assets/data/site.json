@@ -1,0 +1,3512 @@
+{
+  "generated_by": "tools/build_site_data.py",
+  "course": {
+    "title": "Building a Memory Layer",
+    "tagline": "The write path is the part the tutorials skip."
+  },
+  "stats": {
+    "lessons": 84,
+    "concepts": 132,
+    "minutes": 3655,
+    "hours": 60.9,
+    "labs": 84,
+    "labs_offline": 84,
+    "levels": [
+      {
+        "id": "beginner",
+        "title": "The Loop",
+        "question": "How does a system remember at all?",
+        "outcome": "A CLI assistant that survives process restart, builds its own corpus from conversation, and is visibly broken in seven documented ways.",
+        "lessons": 13,
+        "hours": 7.8
+      },
+      {
+        "id": "intermediate",
+        "title": "The Write Path in Earnest",
+        "question": "How does memory stay correct as it grows?",
+        "outcome": "memlab v0.2: typed memories, entity resolution, deterministic belief updating, salience-driven decay, and budgeted context assembly.",
+        "lessons": 31,
+        "hours": 21.3
+      },
+      {
+        "id": "advanced",
+        "title": "Time, Scale, Multiplicity, Trust",
+        "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+        "outcome": "memlab v0.3: bi-temporal, multi-agent, governed, benchmarked, with cascade deletion that provably reaches derived data.",
+        "lessons": 40,
+        "hours": 31.8
+      }
+    ],
+    "stages": [
+      {
+        "id": "orientation",
+        "lessons": 4
+      },
+      {
+        "id": "extract",
+        "lessons": 6
+      },
+      {
+        "id": "store",
+        "lessons": 17
+      },
+      {
+        "id": "retrieve",
+        "lessons": 9
+      },
+      {
+        "id": "evolve",
+        "lessons": 20
+      },
+      {
+        "id": "assemble",
+        "lessons": 7
+      },
+      {
+        "id": "govern",
+        "lessons": 21
+      }
+    ],
+    "graph": {
+      "nodes": 216,
+      "edges": 556,
+      "by_kind": {
+        "contrasts_with": 101,
+        "requires_lesson": 83,
+        "teaches": 136,
+        "uses": 236
+      },
+      "lesson_concept_edges": 372
+    },
+    "tests": {
+      "cases": 823,
+      "functions": 757,
+      "definition": "cases collected by pytest; functions are `def test_` definitions"
+    },
+    "thesis": {
+      "write_path_stages": [
+        "evolve",
+        "govern"
+      ],
+      "write_path_lessons": 41,
+      "write_path_pct": 49,
+      "retrieve_lessons": 9,
+      "retrieve_pct": 11
+    },
+    "hub_threshold": 5,
+    "hubs_at_threshold": 22,
+    "concepts_touched_once": 48
+  },
+  "lessons": [
+    {
+      "id": "memory-is-not-rag",
+      "title": "Memory Is Not RAG",
+      "level": "beginner",
+      "module": "foundations",
+      "stage": "orientation",
+      "order": 0,
+      "minutes": 30,
+      "objective": "Separate the read path over a given corpus from the write path that authors its own.",
+      "path": "curriculum/beginner/memory-is-not-rag/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "memory-taxonomy",
+      "title": "The Taxonomy That Actually Routes",
+      "level": "beginner",
+      "module": "foundations",
+      "stage": "orientation",
+      "order": 1,
+      "minutes": 30,
+      "objective": "Treat working/episodic/semantic/procedural as engineering categories with distinct lifecycles.",
+      "path": "curriculum/beginner/memory-taxonomy/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "context-is-not-memory",
+      "title": "Context Is Not Memory",
+      "level": "beginner",
+      "module": "foundations",
+      "stage": "orientation",
+      "order": 2,
+      "minutes": 25,
+      "objective": "Explain why a larger context window is not a memory layer: no selection, persistence, or mutation.",
+      "path": "curriculum/beginner/context-is-not-memory/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "anatomy-of-a-memory-layer",
+      "title": "Anatomy of a Memory Layer",
+      "level": "beginner",
+      "module": "foundations",
+      "stage": "orientation",
+      "order": 3,
+      "minutes": 35,
+      "objective": "Name every component the rest of the course builds. The reference diagram.",
+      "path": "curriculum/beginner/anatomy-of-a-memory-layer/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "the-memory-record",
+      "title": "Designing the Memory Record",
+      "level": "beginner",
+      "module": "write-path-naive",
+      "stage": "store",
+      "order": 4,
+      "minutes": 40,
+      "objective": "Choose the fields now that Intermediate will depend on: scope, provenance, event time, confidence.",
+      "path": "curriculum/beginner/the-memory-record/index.md",
+      "capstone_piece": [
+        "memlab.types"
+      ]
+    },
+    {
+      "id": "naive-extraction",
+      "title": "Naive Extraction",
+      "level": "beginner",
+      "module": "write-path-naive",
+      "stage": "extract",
+      "order": 5,
+      "minutes": 45,
+      "objective": "Pull durable facts from a turn with structured output, and cause your first over-extraction disaster.",
+      "path": "curriculum/beginner/naive-extraction/index.md",
+      "capstone_piece": [
+        "memlab.extract.naive"
+      ]
+    },
+    {
+      "id": "writing-memories-down",
+      "title": "Writing Memories Down",
+      "level": "beginner",
+      "module": "write-path-naive",
+      "stage": "store",
+      "order": 6,
+      "minutes": 35,
+      "objective": "Append-only JSONL with stable ids and idempotent writes; meet the duplicate problem it creates.",
+      "path": "curriculum/beginner/writing-memories-down/index.md",
+      "capstone_piece": [
+        "memlab.store.jsonl"
+      ]
+    },
+    {
+      "id": "embedding-recall",
+      "title": "Embedding Recall",
+      "level": "beginner",
+      "module": "read-path-honest",
+      "stage": "retrieve",
+      "order": 7,
+      "minutes": 40,
+      "objective": "Build minimum-viable vector search, framed as one strategy among several.",
+      "path": "curriculum/beginner/embedding-recall/index.md",
+      "capstone_piece": [
+        "memlab.retrieve.embedding"
+      ]
+    },
+    {
+      "id": "retrieval-is-not-enough",
+      "title": "Retrieval Is Not Enough",
+      "level": "beginner",
+      "module": "read-path-honest",
+      "stage": "retrieve",
+      "order": 8,
+      "minutes": 35,
+      "objective": "Scope by owner before ranking; meet semantically-close-but-wrong and confidently-stale.",
+      "path": "curriculum/beginner/retrieval-is-not-enough/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "context-assembly-v0",
+      "title": "Getting Memories Into the Prompt",
+      "level": "beginner",
+      "module": "read-path-honest",
+      "stage": "assemble",
+      "order": 9,
+      "minutes": 35,
+      "objective": "Inject recalled beliefs with attribution, and mark them as beliefs rather than ground truth.",
+      "path": "curriculum/beginner/context-assembly-v0/index.md",
+      "capstone_piece": [
+        "memlab.assemble.simple"
+      ]
+    },
+    {
+      "id": "session-vs-longterm",
+      "title": "Session Memory vs Long-Term Memory",
+      "level": "beginner",
+      "module": "loop-closes",
+      "stage": "evolve",
+      "order": 10,
+      "minutes": 30,
+      "objective": "Decide what dies at end of session and what gets promoted.",
+      "path": "curriculum/beginner/session-vs-longterm/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "your-first-memory-layer",
+      "title": "Your First Memory Layer",
+      "level": "beginner",
+      "module": "loop-closes",
+      "stage": "assemble",
+      "order": 11,
+      "minutes": 40,
+      "objective": "Ship memlab v0.1: an assistant that survives restart.",
+      "path": "curriculum/beginner/your-first-memory-layer/index.md",
+      "capstone_piece": [
+        "memlab.app.chat"
+      ]
+    },
+    {
+      "id": "watching-it-fail",
+      "title": "Watching It Fail",
+      "level": "beginner",
+      "module": "loop-closes",
+      "stage": "govern",
+      "order": 12,
+      "minutes": 45,
+      "objective": "Catalogue the seven failures you now have; each one names the Intermediate module that fixes it.",
+      "path": "curriculum/beginner/watching-it-fail/index.md",
+      "capstone_piece": []
+    },
+    {
+      "id": "typed-memory-model",
+      "title": "The Typed Memory Model",
+      "level": "intermediate",
+      "module": "typed-extraction",
+      "stage": "store",
+      "order": 13,
+      "minutes": 40,
+      "objective": "Give each memory type its own schema, lifecycle, and update rule.",
+      "path": "curriculum/intermediate/typed-memory-model/index.md",
+      "capstone_piece": [
+        "memlab.extract.router"
+      ]
+    },
+    {
+      "id": "extraction-pipelines",
+      "title": "Extraction Pipelines",
+      "level": "intermediate",
+      "module": "typed-extraction",
+      "stage": "extract",
+      "order": 14,
+      "minutes": 50,
+      "objective": "Stage candidate generation, salience filtering, schema validation, and type routing.",
+      "path": "curriculum/intermediate/extraction-pipelines/index.md",
+      "capstone_piece": [
+        "memlab.extract.pipeline",
+        "memlab.extract.gate"
+      ]
+    },
+    {
+      "id": "extraction-quality",
+      "title": "Precision and Recall on the Write Path",
+      "level": "intermediate",
+      "module": "typed-extraction",
+      "stage": "extract",
+      "order": 15,
+      "minutes": 40,
+      "objective": "Measure extraction quality and price the compounding cost of over-extraction.",
+      "path": "curriculum/intermediate/extraction-quality/index.md",
+      "capstone_piece": [
+        "memlab.eval.extraction"
+      ]
+    },
+    {
+      "id": "atomic-memories",
+      "title": "Atomic Memories",
+      "level": "intermediate",
+      "module": "typed-extraction",
+      "stage": "extract",
+      "order": 16,
+      "minutes": 35,
+      "objective": "Size a memory so it can be updated later; recognise one that is too big to revise.",
+      "path": "curriculum/intermediate/atomic-memories/index.md",
+      "capstone_piece": [
+        "memlab.extract.atomise"
+      ]
+    },
+    {
+      "id": "entities-and-aliases",
+      "title": "Entities and Aliases",
+      "level": "intermediate",
+      "module": "identity",
+      "stage": "store",
+      "order": 17,
+      "minutes": 35,
+      "objective": "Collapse 'my wife', 'Sarah', and 'S.' into one canonical node.",
+      "path": "curriculum/intermediate/entities-and-aliases/index.md",
+      "capstone_piece": [
+        "memlab.entity.aliases"
+      ]
+    },
+    {
+      "id": "entity-resolution",
+      "title": "Entity Resolution",
+      "level": "intermediate",
+      "module": "identity",
+      "stage": "store",
+      "order": 18,
+      "minutes": 50,
+      "objective": "Block, score, merge, and un-merge; handle the split problem.",
+      "path": "curriculum/intermediate/entity-resolution/index.md",
+      "capstone_piece": [
+        "memlab.entity.resolve"
+      ]
+    },
+    {
+      "id": "scopes-and-namespaces",
+      "title": "Scopes and Namespaces",
+      "level": "intermediate",
+      "module": "identity",
+      "stage": "store",
+      "order": 19,
+      "minutes": 35,
+      "objective": "Key memory by user, agent, org, and session \u2014 the multi-tenancy substrate.",
+      "path": "curriculum/intermediate/scopes-and-namespaces/index.md",
+      "capstone_piece": [
+        "memlab.store.scopes"
+      ]
+    },
+    {
+      "id": "deduplication",
+      "title": "Deduplication",
+      "level": "intermediate",
+      "module": "consolidation",
+      "stage": "evolve",
+      "order": 20,
+      "minutes": 40,
+      "objective": "Detect exact, near, and semantic duplicates; choose write-time vs read-time dedupe.",
+      "path": "curriculum/intermediate/deduplication/index.md",
+      "capstone_piece": [
+        "memlab.evolve.dedupe"
+      ]
+    },
+    {
+      "id": "summarization-and-compaction",
+      "title": "Summarization and Compaction",
+      "level": "intermediate",
+      "module": "consolidation",
+      "stage": "evolve",
+      "order": 21,
+      "minutes": 45,
+      "objective": "Build rolling summaries and hierarchical digests without losing the originals.",
+      "path": "curriculum/intermediate/summarization-and-compaction/index.md",
+      "capstone_piece": [
+        "memlab.evolve.summarize"
+      ]
+    },
+    {
+      "id": "semantic-drift",
+      "title": "Semantic Drift",
+      "level": "intermediate",
+      "module": "consolidation",
+      "stage": "evolve",
+      "order": 22,
+      "minutes": 35,
+      "objective": "Bound degradation by re-deriving from anchored originals, never summarizing summaries.",
+      "path": "curriculum/intermediate/semantic-drift/index.md",
+      "capstone_piece": [
+        "memlab.evolve.drift"
+      ]
+    },
+    {
+      "id": "episodic-to-semantic",
+      "title": "From Episode to Belief",
+      "level": "intermediate",
+      "module": "consolidation",
+      "stage": "evolve",
+      "order": 23,
+      "minutes": 40,
+      "objective": "Promote 'on Tuesday she said X' to 'she prefers X' \u2014 and know when that is wrong.",
+      "path": "curriculum/intermediate/episodic-to-semantic/index.md",
+      "capstone_piece": [
+        "memlab.evolve.promote"
+      ]
+    },
+    {
+      "id": "contradiction-detection",
+      "title": "Contradiction Detection",
+      "level": "intermediate",
+      "module": "conflict",
+      "stage": "evolve",
+      "order": 24,
+      "minutes": 50,
+      "objective": "Separate a genuine contradiction from a legitimate change over time.",
+      "path": "curriculum/intermediate/contradiction-detection/index.md",
+      "capstone_piece": [
+        "memlab.evolve.conflict"
+      ]
+    },
+    {
+      "id": "memory-operations",
+      "title": "ADD, UPDATE, DELETE, NOOP",
+      "level": "intermediate",
+      "module": "conflict",
+      "stage": "evolve",
+      "order": 25,
+      "minutes": 40,
+      "objective": "See why a free-form LLM UPDATE decision is the largest source of silent memory corruption.",
+      "path": "curriculum/intermediate/memory-operations/index.md",
+      "capstone_piece": [
+        "memlab.evolve.operations"
+      ]
+    },
+    {
+      "id": "deterministic-freshness",
+      "title": "Deterministic Arbitration",
+      "level": "intermediate",
+      "module": "conflict",
+      "stage": "evolve",
+      "order": 26,
+      "minutes": 45,
+      "objective": "Confine the model to detection and let rules decide, using recency, authority, and explicitness.",
+      "path": "curriculum/intermediate/deterministic-freshness/index.md",
+      "capstone_piece": [
+        "memlab.evolve.arbitrate"
+      ]
+    },
+    {
+      "id": "supersession-not-deletion",
+      "title": "Supersede, Never Destroy",
+      "level": "intermediate",
+      "module": "conflict",
+      "stage": "evolve",
+      "order": 27,
+      "minutes": 45,
+      "objective": "Keep the audit trail that makes bi-temporal modeling possible later.",
+      "path": "curriculum/intermediate/supersession-not-deletion/index.md",
+      "capstone_piece": [
+        "memlab.evolve.supersede"
+      ]
+    },
+    {
+      "id": "why-forgetting-is-a-feature",
+      "title": "Why Forgetting Is a Feature",
+      "level": "intermediate",
+      "module": "forgetting",
+      "stage": "evolve",
+      "order": 28,
+      "minutes": 30,
+      "objective": "Justify forgetting on cost, latency, precision, privacy, and coherence.",
+      "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md",
+      "capstone_piece": [
+        "memlab.forget.audit"
+      ]
+    },
+    {
+      "id": "salience-scoring",
+      "title": "Salience Scoring",
+      "level": "intermediate",
+      "module": "forgetting",
+      "stage": "evolve",
+      "order": 29,
+      "minutes": 45,
+      "objective": "Combine recency, reinforcement, explicit markers, and retrieval-hit feedback.",
+      "path": "curriculum/intermediate/salience-scoring/index.md",
+      "capstone_piece": [
+        "memlab.forget.salience"
+      ]
+    },
+    {
+      "id": "decay-and-tiers",
+      "title": "Decay and Memory Tiers",
+      "level": "intermediate",
+      "module": "forgetting",
+      "stage": "evolve",
+      "order": 30,
+      "minutes": 45,
+      "objective": "Move memories across scratchpad, working, and long-term tiers under decay and reinforcement.",
+      "path": "curriculum/intermediate/decay-and-tiers/index.md",
+      "capstone_piece": [
+        "memlab.forget.decay"
+      ]
+    },
+    {
+      "id": "budgeted-forgetting",
+      "title": "Forgetting Under a Budget",
+      "level": "intermediate",
+      "module": "forgetting",
+      "stage": "evolve",
+      "order": 31,
+      "minutes": 40,
+      "objective": "Evict, archive, or quarantine within a bounded store, and tune without losing the user.",
+      "path": "curriculum/intermediate/budgeted-forgetting/index.md",
+      "capstone_piece": [
+        "memlab.forget.budget"
+      ]
+    },
+    {
+      "id": "scope-then-rank",
+      "title": "Scope, Then Rank",
+      "level": "intermediate",
+      "module": "retrieval-proper",
+      "stage": "retrieve",
+      "order": 32,
+      "minutes": 35,
+      "objective": "Apply hard filters on owner, type, and validity before any similarity is computed.",
+      "path": "curriculum/intermediate/scope-then-rank/index.md",
+      "capstone_piece": [
+        "memlab.retrieve.scoped"
+      ]
+    },
+    {
+      "id": "hybrid-ranking",
+      "title": "Hybrid Ranking",
+      "level": "intermediate",
+      "module": "retrieval-proper",
+      "stage": "retrieve",
+      "order": 33,
+      "minutes": 55,
+      "objective": "Fuse semantic, lexical, recency, and salience signals; add diversity.",
+      "path": "curriculum/intermediate/hybrid-ranking/index.md",
+      "capstone_piece": [
+        "memlab.retrieve.hybrid"
+      ]
+    },
+    {
+      "id": "query-formulation",
+      "title": "The Query Is Not the Last Message",
+      "level": "intermediate",
+      "module": "retrieval-proper",
+      "stage": "retrieve",
+      "order": 34,
+      "minutes": 45,
+      "objective": "Rewrite and expand queries; condition retrieval on intent.",
+      "path": "curriculum/intermediate/query-formulation/index.md",
+      "capstone_piece": [
+        "memlab.retrieve.query"
+      ]
+    },
+    {
+      "id": "retrieval-triggers",
+      "title": "Should I Even Look?",
+      "level": "intermediate",
+      "module": "retrieval-proper",
+      "stage": "retrieve",
+      "order": 35,
+      "minutes": 35,
+      "objective": "Choose between always-on retrieval and memory as a tool call.",
+      "path": "curriculum/intermediate/retrieval-triggers/index.md",
+      "capstone_piece": [
+        "memlab.retrieve.triggers"
+      ]
+    },
+    {
+      "id": "vector-stores-for-mutable-data",
+      "title": "Vector Stores for Data That Changes",
+      "level": "intermediate",
+      "module": "stores",
+      "stage": "store",
+      "order": 36,
+      "minutes": 45,
+      "objective": "Handle reindexing, tombstones, and embedding staleness after an UPDATE.",
+      "path": "curriculum/intermediate/vector-stores-for-mutable-data/index.md",
+      "capstone_piece": [
+        "memlab.store.vector"
+      ]
+    },
+    {
+      "id": "relational-stores",
+      "title": "The Underrated Default",
+      "level": "intermediate",
+      "module": "stores",
+      "stage": "store",
+      "order": 37,
+      "minutes": 40,
+      "objective": "Use SQLite with FTS as a genuinely good memory store.",
+      "path": "curriculum/intermediate/relational-stores/index.md",
+      "capstone_piece": [
+        "memlab.store.sqlite"
+      ]
+    },
+    {
+      "id": "graph-stores",
+      "title": "Graph Stores",
+      "level": "intermediate",
+      "module": "stores",
+      "stage": "store",
+      "order": 38,
+      "minutes": 40,
+      "objective": "Model entities and relations; traverse for multi-hop recall.",
+      "path": "curriculum/intermediate/graph-stores/index.md",
+      "capstone_piece": [
+        "memlab.store.graph"
+      ]
+    },
+    {
+      "id": "hybrid-architecture",
+      "title": "Hybrid Architecture",
+      "level": "intermediate",
+      "module": "stores",
+      "stage": "store",
+      "order": 39,
+      "minutes": 40,
+      "objective": "Pick a store per memory type and keep them consistent under write fan-out.",
+      "path": "curriculum/intermediate/hybrid-architecture/index.md",
+      "capstone_piece": [
+        "memlab.store.hybrid"
+      ]
+    },
+    {
+      "id": "the-packing-problem",
+      "title": "The Packing Problem",
+      "level": "intermediate",
+      "module": "assembly",
+      "stage": "assemble",
+      "order": 40,
+      "minutes": 40,
+      "objective": "Treat the token budget as constrained selection, not truncation.",
+      "path": "curriculum/intermediate/the-packing-problem/index.md",
+      "capstone_piece": [
+        "memlab.assemble.budget"
+      ]
+    },
+    {
+      "id": "ordering-and-formatting",
+      "title": "Ordering and Formatting",
+      "level": "intermediate",
+      "module": "assembly",
+      "stage": "assemble",
+      "order": 41,
+      "minutes": 35,
+      "objective": "Price the line format, and check whether ordering by score costs anything.",
+      "path": "curriculum/intermediate/ordering-and-formatting/index.md",
+      "capstone_piece": [
+        "memlab.assemble.ordering"
+      ]
+    },
+    {
+      "id": "compaction-safety",
+      "title": "What Must Never Be Dropped",
+      "level": "intermediate",
+      "module": "assembly",
+      "stage": "assemble",
+      "order": 42,
+      "minutes": 40,
+      "objective": "Make coverage an invariant of the packer, derived from the question rather than a topic list.",
+      "path": "curriculum/intermediate/compaction-safety/index.md",
+      "capstone_piece": [
+        "memlab.assemble.pinning"
+      ]
+    },
+    {
+      "id": "slot-value",
+      "title": "Does This Earn Its Tokens?",
+      "level": "intermediate",
+      "module": "assembly",
+      "stage": "assemble",
+      "order": 43,
+      "minutes": 45,
+      "objective": "Price every element of the context, including the ones that are not memories.",
+      "path": "curriculum/intermediate/slot-value/index.md",
+      "capstone_piece": [
+        "memlab.assemble.value"
+      ]
+    },
+    {
+      "id": "two-clocks",
+      "title": "Two Clocks",
+      "level": "advanced",
+      "module": "temporal",
+      "stage": "store",
+      "order": 44,
+      "minutes": 45,
+      "objective": "Audit which of the two clocks is actually running; four instants, not two.",
+      "path": "curriculum/advanced/two-clocks/index.md",
+      "capstone_piece": [
+        "memlab.temporal.clocks"
+      ]
+    },
+    {
+      "id": "validity-intervals",
+      "title": "Validity Intervals",
+      "level": "advanced",
+      "module": "temporal",
+      "stage": "store",
+      "order": 45,
+      "minutes": 50,
+      "objective": "Separate when a fact was true from when it was believed, and query both.",
+      "path": "curriculum/advanced/validity-intervals/index.md",
+      "capstone_piece": [
+        "memlab.temporal.validity"
+      ]
+    },
+    {
+      "id": "temporal-questions",
+      "title": "Three Temporal Questions",
+      "level": "advanced",
+      "module": "temporal",
+      "stage": "retrieve",
+      "order": 46,
+      "minutes": 50,
+      "objective": "Route the three temporal questions, and release every filter that assumed now.",
+      "path": "curriculum/advanced/temporal-questions/index.md",
+      "capstone_piece": [
+        "memlab.temporal.questions"
+      ]
+    },
+    {
+      "id": "relative-time-resolution",
+      "title": "Resolving 'Last Week'",
+      "level": "advanced",
+      "module": "temporal",
+      "stage": "extract",
+      "order": 47,
+      "minutes": 50,
+      "objective": "Four classes of relative reference, and the one you must not resolve.",
+      "path": "curriculum/advanced/relative-time-resolution/index.md",
+      "capstone_piece": [
+        "memlab.temporal.anchor"
+      ]
+    },
+    {
+      "id": "temporal-knowledge-graphs",
+      "title": "Temporal Knowledge Graphs",
+      "level": "advanced",
+      "module": "temporal",
+      "stage": "store",
+      "order": 48,
+      "minutes": 50,
+      "objective": "Cascade invalidation through the derivation graph -- the one that actually has edges.",
+      "path": "curriculum/advanced/temporal-knowledge-graphs/index.md",
+      "capstone_piece": [
+        "memlab.temporal.cascade"
+      ]
+    },
+    {
+      "id": "sleep-time-compute",
+      "title": "Sleep-Time Compute",
+      "level": "advanced",
+      "module": "sleep-time",
+      "stage": "evolve",
+      "order": 49,
+      "minutes": 50,
+      "objective": "The window is the cost, not the compute -- and the gate that closes it is already computed.",
+      "path": "curriculum/advanced/sleep-time-compute/index.md",
+      "capstone_piece": [
+        "memlab.sleep.schedule"
+      ]
+    },
+    {
+      "id": "background-job-mechanics",
+      "title": "Background Job Mechanics",
+      "level": "advanced",
+      "module": "sleep-time",
+      "stage": "evolve",
+      "order": 50,
+      "minutes": 50,
+      "objective": "Write back only what the job read -- absence means two opposite things.",
+      "path": "curriculum/advanced/background-job-mechanics/index.md",
+      "capstone_piece": [
+        "memlab.sleep.job"
+      ]
+    },
+    {
+      "id": "reflection-and-insight",
+      "title": "Reflection and Insight",
+      "level": "advanced",
+      "module": "sleep-time",
+      "stage": "evolve",
+      "order": 51,
+      "minutes": 55,
+      "objective": "Derive higher-order beliefs, and measure that storing them makes the answer worse.",
+      "path": "curriculum/advanced/reflection-and-insight/index.md",
+      "capstone_piece": [
+        "memlab.sleep.reflect"
+      ]
+    },
+    {
+      "id": "promotion-as-release",
+      "title": "Promotion as a Release",
+      "level": "advanced",
+      "module": "sleep-time",
+      "stage": "evolve",
+      "order": 52,
+      "minutes": 50,
+      "objective": "Measure a consolidation before applying it, and be able to take it back.",
+      "path": "curriculum/advanced/promotion-as-release/index.md",
+      "capstone_piece": [
+        "memlab.sleep.release"
+      ]
+    },
+    {
+      "id": "memory-topologies",
+      "title": "Memory Topologies",
+      "level": "advanced",
+      "module": "multi-agent",
+      "stage": "store",
+      "order": 53,
+      "minutes": 45,
+      "objective": "Price each shape by what a reader loses -- and by what it leaks.",
+      "path": "curriculum/advanced/memory-topologies/index.md",
+      "capstone_piece": [
+        "memlab.agents.topology"
+      ]
+    },
+    {
+      "id": "provenance-and-trust",
+      "title": "Provenance and Trust",
+      "level": "advanced",
+      "module": "multi-agent",
+      "stage": "govern",
+      "order": 54,
+      "minutes": 50,
+      "objective": "Trust the claim, not the claimant -- and flag what cannot be assessed.",
+      "path": "curriculum/advanced/provenance-and-trust/index.md",
+      "capstone_piece": [
+        "memlab.agents.trust"
+      ]
+    },
+    {
+      "id": "cross-agent-write-conflicts",
+      "title": "Cross-Agent Write Conflicts",
+      "level": "advanced",
+      "module": "multi-agent",
+      "stage": "evolve",
+      "order": 55,
+      "minutes": 50,
+      "objective": "The precedence rule is a threshold -- and above it, recency decides.",
+      "path": "curriculum/advanced/cross-agent-write-conflicts/index.md",
+      "capstone_piece": [
+        "memlab.agents.conflicts"
+      ]
+    },
+    {
+      "id": "memory-access-control",
+      "title": "Memory Access Control",
+      "level": "advanced",
+      "module": "multi-agent",
+      "stage": "govern",
+      "order": 56,
+      "minutes": 50,
+      "objective": "Say no to a write, and assert the filter that says no to a read.",
+      "path": "curriculum/advanced/memory-access-control/index.md",
+      "capstone_piece": [
+        "memlab.agents.authorise"
+      ]
+    },
+    {
+      "id": "from-facts-to-a-user-model",
+      "title": "From Facts to a User Model",
+      "level": "advanced",
+      "module": "personalization",
+      "stage": "evolve",
+      "order": 57,
+      "minutes": 50,
+      "objective": "Key the model on attributes, and keep what does not fit.",
+      "path": "curriculum/advanced/from-facts-to-a-user-model/index.md",
+      "capstone_piece": [
+        "memlab.user.model"
+      ]
+    },
+    {
+      "id": "implicit-signals",
+      "title": "Behaviour as Memory",
+      "level": "advanced",
+      "module": "personalization",
+      "stage": "extract",
+      "order": 58,
+      "minutes": 50,
+      "objective": "A correction is a labelled negative example, and it always arrives late.",
+      "path": "curriculum/advanced/implicit-signals/index.md",
+      "capstone_piece": [
+        "memlab.user.signals"
+      ]
+    },
+    {
+      "id": "applying-the-model",
+      "title": "Personalization Without Creepiness",
+      "level": "advanced",
+      "module": "personalization",
+      "stage": "assemble",
+      "order": 59,
+      "minutes": 50,
+      "objective": "Split the model by how each attribute is used, and report what was withheld.",
+      "path": "curriculum/advanced/applying-the-model/index.md",
+      "capstone_piece": [
+        "memlab.user.apply"
+      ]
+    },
+    {
+      "id": "cold-start-and-shared-accounts",
+      "title": "Cold Start and Shared Accounts",
+      "level": "advanced",
+      "module": "personalization",
+      "stage": "retrieve",
+      "order": 60,
+      "minutes": 45,
+      "objective": "Coverage is not knowledge, and one field stands between two people.",
+      "path": "curriculum/advanced/cold-start-and-shared-accounts/index.md",
+      "capstone_piece": [
+        "memlab.user.coverage"
+      ]
+    },
+    {
+      "id": "procedural-memory",
+      "title": "Procedural Memory",
+      "level": "advanced",
+      "module": "procedural",
+      "stage": "store",
+      "order": 61,
+      "minutes": 45,
+      "objective": "Order survives by exception, and a comment about a workflow parses as one.",
+      "path": "curriculum/advanced/procedural-memory/index.md",
+      "capstone_piece": [
+        "memlab.procedural.steps"
+      ]
+    },
+    {
+      "id": "learning-from-outcomes",
+      "title": "Learning From Outcomes",
+      "level": "advanced",
+      "module": "procedural",
+      "stage": "evolve",
+      "order": 62,
+      "minutes": 45,
+      "objective": "The conclusion survives and the evidence does not -- measured from the transcript.",
+      "path": "curriculum/advanced/learning-from-outcomes/index.md",
+      "capstone_piece": [
+        "memlab.procedural.outcomes"
+      ]
+    },
+    {
+      "id": "retrieving-procedures",
+      "title": "Retrieving Procedures",
+      "level": "advanced",
+      "module": "procedural",
+      "stage": "retrieve",
+      "order": 63,
+      "minutes": 45,
+      "objective": "A workflow loses to a comment about it, and no ranker tuning fixes that.",
+      "path": "curriculum/advanced/retrieving-procedures/index.md",
+      "capstone_piece": [
+        "memlab.procedural.retrieve"
+      ]
+    },
+    {
+      "id": "pii-on-the-write-path",
+      "title": "PII on the Write Path",
+      "level": "advanced",
+      "module": "privacy",
+      "stage": "govern",
+      "order": 64,
+      "minutes": 45,
+      "objective": "Label personal data without deciding at the gate -- the strict policy breaks the exam.",
+      "path": "curriculum/advanced/pii-on-the-write-path/index.md",
+      "capstone_piece": [
+        "memlab.privacy.classify"
+      ]
+    },
+    {
+      "id": "redaction-and-minimization",
+      "title": "Redaction and Minimization",
+      "level": "advanced",
+      "module": "privacy",
+      "stage": "govern",
+      "order": 65,
+      "minutes": 45,
+      "objective": "Coarsen per kind, and measure what each level costs the answer.",
+      "path": "curriculum/advanced/redaction-and-minimization/index.md",
+      "capstone_piece": [
+        "memlab.privacy.redact"
+      ]
+    },
+    {
+      "id": "deletion-that-actually-deletes",
+      "title": "Deletion That Actually Deletes",
+      "level": "advanced",
+      "module": "privacy",
+      "stage": "govern",
+      "order": 66,
+      "minutes": 55,
+      "objective": "Resolve the request by label, then reach every structure -- and report the zeroes.",
+      "path": "curriculum/advanced/deletion-that-actually-deletes/index.md",
+      "capstone_piece": [
+        "memlab.privacy.delete"
+      ]
+    },
+    {
+      "id": "rtbf-and-auditability",
+      "title": "Proving You Forgot",
+      "level": "advanced",
+      "module": "privacy",
+      "stage": "govern",
+      "order": 67,
+      "minutes": 45,
+      "objective": "Prove a deletion using the content-addressed id, and keep none of the content.",
+      "path": "curriculum/advanced/rtbf-and-auditability/index.md",
+      "capstone_piece": [
+        "memlab.privacy.audit"
+      ]
+    },
+    {
+      "id": "memory-attacks",
+      "title": "Memory Attacks",
+      "level": "advanced",
+      "module": "privacy",
+      "stage": "govern",
+      "order": 68,
+      "minutes": 50,
+      "objective": "Three defences exist, all accidental, and the fourth attack has none.",
+      "path": "curriculum/advanced/memory-attacks/index.md",
+      "capstone_piece": [
+        "memlab.privacy.attacks"
+      ]
+    },
+    {
+      "id": "why-memory-eval-is-hard",
+      "title": "Why Memory Eval Is Hard",
+      "level": "advanced",
+      "module": "evaluation",
+      "stage": "govern",
+      "order": 69,
+      "minutes": 45,
+      "objective": "Count what can be scored at all, before scoring anything.",
+      "path": "curriculum/advanced/why-memory-eval-is-hard/index.md",
+      "capstone_piece": [
+        "memlab.eval.harness"
+      ]
+    },
+    {
+      "id": "component-metrics",
+      "title": "Component Metrics",
+      "level": "advanced",
+      "module": "evaluation",
+      "stage": "govern",
+      "order": 70,
+      "minutes": 50,
+      "objective": "Score the stages -- and debug the metric before believing it about the system.",
+      "path": "curriculum/advanced/component-metrics/index.md",
+      "capstone_piece": [
+        "memlab.eval.components"
+      ]
+    },
+    {
+      "id": "end-to-end-eval",
+      "title": "Build Your Own Harness",
+      "level": "advanced",
+      "module": "evaluation",
+      "stage": "govern",
+      "order": 71,
+      "minutes": 50,
+      "objective": "One battery across every profile -- and name what it cannot see.",
+      "path": "curriculum/advanced/end-to-end-eval/index.md",
+      "capstone_piece": [
+        "memlab.eval.suite"
+      ]
+    },
+    {
+      "id": "regression-testing-state",
+      "title": "Regression Testing a Stateful System",
+      "level": "advanced",
+      "module": "evaluation",
+      "stage": "govern",
+      "order": 72,
+      "minutes": 45,
+      "objective": "Half the tests pin a measured number -- and a frozen corpus is what makes that affordable.",
+      "path": "curriculum/advanced/regression-testing-state/index.md",
+      "capstone_piece": [
+        "memlab.eval.regression"
+      ]
+    },
+    {
+      "id": "llm-as-judge-for-memory",
+      "title": "LLM as Judge, and Its Failure Modes",
+      "level": "advanced",
+      "module": "evaluation",
+      "stage": "govern",
+      "order": 73,
+      "minutes": 45,
+      "objective": "One judgement of three model calls -- and arbitration is never one of them.",
+      "path": "curriculum/advanced/llm-as-judge-for-memory/index.md",
+      "capstone_piece": [
+        "memlab.eval.judge"
+      ]
+    },
+    {
+      "id": "reading-benchmark-claims",
+      "title": "Reading Benchmark Claims Critically",
+      "level": "advanced",
+      "module": "evaluation",
+      "stage": "govern",
+      "order": 74,
+      "minutes": 45,
+      "objective": "Four questions for any score -- applied to your own claim first.",
+      "path": "curriculum/advanced/reading-benchmark-claims/index.md",
+      "capstone_piece": [
+        "memlab.eval.claims"
+      ]
+    },
+    {
+      "id": "cost-model",
+      "title": "The Write Path Dominates",
+      "level": "advanced",
+      "module": "scale",
+      "stage": "govern",
+      "order": 75,
+      "minutes": 45,
+      "objective": "Count the calls: the read path makes none, and the write path makes two per turn.",
+      "path": "curriculum/advanced/cost-model/index.md",
+      "capstone_piece": [
+        "memlab.cost.profile"
+      ]
+    },
+    {
+      "id": "latency-budget",
+      "title": "The Latency Budget",
+      "level": "advanced",
+      "module": "scale",
+      "stage": "govern",
+      "order": 76,
+      "minutes": 45,
+      "objective": "Half the per-turn cost blocks -- and the other half is a model call in a stage called deferrable.",
+      "path": "curriculum/advanced/latency-budget/index.md",
+      "capstone_piece": [
+        "memlab.cost.latency"
+      ]
+    },
+    {
+      "id": "caching-batching-routing",
+      "title": "Caching, Batching, Routing",
+      "level": "advanced",
+      "module": "scale",
+      "stage": "govern",
+      "order": 77,
+      "minutes": 45,
+      "objective": "Two of six tactics do not apply, and routing has two targets rather than one.",
+      "path": "curriculum/advanced/caching-batching-routing/index.md",
+      "capstone_piece": [
+        "memlab.cost.tactics"
+      ]
+    },
+    {
+      "id": "scaling-the-store",
+      "title": "Scaling the Store",
+      "level": "advanced",
+      "module": "scale",
+      "stage": "store",
+      "order": 78,
+      "minutes": 50,
+      "objective": "Replicate and measure -- retrieval grows linearly, consolidation grows 104x.",
+      "path": "curriculum/advanced/scaling-the-store/index.md",
+      "capstone_piece": [
+        "memlab.cost.scale"
+      ]
+    },
+    {
+      "id": "failure-field-guide",
+      "title": "The Failure Field Guide",
+      "level": "advanced",
+      "module": "production",
+      "stage": "govern",
+      "order": 79,
+      "minutes": 45,
+      "objective": "Five of seven symptoms are ambiguous, so the useful column is the tell.",
+      "path": "curriculum/advanced/failure-field-guide/index.md",
+      "capstone_piece": [
+        "memlab.production.failures"
+      ]
+    },
+    {
+      "id": "memory-observability",
+      "title": "Memory Observability",
+      "level": "advanced",
+      "module": "production",
+      "stage": "govern",
+      "order": 80,
+      "minutes": 45,
+      "objective": "Six answers from the record with no logging, and three that need a read-time write.",
+      "path": "curriculum/advanced/memory-observability/index.md",
+      "capstone_piece": [
+        "memlab.production.observe"
+      ]
+    },
+    {
+      "id": "invariants-and-drift-detection",
+      "title": "Invariants and Drift Detection",
+      "level": "advanced",
+      "module": "production",
+      "stage": "govern",
+      "order": 81,
+      "minutes": 45,
+      "objective": "Collect the invariants, label the kind, and stop an outlier moving its own reference.",
+      "path": "curriculum/advanced/invariants-and-drift-detection/index.md",
+      "capstone_piece": [
+        "memlab.production.invariants"
+      ]
+    },
+    {
+      "id": "schema-migration-on-live-memory",
+      "title": "Migrating Live Memory",
+      "level": "advanced",
+      "module": "production",
+      "stage": "store",
+      "order": 82,
+      "minutes": 45,
+      "objective": "The id hashes identity, not state -- which is why this migration was one phase.",
+      "path": "curriculum/advanced/schema-migration-on-live-memory/index.md",
+      "capstone_piece": [
+        "memlab.production.migrate"
+      ]
+    },
+    {
+      "id": "capstone-finale",
+      "title": "Hardening Pass",
+      "level": "advanced",
+      "module": "production",
+      "stage": "govern",
+      "order": 83,
+      "minutes": 50,
+      "objective": "Ship v0.3 with its six open items -- the section that makes the rest checkable.",
+      "path": "curriculum/advanced/capstone-finale/index.md",
+      "capstone_piece": [
+        "memlab.production.release"
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "absent-corpus",
+      "title": "The Absent Corpus",
+      "stage": "govern",
+      "path": "concepts/absent-corpus.md",
+      "taught_in": [
+        "why-memory-eval-is-hard"
+      ],
+      "used_in": [
+        "component-metrics",
+        "end-to-end-eval"
+      ],
+      "contrasts_with": [
+        "component-metric",
+        "moving-ground-truth"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "accidental-control",
+      "title": "Accidental Control",
+      "stage": "govern",
+      "path": "concepts/accidental-control.md",
+      "taught_in": [
+        "memory-attacks"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "threat-model"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "append-only-log",
+      "title": "The Append-Only Log",
+      "stage": "store",
+      "path": "concepts/append-only-log.md",
+      "taught_in": [
+        "writing-memories-down"
+      ],
+      "used_in": [
+        "embedding-recall"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "as-of-query",
+      "title": "As-Of Query",
+      "stage": "retrieve",
+      "path": "concepts/as-of-query.md",
+      "taught_in": [
+        "validity-intervals"
+      ],
+      "used_in": [
+        "temporal-questions",
+        "why-memory-eval-is-hard"
+      ],
+      "contrasts_with": [
+        "recency-bias"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "atomic-fact",
+      "title": "Atomicity",
+      "stage": "extract",
+      "path": "concepts/atomic-fact.md",
+      "taught_in": [
+        "naive-extraction"
+      ],
+      "used_in": [
+        "atomic-memories",
+        "extraction-pipelines"
+      ],
+      "contrasts_with": [],
+      "touches": 3
+    },
+    {
+      "id": "backfill",
+      "title": "Backfill",
+      "stage": "store",
+      "path": "concepts/backfill.md",
+      "taught_in": [
+        "schema-migration-on-live-memory"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "shape-change"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "belief-updating",
+      "title": "Belief Updating",
+      "stage": "evolve",
+      "path": "concepts/belief-updating.md",
+      "taught_in": [
+        "deterministic-freshness"
+      ],
+      "used_in": [
+        "supersession-not-deletion"
+      ],
+      "contrasts_with": [
+        "deduplication",
+        "relevance-vs-truth"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "benchmark-claim",
+      "title": "Benchmark Claim",
+      "stage": "govern",
+      "path": "concepts/benchmark-claim.md",
+      "taught_in": [
+        "reading-benchmark-claims"
+      ],
+      "used_in": [
+        "capstone-finale"
+      ],
+      "contrasts_with": [
+        "release-report",
+        "saturated-metric"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "bi-temporal-modeling",
+      "title": "Bi-Temporal Modeling",
+      "stage": "store",
+      "path": "concepts/bi-temporal-modeling.md",
+      "taught_in": [
+        "two-clocks"
+      ],
+      "used_in": [
+        "invariants-and-drift-detection",
+        "memory-observability",
+        "relative-time-resolution",
+        "schema-migration-on-live-memory",
+        "temporal-knowledge-graphs",
+        "validity-intervals"
+      ],
+      "contrasts_with": [
+        "event-time"
+      ],
+      "touches": 7
+    },
+    {
+      "id": "bounded-output",
+      "title": "Bounded Output",
+      "stage": "govern",
+      "path": "concepts/bounded-output.md",
+      "taught_in": [
+        "llm-as-judge-for-memory"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "judge-role"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "cache-key",
+      "title": "Cache Key",
+      "stage": "govern",
+      "path": "concepts/cache-key.md",
+      "taught_in": [
+        "caching-batching-routing"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "model-routing"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "canonical-entity",
+      "title": "Canonical Entity",
+      "stage": "store",
+      "path": "concepts/canonical-entity.md",
+      "taught_in": [
+        "entity-resolution"
+      ],
+      "used_in": [
+        "contradiction-detection",
+        "graph-stores",
+        "hybrid-ranking",
+        "scopes-and-namespaces"
+      ],
+      "contrasts_with": [],
+      "touches": 5
+    },
+    {
+      "id": "cascade-deletion",
+      "title": "Cascade Deletion",
+      "stage": "govern",
+      "path": "concepts/cascade-deletion.md",
+      "taught_in": [
+        "deletion-that-actually-deletes"
+      ],
+      "used_in": [
+        "failure-field-guide",
+        "memory-attacks",
+        "rtbf-and-auditability"
+      ],
+      "contrasts_with": [
+        "deletion-receipt",
+        "request-resolution",
+        "supersession"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "cascade-invalidation",
+      "title": "Cascade Invalidation",
+      "stage": "evolve",
+      "path": "concepts/cascade-invalidation.md",
+      "taught_in": [
+        "temporal-knowledge-graphs"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "supersession"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "competence",
+      "title": "Competence",
+      "stage": "govern",
+      "path": "concepts/competence.md",
+      "taught_in": [
+        "provenance-and-trust"
+      ],
+      "used_in": [
+        "cross-agent-write-conflicts",
+        "memory-access-control",
+        "memory-attacks"
+      ],
+      "contrasts_with": [
+        "provenance"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "component-metric",
+      "title": "Component Metric",
+      "stage": "govern",
+      "path": "concepts/component-metric.md",
+      "taught_in": [
+        "component-metrics"
+      ],
+      "used_in": [
+        "end-to-end-eval",
+        "reading-benchmark-claims"
+      ],
+      "contrasts_with": [
+        "absent-corpus",
+        "eval-suite",
+        "unlocated-assertion"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "composite-belief",
+      "title": "Composite Belief",
+      "stage": "evolve",
+      "path": "concepts/composite-belief.md",
+      "taught_in": [
+        "reflection-and-insight"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "element-cost"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "consistency-window",
+      "title": "Consistency Window",
+      "stage": "evolve",
+      "path": "concepts/consistency-window.md",
+      "taught_in": [
+        "sleep-time-compute"
+      ],
+      "used_in": [
+        "background-job-mechanics",
+        "failure-field-guide",
+        "implicit-signals",
+        "latency-budget"
+      ],
+      "contrasts_with": [
+        "sleep-time-compute"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "context-assembly",
+      "title": "Context Assembly",
+      "stage": "assemble",
+      "path": "concepts/context-assembly.md",
+      "taught_in": [
+        "context-assembly-v0"
+      ],
+      "used_in": [
+        "ordering-and-formatting",
+        "session-vs-longterm",
+        "slot-value",
+        "the-packing-problem",
+        "your-first-memory-layer"
+      ],
+      "contrasts_with": [],
+      "touches": 6
+    },
+    {
+      "id": "context-window",
+      "title": "The Context Window",
+      "stage": "assemble",
+      "path": "concepts/context-window.md",
+      "taught_in": [
+        "context-is-not-memory"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "working-memory"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "contradiction-vs-refinement",
+      "title": "Contradiction vs Refinement",
+      "stage": "evolve",
+      "path": "concepts/contradiction-vs-refinement.md",
+      "taught_in": [
+        "contradiction-detection"
+      ],
+      "used_in": [
+        "memory-operations"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "coreference",
+      "title": "Coreference",
+      "stage": "extract",
+      "path": "concepts/coreference.md",
+      "taught_in": [
+        "entities-and-aliases"
+      ],
+      "used_in": [
+        "entity-resolution",
+        "query-formulation"
+      ],
+      "contrasts_with": [],
+      "touches": 3
+    },
+    {
+      "id": "corpus-authorship",
+      "title": "Corpus Authorship",
+      "stage": "orientation",
+      "path": "concepts/corpus-authorship.md",
+      "taught_in": [
+        "memory-is-not-rag"
+      ],
+      "used_in": [],
+      "contrasts_with": [],
+      "touches": 1
+    },
+    {
+      "id": "correction-as-label",
+      "title": "Correction as Label",
+      "stage": "extract",
+      "path": "concepts/correction-as-label.md",
+      "taught_in": [
+        "implicit-signals"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "implicit-signal"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "corroboration",
+      "title": "Corroboration",
+      "stage": "evolve",
+      "path": "concepts/corroboration.md",
+      "taught_in": [
+        "episodic-to-semantic"
+      ],
+      "used_in": [
+        "contradiction-detection",
+        "salience-scoring"
+      ],
+      "contrasts_with": [
+        "deduplication",
+        "reinforcement"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "cost-profile",
+      "title": "Cost Profile",
+      "stage": "govern",
+      "path": "concepts/cost-profile.md",
+      "taught_in": [
+        "cost-model"
+      ],
+      "used_in": [
+        "caching-batching-routing",
+        "capstone-finale",
+        "latency-budget",
+        "scaling-the-store"
+      ],
+      "contrasts_with": [
+        "latency-budget",
+        "write-path-dominance"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "coverage-vs-knowledge",
+      "title": "Coverage vs Knowledge",
+      "stage": "retrieve",
+      "path": "concepts/coverage-vs-knowledge.md",
+      "taught_in": [
+        "cold-start-and-shared-accounts"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "user-model"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "critical-path",
+      "title": "Critical Path",
+      "stage": "govern",
+      "path": "concepts/critical-path.md",
+      "taught_in": [
+        "latency-budget"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "latency-budget"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "cross-writer-conflict",
+      "title": "Cross-Writer Conflict",
+      "stage": "evolve",
+      "path": "concepts/cross-writer-conflict.md",
+      "taught_in": [
+        "cross-agent-write-conflicts"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "memory-operations"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "decay-function",
+      "title": "Decay",
+      "stage": "evolve",
+      "path": "concepts/decay-function.md",
+      "taught_in": [
+        "decay-and-tiers"
+      ],
+      "used_in": [
+        "budgeted-forgetting"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "deduplication",
+      "title": "Deduplication",
+      "stage": "evolve",
+      "path": "concepts/deduplication.md",
+      "taught_in": [
+        "deduplication"
+      ],
+      "used_in": [
+        "background-job-mechanics",
+        "sleep-time-compute",
+        "summarization-and-compaction"
+      ],
+      "contrasts_with": [
+        "belief-updating",
+        "corroboration",
+        "entity-resolution",
+        "idempotency",
+        "sleep-time-compute",
+        "summarization"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "deletion-receipt",
+      "title": "Deletion Receipt",
+      "stage": "govern",
+      "path": "concepts/deletion-receipt.md",
+      "taught_in": [
+        "rtbf-and-auditability"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "cascade-deletion",
+        "proof-without-retention"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "derivation-graph",
+      "title": "Derivation Graph",
+      "stage": "store",
+      "path": "concepts/derivation-graph.md",
+      "taught_in": [
+        "temporal-knowledge-graphs"
+      ],
+      "used_in": [
+        "deletion-that-actually-deletes",
+        "invariants-and-drift-detection",
+        "memory-observability"
+      ],
+      "contrasts_with": [
+        "graph-traversal"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "derived-memory",
+      "title": "Derived Memory",
+      "stage": "evolve",
+      "path": "concepts/derived-memory.md",
+      "taught_in": [
+        "summarization-and-compaction"
+      ],
+      "used_in": [
+        "semantic-drift"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "differential-diagnosis",
+      "title": "Differential Diagnosis",
+      "stage": "govern",
+      "path": "concepts/differential-diagnosis.md",
+      "taught_in": [
+        "failure-field-guide"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "failure-class"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "disclosure",
+      "title": "Disclosure",
+      "stage": "assemble",
+      "path": "concepts/disclosure.md",
+      "taught_in": [
+        "applying-the-model"
+      ],
+      "used_in": [
+        "cold-start-and-shared-accounts"
+      ],
+      "contrasts_with": [
+        "memory-observability"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "dropped-clause",
+      "title": "Dropped Clause",
+      "stage": "extract",
+      "path": "concepts/dropped-clause.md",
+      "taught_in": [
+        "learning-from-outcomes"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "over-extraction"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "durability-gate",
+      "title": "The Durability Gate",
+      "stage": "extract",
+      "path": "concepts/durability-gate.md",
+      "taught_in": [
+        "extraction-pipelines"
+      ],
+      "used_in": [
+        "salience-scoring"
+      ],
+      "contrasts_with": [
+        "salience"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "element-cost",
+      "title": "Element Cost",
+      "stage": "assemble",
+      "path": "concepts/element-cost.md",
+      "taught_in": [
+        "slot-value"
+      ],
+      "used_in": [
+        "applying-the-model",
+        "cost-model",
+        "redaction-and-minimization",
+        "reflection-and-insight",
+        "retrieving-procedures"
+      ],
+      "contrasts_with": [
+        "composite-belief",
+        "token-budget"
+      ],
+      "touches": 6
+    },
+    {
+      "id": "entity-fragmentation",
+      "title": "Entity Fragmentation",
+      "stage": "store",
+      "path": "concepts/entity-fragmentation.md",
+      "taught_in": [
+        "watching-it-fail"
+      ],
+      "used_in": [
+        "entities-and-aliases",
+        "entity-resolution"
+      ],
+      "contrasts_with": [],
+      "touches": 3
+    },
+    {
+      "id": "entity-resolution",
+      "title": "Entity Resolution",
+      "stage": "store",
+      "path": "concepts/entity-resolution.md",
+      "taught_in": [
+        "entity-resolution"
+      ],
+      "used_in": [
+        "cold-start-and-shared-accounts",
+        "deduplication",
+        "graph-stores",
+        "pii-on-the-write-path"
+      ],
+      "contrasts_with": [
+        "deduplication"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "episodic-memory",
+      "title": "Episodic Memory",
+      "stage": "store",
+      "path": "concepts/episodic-memory.md",
+      "taught_in": [
+        "memory-taxonomy"
+      ],
+      "used_in": [
+        "supersession-not-deletion",
+        "the-memory-record",
+        "typed-memory-model"
+      ],
+      "contrasts_with": [
+        "semantic-memory"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "eval-suite",
+      "title": "Eval Suite",
+      "stage": "govern",
+      "path": "concepts/eval-suite.md",
+      "taught_in": [
+        "end-to-end-eval"
+      ],
+      "used_in": [
+        "llm-as-judge-for-memory",
+        "reading-benchmark-claims",
+        "regression-testing-state"
+      ],
+      "contrasts_with": [
+        "component-metric",
+        "flat-metric"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "event-time",
+      "title": "Event Time vs Ingestion Time",
+      "stage": "store",
+      "path": "concepts/event-time.md",
+      "taught_in": [
+        "the-memory-record"
+      ],
+      "used_in": [
+        "deterministic-freshness",
+        "two-clocks"
+      ],
+      "contrasts_with": [
+        "bi-temporal-modeling",
+        "relative-time"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "event-vs-state",
+      "title": "Events and States",
+      "stage": "extract",
+      "path": "concepts/event-vs-state.md",
+      "taught_in": [
+        "extraction-pipelines"
+      ],
+      "used_in": [
+        "episodic-to-semantic",
+        "extraction-quality"
+      ],
+      "contrasts_with": [],
+      "touches": 3
+    },
+    {
+      "id": "eviction",
+      "title": "Eviction",
+      "stage": "evolve",
+      "path": "concepts/eviction.md",
+      "taught_in": [
+        "budgeted-forgetting"
+      ],
+      "used_in": [
+        "compaction-safety",
+        "scope-then-rank"
+      ],
+      "contrasts_with": [],
+      "touches": 3
+    },
+    {
+      "id": "extraction",
+      "title": "Extraction",
+      "stage": "extract",
+      "path": "concepts/extraction.md",
+      "taught_in": [
+        "naive-extraction"
+      ],
+      "used_in": [
+        "extraction-pipelines",
+        "session-vs-longterm",
+        "writing-memories-down"
+      ],
+      "contrasts_with": [],
+      "touches": 4
+    },
+    {
+      "id": "extraction-pipeline",
+      "title": "The Extraction Pipeline",
+      "stage": "extract",
+      "path": "concepts/extraction-pipeline.md",
+      "taught_in": [
+        "extraction-pipelines"
+      ],
+      "used_in": [
+        "atomic-memories",
+        "cost-model",
+        "entities-and-aliases",
+        "extraction-quality",
+        "learning-from-outcomes",
+        "procedural-memory"
+      ],
+      "contrasts_with": [
+        "step-order"
+      ],
+      "touches": 7
+    },
+    {
+      "id": "failure-class",
+      "title": "Failure Class",
+      "stage": "govern",
+      "path": "concepts/failure-class.md",
+      "taught_in": [
+        "failure-field-guide"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "differential-diagnosis"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "flat-metric",
+      "title": "Flat Metric",
+      "stage": "govern",
+      "path": "concepts/flat-metric.md",
+      "taught_in": [
+        "end-to-end-eval"
+      ],
+      "used_in": [
+        "reading-benchmark-claims",
+        "regression-testing-state"
+      ],
+      "contrasts_with": [
+        "eval-suite"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "golden-conversation",
+      "title": "Golden Conversation",
+      "stage": "govern",
+      "path": "concepts/golden-conversation.md",
+      "taught_in": [
+        "regression-testing-state"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "pinned-assertion"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "graph-traversal",
+      "title": "Graph Traversal",
+      "stage": "store",
+      "path": "concepts/graph-traversal.md",
+      "taught_in": [
+        "graph-stores"
+      ],
+      "used_in": [
+        "hybrid-architecture",
+        "temporal-knowledge-graphs"
+      ],
+      "contrasts_with": [
+        "derivation-graph",
+        "indexed-predicate"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "growth-curve",
+      "title": "Growth Curve",
+      "stage": "store",
+      "path": "concepts/growth-curve.md",
+      "taught_in": [
+        "scaling-the-store"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "partition-key"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "hybrid-ranking",
+      "title": "Hybrid Ranking",
+      "stage": "retrieve",
+      "path": "concepts/hybrid-ranking.md",
+      "taught_in": [
+        "hybrid-ranking"
+      ],
+      "used_in": [
+        "query-formulation"
+      ],
+      "contrasts_with": [
+        "procedural-retrieval",
+        "vector-search"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "idempotency",
+      "title": "Idempotent Writes",
+      "stage": "store",
+      "path": "concepts/idempotency.md",
+      "taught_in": [
+        "writing-memories-down"
+      ],
+      "used_in": [
+        "deduplication",
+        "vector-stores-for-mutable-data"
+      ],
+      "contrasts_with": [
+        "deduplication"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "implicit-signal",
+      "title": "Implicit Signal",
+      "stage": "extract",
+      "path": "concepts/implicit-signal.md",
+      "taught_in": [
+        "implicit-signals"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "correction-as-label",
+        "memory-record"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "indexed-predicate",
+      "title": "Indexed Predicates",
+      "stage": "store",
+      "path": "concepts/indexed-predicate.md",
+      "taught_in": [
+        "relational-stores"
+      ],
+      "used_in": [
+        "graph-stores",
+        "hybrid-architecture"
+      ],
+      "contrasts_with": [
+        "graph-traversal",
+        "vector-index"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "irreducible-context",
+      "title": "The Irreducible Context",
+      "stage": "assemble",
+      "path": "concepts/irreducible-context.md",
+      "taught_in": [
+        "slot-value"
+      ],
+      "used_in": [],
+      "contrasts_with": [],
+      "touches": 1
+    },
+    {
+      "id": "judge-role",
+      "title": "Judge Role",
+      "stage": "govern",
+      "path": "concepts/judge-role.md",
+      "taught_in": [
+        "llm-as-judge-for-memory"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "bounded-output",
+        "memory-operations"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "label-not-permission",
+      "title": "Label, Not Permission",
+      "stage": "govern",
+      "path": "concepts/label-not-permission.md",
+      "taught_in": [
+        "pii-on-the-write-path"
+      ],
+      "used_in": [
+        "deletion-that-actually-deletes",
+        "redaction-and-minimization"
+      ],
+      "contrasts_with": [
+        "write-authorisation"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "latency-budget",
+      "title": "Latency Budget",
+      "stage": "govern",
+      "path": "concepts/latency-budget.md",
+      "taught_in": [
+        "latency-budget"
+      ],
+      "used_in": [
+        "caching-batching-routing"
+      ],
+      "contrasts_with": [
+        "cost-profile",
+        "critical-path"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "leak-assertion",
+      "title": "Leak Assertion",
+      "stage": "govern",
+      "path": "concepts/leak-assertion.md",
+      "taught_in": [
+        "memory-access-control"
+      ],
+      "used_in": [
+        "invariants-and-drift-detection"
+      ],
+      "contrasts_with": [
+        "write-authorisation"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "leave-one-out",
+      "title": "Leave-One-Out",
+      "stage": "govern",
+      "path": "concepts/leave-one-out.md",
+      "taught_in": [
+        "invariants-and-drift-detection"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "store-invariant"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "lessons-learned",
+      "title": "Lessons Learned",
+      "stage": "evolve",
+      "path": "concepts/lessons-learned.md",
+      "taught_in": [
+        "learning-from-outcomes"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "procedural-memory"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "lost-update",
+      "title": "Lost Update",
+      "stage": "evolve",
+      "path": "concepts/lost-update.md",
+      "taught_in": [
+        "background-job-mechanics"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "snapshot-isolation"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "memory-diff",
+      "title": "Memory Diff",
+      "stage": "govern",
+      "path": "concepts/memory-diff.md",
+      "taught_in": [
+        "memory-observability"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "memory-observability"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "memory-lifecycle",
+      "title": "The Memory Lifecycle",
+      "stage": "orientation",
+      "path": "concepts/memory-lifecycle.md",
+      "taught_in": [
+        "memory-is-not-rag"
+      ],
+      "used_in": [
+        "anatomy-of-a-memory-layer",
+        "context-is-not-memory",
+        "memory-taxonomy"
+      ],
+      "contrasts_with": [],
+      "touches": 4
+    },
+    {
+      "id": "memory-observability",
+      "title": "Memory Observability",
+      "stage": "govern",
+      "path": "concepts/memory-observability.md",
+      "taught_in": [
+        "memory-observability"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "disclosure",
+        "memory-diff"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "memory-operations",
+      "title": "Memory Operations",
+      "stage": "evolve",
+      "path": "concepts/memory-operations.md",
+      "taught_in": [
+        "memory-operations"
+      ],
+      "used_in": [
+        "cross-agent-write-conflicts",
+        "deterministic-freshness",
+        "llm-as-judge-for-memory",
+        "supersession-not-deletion"
+      ],
+      "contrasts_with": [
+        "cross-writer-conflict",
+        "judge-role"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "memory-promotion",
+      "title": "Promotion",
+      "stage": "evolve",
+      "path": "concepts/memory-promotion.md",
+      "taught_in": [
+        "session-vs-longterm"
+      ],
+      "used_in": [
+        "episodic-to-semantic",
+        "extraction-pipelines",
+        "watching-it-fail",
+        "your-first-memory-layer"
+      ],
+      "contrasts_with": [],
+      "touches": 5
+    },
+    {
+      "id": "memory-record",
+      "title": "The Memory Record",
+      "stage": "store",
+      "path": "concepts/memory-record.md",
+      "taught_in": [
+        "the-memory-record"
+      ],
+      "used_in": [
+        "naive-extraction",
+        "pii-on-the-write-path",
+        "procedural-memory",
+        "regression-testing-state",
+        "rtbf-and-auditability",
+        "schema-migration-on-live-memory",
+        "two-clocks",
+        "typed-memory-model",
+        "why-memory-eval-is-hard",
+        "writing-memories-down"
+      ],
+      "contrasts_with": [
+        "implicit-signal",
+        "personal-data",
+        "type-rules",
+        "user-model"
+      ],
+      "touches": 11
+    },
+    {
+      "id": "memory-staleness",
+      "title": "Staleness",
+      "stage": "evolve",
+      "path": "concepts/memory-staleness.md",
+      "taught_in": [
+        "watching-it-fail"
+      ],
+      "used_in": [],
+      "contrasts_with": [],
+      "touches": 1
+    },
+    {
+      "id": "memory-topology",
+      "title": "Memory Topology",
+      "stage": "store",
+      "path": "concepts/memory-topology.md",
+      "taught_in": [
+        "memory-topologies"
+      ],
+      "used_in": [
+        "memory-access-control",
+        "provenance-and-trust"
+      ],
+      "contrasts_with": [
+        "retrieval-scoping"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "minimisation",
+      "title": "Minimisation",
+      "stage": "govern",
+      "path": "concepts/minimisation.md",
+      "taught_in": [
+        "redaction-and-minimization"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "personal-data"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "model-routing",
+      "title": "Model Routing",
+      "stage": "govern",
+      "path": "concepts/model-routing.md",
+      "taught_in": [
+        "caching-batching-routing"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "cache-key"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "moving-ground-truth",
+      "title": "Moving Ground Truth",
+      "stage": "govern",
+      "path": "concepts/moving-ground-truth.md",
+      "taught_in": [
+        "why-memory-eval-is-hard"
+      ],
+      "used_in": [
+        "component-metrics"
+      ],
+      "contrasts_with": [
+        "absent-corpus"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "namespace",
+      "title": "Namespace",
+      "stage": "store",
+      "path": "concepts/namespace.md",
+      "taught_in": [
+        "scopes-and-namespaces"
+      ],
+      "used_in": [
+        "relational-stores",
+        "scope-then-rank"
+      ],
+      "contrasts_with": [
+        "provenance",
+        "retrieval-scoping"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "open-item",
+      "title": "Open Item",
+      "stage": "govern",
+      "path": "concepts/open-item.md",
+      "taught_in": [
+        "capstone-finale"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "release-report"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "over-extraction",
+      "title": "Over-Extraction",
+      "stage": "extract",
+      "path": "concepts/over-extraction.md",
+      "taught_in": [
+        "naive-extraction",
+        "watching-it-fail"
+      ],
+      "used_in": [
+        "extraction-quality",
+        "why-forgetting-is-a-feature"
+      ],
+      "contrasts_with": [
+        "dropped-clause"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "partition-key",
+      "title": "Partition Key",
+      "stage": "store",
+      "path": "concepts/partition-key.md",
+      "taught_in": [
+        "scaling-the-store"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "growth-curve"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "personal-data",
+      "title": "Personal Data",
+      "stage": "govern",
+      "path": "concepts/personal-data.md",
+      "taught_in": [
+        "pii-on-the-write-path"
+      ],
+      "used_in": [
+        "deletion-that-actually-deletes",
+        "redaction-and-minimization"
+      ],
+      "contrasts_with": [
+        "memory-record",
+        "minimisation"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "pinned-assertion",
+      "title": "Pinned Assertion",
+      "stage": "govern",
+      "path": "concepts/pinned-assertion.md",
+      "taught_in": [
+        "regression-testing-state"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "golden-conversation"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "procedural-memory",
+      "title": "Procedural Memory",
+      "stage": "store",
+      "path": "concepts/procedural-memory.md",
+      "taught_in": [
+        "memory-taxonomy",
+        "procedural-memory"
+      ],
+      "used_in": [
+        "atomic-memories",
+        "learning-from-outcomes",
+        "relative-time-resolution",
+        "retrieving-procedures",
+        "typed-memory-model"
+      ],
+      "contrasts_with": [
+        "lessons-learned",
+        "semantic-memory"
+      ],
+      "touches": 7
+    },
+    {
+      "id": "procedural-retrieval",
+      "title": "Procedural Retrieval",
+      "stage": "retrieve",
+      "path": "concepts/procedural-retrieval.md",
+      "taught_in": [
+        "retrieving-procedures"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "hybrid-ranking"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "proof-without-retention",
+      "title": "Proof Without Retention",
+      "stage": "govern",
+      "path": "concepts/proof-without-retention.md",
+      "taught_in": [
+        "rtbf-and-auditability"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "deletion-receipt"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "provenance",
+      "title": "Provenance",
+      "stage": "govern",
+      "path": "concepts/provenance.md",
+      "taught_in": [
+        "scopes-and-namespaces"
+      ],
+      "used_in": [
+        "cross-agent-write-conflicts",
+        "deterministic-freshness",
+        "implicit-signals",
+        "llm-as-judge-for-memory",
+        "memory-observability",
+        "memory-topologies",
+        "provenance-and-trust",
+        "summarization-and-compaction"
+      ],
+      "contrasts_with": [
+        "competence",
+        "namespace"
+      ],
+      "touches": 9
+    },
+    {
+      "id": "query-rewriting",
+      "title": "Query Formulation",
+      "stage": "retrieve",
+      "path": "concepts/query-rewriting.md",
+      "taught_in": [
+        "query-formulation"
+      ],
+      "used_in": [
+        "retrieval-triggers"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "read-path",
+      "title": "The Read Path",
+      "stage": "retrieve",
+      "path": "concepts/read-path.md",
+      "taught_in": [
+        "anatomy-of-a-memory-layer",
+        "memory-is-not-rag"
+      ],
+      "used_in": [
+        "embedding-recall",
+        "retrieval-is-not-enough",
+        "retrieval-triggers"
+      ],
+      "contrasts_with": [
+        "write-path"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "redaction",
+      "title": "Redaction",
+      "stage": "govern",
+      "path": "concepts/redaction.md",
+      "taught_in": [
+        "redaction-and-minimization"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "deletion"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "reflection",
+      "title": "Reflection",
+      "stage": "evolve",
+      "path": "concepts/reflection.md",
+      "taught_in": [
+        "reflection-and-insight"
+      ],
+      "used_in": [
+        "promotion-as-release"
+      ],
+      "contrasts_with": [
+        "summarization"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "reinforcement",
+      "title": "Reinforcement",
+      "stage": "evolve",
+      "path": "concepts/reinforcement.md",
+      "taught_in": [
+        "salience-scoring"
+      ],
+      "used_in": [
+        "decay-and-tiers"
+      ],
+      "contrasts_with": [
+        "corroboration"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "relative-time",
+      "title": "Relative Time Resolution",
+      "stage": "extract",
+      "path": "concepts/relative-time.md",
+      "taught_in": [
+        "relative-time-resolution"
+      ],
+      "used_in": [
+        "schema-migration-on-live-memory"
+      ],
+      "contrasts_with": [
+        "event-time"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "release-report",
+      "title": "Release Report",
+      "stage": "govern",
+      "path": "concepts/release-report.md",
+      "taught_in": [
+        "capstone-finale"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "benchmark-claim",
+        "open-item"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "relevance-vs-truth",
+      "title": "Relevance vs Truth",
+      "stage": "evolve",
+      "path": "concepts/relevance-vs-truth.md",
+      "taught_in": [
+        "why-forgetting-is-a-feature"
+      ],
+      "used_in": [
+        "ordering-and-formatting",
+        "salience-scoring"
+      ],
+      "contrasts_with": [
+        "belief-updating"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "request-resolution",
+      "title": "Request Resolution",
+      "stage": "govern",
+      "path": "concepts/request-resolution.md",
+      "taught_in": [
+        "deletion-that-actually-deletes"
+      ],
+      "used_in": [
+        "rtbf-and-auditability"
+      ],
+      "contrasts_with": [
+        "cascade-deletion"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "retrieval-scoping",
+      "title": "Retrieval Scoping",
+      "stage": "retrieve",
+      "path": "concepts/retrieval-scoping.md",
+      "taught_in": [
+        "retrieval-is-not-enough"
+      ],
+      "used_in": [
+        "applying-the-model",
+        "context-assembly-v0",
+        "memory-access-control",
+        "memory-topologies",
+        "relational-stores",
+        "scaling-the-store",
+        "scope-then-rank",
+        "scopes-and-namespaces",
+        "temporal-questions",
+        "watching-it-fail"
+      ],
+      "contrasts_with": [
+        "memory-topology",
+        "namespace",
+        "temporal-routing",
+        "vector-search",
+        "write-authorisation"
+      ],
+      "touches": 11
+    },
+    {
+      "id": "retrieval-trigger",
+      "title": "Retrieval Triggers",
+      "stage": "retrieve",
+      "path": "concepts/retrieval-trigger.md",
+      "taught_in": [
+        "retrieval-triggers"
+      ],
+      "used_in": [],
+      "contrasts_with": [],
+      "touches": 1
+    },
+    {
+      "id": "rollback",
+      "title": "Rollback",
+      "stage": "evolve",
+      "path": "concepts/rollback.md",
+      "taught_in": [
+        "promotion-as-release"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "deletion"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "salience",
+      "title": "Salience",
+      "stage": "evolve",
+      "path": "concepts/salience.md",
+      "taught_in": [
+        "salience-scoring"
+      ],
+      "used_in": [
+        "budgeted-forgetting",
+        "decay-and-tiers",
+        "hybrid-ranking",
+        "reflection-and-insight"
+      ],
+      "contrasts_with": [
+        "durability-gate",
+        "vector-search",
+        "volatility"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "saturated-metric",
+      "title": "Saturated Metric",
+      "stage": "govern",
+      "path": "concepts/saturated-metric.md",
+      "taught_in": [
+        "reading-benchmark-claims"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "benchmark-claim"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "score-fusion",
+      "title": "Score Fusion",
+      "stage": "retrieve",
+      "path": "concepts/score-fusion.md",
+      "taught_in": [
+        "hybrid-ranking"
+      ],
+      "used_in": [
+        "the-packing-problem"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "semantic-drift",
+      "title": "Semantic Drift",
+      "stage": "evolve",
+      "path": "concepts/semantic-drift.md",
+      "taught_in": [
+        "semantic-drift"
+      ],
+      "used_in": [
+        "episodic-to-semantic"
+      ],
+      "contrasts_with": [],
+      "touches": 2
+    },
+    {
+      "id": "semantic-memory",
+      "title": "Semantic Memory",
+      "stage": "store",
+      "path": "concepts/semantic-memory.md",
+      "taught_in": [
+        "memory-taxonomy"
+      ],
+      "used_in": [
+        "the-memory-record",
+        "typed-memory-model"
+      ],
+      "contrasts_with": [
+        "episodic-memory",
+        "procedural-memory",
+        "working-memory"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "shape-change",
+      "title": "Shape Change",
+      "stage": "store",
+      "path": "concepts/shape-change.md",
+      "taught_in": [
+        "schema-migration-on-live-memory"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "backfill"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "sleep-time-compute",
+      "title": "Sleep-Time Compute",
+      "stage": "evolve",
+      "path": "concepts/sleep-time-compute.md",
+      "taught_in": [
+        "sleep-time-compute"
+      ],
+      "used_in": [
+        "background-job-mechanics",
+        "latency-budget"
+      ],
+      "contrasts_with": [
+        "consistency-window",
+        "deduplication"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "slot",
+      "title": "Slot",
+      "stage": "evolve",
+      "path": "concepts/slot.md",
+      "taught_in": [
+        "contradiction-detection"
+      ],
+      "used_in": [
+        "compaction-safety",
+        "component-metrics",
+        "from-facts-to-a-user-model",
+        "hybrid-ranking",
+        "memory-operations",
+        "provenance-and-trust",
+        "query-formulation",
+        "reflection-and-insight",
+        "scaling-the-store",
+        "sleep-time-compute"
+      ],
+      "contrasts_with": [
+        "unnameable-claim",
+        "vector-search"
+      ],
+      "touches": 11
+    },
+    {
+      "id": "snapshot-isolation",
+      "title": "Snapshot Isolation",
+      "stage": "evolve",
+      "path": "concepts/snapshot-isolation.md",
+      "taught_in": [
+        "background-job-mechanics"
+      ],
+      "used_in": [
+        "promotion-as-release"
+      ],
+      "contrasts_with": [
+        "lost-update",
+        "staged-change"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "staged-change",
+      "title": "Staged Change",
+      "stage": "evolve",
+      "path": "concepts/staged-change.md",
+      "taught_in": [
+        "promotion-as-release"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "snapshot-isolation"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "standing-instruction",
+      "title": "Standing Instruction",
+      "stage": "assemble",
+      "path": "concepts/standing-instruction.md",
+      "taught_in": [
+        "applying-the-model"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "user-model"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "step-order",
+      "title": "Step Order",
+      "stage": "store",
+      "path": "concepts/step-order.md",
+      "taught_in": [
+        "procedural-memory"
+      ],
+      "used_in": [
+        "learning-from-outcomes"
+      ],
+      "contrasts_with": [
+        "extraction-pipeline"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "store-invariant",
+      "title": "Store Invariant",
+      "stage": "govern",
+      "path": "concepts/store-invariant.md",
+      "taught_in": [
+        "invariants-and-drift-detection"
+      ],
+      "used_in": [
+        "capstone-finale"
+      ],
+      "contrasts_with": [
+        "leave-one-out"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "summarization",
+      "title": "Summarization",
+      "stage": "evolve",
+      "path": "concepts/summarization.md",
+      "taught_in": [
+        "summarization-and-compaction"
+      ],
+      "used_in": [
+        "semantic-drift"
+      ],
+      "contrasts_with": [
+        "deduplication",
+        "reflection"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "supersession",
+      "title": "Supersession",
+      "stage": "evolve",
+      "path": "concepts/supersession.md",
+      "taught_in": [
+        "supersession-not-deletion"
+      ],
+      "used_in": [
+        "budgeted-forgetting",
+        "from-facts-to-a-user-model",
+        "hybrid-architecture",
+        "promotion-as-release",
+        "scope-then-rank",
+        "sleep-time-compute",
+        "two-clocks",
+        "validity-intervals",
+        "vector-stores-for-mutable-data",
+        "why-forgetting-is-a-feature",
+        "why-memory-eval-is-hard"
+      ],
+      "contrasts_with": [
+        "cascade-deletion",
+        "cascade-invalidation",
+        "tombstone",
+        "validity-interval"
+      ],
+      "touches": 12
+    },
+    {
+      "id": "temporal-routing",
+      "title": "Temporal Routing",
+      "stage": "retrieve",
+      "path": "concepts/temporal-routing.md",
+      "taught_in": [
+        "temporal-questions"
+      ],
+      "used_in": [
+        "retrieving-procedures"
+      ],
+      "contrasts_with": [
+        "retrieval-scoping"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "threat-model",
+      "title": "Threat Model",
+      "stage": "govern",
+      "path": "concepts/threat-model.md",
+      "taught_in": [
+        "memory-attacks"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "accidental-control"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "token-budget",
+      "title": "Token Budget",
+      "stage": "assemble",
+      "path": "concepts/token-budget.md",
+      "taught_in": [
+        "context-is-not-memory"
+      ],
+      "used_in": [
+        "context-assembly-v0",
+        "summarization-and-compaction",
+        "the-packing-problem",
+        "why-forgetting-is-a-feature"
+      ],
+      "contrasts_with": [
+        "element-cost"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "token-reservation",
+      "title": "Token Reservation",
+      "stage": "assemble",
+      "path": "concepts/token-reservation.md",
+      "taught_in": [
+        "the-packing-problem"
+      ],
+      "used_in": [
+        "compaction-safety",
+        "ordering-and-formatting",
+        "slot-value"
+      ],
+      "contrasts_with": [],
+      "touches": 4
+    },
+    {
+      "id": "tombstone",
+      "title": "Tombstone",
+      "stage": "store",
+      "path": "concepts/tombstone.md",
+      "taught_in": [
+        "vector-stores-for-mutable-data"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "supersession"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "type-rules",
+      "title": "Type Rules",
+      "stage": "store",
+      "path": "concepts/type-rules.md",
+      "taught_in": [
+        "typed-memory-model"
+      ],
+      "used_in": [
+        "contradiction-detection",
+        "decay-and-tiers",
+        "extraction-pipelines",
+        "hybrid-ranking",
+        "memory-operations"
+      ],
+      "contrasts_with": [
+        "memory-record"
+      ],
+      "touches": 6
+    },
+    {
+      "id": "unlocated-assertion",
+      "title": "Unlocated Assertion",
+      "stage": "govern",
+      "path": "concepts/unlocated-assertion.md",
+      "taught_in": [
+        "component-metrics"
+      ],
+      "used_in": [
+        "end-to-end-eval"
+      ],
+      "contrasts_with": [
+        "component-metric"
+      ],
+      "touches": 2
+    },
+    {
+      "id": "unnameable-claim",
+      "title": "Unnameable Claim",
+      "stage": "govern",
+      "path": "concepts/unnameable-claim.md",
+      "taught_in": [
+        "provenance-and-trust"
+      ],
+      "used_in": [
+        "failure-field-guide",
+        "from-facts-to-a-user-model"
+      ],
+      "contrasts_with": [
+        "slot"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "user-model",
+      "title": "User Model",
+      "stage": "evolve",
+      "path": "concepts/user-model.md",
+      "taught_in": [
+        "from-facts-to-a-user-model"
+      ],
+      "used_in": [
+        "applying-the-model",
+        "cold-start-and-shared-accounts",
+        "implicit-signals"
+      ],
+      "contrasts_with": [
+        "coverage-vs-knowledge",
+        "memory-record",
+        "standing-instruction"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "validity-interval",
+      "title": "Validity Interval",
+      "stage": "store",
+      "path": "concepts/validity-interval.md",
+      "taught_in": [
+        "validity-intervals"
+      ],
+      "used_in": [
+        "relative-time-resolution",
+        "temporal-knowledge-graphs",
+        "temporal-questions"
+      ],
+      "contrasts_with": [
+        "supersession"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "vector-index",
+      "title": "Vector Index",
+      "stage": "store",
+      "path": "concepts/vector-index.md",
+      "taught_in": [
+        "vector-stores-for-mutable-data"
+      ],
+      "used_in": [
+        "caching-batching-routing",
+        "cost-model",
+        "hybrid-architecture",
+        "relational-stores"
+      ],
+      "contrasts_with": [
+        "indexed-predicate",
+        "vector-search"
+      ],
+      "touches": 5
+    },
+    {
+      "id": "vector-search",
+      "title": "Vector Search",
+      "stage": "retrieve",
+      "path": "concepts/vector-search.md",
+      "taught_in": [
+        "embedding-recall"
+      ],
+      "used_in": [
+        "deduplication",
+        "hybrid-ranking",
+        "retrieval-is-not-enough",
+        "vector-stores-for-mutable-data",
+        "watching-it-fail",
+        "your-first-memory-layer"
+      ],
+      "contrasts_with": [
+        "hybrid-ranking",
+        "retrieval-scoping",
+        "salience",
+        "slot",
+        "vector-index"
+      ],
+      "touches": 7
+    },
+    {
+      "id": "volatility",
+      "title": "Volatility",
+      "stage": "evolve",
+      "path": "concepts/volatility.md",
+      "taught_in": [
+        "from-facts-to-a-user-model"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "salience"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "working-memory",
+      "title": "Working Memory",
+      "stage": "assemble",
+      "path": "concepts/working-memory.md",
+      "taught_in": [
+        "memory-taxonomy"
+      ],
+      "used_in": [
+        "context-is-not-memory",
+        "session-vs-longterm"
+      ],
+      "contrasts_with": [
+        "context-window",
+        "semantic-memory"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "write-authorisation",
+      "title": "Write Authorisation",
+      "stage": "govern",
+      "path": "concepts/write-authorisation.md",
+      "taught_in": [
+        "memory-access-control"
+      ],
+      "used_in": [
+        "memory-attacks",
+        "pii-on-the-write-path"
+      ],
+      "contrasts_with": [
+        "label-not-permission",
+        "leak-assertion",
+        "retrieval-scoping"
+      ],
+      "touches": 3
+    },
+    {
+      "id": "write-fan-out",
+      "title": "Write Fan-Out",
+      "stage": "store",
+      "path": "concepts/write-fan-out.md",
+      "taught_in": [
+        "hybrid-architecture"
+      ],
+      "used_in": [],
+      "contrasts_with": [],
+      "touches": 1
+    },
+    {
+      "id": "write-path",
+      "title": "The Write Path",
+      "stage": "extract",
+      "path": "concepts/write-path.md",
+      "taught_in": [
+        "anatomy-of-a-memory-layer",
+        "memory-is-not-rag"
+      ],
+      "used_in": [
+        "naive-extraction",
+        "retrieval-triggers"
+      ],
+      "contrasts_with": [
+        "read-path"
+      ],
+      "touches": 4
+    },
+    {
+      "id": "write-path-dominance",
+      "title": "Write-Path Dominance",
+      "stage": "govern",
+      "path": "concepts/write-path-dominance.md",
+      "taught_in": [
+        "cost-model"
+      ],
+      "used_in": [],
+      "contrasts_with": [
+        "cost-profile"
+      ],
+      "touches": 1
+    },
+    {
+      "id": "write-path-recall",
+      "title": "Write-Path Recall",
+      "stage": "extract",
+      "path": "concepts/write-path-recall.md",
+      "taught_in": [
+        "extraction-quality"
+      ],
+      "used_in": [],
+      "contrasts_with": [],
+      "touches": 1
+    }
+  ],
+  "hubs": [
+    {
+      "id": "supersession",
+      "title": "Supersession",
+      "touches": 12
+    },
+    {
+      "id": "retrieval-scoping",
+      "title": "Retrieval Scoping",
+      "touches": 11
+    },
+    {
+      "id": "slot",
+      "title": "Slot",
+      "touches": 11
+    },
+    {
+      "id": "memory-record",
+      "title": "The Memory Record",
+      "touches": 11
+    },
+    {
+      "id": "provenance",
+      "title": "Provenance",
+      "touches": 9
+    },
+    {
+      "id": "bi-temporal-modeling",
+      "title": "Bi-Temporal Modeling",
+      "touches": 7
+    },
+    {
+      "id": "procedural-memory",
+      "title": "Procedural Memory",
+      "touches": 7
+    },
+    {
+      "id": "extraction-pipeline",
+      "title": "The Extraction Pipeline",
+      "touches": 7
+    },
+    {
+      "id": "vector-search",
+      "title": "Vector Search",
+      "touches": 7
+    },
+    {
+      "id": "context-assembly",
+      "title": "Context Assembly",
+      "touches": 6
+    },
+    {
+      "id": "element-cost",
+      "title": "Element Cost",
+      "touches": 6
+    },
+    {
+      "id": "type-rules",
+      "title": "Type Rules",
+      "touches": 6
+    }
+  ]
+}

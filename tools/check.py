@@ -21,6 +21,8 @@ GENERATED = [
     ("render_syllabus.py", "--check"),
     ("build_graph.py", "--check"),
     ("render_nav.py", "--check"),
+    # Last: it reads concepts/graph.json, which build_graph.py has just checked.
+    ("build_site_data.py", "--check"),
 ]
 
 

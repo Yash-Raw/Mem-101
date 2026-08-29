@@ -30,7 +30,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-from _common import ROOT, concepts, lessons, syllabus, syllabus_lessons  # noqa: E402
+from _common import ROOT, concepts, lessons, syllabus, syllabus_lessons
 
 GRAPH = ROOT / "concepts" / "graph.json"
 DATA_OUT = ROOT / "docs" / "assets" / "data" / "site.json"
@@ -231,14 +231,15 @@ def render_hero(d: dict) -> str:
     )
     paths = [
         ("Thirty minutes",
-         "Run one lab and read <code>memory-is-not-rag</code>. That is the whole "
-         "argument, demonstrated rather than asserted."),
+         ("Run one lab and read <code>memory-is-not-rag</code>. That is the whole "
+          "argument, demonstrated rather than asserted.")),
         ("Front to back",
-         "The syllabus is the order, and CI proves it is a valid topological sort of "
-         "the prerequisite graph &mdash; nothing depends on something you have not met."),
+         ("The syllabus is the order, and CI proves it is a valid topological sort "
+          "of the prerequisite graph &mdash; nothing depends on something you have "
+          "not met.")),
         ("Straight at your bug",
-         "Scan the map for the failure you are actually hitting &mdash; a stale belief, "
-         "a duplicate, a leak that survived deletion."),
+         ("Scan the map for the failure you are actually hitting &mdash; a stale "
+          "belief, a duplicate, a leak that survived deletion.")),
     ]
     cards = "".join(
         f'      <a class="mem-path" href="{href}"><span class="mem-path__n">{i:02d}</span>'

@@ -253,15 +253,16 @@
   color: var(--mem-muted); text-wrap: pretty; }
 .mem-path__d code { font-size: 0.86em; color: var(--mem-alt); }
 
-.mem-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+.mem-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr));
   gap: 1px; background: var(--mem-faintest); border: 1px solid var(--mem-faintest);
   border-radius: var(--mem-r); overflow: hidden; margin-top: 0.4rem; }
 .mem-stat { background: var(--mem-surface); padding: 0.7rem 0.6rem; }
 .mem-stat__n { font-family: var(--mem-mono); font-size: 21px; font-weight: 500;
   color: var(--mem-fg); line-height: 1.1; }
 .mem-stat__unit { font-size: 13px; color: var(--mem-muted); }
-.mem-stat__l { font-family: var(--mem-mono); font-size: 10px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--mem-muted); margin-top: 3px; }
+.mem-stat__l { font-family: var(--mem-mono); font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--mem-muted); margin-top: 3px;
+  white-space: nowrap; }
 
 /* ---- generated pages: shared shell ---------------------------------------- */
 .mem-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
@@ -336,6 +337,74 @@ a.mem-card { display: block; text-decoration: none; }
 .mem-rank--top .mem-rank__bar { background: var(--mem-accent); }
 .mem-rank__n { font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted);
   text-align: right; }
+
+/* ---- the one way in ------------------------------------------------------
+ * The hero used to offer three equally-weighted paths, and README repeated the
+ * same three with different destinations. A beginner cannot choose between
+ * them, so there is one primary action and one demoted line.
+ */
+.mem-cta { display: block; text-decoration: none; padding: 1.1rem 1.25rem;
+  border: 1px solid var(--mem-accent); border-radius: var(--mem-r);
+  background: var(--mem-accent-low);
+  transition: border-color var(--mem-dur-ui) var(--mem-ease); }
+.mem-cta:hover { border-color: var(--mem-fg); }
+.mem-cta__l { display: block; font-family: var(--mem-mono); font-size: 10px;
+  letter-spacing: 0.11em; text-transform: uppercase; color: var(--mem-accent);
+  margin-bottom: 0.35rem; }
+.mem-cta__t { display: block; font-size: 22px; font-weight: 600;
+  color: var(--mem-fg); line-height: 1.2; margin-bottom: 0.4rem; }
+.mem-cta__d { display: block; font-size: 15px; line-height: 1.5;
+  color: var(--mem-muted); text-wrap: pretty; }
+.mem-cta__d b { color: var(--mem-alt); font-weight: 600; }
+.mem-second { font-size: 14px; color: var(--mem-muted); margin: 0.9rem 0 0; }
+
+/* ---- lesson strip ---------------------------------------------------------
+ * Injected by overrides/main.html on the 84 lesson pages. It answers "where am
+ * I" and surfaces the one command the lesson asks for -- which otherwise sits
+ * 61% of the way down a 1,500-word page, because the ten section headings are
+ * a CI-enforced order that this milestone may not touch.
+ */
+.mem-strip { margin: 0 0 1.8rem; padding: 0 0 0.9rem;
+  border-bottom: 1px solid var(--mem-faintest); }
+.mem-strip__where { font-family: var(--mem-mono); font-size: 11.5px;
+  letter-spacing: 0.04em; color: var(--mem-muted); margin: 0 0 0.6rem;
+  display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.mem-strip__where a { color: var(--mem-muted); text-decoration: none;
+  border-bottom: 1px solid var(--mem-faintest); }
+.mem-strip__where a:hover { color: var(--mem-accent); border-color: currentColor; }
+.mem-strip__sep { color: var(--mem-fainter); }
+.mem-strip .mem-lv { font-size: 11.5px; }
+.mem-strip__bar { display: block; height: 3px; border-radius: 2px;
+  background: var(--mem-faintest); overflow: hidden; }
+.mem-strip__fill { display: block; height: 3px; background: var(--mem-accent);
+  transition: width var(--mem-dur-teach) var(--mem-ease); }
+.mem-strip__lab { display: flex; align-items: baseline; gap: 0.55rem;
+  margin: 0.75rem 0 0; }
+.mem-strip__prompt { font-family: var(--mem-mono); font-size: 12px;
+  color: var(--mem-muted); }
+.mem-strip__lab code { font-size: 12.5px; background: none; padding: 0;
+  color: var(--mem-alt); }
+.mem-strip__done { font-family: var(--mem-mono); font-size: 11px;
+  letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+  margin-top: 0.7rem; padding: 5px 11px; border-radius: 6px;
+  border: 1px solid var(--mem-faintest); background: var(--mem-bg);
+  color: var(--mem-muted);
+  transition: color var(--mem-dur-ui) var(--mem-ease),
+              border-color var(--mem-dur-ui) var(--mem-ease); }
+.mem-strip__done:hover { color: var(--mem-fg); border-color: var(--mem-faint); }
+.mem-strip__done[aria-pressed="true"] { color: var(--mem-pass);
+  border-color: var(--mem-pass); }
+.mem-strip__done[aria-pressed="true"]::before { content: "\2713 "; }
+
+/* "Continue where you left off" -- written by progress.js, hidden until it has
+ * something true to say, so nothing flashes and nothing lies with JS off. */
+.mem-resume { display: none; }
+.mem-resume.is-on { display: flex; align-items: center; gap: 0.6rem;
+  margin: 0 0 1.4rem; padding: 0.7rem 0.95rem; border-radius: var(--mem-r);
+  border: 1px solid var(--mem-accent);
+  background: var(--mem-accent-low); font-size: 15px; }
+.mem-resume__l { font-family: var(--mem-mono); font-size: 10px;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--mem-muted); }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 1ms !important; animation-duration: 1ms !important; }

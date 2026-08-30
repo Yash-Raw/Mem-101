@@ -228,6 +228,39 @@ Site scripts derive their URLs from their own `src`, never from the site root:
 the published site is served from `/Mem-101/`, so a root-absolute fetch works
 under `mkdocs serve` and 404s in production. That is C5 applied to JavaScript.
 
+## Sequence, and why it lives in the template
+
+The course is one line -- 83 prerequisite edges, every one in-degree and
+out-degree 1 -- but the site presented it as a library, and a first-time
+learner said so. The fix was structure around the content, under a constraint
+worth keeping: **`git diff --stat curriculum/ concepts/` must stay empty.**
+
+That constraint is what puts the per-lesson furniture in `overrides/main.html`
+rather than in `build_graph.py`'s blocks, which are written *into* lesson
+markdown. `build_site_data.py` emits a second generated partial,
+`partials/lesson-strip.html` -- a Jinja lookup keyed by `page.file.src_uri`
+carrying position, module, minutes and the lab command. Build-time, like the
+hero: "lesson 7 of 84" has to survive JavaScript being off.
+
+Three things measured here that are easy to get wrong again:
+
+- **`navigation.prune` alone does nothing for the concept index.**
+  `navigation.sections` renders top-level groups fully expanded, so all 132
+  concept links shipped on every lesson page. Dropping `sections` took the
+  sidebar from 242 links and 115 KB to 19 links and 12 KB.
+- **A section index page must literally be named `index.md`.** Material keys
+  `navigation.indexes` off mkdocs' `File.is_index`, so `modules/foundations.md`
+  was ignored and `modules/foundations/index.md` works. That is why the 21
+  generated module pages are directory index pages.
+- **Nav order *is* prev/next.** `Contributing` sits below the generated block
+  because whatever is directly above it becomes lesson 1's "previous". The one
+  seam left: the final lesson's "next" is the first concept page, since
+  `render_nav.py` appends Concepts after the levels.
+
+`docs/assets/js/progress.js` is per-viewer only -- a localStorage list of
+finished lesson ids behind the strip's button, and a "continue" line on the
+home page. No displayed figure is ever derived from it.
+
 ## What the course established
 
 Three claims survived every measurement, and none was obvious at the start.

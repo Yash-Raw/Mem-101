@@ -6,6 +6,7 @@
   },
   "stats": {
     "lessons": 84,
+    "modules": 21,
     "concepts": 132,
     "minutes": 3655,
     "hours": 60.9,
@@ -102,1164 +103,3090 @@
       "id": "memory-is-not-rag",
       "title": "Memory Is Not RAG",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "foundations",
+      "module_title": "Why Memory Is Not RAG",
+      "module_index": 1,
+      "module_total": 4,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "orientation",
       "order": 0,
+      "position": 1,
       "minutes": 30,
       "objective": "Separate the read path over a given corpus from the write path that authors its own.",
       "path": "curriculum/beginner/memory-is-not-rag/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/memory-is-not-rag/lab/lab.py",
+      "capstone_piece": [],
+      "prev": null,
+      "next": {
+        "id": "memory-taxonomy",
+        "title": "The Taxonomy That Actually Routes",
+        "path": "curriculum/beginner/memory-taxonomy/index.md"
+      }
     },
     {
       "id": "memory-taxonomy",
       "title": "The Taxonomy That Actually Routes",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "foundations",
+      "module_title": "Why Memory Is Not RAG",
+      "module_index": 1,
+      "module_total": 4,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "orientation",
       "order": 1,
+      "position": 2,
       "minutes": 30,
       "objective": "Treat working/episodic/semantic/procedural as engineering categories with distinct lifecycles.",
       "path": "curriculum/beginner/memory-taxonomy/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/memory-taxonomy/lab/lab.py",
+      "capstone_piece": [],
+      "prev": {
+        "id": "memory-is-not-rag",
+        "title": "Memory Is Not RAG",
+        "path": "curriculum/beginner/memory-is-not-rag/index.md"
+      },
+      "next": {
+        "id": "context-is-not-memory",
+        "title": "Context Is Not Memory",
+        "path": "curriculum/beginner/context-is-not-memory/index.md"
+      }
     },
     {
       "id": "context-is-not-memory",
       "title": "Context Is Not Memory",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "foundations",
+      "module_title": "Why Memory Is Not RAG",
+      "module_index": 1,
+      "module_total": 4,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "orientation",
       "order": 2,
+      "position": 3,
       "minutes": 25,
       "objective": "Explain why a larger context window is not a memory layer: no selection, persistence, or mutation.",
       "path": "curriculum/beginner/context-is-not-memory/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/context-is-not-memory/lab/lab.py",
+      "capstone_piece": [],
+      "prev": {
+        "id": "memory-taxonomy",
+        "title": "The Taxonomy That Actually Routes",
+        "path": "curriculum/beginner/memory-taxonomy/index.md"
+      },
+      "next": {
+        "id": "anatomy-of-a-memory-layer",
+        "title": "Anatomy of a Memory Layer",
+        "path": "curriculum/beginner/anatomy-of-a-memory-layer/index.md"
+      }
     },
     {
       "id": "anatomy-of-a-memory-layer",
       "title": "Anatomy of a Memory Layer",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "foundations",
+      "module_title": "Why Memory Is Not RAG",
+      "module_index": 1,
+      "module_total": 4,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "orientation",
       "order": 3,
+      "position": 4,
       "minutes": 35,
       "objective": "Name every component the rest of the course builds. The reference diagram.",
       "path": "curriculum/beginner/anatomy-of-a-memory-layer/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/anatomy-of-a-memory-layer/lab/lab.py",
+      "capstone_piece": [],
+      "prev": {
+        "id": "context-is-not-memory",
+        "title": "Context Is Not Memory",
+        "path": "curriculum/beginner/context-is-not-memory/index.md"
+      },
+      "next": {
+        "id": "the-memory-record",
+        "title": "Designing the Memory Record",
+        "path": "curriculum/beginner/the-memory-record/index.md"
+      }
     },
     {
       "id": "the-memory-record",
       "title": "Designing the Memory Record",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "write-path-naive",
+      "module_title": "The Write Path, Naively",
+      "module_index": 2,
+      "module_total": 4,
+      "in_module": 1,
+      "of_module": 3,
       "stage": "store",
       "order": 4,
+      "position": 5,
       "minutes": 40,
       "objective": "Choose the fields now that Intermediate will depend on: scope, provenance, event time, confidence.",
       "path": "curriculum/beginner/the-memory-record/index.md",
+      "lab": "curriculum/beginner/the-memory-record/lab/lab.py",
       "capstone_piece": [
         "memlab.types"
-      ]
+      ],
+      "prev": {
+        "id": "anatomy-of-a-memory-layer",
+        "title": "Anatomy of a Memory Layer",
+        "path": "curriculum/beginner/anatomy-of-a-memory-layer/index.md"
+      },
+      "next": {
+        "id": "naive-extraction",
+        "title": "Naive Extraction",
+        "path": "curriculum/beginner/naive-extraction/index.md"
+      }
     },
     {
       "id": "naive-extraction",
       "title": "Naive Extraction",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "write-path-naive",
+      "module_title": "The Write Path, Naively",
+      "module_index": 2,
+      "module_total": 4,
+      "in_module": 2,
+      "of_module": 3,
       "stage": "extract",
       "order": 5,
+      "position": 6,
       "minutes": 45,
       "objective": "Pull durable facts from a turn with structured output, and cause your first over-extraction disaster.",
       "path": "curriculum/beginner/naive-extraction/index.md",
+      "lab": "curriculum/beginner/naive-extraction/lab/lab.py",
       "capstone_piece": [
         "memlab.extract.naive"
-      ]
+      ],
+      "prev": {
+        "id": "the-memory-record",
+        "title": "Designing the Memory Record",
+        "path": "curriculum/beginner/the-memory-record/index.md"
+      },
+      "next": {
+        "id": "writing-memories-down",
+        "title": "Writing Memories Down",
+        "path": "curriculum/beginner/writing-memories-down/index.md"
+      }
     },
     {
       "id": "writing-memories-down",
       "title": "Writing Memories Down",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "write-path-naive",
+      "module_title": "The Write Path, Naively",
+      "module_index": 2,
+      "module_total": 4,
+      "in_module": 3,
+      "of_module": 3,
       "stage": "store",
       "order": 6,
+      "position": 7,
       "minutes": 35,
       "objective": "Append-only JSONL with stable ids and idempotent writes; meet the duplicate problem it creates.",
       "path": "curriculum/beginner/writing-memories-down/index.md",
+      "lab": "curriculum/beginner/writing-memories-down/lab/lab.py",
       "capstone_piece": [
         "memlab.store.jsonl"
-      ]
+      ],
+      "prev": {
+        "id": "naive-extraction",
+        "title": "Naive Extraction",
+        "path": "curriculum/beginner/naive-extraction/index.md"
+      },
+      "next": {
+        "id": "embedding-recall",
+        "title": "Embedding Recall",
+        "path": "curriculum/beginner/embedding-recall/index.md"
+      }
     },
     {
       "id": "embedding-recall",
       "title": "Embedding Recall",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "read-path-honest",
+      "module_title": "The Read Path, Honestly",
+      "module_index": 3,
+      "module_total": 4,
+      "in_module": 1,
+      "of_module": 3,
       "stage": "retrieve",
       "order": 7,
+      "position": 8,
       "minutes": 40,
       "objective": "Build minimum-viable vector search, framed as one strategy among several.",
       "path": "curriculum/beginner/embedding-recall/index.md",
+      "lab": "curriculum/beginner/embedding-recall/lab/lab.py",
       "capstone_piece": [
         "memlab.retrieve.embedding"
-      ]
+      ],
+      "prev": {
+        "id": "writing-memories-down",
+        "title": "Writing Memories Down",
+        "path": "curriculum/beginner/writing-memories-down/index.md"
+      },
+      "next": {
+        "id": "retrieval-is-not-enough",
+        "title": "Retrieval Is Not Enough",
+        "path": "curriculum/beginner/retrieval-is-not-enough/index.md"
+      }
     },
     {
       "id": "retrieval-is-not-enough",
       "title": "Retrieval Is Not Enough",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "read-path-honest",
+      "module_title": "The Read Path, Honestly",
+      "module_index": 3,
+      "module_total": 4,
+      "in_module": 2,
+      "of_module": 3,
       "stage": "retrieve",
       "order": 8,
+      "position": 9,
       "minutes": 35,
       "objective": "Scope by owner before ranking; meet semantically-close-but-wrong and confidently-stale.",
       "path": "curriculum/beginner/retrieval-is-not-enough/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/retrieval-is-not-enough/lab/lab.py",
+      "capstone_piece": [],
+      "prev": {
+        "id": "embedding-recall",
+        "title": "Embedding Recall",
+        "path": "curriculum/beginner/embedding-recall/index.md"
+      },
+      "next": {
+        "id": "context-assembly-v0",
+        "title": "Getting Memories Into the Prompt",
+        "path": "curriculum/beginner/context-assembly-v0/index.md"
+      }
     },
     {
       "id": "context-assembly-v0",
       "title": "Getting Memories Into the Prompt",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "read-path-honest",
+      "module_title": "The Read Path, Honestly",
+      "module_index": 3,
+      "module_total": 4,
+      "in_module": 3,
+      "of_module": 3,
       "stage": "assemble",
       "order": 9,
+      "position": 10,
       "minutes": 35,
       "objective": "Inject recalled beliefs with attribution, and mark them as beliefs rather than ground truth.",
       "path": "curriculum/beginner/context-assembly-v0/index.md",
+      "lab": "curriculum/beginner/context-assembly-v0/lab/lab.py",
       "capstone_piece": [
         "memlab.assemble.simple"
-      ]
+      ],
+      "prev": {
+        "id": "retrieval-is-not-enough",
+        "title": "Retrieval Is Not Enough",
+        "path": "curriculum/beginner/retrieval-is-not-enough/index.md"
+      },
+      "next": {
+        "id": "session-vs-longterm",
+        "title": "Session Memory vs Long-Term Memory",
+        "path": "curriculum/beginner/session-vs-longterm/index.md"
+      }
     },
     {
       "id": "session-vs-longterm",
       "title": "Session Memory vs Long-Term Memory",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "loop-closes",
+      "module_title": "The Loop Closes",
+      "module_index": 4,
+      "module_total": 4,
+      "in_module": 1,
+      "of_module": 3,
       "stage": "evolve",
       "order": 10,
+      "position": 11,
       "minutes": 30,
       "objective": "Decide what dies at end of session and what gets promoted.",
       "path": "curriculum/beginner/session-vs-longterm/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/session-vs-longterm/lab/lab.py",
+      "capstone_piece": [],
+      "prev": {
+        "id": "context-assembly-v0",
+        "title": "Getting Memories Into the Prompt",
+        "path": "curriculum/beginner/context-assembly-v0/index.md"
+      },
+      "next": {
+        "id": "your-first-memory-layer",
+        "title": "Your First Memory Layer",
+        "path": "curriculum/beginner/your-first-memory-layer/index.md"
+      }
     },
     {
       "id": "your-first-memory-layer",
       "title": "Your First Memory Layer",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "loop-closes",
+      "module_title": "The Loop Closes",
+      "module_index": 4,
+      "module_total": 4,
+      "in_module": 2,
+      "of_module": 3,
       "stage": "assemble",
       "order": 11,
+      "position": 12,
       "minutes": 40,
       "objective": "Ship memlab v0.1: an assistant that survives restart.",
       "path": "curriculum/beginner/your-first-memory-layer/index.md",
+      "lab": "curriculum/beginner/your-first-memory-layer/lab/lab.py",
       "capstone_piece": [
         "memlab.app.chat"
-      ]
+      ],
+      "prev": {
+        "id": "session-vs-longterm",
+        "title": "Session Memory vs Long-Term Memory",
+        "path": "curriculum/beginner/session-vs-longterm/index.md"
+      },
+      "next": {
+        "id": "watching-it-fail",
+        "title": "Watching It Fail",
+        "path": "curriculum/beginner/watching-it-fail/index.md"
+      }
     },
     {
       "id": "watching-it-fail",
       "title": "Watching It Fail",
       "level": "beginner",
+      "level_title": "The Loop",
       "module": "loop-closes",
+      "module_title": "The Loop Closes",
+      "module_index": 4,
+      "module_total": 4,
+      "in_module": 3,
+      "of_module": 3,
       "stage": "govern",
       "order": 12,
+      "position": 13,
       "minutes": 45,
       "objective": "Catalogue the seven failures you now have; each one names the Intermediate module that fixes it.",
       "path": "curriculum/beginner/watching-it-fail/index.md",
-      "capstone_piece": []
+      "lab": "curriculum/beginner/watching-it-fail/lab/lab.py",
+      "capstone_piece": [],
+      "prev": {
+        "id": "your-first-memory-layer",
+        "title": "Your First Memory Layer",
+        "path": "curriculum/beginner/your-first-memory-layer/index.md"
+      },
+      "next": {
+        "id": "typed-memory-model",
+        "title": "The Typed Memory Model",
+        "path": "curriculum/intermediate/typed-memory-model/index.md"
+      }
     },
     {
       "id": "typed-memory-model",
       "title": "The Typed Memory Model",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "typed-extraction",
+      "module_title": "Typed Memory & Extraction Pipelines",
+      "module_index": 1,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "store",
       "order": 13,
+      "position": 14,
       "minutes": 40,
       "objective": "Give each memory type its own schema, lifecycle, and update rule.",
       "path": "curriculum/intermediate/typed-memory-model/index.md",
+      "lab": "curriculum/intermediate/typed-memory-model/lab/lab.py",
       "capstone_piece": [
         "memlab.extract.router"
-      ]
+      ],
+      "prev": {
+        "id": "watching-it-fail",
+        "title": "Watching It Fail",
+        "path": "curriculum/beginner/watching-it-fail/index.md"
+      },
+      "next": {
+        "id": "extraction-pipelines",
+        "title": "Extraction Pipelines",
+        "path": "curriculum/intermediate/extraction-pipelines/index.md"
+      }
     },
     {
       "id": "extraction-pipelines",
       "title": "Extraction Pipelines",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "typed-extraction",
+      "module_title": "Typed Memory & Extraction Pipelines",
+      "module_index": 1,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "extract",
       "order": 14,
+      "position": 15,
       "minutes": 50,
       "objective": "Stage candidate generation, salience filtering, schema validation, and type routing.",
       "path": "curriculum/intermediate/extraction-pipelines/index.md",
+      "lab": "curriculum/intermediate/extraction-pipelines/lab/lab.py",
       "capstone_piece": [
         "memlab.extract.pipeline",
         "memlab.extract.gate"
-      ]
+      ],
+      "prev": {
+        "id": "typed-memory-model",
+        "title": "The Typed Memory Model",
+        "path": "curriculum/intermediate/typed-memory-model/index.md"
+      },
+      "next": {
+        "id": "extraction-quality",
+        "title": "Precision and Recall on the Write Path",
+        "path": "curriculum/intermediate/extraction-quality/index.md"
+      }
     },
     {
       "id": "extraction-quality",
       "title": "Precision and Recall on the Write Path",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "typed-extraction",
+      "module_title": "Typed Memory & Extraction Pipelines",
+      "module_index": 1,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "extract",
       "order": 15,
+      "position": 16,
       "minutes": 40,
       "objective": "Measure extraction quality and price the compounding cost of over-extraction.",
       "path": "curriculum/intermediate/extraction-quality/index.md",
+      "lab": "curriculum/intermediate/extraction-quality/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.extraction"
-      ]
+      ],
+      "prev": {
+        "id": "extraction-pipelines",
+        "title": "Extraction Pipelines",
+        "path": "curriculum/intermediate/extraction-pipelines/index.md"
+      },
+      "next": {
+        "id": "atomic-memories",
+        "title": "Atomic Memories",
+        "path": "curriculum/intermediate/atomic-memories/index.md"
+      }
     },
     {
       "id": "atomic-memories",
       "title": "Atomic Memories",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "typed-extraction",
+      "module_title": "Typed Memory & Extraction Pipelines",
+      "module_index": 1,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "extract",
       "order": 16,
+      "position": 17,
       "minutes": 35,
       "objective": "Size a memory so it can be updated later; recognise one that is too big to revise.",
       "path": "curriculum/intermediate/atomic-memories/index.md",
+      "lab": "curriculum/intermediate/atomic-memories/lab/lab.py",
       "capstone_piece": [
         "memlab.extract.atomise"
-      ]
+      ],
+      "prev": {
+        "id": "extraction-quality",
+        "title": "Precision and Recall on the Write Path",
+        "path": "curriculum/intermediate/extraction-quality/index.md"
+      },
+      "next": {
+        "id": "entities-and-aliases",
+        "title": "Entities and Aliases",
+        "path": "curriculum/intermediate/entities-and-aliases/index.md"
+      }
     },
     {
       "id": "entities-and-aliases",
       "title": "Entities and Aliases",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "identity",
+      "module_title": "Identity & Entity Resolution",
+      "module_index": 2,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 3,
       "stage": "store",
       "order": 17,
+      "position": 18,
       "minutes": 35,
       "objective": "Collapse 'my wife', 'Sarah', and 'S.' into one canonical node.",
       "path": "curriculum/intermediate/entities-and-aliases/index.md",
+      "lab": "curriculum/intermediate/entities-and-aliases/lab/lab.py",
       "capstone_piece": [
         "memlab.entity.aliases"
-      ]
+      ],
+      "prev": {
+        "id": "atomic-memories",
+        "title": "Atomic Memories",
+        "path": "curriculum/intermediate/atomic-memories/index.md"
+      },
+      "next": {
+        "id": "entity-resolution",
+        "title": "Entity Resolution",
+        "path": "curriculum/intermediate/entity-resolution/index.md"
+      }
     },
     {
       "id": "entity-resolution",
       "title": "Entity Resolution",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "identity",
+      "module_title": "Identity & Entity Resolution",
+      "module_index": 2,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 3,
       "stage": "store",
       "order": 18,
+      "position": 19,
       "minutes": 50,
       "objective": "Block, score, merge, and un-merge; handle the split problem.",
       "path": "curriculum/intermediate/entity-resolution/index.md",
+      "lab": "curriculum/intermediate/entity-resolution/lab/lab.py",
       "capstone_piece": [
         "memlab.entity.resolve"
-      ]
+      ],
+      "prev": {
+        "id": "entities-and-aliases",
+        "title": "Entities and Aliases",
+        "path": "curriculum/intermediate/entities-and-aliases/index.md"
+      },
+      "next": {
+        "id": "scopes-and-namespaces",
+        "title": "Scopes and Namespaces",
+        "path": "curriculum/intermediate/scopes-and-namespaces/index.md"
+      }
     },
     {
       "id": "scopes-and-namespaces",
       "title": "Scopes and Namespaces",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "identity",
+      "module_title": "Identity & Entity Resolution",
+      "module_index": 2,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 3,
       "stage": "store",
       "order": 19,
+      "position": 20,
       "minutes": 35,
       "objective": "Key memory by user, agent, org, and session \u2014 the multi-tenancy substrate.",
       "path": "curriculum/intermediate/scopes-and-namespaces/index.md",
+      "lab": "curriculum/intermediate/scopes-and-namespaces/lab/lab.py",
       "capstone_piece": [
         "memlab.store.scopes"
-      ]
+      ],
+      "prev": {
+        "id": "entity-resolution",
+        "title": "Entity Resolution",
+        "path": "curriculum/intermediate/entity-resolution/index.md"
+      },
+      "next": {
+        "id": "deduplication",
+        "title": "Deduplication",
+        "path": "curriculum/intermediate/deduplication/index.md"
+      }
     },
     {
       "id": "deduplication",
       "title": "Deduplication",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "consolidation",
+      "module_title": "Consolidation",
+      "module_index": 3,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "evolve",
       "order": 20,
+      "position": 21,
       "minutes": 40,
       "objective": "Detect exact, near, and semantic duplicates; choose write-time vs read-time dedupe.",
       "path": "curriculum/intermediate/deduplication/index.md",
+      "lab": "curriculum/intermediate/deduplication/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.dedupe"
-      ]
+      ],
+      "prev": {
+        "id": "scopes-and-namespaces",
+        "title": "Scopes and Namespaces",
+        "path": "curriculum/intermediate/scopes-and-namespaces/index.md"
+      },
+      "next": {
+        "id": "summarization-and-compaction",
+        "title": "Summarization and Compaction",
+        "path": "curriculum/intermediate/summarization-and-compaction/index.md"
+      }
     },
     {
       "id": "summarization-and-compaction",
       "title": "Summarization and Compaction",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "consolidation",
+      "module_title": "Consolidation",
+      "module_index": 3,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "evolve",
       "order": 21,
+      "position": 22,
       "minutes": 45,
       "objective": "Build rolling summaries and hierarchical digests without losing the originals.",
       "path": "curriculum/intermediate/summarization-and-compaction/index.md",
+      "lab": "curriculum/intermediate/summarization-and-compaction/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.summarize"
-      ]
+      ],
+      "prev": {
+        "id": "deduplication",
+        "title": "Deduplication",
+        "path": "curriculum/intermediate/deduplication/index.md"
+      },
+      "next": {
+        "id": "semantic-drift",
+        "title": "Semantic Drift",
+        "path": "curriculum/intermediate/semantic-drift/index.md"
+      }
     },
     {
       "id": "semantic-drift",
       "title": "Semantic Drift",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "consolidation",
+      "module_title": "Consolidation",
+      "module_index": 3,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "evolve",
       "order": 22,
+      "position": 23,
       "minutes": 35,
       "objective": "Bound degradation by re-deriving from anchored originals, never summarizing summaries.",
       "path": "curriculum/intermediate/semantic-drift/index.md",
+      "lab": "curriculum/intermediate/semantic-drift/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.drift"
-      ]
+      ],
+      "prev": {
+        "id": "summarization-and-compaction",
+        "title": "Summarization and Compaction",
+        "path": "curriculum/intermediate/summarization-and-compaction/index.md"
+      },
+      "next": {
+        "id": "episodic-to-semantic",
+        "title": "From Episode to Belief",
+        "path": "curriculum/intermediate/episodic-to-semantic/index.md"
+      }
     },
     {
       "id": "episodic-to-semantic",
       "title": "From Episode to Belief",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "consolidation",
+      "module_title": "Consolidation",
+      "module_index": 3,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "evolve",
       "order": 23,
+      "position": 24,
       "minutes": 40,
       "objective": "Promote 'on Tuesday she said X' to 'she prefers X' \u2014 and know when that is wrong.",
       "path": "curriculum/intermediate/episodic-to-semantic/index.md",
+      "lab": "curriculum/intermediate/episodic-to-semantic/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.promote"
-      ]
+      ],
+      "prev": {
+        "id": "semantic-drift",
+        "title": "Semantic Drift",
+        "path": "curriculum/intermediate/semantic-drift/index.md"
+      },
+      "next": {
+        "id": "contradiction-detection",
+        "title": "Contradiction Detection",
+        "path": "curriculum/intermediate/contradiction-detection/index.md"
+      }
     },
     {
       "id": "contradiction-detection",
       "title": "Contradiction Detection",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "conflict",
+      "module_title": "Conflict Resolution & Belief Updating",
+      "module_index": 4,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "evolve",
       "order": 24,
+      "position": 25,
       "minutes": 50,
       "objective": "Separate a genuine contradiction from a legitimate change over time.",
       "path": "curriculum/intermediate/contradiction-detection/index.md",
+      "lab": "curriculum/intermediate/contradiction-detection/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.conflict"
-      ]
+      ],
+      "prev": {
+        "id": "episodic-to-semantic",
+        "title": "From Episode to Belief",
+        "path": "curriculum/intermediate/episodic-to-semantic/index.md"
+      },
+      "next": {
+        "id": "memory-operations",
+        "title": "ADD, UPDATE, DELETE, NOOP",
+        "path": "curriculum/intermediate/memory-operations/index.md"
+      }
     },
     {
       "id": "memory-operations",
       "title": "ADD, UPDATE, DELETE, NOOP",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "conflict",
+      "module_title": "Conflict Resolution & Belief Updating",
+      "module_index": 4,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "evolve",
       "order": 25,
+      "position": 26,
       "minutes": 40,
       "objective": "See why a free-form LLM UPDATE decision is the largest source of silent memory corruption.",
       "path": "curriculum/intermediate/memory-operations/index.md",
+      "lab": "curriculum/intermediate/memory-operations/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.operations"
-      ]
+      ],
+      "prev": {
+        "id": "contradiction-detection",
+        "title": "Contradiction Detection",
+        "path": "curriculum/intermediate/contradiction-detection/index.md"
+      },
+      "next": {
+        "id": "deterministic-freshness",
+        "title": "Deterministic Arbitration",
+        "path": "curriculum/intermediate/deterministic-freshness/index.md"
+      }
     },
     {
       "id": "deterministic-freshness",
       "title": "Deterministic Arbitration",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "conflict",
+      "module_title": "Conflict Resolution & Belief Updating",
+      "module_index": 4,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "evolve",
       "order": 26,
+      "position": 27,
       "minutes": 45,
       "objective": "Confine the model to detection and let rules decide, using recency, authority, and explicitness.",
       "path": "curriculum/intermediate/deterministic-freshness/index.md",
+      "lab": "curriculum/intermediate/deterministic-freshness/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.arbitrate"
-      ]
+      ],
+      "prev": {
+        "id": "memory-operations",
+        "title": "ADD, UPDATE, DELETE, NOOP",
+        "path": "curriculum/intermediate/memory-operations/index.md"
+      },
+      "next": {
+        "id": "supersession-not-deletion",
+        "title": "Supersede, Never Destroy",
+        "path": "curriculum/intermediate/supersession-not-deletion/index.md"
+      }
     },
     {
       "id": "supersession-not-deletion",
       "title": "Supersede, Never Destroy",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "conflict",
+      "module_title": "Conflict Resolution & Belief Updating",
+      "module_index": 4,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "evolve",
       "order": 27,
+      "position": 28,
       "minutes": 45,
       "objective": "Keep the audit trail that makes bi-temporal modeling possible later.",
       "path": "curriculum/intermediate/supersession-not-deletion/index.md",
+      "lab": "curriculum/intermediate/supersession-not-deletion/lab/lab.py",
       "capstone_piece": [
         "memlab.evolve.supersede"
-      ]
+      ],
+      "prev": {
+        "id": "deterministic-freshness",
+        "title": "Deterministic Arbitration",
+        "path": "curriculum/intermediate/deterministic-freshness/index.md"
+      },
+      "next": {
+        "id": "why-forgetting-is-a-feature",
+        "title": "Why Forgetting Is a Feature",
+        "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md"
+      }
     },
     {
       "id": "why-forgetting-is-a-feature",
       "title": "Why Forgetting Is a Feature",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "forgetting",
+      "module_title": "Forgetting",
+      "module_index": 5,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "evolve",
       "order": 28,
+      "position": 29,
       "minutes": 30,
       "objective": "Justify forgetting on cost, latency, precision, privacy, and coherence.",
       "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md",
+      "lab": "curriculum/intermediate/why-forgetting-is-a-feature/lab/lab.py",
       "capstone_piece": [
         "memlab.forget.audit"
-      ]
+      ],
+      "prev": {
+        "id": "supersession-not-deletion",
+        "title": "Supersede, Never Destroy",
+        "path": "curriculum/intermediate/supersession-not-deletion/index.md"
+      },
+      "next": {
+        "id": "salience-scoring",
+        "title": "Salience Scoring",
+        "path": "curriculum/intermediate/salience-scoring/index.md"
+      }
     },
     {
       "id": "salience-scoring",
       "title": "Salience Scoring",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "forgetting",
+      "module_title": "Forgetting",
+      "module_index": 5,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "evolve",
       "order": 29,
+      "position": 30,
       "minutes": 45,
       "objective": "Combine recency, reinforcement, explicit markers, and retrieval-hit feedback.",
       "path": "curriculum/intermediate/salience-scoring/index.md",
+      "lab": "curriculum/intermediate/salience-scoring/lab/lab.py",
       "capstone_piece": [
         "memlab.forget.salience"
-      ]
+      ],
+      "prev": {
+        "id": "why-forgetting-is-a-feature",
+        "title": "Why Forgetting Is a Feature",
+        "path": "curriculum/intermediate/why-forgetting-is-a-feature/index.md"
+      },
+      "next": {
+        "id": "decay-and-tiers",
+        "title": "Decay and Memory Tiers",
+        "path": "curriculum/intermediate/decay-and-tiers/index.md"
+      }
     },
     {
       "id": "decay-and-tiers",
       "title": "Decay and Memory Tiers",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "forgetting",
+      "module_title": "Forgetting",
+      "module_index": 5,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "evolve",
       "order": 30,
+      "position": 31,
       "minutes": 45,
       "objective": "Move memories across scratchpad, working, and long-term tiers under decay and reinforcement.",
       "path": "curriculum/intermediate/decay-and-tiers/index.md",
+      "lab": "curriculum/intermediate/decay-and-tiers/lab/lab.py",
       "capstone_piece": [
         "memlab.forget.decay"
-      ]
+      ],
+      "prev": {
+        "id": "salience-scoring",
+        "title": "Salience Scoring",
+        "path": "curriculum/intermediate/salience-scoring/index.md"
+      },
+      "next": {
+        "id": "budgeted-forgetting",
+        "title": "Forgetting Under a Budget",
+        "path": "curriculum/intermediate/budgeted-forgetting/index.md"
+      }
     },
     {
       "id": "budgeted-forgetting",
       "title": "Forgetting Under a Budget",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "forgetting",
+      "module_title": "Forgetting",
+      "module_index": 5,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "evolve",
       "order": 31,
+      "position": 32,
       "minutes": 40,
       "objective": "Evict, archive, or quarantine within a bounded store, and tune without losing the user.",
       "path": "curriculum/intermediate/budgeted-forgetting/index.md",
+      "lab": "curriculum/intermediate/budgeted-forgetting/lab/lab.py",
       "capstone_piece": [
         "memlab.forget.budget"
-      ]
+      ],
+      "prev": {
+        "id": "decay-and-tiers",
+        "title": "Decay and Memory Tiers",
+        "path": "curriculum/intermediate/decay-and-tiers/index.md"
+      },
+      "next": {
+        "id": "scope-then-rank",
+        "title": "Scope, Then Rank",
+        "path": "curriculum/intermediate/scope-then-rank/index.md"
+      }
     },
     {
       "id": "scope-then-rank",
       "title": "Scope, Then Rank",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "retrieval-proper",
+      "module_title": "Retrieval Done Properly",
+      "module_index": 6,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "retrieve",
       "order": 32,
+      "position": 33,
       "minutes": 35,
       "objective": "Apply hard filters on owner, type, and validity before any similarity is computed.",
       "path": "curriculum/intermediate/scope-then-rank/index.md",
+      "lab": "curriculum/intermediate/scope-then-rank/lab/lab.py",
       "capstone_piece": [
         "memlab.retrieve.scoped"
-      ]
+      ],
+      "prev": {
+        "id": "budgeted-forgetting",
+        "title": "Forgetting Under a Budget",
+        "path": "curriculum/intermediate/budgeted-forgetting/index.md"
+      },
+      "next": {
+        "id": "hybrid-ranking",
+        "title": "Hybrid Ranking",
+        "path": "curriculum/intermediate/hybrid-ranking/index.md"
+      }
     },
     {
       "id": "hybrid-ranking",
       "title": "Hybrid Ranking",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "retrieval-proper",
+      "module_title": "Retrieval Done Properly",
+      "module_index": 6,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "retrieve",
       "order": 33,
+      "position": 34,
       "minutes": 55,
       "objective": "Fuse semantic, lexical, recency, and salience signals; add diversity.",
       "path": "curriculum/intermediate/hybrid-ranking/index.md",
+      "lab": "curriculum/intermediate/hybrid-ranking/lab/lab.py",
       "capstone_piece": [
         "memlab.retrieve.hybrid"
-      ]
+      ],
+      "prev": {
+        "id": "scope-then-rank",
+        "title": "Scope, Then Rank",
+        "path": "curriculum/intermediate/scope-then-rank/index.md"
+      },
+      "next": {
+        "id": "query-formulation",
+        "title": "The Query Is Not the Last Message",
+        "path": "curriculum/intermediate/query-formulation/index.md"
+      }
     },
     {
       "id": "query-formulation",
       "title": "The Query Is Not the Last Message",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "retrieval-proper",
+      "module_title": "Retrieval Done Properly",
+      "module_index": 6,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "retrieve",
       "order": 34,
+      "position": 35,
       "minutes": 45,
       "objective": "Rewrite and expand queries; condition retrieval on intent.",
       "path": "curriculum/intermediate/query-formulation/index.md",
+      "lab": "curriculum/intermediate/query-formulation/lab/lab.py",
       "capstone_piece": [
         "memlab.retrieve.query"
-      ]
+      ],
+      "prev": {
+        "id": "hybrid-ranking",
+        "title": "Hybrid Ranking",
+        "path": "curriculum/intermediate/hybrid-ranking/index.md"
+      },
+      "next": {
+        "id": "retrieval-triggers",
+        "title": "Should I Even Look?",
+        "path": "curriculum/intermediate/retrieval-triggers/index.md"
+      }
     },
     {
       "id": "retrieval-triggers",
       "title": "Should I Even Look?",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "retrieval-proper",
+      "module_title": "Retrieval Done Properly",
+      "module_index": 6,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "retrieve",
       "order": 35,
+      "position": 36,
       "minutes": 35,
       "objective": "Choose between always-on retrieval and memory as a tool call.",
       "path": "curriculum/intermediate/retrieval-triggers/index.md",
+      "lab": "curriculum/intermediate/retrieval-triggers/lab/lab.py",
       "capstone_piece": [
         "memlab.retrieve.triggers"
-      ]
+      ],
+      "prev": {
+        "id": "query-formulation",
+        "title": "The Query Is Not the Last Message",
+        "path": "curriculum/intermediate/query-formulation/index.md"
+      },
+      "next": {
+        "id": "vector-stores-for-mutable-data",
+        "title": "Vector Stores for Data That Changes",
+        "path": "curriculum/intermediate/vector-stores-for-mutable-data/index.md"
+      }
     },
     {
       "id": "vector-stores-for-mutable-data",
       "title": "Vector Stores for Data That Changes",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "stores",
+      "module_title": "Stores",
+      "module_index": 7,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "store",
       "order": 36,
+      "position": 37,
       "minutes": 45,
       "objective": "Handle reindexing, tombstones, and embedding staleness after an UPDATE.",
       "path": "curriculum/intermediate/vector-stores-for-mutable-data/index.md",
+      "lab": "curriculum/intermediate/vector-stores-for-mutable-data/lab/lab.py",
       "capstone_piece": [
         "memlab.store.vector"
-      ]
+      ],
+      "prev": {
+        "id": "retrieval-triggers",
+        "title": "Should I Even Look?",
+        "path": "curriculum/intermediate/retrieval-triggers/index.md"
+      },
+      "next": {
+        "id": "relational-stores",
+        "title": "The Underrated Default",
+        "path": "curriculum/intermediate/relational-stores/index.md"
+      }
     },
     {
       "id": "relational-stores",
       "title": "The Underrated Default",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "stores",
+      "module_title": "Stores",
+      "module_index": 7,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "store",
       "order": 37,
+      "position": 38,
       "minutes": 40,
       "objective": "Use SQLite with FTS as a genuinely good memory store.",
       "path": "curriculum/intermediate/relational-stores/index.md",
+      "lab": "curriculum/intermediate/relational-stores/lab/lab.py",
       "capstone_piece": [
         "memlab.store.sqlite"
-      ]
+      ],
+      "prev": {
+        "id": "vector-stores-for-mutable-data",
+        "title": "Vector Stores for Data That Changes",
+        "path": "curriculum/intermediate/vector-stores-for-mutable-data/index.md"
+      },
+      "next": {
+        "id": "graph-stores",
+        "title": "Graph Stores",
+        "path": "curriculum/intermediate/graph-stores/index.md"
+      }
     },
     {
       "id": "graph-stores",
       "title": "Graph Stores",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "stores",
+      "module_title": "Stores",
+      "module_index": 7,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "store",
       "order": 38,
+      "position": 39,
       "minutes": 40,
       "objective": "Model entities and relations; traverse for multi-hop recall.",
       "path": "curriculum/intermediate/graph-stores/index.md",
+      "lab": "curriculum/intermediate/graph-stores/lab/lab.py",
       "capstone_piece": [
         "memlab.store.graph"
-      ]
+      ],
+      "prev": {
+        "id": "relational-stores",
+        "title": "The Underrated Default",
+        "path": "curriculum/intermediate/relational-stores/index.md"
+      },
+      "next": {
+        "id": "hybrid-architecture",
+        "title": "Hybrid Architecture",
+        "path": "curriculum/intermediate/hybrid-architecture/index.md"
+      }
     },
     {
       "id": "hybrid-architecture",
       "title": "Hybrid Architecture",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "stores",
+      "module_title": "Stores",
+      "module_index": 7,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "store",
       "order": 39,
+      "position": 40,
       "minutes": 40,
       "objective": "Pick a store per memory type and keep them consistent under write fan-out.",
       "path": "curriculum/intermediate/hybrid-architecture/index.md",
+      "lab": "curriculum/intermediate/hybrid-architecture/lab/lab.py",
       "capstone_piece": [
         "memlab.store.hybrid"
-      ]
+      ],
+      "prev": {
+        "id": "graph-stores",
+        "title": "Graph Stores",
+        "path": "curriculum/intermediate/graph-stores/index.md"
+      },
+      "next": {
+        "id": "the-packing-problem",
+        "title": "The Packing Problem",
+        "path": "curriculum/intermediate/the-packing-problem/index.md"
+      }
     },
     {
       "id": "the-packing-problem",
       "title": "The Packing Problem",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "assembly",
+      "module_title": "Context Assembly Under Budget",
+      "module_index": 8,
+      "module_total": 8,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "assemble",
       "order": 40,
+      "position": 41,
       "minutes": 40,
       "objective": "Treat the token budget as constrained selection, not truncation.",
       "path": "curriculum/intermediate/the-packing-problem/index.md",
+      "lab": "curriculum/intermediate/the-packing-problem/lab/lab.py",
       "capstone_piece": [
         "memlab.assemble.budget"
-      ]
+      ],
+      "prev": {
+        "id": "hybrid-architecture",
+        "title": "Hybrid Architecture",
+        "path": "curriculum/intermediate/hybrid-architecture/index.md"
+      },
+      "next": {
+        "id": "ordering-and-formatting",
+        "title": "Ordering and Formatting",
+        "path": "curriculum/intermediate/ordering-and-formatting/index.md"
+      }
     },
     {
       "id": "ordering-and-formatting",
       "title": "Ordering and Formatting",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "assembly",
+      "module_title": "Context Assembly Under Budget",
+      "module_index": 8,
+      "module_total": 8,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "assemble",
       "order": 41,
+      "position": 42,
       "minutes": 35,
       "objective": "Price the line format, and check whether ordering by score costs anything.",
       "path": "curriculum/intermediate/ordering-and-formatting/index.md",
+      "lab": "curriculum/intermediate/ordering-and-formatting/lab/lab.py",
       "capstone_piece": [
         "memlab.assemble.ordering"
-      ]
+      ],
+      "prev": {
+        "id": "the-packing-problem",
+        "title": "The Packing Problem",
+        "path": "curriculum/intermediate/the-packing-problem/index.md"
+      },
+      "next": {
+        "id": "compaction-safety",
+        "title": "What Must Never Be Dropped",
+        "path": "curriculum/intermediate/compaction-safety/index.md"
+      }
     },
     {
       "id": "compaction-safety",
       "title": "What Must Never Be Dropped",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "assembly",
+      "module_title": "Context Assembly Under Budget",
+      "module_index": 8,
+      "module_total": 8,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "assemble",
       "order": 42,
+      "position": 43,
       "minutes": 40,
       "objective": "Make coverage an invariant of the packer, derived from the question rather than a topic list.",
       "path": "curriculum/intermediate/compaction-safety/index.md",
+      "lab": "curriculum/intermediate/compaction-safety/lab/lab.py",
       "capstone_piece": [
         "memlab.assemble.pinning"
-      ]
+      ],
+      "prev": {
+        "id": "ordering-and-formatting",
+        "title": "Ordering and Formatting",
+        "path": "curriculum/intermediate/ordering-and-formatting/index.md"
+      },
+      "next": {
+        "id": "slot-value",
+        "title": "Does This Earn Its Tokens?",
+        "path": "curriculum/intermediate/slot-value/index.md"
+      }
     },
     {
       "id": "slot-value",
       "title": "Does This Earn Its Tokens?",
       "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
       "module": "assembly",
+      "module_title": "Context Assembly Under Budget",
+      "module_index": 8,
+      "module_total": 8,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "assemble",
       "order": 43,
+      "position": 44,
       "minutes": 45,
       "objective": "Price every element of the context, including the ones that are not memories.",
       "path": "curriculum/intermediate/slot-value/index.md",
+      "lab": "curriculum/intermediate/slot-value/lab/lab.py",
       "capstone_piece": [
         "memlab.assemble.value"
-      ]
+      ],
+      "prev": {
+        "id": "compaction-safety",
+        "title": "What Must Never Be Dropped",
+        "path": "curriculum/intermediate/compaction-safety/index.md"
+      },
+      "next": {
+        "id": "two-clocks",
+        "title": "Two Clocks",
+        "path": "curriculum/advanced/two-clocks/index.md"
+      }
     },
     {
       "id": "two-clocks",
       "title": "Two Clocks",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "temporal",
+      "module_title": "Temporal Reasoning & Bi-Temporal Modeling",
+      "module_index": 1,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 5,
       "stage": "store",
       "order": 44,
+      "position": 45,
       "minutes": 45,
       "objective": "Audit which of the two clocks is actually running; four instants, not two.",
       "path": "curriculum/advanced/two-clocks/index.md",
+      "lab": "curriculum/advanced/two-clocks/lab/lab.py",
       "capstone_piece": [
         "memlab.temporal.clocks"
-      ]
+      ],
+      "prev": {
+        "id": "slot-value",
+        "title": "Does This Earn Its Tokens?",
+        "path": "curriculum/intermediate/slot-value/index.md"
+      },
+      "next": {
+        "id": "validity-intervals",
+        "title": "Validity Intervals",
+        "path": "curriculum/advanced/validity-intervals/index.md"
+      }
     },
     {
       "id": "validity-intervals",
       "title": "Validity Intervals",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "temporal",
+      "module_title": "Temporal Reasoning & Bi-Temporal Modeling",
+      "module_index": 1,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 5,
       "stage": "store",
       "order": 45,
+      "position": 46,
       "minutes": 50,
       "objective": "Separate when a fact was true from when it was believed, and query both.",
       "path": "curriculum/advanced/validity-intervals/index.md",
+      "lab": "curriculum/advanced/validity-intervals/lab/lab.py",
       "capstone_piece": [
         "memlab.temporal.validity"
-      ]
+      ],
+      "prev": {
+        "id": "two-clocks",
+        "title": "Two Clocks",
+        "path": "curriculum/advanced/two-clocks/index.md"
+      },
+      "next": {
+        "id": "temporal-questions",
+        "title": "Three Temporal Questions",
+        "path": "curriculum/advanced/temporal-questions/index.md"
+      }
     },
     {
       "id": "temporal-questions",
       "title": "Three Temporal Questions",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "temporal",
+      "module_title": "Temporal Reasoning & Bi-Temporal Modeling",
+      "module_index": 1,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 5,
       "stage": "retrieve",
       "order": 46,
+      "position": 47,
       "minutes": 50,
       "objective": "Route the three temporal questions, and release every filter that assumed now.",
       "path": "curriculum/advanced/temporal-questions/index.md",
+      "lab": "curriculum/advanced/temporal-questions/lab/lab.py",
       "capstone_piece": [
         "memlab.temporal.questions"
-      ]
+      ],
+      "prev": {
+        "id": "validity-intervals",
+        "title": "Validity Intervals",
+        "path": "curriculum/advanced/validity-intervals/index.md"
+      },
+      "next": {
+        "id": "relative-time-resolution",
+        "title": "Resolving 'Last Week'",
+        "path": "curriculum/advanced/relative-time-resolution/index.md"
+      }
     },
     {
       "id": "relative-time-resolution",
       "title": "Resolving 'Last Week'",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "temporal",
+      "module_title": "Temporal Reasoning & Bi-Temporal Modeling",
+      "module_index": 1,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 5,
       "stage": "extract",
       "order": 47,
+      "position": 48,
       "minutes": 50,
       "objective": "Four classes of relative reference, and the one you must not resolve.",
       "path": "curriculum/advanced/relative-time-resolution/index.md",
+      "lab": "curriculum/advanced/relative-time-resolution/lab/lab.py",
       "capstone_piece": [
         "memlab.temporal.anchor"
-      ]
+      ],
+      "prev": {
+        "id": "temporal-questions",
+        "title": "Three Temporal Questions",
+        "path": "curriculum/advanced/temporal-questions/index.md"
+      },
+      "next": {
+        "id": "temporal-knowledge-graphs",
+        "title": "Temporal Knowledge Graphs",
+        "path": "curriculum/advanced/temporal-knowledge-graphs/index.md"
+      }
     },
     {
       "id": "temporal-knowledge-graphs",
       "title": "Temporal Knowledge Graphs",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "temporal",
+      "module_title": "Temporal Reasoning & Bi-Temporal Modeling",
+      "module_index": 1,
+      "module_total": 9,
+      "in_module": 5,
+      "of_module": 5,
       "stage": "store",
       "order": 48,
+      "position": 49,
       "minutes": 50,
       "objective": "Cascade invalidation through the derivation graph -- the one that actually has edges.",
       "path": "curriculum/advanced/temporal-knowledge-graphs/index.md",
+      "lab": "curriculum/advanced/temporal-knowledge-graphs/lab/lab.py",
       "capstone_piece": [
         "memlab.temporal.cascade"
-      ]
+      ],
+      "prev": {
+        "id": "relative-time-resolution",
+        "title": "Resolving 'Last Week'",
+        "path": "curriculum/advanced/relative-time-resolution/index.md"
+      },
+      "next": {
+        "id": "sleep-time-compute",
+        "title": "Sleep-Time Compute",
+        "path": "curriculum/advanced/sleep-time-compute/index.md"
+      }
     },
     {
       "id": "sleep-time-compute",
       "title": "Sleep-Time Compute",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "sleep-time",
+      "module_title": "Offline Consolidation",
+      "module_index": 2,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "evolve",
       "order": 49,
+      "position": 50,
       "minutes": 50,
       "objective": "The window is the cost, not the compute -- and the gate that closes it is already computed.",
       "path": "curriculum/advanced/sleep-time-compute/index.md",
+      "lab": "curriculum/advanced/sleep-time-compute/lab/lab.py",
       "capstone_piece": [
         "memlab.sleep.schedule"
-      ]
+      ],
+      "prev": {
+        "id": "temporal-knowledge-graphs",
+        "title": "Temporal Knowledge Graphs",
+        "path": "curriculum/advanced/temporal-knowledge-graphs/index.md"
+      },
+      "next": {
+        "id": "background-job-mechanics",
+        "title": "Background Job Mechanics",
+        "path": "curriculum/advanced/background-job-mechanics/index.md"
+      }
     },
     {
       "id": "background-job-mechanics",
       "title": "Background Job Mechanics",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "sleep-time",
+      "module_title": "Offline Consolidation",
+      "module_index": 2,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "evolve",
       "order": 50,
+      "position": 51,
       "minutes": 50,
       "objective": "Write back only what the job read -- absence means two opposite things.",
       "path": "curriculum/advanced/background-job-mechanics/index.md",
+      "lab": "curriculum/advanced/background-job-mechanics/lab/lab.py",
       "capstone_piece": [
         "memlab.sleep.job"
-      ]
+      ],
+      "prev": {
+        "id": "sleep-time-compute",
+        "title": "Sleep-Time Compute",
+        "path": "curriculum/advanced/sleep-time-compute/index.md"
+      },
+      "next": {
+        "id": "reflection-and-insight",
+        "title": "Reflection and Insight",
+        "path": "curriculum/advanced/reflection-and-insight/index.md"
+      }
     },
     {
       "id": "reflection-and-insight",
       "title": "Reflection and Insight",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "sleep-time",
+      "module_title": "Offline Consolidation",
+      "module_index": 2,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "evolve",
       "order": 51,
+      "position": 52,
       "minutes": 55,
       "objective": "Derive higher-order beliefs, and measure that storing them makes the answer worse.",
       "path": "curriculum/advanced/reflection-and-insight/index.md",
+      "lab": "curriculum/advanced/reflection-and-insight/lab/lab.py",
       "capstone_piece": [
         "memlab.sleep.reflect"
-      ]
+      ],
+      "prev": {
+        "id": "background-job-mechanics",
+        "title": "Background Job Mechanics",
+        "path": "curriculum/advanced/background-job-mechanics/index.md"
+      },
+      "next": {
+        "id": "promotion-as-release",
+        "title": "Promotion as a Release",
+        "path": "curriculum/advanced/promotion-as-release/index.md"
+      }
     },
     {
       "id": "promotion-as-release",
       "title": "Promotion as a Release",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "sleep-time",
+      "module_title": "Offline Consolidation",
+      "module_index": 2,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "evolve",
       "order": 52,
+      "position": 53,
       "minutes": 50,
       "objective": "Measure a consolidation before applying it, and be able to take it back.",
       "path": "curriculum/advanced/promotion-as-release/index.md",
+      "lab": "curriculum/advanced/promotion-as-release/lab/lab.py",
       "capstone_piece": [
         "memlab.sleep.release"
-      ]
+      ],
+      "prev": {
+        "id": "reflection-and-insight",
+        "title": "Reflection and Insight",
+        "path": "curriculum/advanced/reflection-and-insight/index.md"
+      },
+      "next": {
+        "id": "memory-topologies",
+        "title": "Memory Topologies",
+        "path": "curriculum/advanced/memory-topologies/index.md"
+      }
     },
     {
       "id": "memory-topologies",
       "title": "Memory Topologies",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "multi-agent",
+      "module_title": "Multi-Agent & Shared Memory",
+      "module_index": 3,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "store",
       "order": 53,
+      "position": 54,
       "minutes": 45,
       "objective": "Price each shape by what a reader loses -- and by what it leaks.",
       "path": "curriculum/advanced/memory-topologies/index.md",
+      "lab": "curriculum/advanced/memory-topologies/lab/lab.py",
       "capstone_piece": [
         "memlab.agents.topology"
-      ]
+      ],
+      "prev": {
+        "id": "promotion-as-release",
+        "title": "Promotion as a Release",
+        "path": "curriculum/advanced/promotion-as-release/index.md"
+      },
+      "next": {
+        "id": "provenance-and-trust",
+        "title": "Provenance and Trust",
+        "path": "curriculum/advanced/provenance-and-trust/index.md"
+      }
     },
     {
       "id": "provenance-and-trust",
       "title": "Provenance and Trust",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "multi-agent",
+      "module_title": "Multi-Agent & Shared Memory",
+      "module_index": 3,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "govern",
       "order": 54,
+      "position": 55,
       "minutes": 50,
       "objective": "Trust the claim, not the claimant -- and flag what cannot be assessed.",
       "path": "curriculum/advanced/provenance-and-trust/index.md",
+      "lab": "curriculum/advanced/provenance-and-trust/lab/lab.py",
       "capstone_piece": [
         "memlab.agents.trust"
-      ]
+      ],
+      "prev": {
+        "id": "memory-topologies",
+        "title": "Memory Topologies",
+        "path": "curriculum/advanced/memory-topologies/index.md"
+      },
+      "next": {
+        "id": "cross-agent-write-conflicts",
+        "title": "Cross-Agent Write Conflicts",
+        "path": "curriculum/advanced/cross-agent-write-conflicts/index.md"
+      }
     },
     {
       "id": "cross-agent-write-conflicts",
       "title": "Cross-Agent Write Conflicts",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "multi-agent",
+      "module_title": "Multi-Agent & Shared Memory",
+      "module_index": 3,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "evolve",
       "order": 55,
+      "position": 56,
       "minutes": 50,
       "objective": "The precedence rule is a threshold -- and above it, recency decides.",
       "path": "curriculum/advanced/cross-agent-write-conflicts/index.md",
+      "lab": "curriculum/advanced/cross-agent-write-conflicts/lab/lab.py",
       "capstone_piece": [
         "memlab.agents.conflicts"
-      ]
+      ],
+      "prev": {
+        "id": "provenance-and-trust",
+        "title": "Provenance and Trust",
+        "path": "curriculum/advanced/provenance-and-trust/index.md"
+      },
+      "next": {
+        "id": "memory-access-control",
+        "title": "Memory Access Control",
+        "path": "curriculum/advanced/memory-access-control/index.md"
+      }
     },
     {
       "id": "memory-access-control",
       "title": "Memory Access Control",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "multi-agent",
+      "module_title": "Multi-Agent & Shared Memory",
+      "module_index": 3,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "govern",
       "order": 56,
+      "position": 57,
       "minutes": 50,
       "objective": "Say no to a write, and assert the filter that says no to a read.",
       "path": "curriculum/advanced/memory-access-control/index.md",
+      "lab": "curriculum/advanced/memory-access-control/lab/lab.py",
       "capstone_piece": [
         "memlab.agents.authorise"
-      ]
+      ],
+      "prev": {
+        "id": "cross-agent-write-conflicts",
+        "title": "Cross-Agent Write Conflicts",
+        "path": "curriculum/advanced/cross-agent-write-conflicts/index.md"
+      },
+      "next": {
+        "id": "from-facts-to-a-user-model",
+        "title": "From Facts to a User Model",
+        "path": "curriculum/advanced/from-facts-to-a-user-model/index.md"
+      }
     },
     {
       "id": "from-facts-to-a-user-model",
       "title": "From Facts to a User Model",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "personalization",
+      "module_title": "Personalization & User Modeling",
+      "module_index": 4,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "evolve",
       "order": 57,
+      "position": 58,
       "minutes": 50,
       "objective": "Key the model on attributes, and keep what does not fit.",
       "path": "curriculum/advanced/from-facts-to-a-user-model/index.md",
+      "lab": "curriculum/advanced/from-facts-to-a-user-model/lab/lab.py",
       "capstone_piece": [
         "memlab.user.model"
-      ]
+      ],
+      "prev": {
+        "id": "memory-access-control",
+        "title": "Memory Access Control",
+        "path": "curriculum/advanced/memory-access-control/index.md"
+      },
+      "next": {
+        "id": "implicit-signals",
+        "title": "Behaviour as Memory",
+        "path": "curriculum/advanced/implicit-signals/index.md"
+      }
     },
     {
       "id": "implicit-signals",
       "title": "Behaviour as Memory",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "personalization",
+      "module_title": "Personalization & User Modeling",
+      "module_index": 4,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "extract",
       "order": 58,
+      "position": 59,
       "minutes": 50,
       "objective": "A correction is a labelled negative example, and it always arrives late.",
       "path": "curriculum/advanced/implicit-signals/index.md",
+      "lab": "curriculum/advanced/implicit-signals/lab/lab.py",
       "capstone_piece": [
         "memlab.user.signals"
-      ]
+      ],
+      "prev": {
+        "id": "from-facts-to-a-user-model",
+        "title": "From Facts to a User Model",
+        "path": "curriculum/advanced/from-facts-to-a-user-model/index.md"
+      },
+      "next": {
+        "id": "applying-the-model",
+        "title": "Personalization Without Creepiness",
+        "path": "curriculum/advanced/applying-the-model/index.md"
+      }
     },
     {
       "id": "applying-the-model",
       "title": "Personalization Without Creepiness",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "personalization",
+      "module_title": "Personalization & User Modeling",
+      "module_index": 4,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "assemble",
       "order": 59,
+      "position": 60,
       "minutes": 50,
       "objective": "Split the model by how each attribute is used, and report what was withheld.",
       "path": "curriculum/advanced/applying-the-model/index.md",
+      "lab": "curriculum/advanced/applying-the-model/lab/lab.py",
       "capstone_piece": [
         "memlab.user.apply"
-      ]
+      ],
+      "prev": {
+        "id": "implicit-signals",
+        "title": "Behaviour as Memory",
+        "path": "curriculum/advanced/implicit-signals/index.md"
+      },
+      "next": {
+        "id": "cold-start-and-shared-accounts",
+        "title": "Cold Start and Shared Accounts",
+        "path": "curriculum/advanced/cold-start-and-shared-accounts/index.md"
+      }
     },
     {
       "id": "cold-start-and-shared-accounts",
       "title": "Cold Start and Shared Accounts",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "personalization",
+      "module_title": "Personalization & User Modeling",
+      "module_index": 4,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "retrieve",
       "order": 60,
+      "position": 61,
       "minutes": 45,
       "objective": "Coverage is not knowledge, and one field stands between two people.",
       "path": "curriculum/advanced/cold-start-and-shared-accounts/index.md",
+      "lab": "curriculum/advanced/cold-start-and-shared-accounts/lab/lab.py",
       "capstone_piece": [
         "memlab.user.coverage"
-      ]
+      ],
+      "prev": {
+        "id": "applying-the-model",
+        "title": "Personalization Without Creepiness",
+        "path": "curriculum/advanced/applying-the-model/index.md"
+      },
+      "next": {
+        "id": "procedural-memory",
+        "title": "Procedural Memory",
+        "path": "curriculum/advanced/procedural-memory/index.md"
+      }
     },
     {
       "id": "procedural-memory",
       "title": "Procedural Memory",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "procedural",
+      "module_title": "Procedural Memory & Learning From Experience",
+      "module_index": 5,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 3,
       "stage": "store",
       "order": 61,
+      "position": 62,
       "minutes": 45,
       "objective": "Order survives by exception, and a comment about a workflow parses as one.",
       "path": "curriculum/advanced/procedural-memory/index.md",
+      "lab": "curriculum/advanced/procedural-memory/lab/lab.py",
       "capstone_piece": [
         "memlab.procedural.steps"
-      ]
+      ],
+      "prev": {
+        "id": "cold-start-and-shared-accounts",
+        "title": "Cold Start and Shared Accounts",
+        "path": "curriculum/advanced/cold-start-and-shared-accounts/index.md"
+      },
+      "next": {
+        "id": "learning-from-outcomes",
+        "title": "Learning From Outcomes",
+        "path": "curriculum/advanced/learning-from-outcomes/index.md"
+      }
     },
     {
       "id": "learning-from-outcomes",
       "title": "Learning From Outcomes",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "procedural",
+      "module_title": "Procedural Memory & Learning From Experience",
+      "module_index": 5,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 3,
       "stage": "evolve",
       "order": 62,
+      "position": 63,
       "minutes": 45,
       "objective": "The conclusion survives and the evidence does not -- measured from the transcript.",
       "path": "curriculum/advanced/learning-from-outcomes/index.md",
+      "lab": "curriculum/advanced/learning-from-outcomes/lab/lab.py",
       "capstone_piece": [
         "memlab.procedural.outcomes"
-      ]
+      ],
+      "prev": {
+        "id": "procedural-memory",
+        "title": "Procedural Memory",
+        "path": "curriculum/advanced/procedural-memory/index.md"
+      },
+      "next": {
+        "id": "retrieving-procedures",
+        "title": "Retrieving Procedures",
+        "path": "curriculum/advanced/retrieving-procedures/index.md"
+      }
     },
     {
       "id": "retrieving-procedures",
       "title": "Retrieving Procedures",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "procedural",
+      "module_title": "Procedural Memory & Learning From Experience",
+      "module_index": 5,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 3,
       "stage": "retrieve",
       "order": 63,
+      "position": 64,
       "minutes": 45,
       "objective": "A workflow loses to a comment about it, and no ranker tuning fixes that.",
       "path": "curriculum/advanced/retrieving-procedures/index.md",
+      "lab": "curriculum/advanced/retrieving-procedures/lab/lab.py",
       "capstone_piece": [
         "memlab.procedural.retrieve"
-      ]
+      ],
+      "prev": {
+        "id": "learning-from-outcomes",
+        "title": "Learning From Outcomes",
+        "path": "curriculum/advanced/learning-from-outcomes/index.md"
+      },
+      "next": {
+        "id": "pii-on-the-write-path",
+        "title": "PII on the Write Path",
+        "path": "curriculum/advanced/pii-on-the-write-path/index.md"
+      }
     },
     {
       "id": "pii-on-the-write-path",
       "title": "PII on the Write Path",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "privacy",
+      "module_title": "Privacy, PII, Deletion & Right to Be Forgotten",
+      "module_index": 6,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 5,
       "stage": "govern",
       "order": 64,
+      "position": 65,
       "minutes": 45,
       "objective": "Label personal data without deciding at the gate -- the strict policy breaks the exam.",
       "path": "curriculum/advanced/pii-on-the-write-path/index.md",
+      "lab": "curriculum/advanced/pii-on-the-write-path/lab/lab.py",
       "capstone_piece": [
         "memlab.privacy.classify"
-      ]
+      ],
+      "prev": {
+        "id": "retrieving-procedures",
+        "title": "Retrieving Procedures",
+        "path": "curriculum/advanced/retrieving-procedures/index.md"
+      },
+      "next": {
+        "id": "redaction-and-minimization",
+        "title": "Redaction and Minimization",
+        "path": "curriculum/advanced/redaction-and-minimization/index.md"
+      }
     },
     {
       "id": "redaction-and-minimization",
       "title": "Redaction and Minimization",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "privacy",
+      "module_title": "Privacy, PII, Deletion & Right to Be Forgotten",
+      "module_index": 6,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 5,
       "stage": "govern",
       "order": 65,
+      "position": 66,
       "minutes": 45,
       "objective": "Coarsen per kind, and measure what each level costs the answer.",
       "path": "curriculum/advanced/redaction-and-minimization/index.md",
+      "lab": "curriculum/advanced/redaction-and-minimization/lab/lab.py",
       "capstone_piece": [
         "memlab.privacy.redact"
-      ]
+      ],
+      "prev": {
+        "id": "pii-on-the-write-path",
+        "title": "PII on the Write Path",
+        "path": "curriculum/advanced/pii-on-the-write-path/index.md"
+      },
+      "next": {
+        "id": "deletion-that-actually-deletes",
+        "title": "Deletion That Actually Deletes",
+        "path": "curriculum/advanced/deletion-that-actually-deletes/index.md"
+      }
     },
     {
       "id": "deletion-that-actually-deletes",
       "title": "Deletion That Actually Deletes",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "privacy",
+      "module_title": "Privacy, PII, Deletion & Right to Be Forgotten",
+      "module_index": 6,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 5,
       "stage": "govern",
       "order": 66,
+      "position": 67,
       "minutes": 55,
       "objective": "Resolve the request by label, then reach every structure -- and report the zeroes.",
       "path": "curriculum/advanced/deletion-that-actually-deletes/index.md",
+      "lab": "curriculum/advanced/deletion-that-actually-deletes/lab/lab.py",
       "capstone_piece": [
         "memlab.privacy.delete"
-      ]
+      ],
+      "prev": {
+        "id": "redaction-and-minimization",
+        "title": "Redaction and Minimization",
+        "path": "curriculum/advanced/redaction-and-minimization/index.md"
+      },
+      "next": {
+        "id": "rtbf-and-auditability",
+        "title": "Proving You Forgot",
+        "path": "curriculum/advanced/rtbf-and-auditability/index.md"
+      }
     },
     {
       "id": "rtbf-and-auditability",
       "title": "Proving You Forgot",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "privacy",
+      "module_title": "Privacy, PII, Deletion & Right to Be Forgotten",
+      "module_index": 6,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 5,
       "stage": "govern",
       "order": 67,
+      "position": 68,
       "minutes": 45,
       "objective": "Prove a deletion using the content-addressed id, and keep none of the content.",
       "path": "curriculum/advanced/rtbf-and-auditability/index.md",
+      "lab": "curriculum/advanced/rtbf-and-auditability/lab/lab.py",
       "capstone_piece": [
         "memlab.privacy.audit"
-      ]
+      ],
+      "prev": {
+        "id": "deletion-that-actually-deletes",
+        "title": "Deletion That Actually Deletes",
+        "path": "curriculum/advanced/deletion-that-actually-deletes/index.md"
+      },
+      "next": {
+        "id": "memory-attacks",
+        "title": "Memory Attacks",
+        "path": "curriculum/advanced/memory-attacks/index.md"
+      }
     },
     {
       "id": "memory-attacks",
       "title": "Memory Attacks",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "privacy",
+      "module_title": "Privacy, PII, Deletion & Right to Be Forgotten",
+      "module_index": 6,
+      "module_total": 9,
+      "in_module": 5,
+      "of_module": 5,
       "stage": "govern",
       "order": 68,
+      "position": 69,
       "minutes": 50,
       "objective": "Three defences exist, all accidental, and the fourth attack has none.",
       "path": "curriculum/advanced/memory-attacks/index.md",
+      "lab": "curriculum/advanced/memory-attacks/lab/lab.py",
       "capstone_piece": [
         "memlab.privacy.attacks"
-      ]
+      ],
+      "prev": {
+        "id": "rtbf-and-auditability",
+        "title": "Proving You Forgot",
+        "path": "curriculum/advanced/rtbf-and-auditability/index.md"
+      },
+      "next": {
+        "id": "why-memory-eval-is-hard",
+        "title": "Why Memory Eval Is Hard",
+        "path": "curriculum/advanced/why-memory-eval-is-hard/index.md"
+      }
     },
     {
       "id": "why-memory-eval-is-hard",
       "title": "Why Memory Eval Is Hard",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "evaluation",
+      "module_title": "Evaluating Memory Systems",
+      "module_index": 7,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 6,
       "stage": "govern",
       "order": 69,
+      "position": 70,
       "minutes": 45,
       "objective": "Count what can be scored at all, before scoring anything.",
       "path": "curriculum/advanced/why-memory-eval-is-hard/index.md",
+      "lab": "curriculum/advanced/why-memory-eval-is-hard/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.harness"
-      ]
+      ],
+      "prev": {
+        "id": "memory-attacks",
+        "title": "Memory Attacks",
+        "path": "curriculum/advanced/memory-attacks/index.md"
+      },
+      "next": {
+        "id": "component-metrics",
+        "title": "Component Metrics",
+        "path": "curriculum/advanced/component-metrics/index.md"
+      }
     },
     {
       "id": "component-metrics",
       "title": "Component Metrics",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "evaluation",
+      "module_title": "Evaluating Memory Systems",
+      "module_index": 7,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 6,
       "stage": "govern",
       "order": 70,
+      "position": 71,
       "minutes": 50,
       "objective": "Score the stages -- and debug the metric before believing it about the system.",
       "path": "curriculum/advanced/component-metrics/index.md",
+      "lab": "curriculum/advanced/component-metrics/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.components"
-      ]
+      ],
+      "prev": {
+        "id": "why-memory-eval-is-hard",
+        "title": "Why Memory Eval Is Hard",
+        "path": "curriculum/advanced/why-memory-eval-is-hard/index.md"
+      },
+      "next": {
+        "id": "end-to-end-eval",
+        "title": "Build Your Own Harness",
+        "path": "curriculum/advanced/end-to-end-eval/index.md"
+      }
     },
     {
       "id": "end-to-end-eval",
       "title": "Build Your Own Harness",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "evaluation",
+      "module_title": "Evaluating Memory Systems",
+      "module_index": 7,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 6,
       "stage": "govern",
       "order": 71,
+      "position": 72,
       "minutes": 50,
       "objective": "One battery across every profile -- and name what it cannot see.",
       "path": "curriculum/advanced/end-to-end-eval/index.md",
+      "lab": "curriculum/advanced/end-to-end-eval/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.suite"
-      ]
+      ],
+      "prev": {
+        "id": "component-metrics",
+        "title": "Component Metrics",
+        "path": "curriculum/advanced/component-metrics/index.md"
+      },
+      "next": {
+        "id": "regression-testing-state",
+        "title": "Regression Testing a Stateful System",
+        "path": "curriculum/advanced/regression-testing-state/index.md"
+      }
     },
     {
       "id": "regression-testing-state",
       "title": "Regression Testing a Stateful System",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "evaluation",
+      "module_title": "Evaluating Memory Systems",
+      "module_index": 7,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 6,
       "stage": "govern",
       "order": 72,
+      "position": 73,
       "minutes": 45,
       "objective": "Half the tests pin a measured number -- and a frozen corpus is what makes that affordable.",
       "path": "curriculum/advanced/regression-testing-state/index.md",
+      "lab": "curriculum/advanced/regression-testing-state/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.regression"
-      ]
+      ],
+      "prev": {
+        "id": "end-to-end-eval",
+        "title": "Build Your Own Harness",
+        "path": "curriculum/advanced/end-to-end-eval/index.md"
+      },
+      "next": {
+        "id": "llm-as-judge-for-memory",
+        "title": "LLM as Judge, and Its Failure Modes",
+        "path": "curriculum/advanced/llm-as-judge-for-memory/index.md"
+      }
     },
     {
       "id": "llm-as-judge-for-memory",
       "title": "LLM as Judge, and Its Failure Modes",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "evaluation",
+      "module_title": "Evaluating Memory Systems",
+      "module_index": 7,
+      "module_total": 9,
+      "in_module": 5,
+      "of_module": 6,
       "stage": "govern",
       "order": 73,
+      "position": 74,
       "minutes": 45,
       "objective": "One judgement of three model calls -- and arbitration is never one of them.",
       "path": "curriculum/advanced/llm-as-judge-for-memory/index.md",
+      "lab": "curriculum/advanced/llm-as-judge-for-memory/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.judge"
-      ]
+      ],
+      "prev": {
+        "id": "regression-testing-state",
+        "title": "Regression Testing a Stateful System",
+        "path": "curriculum/advanced/regression-testing-state/index.md"
+      },
+      "next": {
+        "id": "reading-benchmark-claims",
+        "title": "Reading Benchmark Claims Critically",
+        "path": "curriculum/advanced/reading-benchmark-claims/index.md"
+      }
     },
     {
       "id": "reading-benchmark-claims",
       "title": "Reading Benchmark Claims Critically",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "evaluation",
+      "module_title": "Evaluating Memory Systems",
+      "module_index": 7,
+      "module_total": 9,
+      "in_module": 6,
+      "of_module": 6,
       "stage": "govern",
       "order": 74,
+      "position": 75,
       "minutes": 45,
       "objective": "Four questions for any score -- applied to your own claim first.",
       "path": "curriculum/advanced/reading-benchmark-claims/index.md",
+      "lab": "curriculum/advanced/reading-benchmark-claims/lab/lab.py",
       "capstone_piece": [
         "memlab.eval.claims"
-      ]
+      ],
+      "prev": {
+        "id": "llm-as-judge-for-memory",
+        "title": "LLM as Judge, and Its Failure Modes",
+        "path": "curriculum/advanced/llm-as-judge-for-memory/index.md"
+      },
+      "next": {
+        "id": "cost-model",
+        "title": "The Write Path Dominates",
+        "path": "curriculum/advanced/cost-model/index.md"
+      }
     },
     {
       "id": "cost-model",
       "title": "The Write Path Dominates",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "scale",
+      "module_title": "Cost, Latency & Scale",
+      "module_index": 8,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 4,
       "stage": "govern",
       "order": 75,
+      "position": 76,
       "minutes": 45,
       "objective": "Count the calls: the read path makes none, and the write path makes two per turn.",
       "path": "curriculum/advanced/cost-model/index.md",
+      "lab": "curriculum/advanced/cost-model/lab/lab.py",
       "capstone_piece": [
         "memlab.cost.profile"
-      ]
+      ],
+      "prev": {
+        "id": "reading-benchmark-claims",
+        "title": "Reading Benchmark Claims Critically",
+        "path": "curriculum/advanced/reading-benchmark-claims/index.md"
+      },
+      "next": {
+        "id": "latency-budget",
+        "title": "The Latency Budget",
+        "path": "curriculum/advanced/latency-budget/index.md"
+      }
     },
     {
       "id": "latency-budget",
       "title": "The Latency Budget",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "scale",
+      "module_title": "Cost, Latency & Scale",
+      "module_index": 8,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 4,
       "stage": "govern",
       "order": 76,
+      "position": 77,
       "minutes": 45,
       "objective": "Half the per-turn cost blocks -- and the other half is a model call in a stage called deferrable.",
       "path": "curriculum/advanced/latency-budget/index.md",
+      "lab": "curriculum/advanced/latency-budget/lab/lab.py",
       "capstone_piece": [
         "memlab.cost.latency"
-      ]
+      ],
+      "prev": {
+        "id": "cost-model",
+        "title": "The Write Path Dominates",
+        "path": "curriculum/advanced/cost-model/index.md"
+      },
+      "next": {
+        "id": "caching-batching-routing",
+        "title": "Caching, Batching, Routing",
+        "path": "curriculum/advanced/caching-batching-routing/index.md"
+      }
     },
     {
       "id": "caching-batching-routing",
       "title": "Caching, Batching, Routing",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "scale",
+      "module_title": "Cost, Latency & Scale",
+      "module_index": 8,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 4,
       "stage": "govern",
       "order": 77,
+      "position": 78,
       "minutes": 45,
       "objective": "Two of six tactics do not apply, and routing has two targets rather than one.",
       "path": "curriculum/advanced/caching-batching-routing/index.md",
+      "lab": "curriculum/advanced/caching-batching-routing/lab/lab.py",
       "capstone_piece": [
         "memlab.cost.tactics"
-      ]
+      ],
+      "prev": {
+        "id": "latency-budget",
+        "title": "The Latency Budget",
+        "path": "curriculum/advanced/latency-budget/index.md"
+      },
+      "next": {
+        "id": "scaling-the-store",
+        "title": "Scaling the Store",
+        "path": "curriculum/advanced/scaling-the-store/index.md"
+      }
     },
     {
       "id": "scaling-the-store",
       "title": "Scaling the Store",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "scale",
+      "module_title": "Cost, Latency & Scale",
+      "module_index": 8,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 4,
       "stage": "store",
       "order": 78,
+      "position": 79,
       "minutes": 50,
       "objective": "Replicate and measure -- retrieval grows linearly, consolidation grows 104x.",
       "path": "curriculum/advanced/scaling-the-store/index.md",
+      "lab": "curriculum/advanced/scaling-the-store/lab/lab.py",
       "capstone_piece": [
         "memlab.cost.scale"
-      ]
+      ],
+      "prev": {
+        "id": "caching-batching-routing",
+        "title": "Caching, Batching, Routing",
+        "path": "curriculum/advanced/caching-batching-routing/index.md"
+      },
+      "next": {
+        "id": "failure-field-guide",
+        "title": "The Failure Field Guide",
+        "path": "curriculum/advanced/failure-field-guide/index.md"
+      }
     },
     {
       "id": "failure-field-guide",
       "title": "The Failure Field Guide",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "production",
+      "module_title": "Production Failure Modes & Governance",
+      "module_index": 9,
+      "module_total": 9,
+      "in_module": 1,
+      "of_module": 5,
       "stage": "govern",
       "order": 79,
+      "position": 80,
       "minutes": 45,
       "objective": "Five of seven symptoms are ambiguous, so the useful column is the tell.",
       "path": "curriculum/advanced/failure-field-guide/index.md",
+      "lab": "curriculum/advanced/failure-field-guide/lab/lab.py",
       "capstone_piece": [
         "memlab.production.failures"
-      ]
+      ],
+      "prev": {
+        "id": "scaling-the-store",
+        "title": "Scaling the Store",
+        "path": "curriculum/advanced/scaling-the-store/index.md"
+      },
+      "next": {
+        "id": "memory-observability",
+        "title": "Memory Observability",
+        "path": "curriculum/advanced/memory-observability/index.md"
+      }
     },
     {
       "id": "memory-observability",
       "title": "Memory Observability",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "production",
+      "module_title": "Production Failure Modes & Governance",
+      "module_index": 9,
+      "module_total": 9,
+      "in_module": 2,
+      "of_module": 5,
       "stage": "govern",
       "order": 80,
+      "position": 81,
       "minutes": 45,
       "objective": "Six answers from the record with no logging, and three that need a read-time write.",
       "path": "curriculum/advanced/memory-observability/index.md",
+      "lab": "curriculum/advanced/memory-observability/lab/lab.py",
       "capstone_piece": [
         "memlab.production.observe"
-      ]
+      ],
+      "prev": {
+        "id": "failure-field-guide",
+        "title": "The Failure Field Guide",
+        "path": "curriculum/advanced/failure-field-guide/index.md"
+      },
+      "next": {
+        "id": "invariants-and-drift-detection",
+        "title": "Invariants and Drift Detection",
+        "path": "curriculum/advanced/invariants-and-drift-detection/index.md"
+      }
     },
     {
       "id": "invariants-and-drift-detection",
       "title": "Invariants and Drift Detection",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "production",
+      "module_title": "Production Failure Modes & Governance",
+      "module_index": 9,
+      "module_total": 9,
+      "in_module": 3,
+      "of_module": 5,
       "stage": "govern",
       "order": 81,
+      "position": 82,
       "minutes": 45,
       "objective": "Collect the invariants, label the kind, and stop an outlier moving its own reference.",
       "path": "curriculum/advanced/invariants-and-drift-detection/index.md",
+      "lab": "curriculum/advanced/invariants-and-drift-detection/lab/lab.py",
       "capstone_piece": [
         "memlab.production.invariants"
-      ]
+      ],
+      "prev": {
+        "id": "memory-observability",
+        "title": "Memory Observability",
+        "path": "curriculum/advanced/memory-observability/index.md"
+      },
+      "next": {
+        "id": "schema-migration-on-live-memory",
+        "title": "Migrating Live Memory",
+        "path": "curriculum/advanced/schema-migration-on-live-memory/index.md"
+      }
     },
     {
       "id": "schema-migration-on-live-memory",
       "title": "Migrating Live Memory",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "production",
+      "module_title": "Production Failure Modes & Governance",
+      "module_index": 9,
+      "module_total": 9,
+      "in_module": 4,
+      "of_module": 5,
       "stage": "store",
       "order": 82,
+      "position": 83,
       "minutes": 45,
       "objective": "The id hashes identity, not state -- which is why this migration was one phase.",
       "path": "curriculum/advanced/schema-migration-on-live-memory/index.md",
+      "lab": "curriculum/advanced/schema-migration-on-live-memory/lab/lab.py",
       "capstone_piece": [
         "memlab.production.migrate"
-      ]
+      ],
+      "prev": {
+        "id": "invariants-and-drift-detection",
+        "title": "Invariants and Drift Detection",
+        "path": "curriculum/advanced/invariants-and-drift-detection/index.md"
+      },
+      "next": {
+        "id": "capstone-finale",
+        "title": "Hardening Pass",
+        "path": "curriculum/advanced/capstone-finale/index.md"
+      }
     },
     {
       "id": "capstone-finale",
       "title": "Hardening Pass",
       "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
       "module": "production",
+      "module_title": "Production Failure Modes & Governance",
+      "module_index": 9,
+      "module_total": 9,
+      "in_module": 5,
+      "of_module": 5,
       "stage": "govern",
       "order": 83,
+      "position": 84,
       "minutes": 50,
       "objective": "Ship v0.3 with its six open items -- the section that makes the rest checkable.",
       "path": "curriculum/advanced/capstone-finale/index.md",
+      "lab": "curriculum/advanced/capstone-finale/lab/lab.py",
       "capstone_piece": [
         "memlab.production.release"
-      ]
+      ],
+      "prev": {
+        "id": "schema-migration-on-live-memory",
+        "title": "Migrating Live Memory",
+        "path": "curriculum/advanced/schema-migration-on-live-memory/index.md"
+      },
+      "next": null
+    }
+  ],
+  "modules": [
+    {
+      "id": "foundations",
+      "title": "Why Memory Is Not RAG",
+      "level": "beginner",
+      "level_title": "The Loop",
+      "question": "How does a system remember at all?",
+      "index": 1,
+      "total": 4,
+      "lessons": [
+        "memory-is-not-rag",
+        "memory-taxonomy",
+        "context-is-not-memory",
+        "anatomy-of-a-memory-layer"
+      ],
+      "path": "modules/foundations/index.md",
+      "minutes": 120,
+      "hours": 2.0,
+      "first": "curriculum/beginner/memory-is-not-rag/index.md",
+      "count": 4
+    },
+    {
+      "id": "write-path-naive",
+      "title": "The Write Path, Naively",
+      "level": "beginner",
+      "level_title": "The Loop",
+      "question": "How does a system remember at all?",
+      "index": 2,
+      "total": 4,
+      "lessons": [
+        "the-memory-record",
+        "naive-extraction",
+        "writing-memories-down"
+      ],
+      "path": "modules/write-path-naive/index.md",
+      "minutes": 120,
+      "hours": 2.0,
+      "first": "curriculum/beginner/the-memory-record/index.md",
+      "count": 3
+    },
+    {
+      "id": "read-path-honest",
+      "title": "The Read Path, Honestly",
+      "level": "beginner",
+      "level_title": "The Loop",
+      "question": "How does a system remember at all?",
+      "index": 3,
+      "total": 4,
+      "lessons": [
+        "embedding-recall",
+        "retrieval-is-not-enough",
+        "context-assembly-v0"
+      ],
+      "path": "modules/read-path-honest/index.md",
+      "minutes": 110,
+      "hours": 1.8,
+      "first": "curriculum/beginner/embedding-recall/index.md",
+      "count": 3
+    },
+    {
+      "id": "loop-closes",
+      "title": "The Loop Closes",
+      "level": "beginner",
+      "level_title": "The Loop",
+      "question": "How does a system remember at all?",
+      "index": 4,
+      "total": 4,
+      "lessons": [
+        "session-vs-longterm",
+        "your-first-memory-layer",
+        "watching-it-fail"
+      ],
+      "path": "modules/loop-closes/index.md",
+      "minutes": 115,
+      "hours": 1.9,
+      "first": "curriculum/beginner/session-vs-longterm/index.md",
+      "count": 3
+    },
+    {
+      "id": "typed-extraction",
+      "title": "Typed Memory & Extraction Pipelines",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 1,
+      "total": 8,
+      "lessons": [
+        "typed-memory-model",
+        "extraction-pipelines",
+        "extraction-quality",
+        "atomic-memories"
+      ],
+      "path": "modules/typed-extraction/index.md",
+      "minutes": 165,
+      "hours": 2.8,
+      "first": "curriculum/intermediate/typed-memory-model/index.md",
+      "count": 4
+    },
+    {
+      "id": "identity",
+      "title": "Identity & Entity Resolution",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 2,
+      "total": 8,
+      "lessons": [
+        "entities-and-aliases",
+        "entity-resolution",
+        "scopes-and-namespaces"
+      ],
+      "path": "modules/identity/index.md",
+      "minutes": 120,
+      "hours": 2.0,
+      "first": "curriculum/intermediate/entities-and-aliases/index.md",
+      "count": 3
+    },
+    {
+      "id": "consolidation",
+      "title": "Consolidation",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 3,
+      "total": 8,
+      "lessons": [
+        "deduplication",
+        "summarization-and-compaction",
+        "semantic-drift",
+        "episodic-to-semantic"
+      ],
+      "path": "modules/consolidation/index.md",
+      "minutes": 160,
+      "hours": 2.7,
+      "first": "curriculum/intermediate/deduplication/index.md",
+      "count": 4
+    },
+    {
+      "id": "conflict",
+      "title": "Conflict Resolution & Belief Updating",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 4,
+      "total": 8,
+      "lessons": [
+        "contradiction-detection",
+        "memory-operations",
+        "deterministic-freshness",
+        "supersession-not-deletion"
+      ],
+      "path": "modules/conflict/index.md",
+      "minutes": 180,
+      "hours": 3.0,
+      "first": "curriculum/intermediate/contradiction-detection/index.md",
+      "count": 4
+    },
+    {
+      "id": "forgetting",
+      "title": "Forgetting",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 5,
+      "total": 8,
+      "lessons": [
+        "why-forgetting-is-a-feature",
+        "salience-scoring",
+        "decay-and-tiers",
+        "budgeted-forgetting"
+      ],
+      "path": "modules/forgetting/index.md",
+      "minutes": 160,
+      "hours": 2.7,
+      "first": "curriculum/intermediate/why-forgetting-is-a-feature/index.md",
+      "count": 4
+    },
+    {
+      "id": "retrieval-proper",
+      "title": "Retrieval Done Properly",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 6,
+      "total": 8,
+      "lessons": [
+        "scope-then-rank",
+        "hybrid-ranking",
+        "query-formulation",
+        "retrieval-triggers"
+      ],
+      "path": "modules/retrieval-proper/index.md",
+      "minutes": 170,
+      "hours": 2.8,
+      "first": "curriculum/intermediate/scope-then-rank/index.md",
+      "count": 4
+    },
+    {
+      "id": "stores",
+      "title": "Stores",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 7,
+      "total": 8,
+      "lessons": [
+        "vector-stores-for-mutable-data",
+        "relational-stores",
+        "graph-stores",
+        "hybrid-architecture"
+      ],
+      "path": "modules/stores/index.md",
+      "minutes": 165,
+      "hours": 2.8,
+      "first": "curriculum/intermediate/vector-stores-for-mutable-data/index.md",
+      "count": 4
+    },
+    {
+      "id": "assembly",
+      "title": "Context Assembly Under Budget",
+      "level": "intermediate",
+      "level_title": "The Write Path in Earnest",
+      "question": "How does memory stay correct as it grows?",
+      "index": 8,
+      "total": 8,
+      "lessons": [
+        "the-packing-problem",
+        "ordering-and-formatting",
+        "compaction-safety",
+        "slot-value"
+      ],
+      "path": "modules/assembly/index.md",
+      "minutes": 160,
+      "hours": 2.7,
+      "first": "curriculum/intermediate/the-packing-problem/index.md",
+      "count": 4
+    },
+    {
+      "id": "temporal",
+      "title": "Temporal Reasoning & Bi-Temporal Modeling",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 1,
+      "total": 9,
+      "lessons": [
+        "two-clocks",
+        "validity-intervals",
+        "temporal-questions",
+        "relative-time-resolution",
+        "temporal-knowledge-graphs"
+      ],
+      "path": "modules/temporal/index.md",
+      "minutes": 245,
+      "hours": 4.1,
+      "first": "curriculum/advanced/two-clocks/index.md",
+      "count": 5
+    },
+    {
+      "id": "sleep-time",
+      "title": "Offline Consolidation",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 2,
+      "total": 9,
+      "lessons": [
+        "sleep-time-compute",
+        "background-job-mechanics",
+        "reflection-and-insight",
+        "promotion-as-release"
+      ],
+      "path": "modules/sleep-time/index.md",
+      "minutes": 205,
+      "hours": 3.4,
+      "first": "curriculum/advanced/sleep-time-compute/index.md",
+      "count": 4
+    },
+    {
+      "id": "multi-agent",
+      "title": "Multi-Agent & Shared Memory",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 3,
+      "total": 9,
+      "lessons": [
+        "memory-topologies",
+        "provenance-and-trust",
+        "cross-agent-write-conflicts",
+        "memory-access-control"
+      ],
+      "path": "modules/multi-agent/index.md",
+      "minutes": 195,
+      "hours": 3.2,
+      "first": "curriculum/advanced/memory-topologies/index.md",
+      "count": 4
+    },
+    {
+      "id": "personalization",
+      "title": "Personalization & User Modeling",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 4,
+      "total": 9,
+      "lessons": [
+        "from-facts-to-a-user-model",
+        "implicit-signals",
+        "applying-the-model",
+        "cold-start-and-shared-accounts"
+      ],
+      "path": "modules/personalization/index.md",
+      "minutes": 195,
+      "hours": 3.2,
+      "first": "curriculum/advanced/from-facts-to-a-user-model/index.md",
+      "count": 4
+    },
+    {
+      "id": "procedural",
+      "title": "Procedural Memory & Learning From Experience",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 5,
+      "total": 9,
+      "lessons": [
+        "procedural-memory",
+        "learning-from-outcomes",
+        "retrieving-procedures"
+      ],
+      "path": "modules/procedural/index.md",
+      "minutes": 135,
+      "hours": 2.2,
+      "first": "curriculum/advanced/procedural-memory/index.md",
+      "count": 3
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy, PII, Deletion & Right to Be Forgotten",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 6,
+      "total": 9,
+      "lessons": [
+        "pii-on-the-write-path",
+        "redaction-and-minimization",
+        "deletion-that-actually-deletes",
+        "rtbf-and-auditability",
+        "memory-attacks"
+      ],
+      "path": "modules/privacy/index.md",
+      "minutes": 240,
+      "hours": 4.0,
+      "first": "curriculum/advanced/pii-on-the-write-path/index.md",
+      "count": 5
+    },
+    {
+      "id": "evaluation",
+      "title": "Evaluating Memory Systems",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 7,
+      "total": 9,
+      "lessons": [
+        "why-memory-eval-is-hard",
+        "component-metrics",
+        "end-to-end-eval",
+        "regression-testing-state",
+        "llm-as-judge-for-memory",
+        "reading-benchmark-claims"
+      ],
+      "path": "modules/evaluation/index.md",
+      "minutes": 280,
+      "hours": 4.7,
+      "first": "curriculum/advanced/why-memory-eval-is-hard/index.md",
+      "count": 6
+    },
+    {
+      "id": "scale",
+      "title": "Cost, Latency & Scale",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 8,
+      "total": 9,
+      "lessons": [
+        "cost-model",
+        "latency-budget",
+        "caching-batching-routing",
+        "scaling-the-store"
+      ],
+      "path": "modules/scale/index.md",
+      "minutes": 185,
+      "hours": 3.1,
+      "first": "curriculum/advanced/cost-model/index.md",
+      "count": 4
+    },
+    {
+      "id": "production",
+      "title": "Production Failure Modes & Governance",
+      "level": "advanced",
+      "level_title": "Time, Scale, Multiplicity, Trust",
+      "question": "How does it survive time, scale, multiplicity, and scrutiny?",
+      "index": 9,
+      "total": 9,
+      "lessons": [
+        "failure-field-guide",
+        "memory-observability",
+        "invariants-and-drift-detection",
+        "schema-migration-on-live-memory",
+        "capstone-finale"
+      ],
+      "path": "modules/production/index.md",
+      "minutes": 230,
+      "hours": 3.8,
+      "first": "curriculum/advanced/failure-field-guide/index.md",
+      "count": 5
     }
   ],
   "concepts": [

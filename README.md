@@ -36,16 +36,17 @@ That is lesson 00, and you run it yourself in the first thirty minutes.
 ## Start here
 
 ```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh   # if you do not have uv
 uv sync --dev
-uv run python tools/show.py memory-is-not-rag
 ```
 
-That prints the table above for real, from the corpus, on your machine. Then
-read [SYLLABUS.md](SYLLABUS.md) for the full map.
+Then open [Memory Is Not RAG](curriculum/beginner/memory-is-not-rag/index.md)
+and work its lab. It is the first of four lessons in *Why Memory Is Not RAG*,
+about two hours in total.
 
-(`show.py` runs a lab with its reference solution filled in. The lab file
-itself, `lab/lab.py`, is a stub that raises `NotImplementedError` until *you*
-fill it in — that is the exercise, and the section below is how it works.)
+If you get stuck, `uv run python tools/show.py memory-is-not-rag` prints what
+that lab produces once it is solved. It is a way out of a hole, not a first
+step — running it before you attempt the lab gives away the answer.
 
 **No API key is needed.** Labs run against a deterministic local model whose
 embeddings are genuinely responsive to wording, so retrieval lessons teach real
@@ -60,8 +61,8 @@ key, at any level.
 
 **The loop, for each of the 84 lessons:**
 
-1. **Read the lesson** — `curriculum/<level>/<lesson>/index.md`. Every one ends
-   with a `Why this isn't RAG` section; if you read nothing else, read those.
+1. **Read the lesson** — `curriculum/<level>/<lesson>/index.md`. Every one has a
+   `Why this isn't RAG` section, third of ten; if you read nothing else, read those.
 2. **Open its lab** — `lab/lab.py`. Exactly one function is stubbed with
    `raise NotImplementedError` and a `TODO` describing what it must return.
 3. **Fill the stub, then run the file:**
@@ -90,16 +91,12 @@ uv run pytest -q                                              # all 823
 uv run pytest curriculum/beginner/memory-is-not-rag/lab/ -q   # one lesson
 ```
 
-**Three ways in:**
-
-- **Thirty minutes** — run the lab above and read `memory-is-not-rag`. That is
-  the whole argument, demonstrated rather than asserted.
-- **Front to back** — [SYLLABUS.md](SYLLABUS.md) is the order, and it is proven
-  to be a valid topological sort of the prerequisite graph, so nothing ever
-  depends on something you have not met.
-- **Straight at your bug** — scan the syllabus for the failure you are actually
-  hitting. Roughly half the course is `evolve` and `govern`; only about 11% is
-  retrieval.
+**If you are not starting from the beginning.** [SYLLABUS.md](SYLLABUS.md) is
+the order, proven to be a valid topological sort of the prerequisite graph, so
+nothing ever depends on something you have not met. Or scan the
+[course map](https://yash-raw.github.io/Mem-101/map/) for the failure you are
+actually hitting — roughly half the course is `evolve` and `govern`, and only
+about 11% is retrieval.
 
 **If a number moves under you.** Lessons quote measured output, and shared code
 changes as the capstone grows — so each lesson pins itself to a *module
@@ -117,7 +114,8 @@ job. `uv run python tools/dump_snapshots.py` shows what moved.
 | `capstone/` | `memlab`, the system you build — plus the canonical corpus every lab uses. |
 | `landscape/` | Named tools and benchmarks, quarantined and dated, so the lessons never rot. |
 | `tools/` | Validators that keep all of the above honest. |
-| `docs/` | The site: its stylesheet, the two interactive pages' scripts, and symlinks to everything above. |
+| `docs/` | The site: its stylesheet, the interactive pages' scripts, and symlinks to everything above. |
+| `modules/` | One generated overview per module — the unit between a lesson and a level. |
 
 One conversation — Priya, 14 sessions, March 2025 to August 2026 — runs through
 every lab at every level. By the time you are fixing belief updating in
@@ -133,7 +131,7 @@ Two licences, split by what the file is.
 
 | Path | Licence | |
 |---|---|---|
-| `curriculum/`, `concepts/`, `landscape/`, `SYLLABUS.md`, `README.md`, `CONTRIBUTING.md`, `map.md`, `atlas.md` | **CC BY 4.0** | [LICENSE-CONTENT](LICENSE-CONTENT) |
+| `curriculum/`, `concepts/`, `landscape/`, `modules/`, `SYLLABUS.md`, `README.md`, `CONTRIBUTING.md`, `map.md`, `atlas.md` | **CC BY 4.0** | [LICENSE-CONTENT](LICENSE-CONTENT) |
 | `capstone/`, `tools/`, `docs/assets/`, `overrides/`, and every `lab/*.py` | **MIT** | [LICENSE](LICENSE) |
 
 Teach from it, translate it, adapt it, use it inside a paid course — all fine,

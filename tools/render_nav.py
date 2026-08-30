@@ -35,6 +35,11 @@ def build() -> str:
         out.append(f"  - {level['title']}:\n")
         for module in level["modules"]:
             out.append(f"    - {module['title']}:\n")
+            # First child, which is what navigation.indexes turns into the
+            # section's own page -- a module header used to be a dead label.
+            overview = f"modules/{module['id']}/index.md"
+            if (ROOT / overview).exists():
+                out.append(f"      - {overview}\n")
             for lesson in module["lessons"]:
                 path = f"curriculum/{level['id']}/{lesson['id']}/index.md"
                 if (ROOT / path).exists():

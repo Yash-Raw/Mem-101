@@ -71,6 +71,25 @@ event time    valid_from ....... valid_to      when it was TRUE
 belief time   recorded_at ...... invalid_at    when we BELIEVED it
 ```
 
+```mermaid
+flowchart LR
+  subgraph EV["event time — when it was true"]
+    direction LR
+    VF["<b>valid_from</b><br/><i>the fact began</i>"] --> VT["<b>valid_to</b><br/><i>the fact stopped being true</i>"]
+  end
+  subgraph BE["belief time — when we believed it"]
+    direction LR
+    RA["<b>recorded_at</b><br/><i>we were told</i>"] --> IA["<b>invalid_at</b><br/><i>we found out</i>"]
+  end
+  VF -.->|"may be months apart"| RA
+  X["<b>one column for both</b><br/><i>neither is reportable</i>"]:::bad
+  VT -.->|"never"| X
+  IA -.->|"never"| X
+  style VT fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style IA fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 Each axis can move without the other:
 
 | case | event | belief |

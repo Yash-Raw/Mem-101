@@ -116,6 +116,7 @@ job. `uv run python tools/dump_snapshots.py` shows what moved.
 | `tools/` | Validators that keep all of the above honest. |
 | `docs/` | The site: its stylesheet, the interactive pages' scripts, and symlinks to everything above. |
 | `modules/` | One generated overview per module — the unit between a lesson and a level. |
+| `timeline.md` | Priya's fourteen sessions, annotated from `gold.yml` with the lesson each moment belongs to. |
 
 One conversation — Priya, 14 sessions, March 2025 to August 2026 — runs through
 every lab at every level. By the time you are fixing belief updating in

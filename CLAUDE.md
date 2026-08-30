@@ -228,6 +228,37 @@ Site scripts derive their URLs from their own `src`, never from the site root:
 the published site is served from `/Mem-101/`, so a root-absolute fetch works
 under `mkdocs serve` and 404s in production. That is C5 applied to JavaScript.
 
+## Every lesson has a picture now
+
+Coverage used to be a gradient running the wrong way: beginner 13 of 13,
+intermediate 9 of 31, advanced **0 of 40**. The illustration stopped exactly
+where the material gets hard. All 84 now carry one, added under the constraint
+that nothing was rewritten — 1017 insertions, 0 deletions across 61 lessons.
+
+`tools/validate_diagrams.py` enforces what convention **C6** only ever claimed.
+Three rules, and the third is the one that matters:
+
+- a diagram is a ` ```mermaid ` fence (C6 itself, previously unenforced)
+- it lives under `## Mechanism` — where all 22 of the originals already were
+- **no figure may appear only inside a diagram.** `validate_expected_output.py`
+  strips fences before it looks for figures, so a number in a diagram is
+  invisible to the check that exists *because* seven figures went stale. Two
+  diagrams carry `36`; both are legal because 36 is also in their prose.
+
+The palette is three pairs and means three things — blue mechanism, yellow
+gate, red failure — and a fourth colour would be a fourth meaning.
+
+**Nothing in the toolchain can parse a diagram.** `mkdocs build --strict`
+validates links, not mermaid, so a syntax error ships as a blank gap rather
+than a build failure. All 84 were parsed through mermaid itself in a browser
+before this landed; if diagrams keep being added, that check belongs in CI.
+
+**The level hues cannot carry identity alone.** `--mem-l1/l2/l3` sit at one
+lightness and chroma; the palette validator measures the worst adjacent pair at
+ΔE 0.9 under deuteranopia and 7.8 under normal vision, both below the floor.
+Every existing use pairs them with a glyph or a heading, which is what makes
+them legal. A chart with no second channel uses one hue and direct labels.
+
 ## Sequence, and why it lives in the template
 
 The course is one line -- 83 prerequisite edges, every one in-degree and

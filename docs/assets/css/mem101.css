@@ -338,6 +338,36 @@ a.mem-card { display: block; text-decoration: none; }
 .mem-rank__n { font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted);
   text-align: right; }
 
+/* ---- the Priya timeline --------------------------------------------------
+ * gold.yml has always called itself two things: the eval answer key, and "the
+ * index every lesson uses to point at a concrete moment". Only the first ever
+ * had a surface. Same rail as the roadmap, because it is the same idea -- one
+ * thing in one order -- and reusing it means one set of rules to keep.
+ */
+.mem-tl__list { list-style: none; margin: 1.2rem 0 0; padding: 0 0 0 1.15rem;
+  border-left: 2px solid var(--mem-faintest); }
+.md-typeset .mem-tl__list > li { margin: 0 0 1.4rem; padding: 0 0 0 0.2rem; }
+.mem-tl__head { display: flex; align-items: baseline; gap: 0.6rem; margin: 0 0 0.4rem; }
+.mem-tl__n { font-family: var(--mem-mono); font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--mem-accent); font-weight: 700; }
+.mem-tl__date { font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted); }
+.mem-tl__said { font-size: 15px; line-height: 1.5; color: var(--mem-alt);
+  margin: 0 0 0.3rem; padding-left: 0.8rem;
+  border-left: 2px solid var(--mem-faintest); text-wrap: pretty; }
+.mem-tl__notes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.55rem; }
+.mem-tl__note { display: inline-flex; align-items: baseline; gap: 0.4rem;
+  font-size: 13px; text-decoration: none; padding: 3px 9px; border-radius: 6px;
+  border: 1px solid var(--mem-faintest); background: var(--mem-surface);
+  color: var(--mem-alt);
+  transition: border-color var(--mem-dur-ui) var(--mem-ease); }
+.mem-tl__note:hover { border-color: var(--mem-accent); }
+.mem-tl__kind { font-family: var(--mem-mono); font-size: 9.5px;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--mem-muted); }
+/* The held-out session is the exam. It is not part of what the store saw. */
+.mem-tl__stop[data-held] .mem-tl__n { color: var(--mem-warn); }
+.mem-tl__stop[data-held] .mem-tl__said { border-left-style: dashed;
+  border-left-color: var(--mem-warn); }
+
 /* ---- the roadmap ---------------------------------------------------------
  * One rail, because the course is one line. The rail is a border on the stops
  * container, not an absolutely-positioned element, so it stretches with the

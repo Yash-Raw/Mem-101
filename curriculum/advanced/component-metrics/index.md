@@ -95,13 +95,13 @@ flowchart LR
     DEC["decay<br/><i>a half-life</i>"]
     RNK["rank<br/><i>weights</i>"]
   end
-  POL --> E2E["<b>score these end-to-end</b><br/><i>against the exam</i>"]
+  POL --> EXM["<b>score these end-to-end</b><br/><i>against the exam</i>"]
   GEN["<b>a gold entry for a policy stage</b><br/><i>restates the policy, then confirms it</i>"]:::bad
   POL -.->|"never"| GEN
   style LOC fill:#f9e79f,stroke:#b7950b,stroke-width:2px
   style NLC fill:#aed6f1,stroke:#2874a6
   style COR fill:#f9e79f,stroke:#b7950b
-  style E2E fill:#aed6f1,stroke:#2874a6
+  style EXM fill:#aed6f1,stroke:#2874a6
   classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
 ```
 

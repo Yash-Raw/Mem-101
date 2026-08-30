@@ -444,6 +444,25 @@ a.mem-card { display: block; text-decoration: none; }
 
 /* "Continue where you left off" -- written by progress.js, hidden until it has
  * something true to say, so nothing flashes and nothing lies with JS off. */
+/* The write path, on every lesson. Seven stages, the current one marked, so a
+ * lesson answers "which part of the system am I building?" before the prose
+ * starts. Rendered from the generated stage list, which is why no lesson file
+ * changed. Specificity has to beat Material's own `.md-typeset ol`, which
+ * otherwise re-imposes numbering and turns this row into a numbered column.
+ */
+.md-typeset .mem-pipe { display: flex; flex-wrap: wrap; align-items: center;
+  gap: 0; list-style: none; margin: 0 0 0.7rem; padding: 0; }
+.md-typeset .mem-pipe > .mem-pipe__s { font-family: var(--mem-mono); font-size: 10px;
+  letter-spacing: 0.07em; text-transform: uppercase; color: var(--mem-muted);
+  padding: 3px 0; opacity: 0.5; margin: 0; list-style: none; }
+.md-typeset .mem-pipe > .mem-pipe__s + .mem-pipe__s::before { content: "\2192"; margin: 0 0.45rem;
+  color: var(--mem-fainter); opacity: 1; }
+/* Weight and a rule under it as well as colour, so it survives greyscale. */
+.md-typeset .mem-pipe > .mem-pipe__s.is-here { opacity: 1; color: var(--mem-accent);
+  font-weight: 700; box-shadow: inset 0 -2px 0 var(--mem-accent); }
+.md-typeset .mem-pipe > .mem-pipe__s.is-here[data-stage="retrieve"] {
+  color: var(--mem-warn); box-shadow: inset 0 -2px 0 var(--mem-warn); }
+
 .mem-resume { display: none; }
 .mem-resume.is-on { display: flex; align-items: center; gap: 0.6rem;
   margin: 0 0 1.4rem; padding: 0.7rem 0.95rem; border-radius: var(--mem-r);

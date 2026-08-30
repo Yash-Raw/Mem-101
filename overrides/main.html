@@ -31,6 +31,15 @@
       <span class="mem-strip__sep">&middot;</span>
       ~{{ here.minutes }} min
     </p>
+    {#- A div with list roles rather than <ol>: Material styles
+        `.md-typeset ol:not([hidden])` at a specificity this would have to keep
+        out-escalating, and the semantics survive intact on the roles. -#}
+    <div class="mem-pipe" role="list" aria-label="Where this lesson sits in the write path">
+      {% for st in spine.MEM_STAGES %}
+      <span class="mem-pipe__s{% if st == here.stage %} is-here{% endif %}" role="listitem"
+            data-stage="{{ st }}"{% if st == here.stage %} aria-current="step"{% endif %}>{{ st }}</span>
+      {% endfor %}
+    </div>
     <span class="mem-strip__bar" aria-hidden="true">
       <span class="mem-strip__fill"
             style="width: {{ (100 * here.position / here.total) | round(1) }}%"></span>

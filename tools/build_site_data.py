@@ -24,6 +24,7 @@ without JavaScript, is not showing it.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import pathlib
 import subprocess
@@ -292,7 +293,7 @@ def render_hero(d: dict) -> str:
         f'        <span class="mem-cta__l">start here</span>\n'
         f'        <span class="mem-cta__t">{first["title"]}</span>\n'
         f'        <span class="mem-cta__d">First of {m0["count"]} lessons in '
-        f'<b>{m0["title"]}</b> &mdash; about {m0["hours"]} hours. '
+        f'<b>{html.escape(m0["title"])}</b> &mdash; about {m0["hours"]} hours. '
         f'You will see a retrieval pipeline rank the right answer 18th, and know why.</span>\n'
         f'      </a>\n'
     )
@@ -306,9 +307,9 @@ def render_hero(d: dict) -> str:
 <section class="mem-hero">
   <p class="mem-hero__kicker">{s["lessons"]} lessons &middot; {len(s["levels"])} levels
     &middot; {s["hours"]} hours &middot; every lab runs offline</p>
-  <h1 class="mem-hero__h1">{d["course"]["title"]}</h1>
+  <h1 class="mem-hero__h1">{html.escape(d["course"]["title"])}</h1>
   <p class="mem-hero__tag"><span aria-hidden="true">&gt;</span>
-    {d["course"]["tagline"]}</p>
+    {html.escape(d["course"]["tagline"])}</p>
 
   <div class="mem-hero__grid">
     <figure class="mem-chart">
@@ -361,16 +362,23 @@ def render_strip(d: dict) -> str:
             "minutes": r["minutes"],
             "lab": r["lab"] or "",
             "id": r["id"],
+            "stage": r["stage"],
             "prev": link(r["prev"]),
             "next": link(r["next"]),
         }
         for r in d["lessons"]
     }
+    # The seven stages in pipeline order, so the template can draw the whole
+    # write path and mark where this lesson sits. Order is the syllabus's, not
+    # a literal -- renaming or reordering a stage moves this with it.
+    stages = [x["id"] for x in d["stats"]["stages"]]
     return (
         f"{BEGIN}\n"
         "{% set MEM_LESSON = "
         + json.dumps(table, indent=1, sort_keys=True)
-        + " %}\n" + END + "\n"
+        + " %}\n"
+        "{% set MEM_STAGES = " + json.dumps(stages) + " %}\n"
+        + END + "\n"
     )
 
 
@@ -434,7 +442,7 @@ def render_roadmap(d: dict) -> str:
             f'      <a class="mem-road__stop" href="{{{{ base_url }}}}/{m["path"].replace("index.md", "")}"'
             f' data-module="{m["id"]}">'
             f'<span class="mem-road__n">{m["index"]:02d}</span>'
-            f'<span class="mem-road__body"><span class="mem-road__t">{m["title"]}</span>'
+            f'<span class="mem-road__body"><span class="mem-road__t">{html.escape(m["title"])}</span>'
             f'<span class="mem-road__meta">{m["count"]} lessons &middot; {m["hours"]} h</span>'
             f'</span></a>\n'
             for m in mods
@@ -443,8 +451,8 @@ def render_roadmap(d: dict) -> str:
             f'  <section class="mem-road__band" data-level="{lv["id"]}">\n'
             f'    <header class="mem-road__head">\n'
             f'      <span class="mem-lv" data-level="{lv["id"]}">{lv["id"]}</span>\n'
-            f'      <h3 class="mem-road__lvl">{lv["title"]}</h3>\n'
-            f'      <p class="mem-road__q">{lv["question"]}</p>\n'
+            f'      <h3 class="mem-road__lvl">{html.escape(lv["title"])}</h3>\n'
+            f'      <p class="mem-road__q">{html.escape(lv["question"])}</p>\n'
             f'      <span class="mem-road__count">{len(mods)} modules &middot; '
             f'{lv["lessons"]} lessons &middot; {lv["hours"]} h</span>\n'
             f'    </header>\n'

@@ -462,10 +462,30 @@ def render_roadmap(d: dict) -> str:
             f'  </section>\n'
         )
 
+    # How much of the course each level is. One hue, not three: the level
+    # hues sit at the same lightness and chroma, and the palette validator puts
+    # the worst adjacent pair at dE 0.9 under deuteranopia and 7.8 under normal
+    # vision -- below the floor where colour alone can carry identity. They are
+    # legitimate everywhere else on the site because every other use pairs them
+    # with a glyph or a heading. A bar chart has no such second channel, so
+    # length carries the magnitude and the label carries the identity.
+    peak = max(lv["hours"] for lv in d["stats"]["levels"]) or 1
+    overview = "".join(
+        f'    <div class="mem-bar mem-bar--wp">'
+        f'<span class="mem-bar__name">{lv["id"]}</span>'
+        f'<span class="mem-bar__track"><span class="mem-bar__fill"'
+        f' style="width: {100 * lv["hours"] / peak:.1f}%"></span></span>'
+        f'<span class="mem-bar__n">{lv["hours"]}h</span></div>\n'
+        for lv in d["stats"]["levels"]
+    )
+
     total_modules = d["stats"]["modules"]
     return f"""{BEGIN}
 <section class="mem-road mem-full" aria-label="The whole course, in order">
   <p class="mem-lbl">the whole path &middot; {total_modules} modules &middot; {d["stats"]["hours"]} hours</p>
+  <figure class="mem-road__shape">
+    <figcaption class="mem-chart__sub">hours per level</figcaption>
+{overview}  </figure>
   <p class="mem-road__legend">Read top to bottom &mdash; each module depends on the
     one above it, so there is only ever one next thing. A stop you have finished
     is ticked. <b>Numbers are the module's own lessons and hours</b>, not a

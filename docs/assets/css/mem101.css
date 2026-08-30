@@ -375,6 +375,12 @@ a.mem-card { display: block; text-decoration: none; }
  */
 .mem-road { margin: 2.6rem 0 0; padding-top: 1.6rem;
   border-top: 1px solid var(--mem-faintest); }
+.md-typeset .mem-road__shape { margin: 0 0 1.1rem; padding: 0; max-width: 30rem;
+  text-align: left; }
+.md-typeset .mem-road__shape figcaption { text-align: left; max-width: none;
+  margin: 0 0 0.5rem; }
+.mem-road__shape .mem-bar { grid-template-columns: 6.4em 1fr 3em; }
+
 .mem-road__legend { font-size: 15px; line-height: 1.55; color: var(--mem-muted);
   margin: 0.5rem 0 1.8rem; max-width: 64ch; text-wrap: pretty; }
 .mem-road__legend b { color: var(--mem-alt); font-weight: 600; }

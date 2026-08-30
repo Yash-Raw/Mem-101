@@ -16,6 +16,7 @@ SUITE = [
     "validate_capstone.py",
     "validate_expected_output.py",
     "validate_freshness.py",
+    "validate_diagrams.py",
 ]
 GENERATED = [
     ("render_syllabus.py", "--check"),

@@ -26,7 +26,12 @@ renders correctly both when browsing the repo on GitHub and in the built site.
 Absolute links fail validation.
 
 **C6 — Diagrams are fenced ` ```mermaid ` blocks**, not image files. Diffable,
-reviewable, no asset pipeline.
+reviewable, no asset pipeline. `tools/validate_diagrams.py` enforces it, and
+three things it left unsaid: a diagram lives under `## Mechanism`, it uses the
+three-colour palette (blue mechanism, yellow gate, red failure), and it may not
+be the *only* place a measured figure appears — the expected-output check
+strips fences, so a number written only inside a diagram is a number nothing
+verifies.
 
 **C7 — Labs are `.py`, never notebooks.** Each lesson with a lab ships
 `lab.py` (stub), `solution.py` (reference), and `test_lab.py`.

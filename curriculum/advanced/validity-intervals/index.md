@@ -57,6 +57,19 @@ as_of(memories, when, believed_at_time=t)    # the account we'd have given at t
 
 Omit the second clock and you get the store's *current* account of the past, corrections included. Pass it and you get the account it would have given then, mistakes and all. Both are legitimate; conflating them is how an audit trail stops being one.
 
+```mermaid
+flowchart LR
+  W["<b>as_of(when)</b><br/><i>which day are we asking about?</i>"] --> G{"believed_at_time<br/>supplied?"}
+  G -->|"no"| CUR["<b>held_at</b> alone<br/><i>today's account of that day,<br/>corrections included</i>"]
+  G -->|"yes"| THN["<b>held_at and believed_at</b><br/><i>the account we would have given then,<br/>mistakes and all</i>"]
+  THN --> BEL[("belief axis<br/>recorded_at to invalid_at")]
+  BAD["<b>invalid_at set to the replacement's start</b><br/><i>a belief retired before it was recorded</i>"]:::bad
+  BEL -.->|"never"| BAD
+  style G fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style THN fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 An open `valid_to` reads as *"still true as far as anyone said"*. That is the honest reading — nothing in the corpus says the cycling stopped, only that a later memory mentions a train.
 
 ### Three things had to be fixed before the query meant anything

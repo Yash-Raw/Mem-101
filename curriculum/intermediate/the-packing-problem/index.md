@@ -83,6 +83,19 @@ That is not a bug in the policy. It is the measurement telling you the problem i
 
 **Packing is the wrong layer.** The next three lessons are the right ones — the line format, the coverage policy, and the header itself.
 
+```mermaid
+flowchart LR
+  H["ranked hits"] --> RV["reservation<br/><i>the merge already guaranteed<br/>this at the slot level</i>"]
+  H --> PD["padding last<br/><i>demotes a hit behind facts<br/>it was already behind</i>"]
+  RV --> N{"does the answer<br/>change?"}
+  PD --> N
+  N -->|no, at any budget| W["<b>packing is the wrong layer</b><br/><i>the framing header is a fixed cost<br/>no allocation policy can reach</i>"]
+  RV -.->|"never"| X["two layers enforcing<br/>one invariant<br/><i>how invariants quietly stop<br/>being enforced</i>"]:::bad
+  style N fill:#f9e79f,stroke:#b7950b
+  style W fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Reserve, even though it is a no-op here?** Yes — as an explicit no-op with the reason recorded. Silently relying on an upstream guarantee is how a refactor to the merge breaks the packer with no test in between.

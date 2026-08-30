@@ -78,6 +78,23 @@ Two sub-queries produce two ranked lists and the context has five slots. Two obv
 
 What works: **guarantee each sub-question its best answer, then fill by score.** Every question gets an answer; no question gets padding. That single change is what put all four required facts into a five-slot context.
 
+```mermaid
+flowchart LR
+  Q["<i>where do I work and<br/>what should I not eat?</i>"] --> RS["<b>resolve</b><br/><i>first person means<br/>the account holder</i>"]
+  RS --> DC["<b>decompose</b><br/><i>a conjunction followed<br/>by an interrogative</i>"]
+  DC --> QA["the employer half"]
+  DC --> QB["the diet half"]
+  QA --> SL["<b>slot cues</b><br/><i>set membership, not similarity —<br/>the write path's table, read</i>"]
+  QB --> SL
+  SL --> M{"<b>merge</b><br/>each sub-question its best answer,<br/>then fill by score"}
+  M --> C["every question answered,<br/>none padded"]
+  M -.->|"never"| X1["global top-k<br/><i>the better-matching half<br/>takes every slot</i>"]:::bad
+  M -.->|"never"| X2["strict round-robin<br/><i>padding lands while the fact<br/>that answers the other half waits</i>"]:::bad
+  style SL fill:#aed6f1,stroke:#2874a6
+  style M fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Rewrite with rules or a model?** Rules. This runs on every query, a model call doubles read latency, and all three transformations are mechanical. The judgement calls in this system belong on the write path where they happen once.

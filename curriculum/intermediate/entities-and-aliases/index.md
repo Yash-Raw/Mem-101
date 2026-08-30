@@ -72,6 +72,22 @@ Every entry on it was added the same way — by running the extractor and readin
 
 **Pronouns only inherit; they never create.** `leading_pronoun` fires only when a memory *opens* with one, which is the case where no antecedent survived extraction. A pronoun must never become an entity in its own right — an entity called `she` would collect every unresolved memory in the store into one confident, meaningless cluster.
 
+```mermaid
+flowchart LR
+  M["a memory"] --> K{"kind of mention"}
+  K -->|proper name| N["a candidate<br/><i>cluster by form</i>"]
+  K -->|descriptor| D["a candidate only if a<br/>name co-occurs"]
+  K -->|pronoun| P["<b>inherits a subject</b><br/><i>never becomes one</i>"]
+  N --> L{"on <b>NOT_PEOPLE</b>?<br/><i>a stop list, not a<br/>cleverer regex</i>"}
+  L -->|yes| DR["dropped<br/><i>a hospital, a weekday, a city</i>"]
+  L -->|no| E["a mention — <b>finding stops here</b><br/><i>who co-refers is a judgement,<br/>with a threshold and a merge policy</i>"]
+  D --> L
+  P -.->|"never"| X["an entity called <i>she</i><br/><i>every unresolved memory in one<br/>confident, meaningless cluster</i>"]:::bad
+  style P fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style L fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Detect mentions at extraction or at resolution?** At resolution. Extraction has one model call and a job to do; mention detection is cheap, deterministic, and needs to be re-runnable when the stop list changes. Baking it into extraction would freeze today's list into every stored memory.

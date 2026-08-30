@@ -69,6 +69,18 @@ The corpus would need entity-to-entity structure: employers as nodes, colleagues
 
 **That is the honest reading of most memory stores**, and the reason to measure before adopting: a store choice is a claim about the shape of your data, and the claim is checkable in about thirty lines.
 
+```mermaid
+flowchart LR
+  R[("rows")] --> B["entities as nodes, an edge<br/>where one memory mentions two"]
+  B --> S{"<b>shape()</b><br/>nodes · entity edges · max hops<br/><i>the measurement that decides<br/>whether the module should exist</i>"}
+  S -->|"edges, and traversal you<br/>actually run"| G["a graph store<br/>earns its cost"]
+  S -->|"one node, no edges —<br/>this corpus"| IX["an <b>index</b> on the entity column<br/><i>everything the one hop bought</i>"]
+  S -.->|"never"| X["adopt first, measure later<br/><i>a store choice is a claim about<br/>the shape of your data</i>"]:::bad
+  style S fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style IX fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Ship a store the corpus does not need?** Yes — with its shape measured and stated. A lesson that demonstrated multi-hop traversal on invented data would teach the mechanics and hide the judgement, and the judgement is the harder half.

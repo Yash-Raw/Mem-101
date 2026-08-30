@@ -74,6 +74,28 @@ A control that exists as a side effect is a control nobody maintains **as a cont
 
 The poisoning residual is the one to sit with. `provenance-and-trust` measured that **2 of 3 agent writes claim no slot** and are therefore never arbitrated. The defence covers exactly the writes that happen to be contestable.
 
+```mermaid
+flowchart LR
+  subgraph WHY["every defence was built for something else"]
+    direction LR
+    ARB["<b>arbitration</b><br/><i>built to decide between<br/>two honest beliefs</i>"]
+    GTE["<b>durability gate</b><br/><i>built to keep requests<br/>out of the belief store</i>"]
+    NSP["<b>scope filter</b><br/><i>built because ranking across<br/>tenants returns noise</i>"]
+  end
+  POI["poisoning"] --> ARB
+  INJ["injection"] --> GTE
+  XUS["cross-user read"] --> NSP
+  ARB --> RSA["<i>residual</i><br/>a claim naming no modelled<br/>slot is never compared"]
+  GTE --> RSB["<i>residual</i><br/>a request worded as a fact<br/>is stored as one"]
+  NSP --> RSC["<i>residual</i><br/>fires only if the filter<br/>itself is already broken"]
+  XTR["extraction"] --> NON["<b>no control at all</b><br/><i>the deleted record's instant survives in<br/>others, and nothing links them to it</i>"]
+  style WHY fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style ARB fill:#aed6f1,stroke:#2874a6
+  style GTE fill:#aed6f1,stroke:#2874a6
+  style NSP fill:#aed6f1,stroke:#2874a6
+  style NON fill:#f5b7b1,stroke:#c0392b
+```
+
 ### Extraction, which nothing covers
 
 Delete the address and look at what carries its exact instant:

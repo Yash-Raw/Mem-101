@@ -70,6 +70,26 @@ Here the answer to *"why wasn't it recalled?"* lives in a different stage depend
 
 **Three of these are ordered, not parallel.** *"Never recalled"* is checked in sequence — is it in the store at all; if so does it claim a slot; if so is it in the eligible pool — because each answer makes the next question meaningful. A guide that lists three causes without the order sends you to read the ranking code first, which is where none of the three lives.
 
+```mermaid
+flowchart LR
+  TEL["<b>the tell</b><br/><i>every symptom names a cheap<br/>measurement that discriminates</i>"] --> SYM["<b>a fact is never recalled</b>"]
+  SYM --> QST{"is it in the<br/>store at all?"}
+  QST -->|"no"| EXQ["<b>extraction</b>"]
+  QST -->|"yes"| QSL{"does <i>slot_of</i><br/>name it?"}
+  QSL -->|"no"| UNN["<b>an unnameable claim</b>"]
+  QSL -->|"yes"| QPL{"is it in the<br/>eligible pool?"}
+  QPL -->|"no"| POO["<b>the pool collapsed</b>"]
+  QPL -->|"yes"| RNK["<b>ranking</b><br/><i>last, and only last</i>"]
+  PAR["<b>three causes listed in parallel</b><br/><i>sends you to the ranking code first,<br/>where none of the three lives</i>"]:::bad
+  SYM -.->|"never"| PAR
+  style TEL fill:#aed6f1,stroke:#2874a6
+  style QST fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style QSL fill:#f9e79f,stroke:#b7950b
+  style QPL fill:#f9e79f,stroke:#b7950b
+  style RNK fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **All seven were measured, none were predicted.** Every row cites the lesson that hit it — the consistency window, the unnameable agent writes, the eligible pool collapsing after one future-dated write, the memories a batch job destroyed. **This is a field guide because it is a list of things that already happened**, not a taxonomy someone sat down and derived, and a test checks that every cited lesson exists.
 
 ## Design decisions

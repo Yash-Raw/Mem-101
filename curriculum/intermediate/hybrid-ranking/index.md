@@ -75,6 +75,22 @@ Six terms. The weights matter and none of them were reasoned out.
 
 **Subject, because `Sam still works nights` is a fine memory and answers nothing Priya asked about herself.** It survives similarity, coverage and recency on the strength of one shared word.
 
+```mermaid
+flowchart LR
+  SL["<b>slot</b><br/><i>does it fill the attribute<br/>asked about?</i>"] --> SC
+  CV["coverage<br/><i>of the question's terms,<br/>not of the union</i>"] --> SC
+  TY["type<br/><i>does this shape of memory answer<br/>this shape of question?</i>"] --> SC
+  SU["subject<br/><i>is it about the right person?</i>"] --> SC
+  RE["recency"] --> SC
+  SA["salience<br/><i>unusable alone, fine here</i>"] --> SC
+  SI["similarity<br/><i>the smallest contributor</i>"] --> SC
+  SC["<b>one arithmetic score</b><br/><i>no model call on the read path</i>"] --> W["the employer fact,<br/>near the top"]
+  SI -.->|"never"| X["similarity alone<br/><i>the gluten fact shares no words<br/>with the question that needs it</i>"]:::bad
+  style SL fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style SC fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### What it does
 
 Employer rank **12 → 2 of 18**, with the procedure and the episodes gone from the top.

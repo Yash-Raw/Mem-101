@@ -80,6 +80,25 @@ The health rule is the instructive one. *"Priya was diagnosed with a gluten into
 
 **Redaction changes the id.** `Memory.id` is content-addressed, so a redacted record is a *different* record — correct, and load-bearing, because a full-detail copy and a redacted copy sharing an id is exactly how the original survives a redaction.
 
+```mermaid
+flowchart LR
+  FCT["<b>a labelled fact</b>"] --> CRS{"<b>coarsen</b><br/><i>per kind — 'less precise'<br/>is not one operation</i>"}
+  CRS -->|"address"| ADR["keeps the city<br/><i>drops the street</i>"]
+  CRS -->|"phone"| PHN["keeps that one exists<br/><i>drops the number</i>"]
+  CRS -->|"health"| HLT["keeps the condition<br/><i>drops the clinical event</i>"]
+  CRS -->|"third-party health"| TPH["<b>no useful middle</b><br/><i>falls through to a token</i>"]
+  ADR --> NID["<b>a new id</b><br/><i>content-addressed, so the<br/>redaction is a different record</i>"]
+  PHN --> NID
+  HLT --> NID
+  TPH --> NID
+  SAM["<b>one id, both copies</b><br/><i>how the full-detail original<br/>survives its own redaction</i>"]:::bad
+  NID -.->|"never"| SAM
+  style CRS fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style TPH fill:#aed6f1,stroke:#2874a6
+  style NID fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### What the table is really saying
 
 Every argument against minimisation is that it might cost something. Here it costs nothing at three of the four kinds, at the most aggressive level available. **The address can simply be destroyed.** The system that knows where she lives is not more useful than the one that does not — measured against the question it is asked, it is identical.

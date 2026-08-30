@@ -61,6 +61,31 @@ The numbers here happen to be identical either way, which is worse than if they 
 
 **Zero read-path model calls is a design outcome, not an accident.** `deterministic-freshness` refused to let a model arbitrate, `hybrid-ranking` scores with arithmetic, and `assemble` packs by counting tokens. Each was argued for on correctness grounds — reproducibility, explainability, determinism — and the cost profile is what those arguments bought without anyone optimising for it.
 
+```mermaid
+flowchart TB
+  TRN["a turn"] --> WRT
+  subgraph WRT["write path — every model call is here"]
+    direction LR
+    EXT["<b>extract</b><br/><i>one call</i>"] --> DTC["<b>detect conflict</b><br/><i>one call</i>"] --> ARB["<b>arbitrate</b><br/><i>rules — a model was refused<br/>for explainability</i>"]
+  end
+  WRT --> STO[("store")]
+  STO --> RDP
+  subgraph RDP["read path — per query"]
+    direction LR
+    RNK["<b>rank</b><br/><i>arithmetic, for determinism</i>"] --> ASM["<b>assemble</b><br/><i>packs by counting tokens</i>"]
+  end
+  RDP --> ZRO["<b>no model calls at all</b><br/><i>a design outcome of correctness<br/>arguments, not an optimisation</i>"]
+  WRT --> SCL["<b>linear in messages</b><br/><i>extraction reads one turn, so cost<br/>never follows how much is remembered</i>"]
+  MDL["<b>a model on the read path</b>"]:::bad
+  RDP -.->|"never"| MDL
+  style EXT fill:#aed6f1,stroke:#2874a6
+  style DTC fill:#aed6f1,stroke:#2874a6
+  style ARB fill:#f9e79f,stroke:#b7950b
+  style ZRO fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style SCL fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why count calls rather than seconds?** Because seconds are a property of the machine and the provider, and this corpus runs against a deterministic fake. Calls are the invariant: they are what a bill is denominated in, and they do not change when the hardware does. `latency-budget` splits the same calls by deadline rather than introducing a clock — nothing in this course measures wall-clock, because against a deterministic fake it would measure the laptop.

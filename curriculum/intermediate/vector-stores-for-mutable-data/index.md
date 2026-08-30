@@ -78,6 +78,22 @@ The vector is *right*. The belief is *dead*. A content-addressed cache cannot te
 | is this vector a correct embedding? | content-addressed key |
 | should anyone see this memory? | tombstone |
 
+```mermaid
+flowchart LR
+  M["a memory"] --> ID["<b>content-addressed id</b><br/><i>edit the text and the key<br/>changes with it</i>"]
+  ID --> C[("vector cache")]
+  S{{"supersede"}} --> IA["<b>invalid_at moves</b><br/><i>content, id and vector<br/>do not</i>"]
+  IA --> TB["<b>tombstone</b><br/><i>the vector survives for audit;<br/>live() decides who sees it</i>"]
+  TB --> C
+  C --> QA["is this vector a correct<br/>embedding? — the key"]
+  C --> QB["should anyone see this<br/>memory? — the tombstone"]
+  IA -.->|"never"| X["let the key answer both<br/><i>the vector is right and<br/>the belief is dead</i>"]:::bad
+  style ID fill:#aed6f1,stroke:#2874a6
+  style TB fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style S fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 On Priya's store that is **37 vectors, 7 tombstoned** — exactly the seven beliefs I4 retired.
 
 ### What it buys

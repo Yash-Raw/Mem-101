@@ -82,6 +82,28 @@ All three need something written at **read** time, and the store's design cannot
 
 Listing them is the point. An observability story claiming full coverage from provenance alone is wrong in a way nobody notices until an incident.
 
+```mermaid
+flowchart LR
+  subgraph WPT["what provenance answers — nothing on the chain was destroyed"]
+    direction LR
+    SUP["<b>superseded_by</b><br/><i>a retired belief still<br/>holds its pointer</i>"] --> WHY["<b>what did you believe before,<br/>and what changed your mind?</b>"]
+    DIF["<b>memory diff</b><br/><i>added · removed · retired</i>"] --> DID["<b>what did this write do?</b>"]
+  end
+  DIF --> ALR["<b>a non-zero removed</b><br/><i>a deletion request or a lost update —<br/>the two events worth an alert</i>"]
+  subgraph RPT["what needs something written at read time"]
+    direction LR
+    CTX["which memories were in the<br/>context when it said that?"]
+    USE["how often has this belief<br/>actually been used?"]
+    QRY["which query surfaced it?"]
+  end
+  RPT --> ACC["<b>access_count</b><br/><i>the field was on the record<br/>and nothing ever wrote to it</i>"]
+  style SUP fill:#aed6f1,stroke:#2874a6
+  style DIF fill:#aed6f1,stroke:#2874a6
+  style ALR fill:#f9e79f,stroke:#b7950b
+  style RPT fill:#f5b7b1,stroke:#c0392b
+  style ACC fill:#f5b7b1,stroke:#c0392b,stroke-width:2px
+```
+
 ## Design decisions
 
 **Why reconstruct rather than log?** Because a log is a second source of truth that drifts, and most of these answers cannot drift — they are fields on the record being explained. Logging the same facts would create a copy that can disagree with the store about the store.

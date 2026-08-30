@@ -75,6 +75,20 @@ A memory layer's deferred work is **arbitration**, not indexing. The window is n
 
 **Pass the store as it stood before the turn.** Passing the post-write store makes a turn contested by its own writes: **11 runs becomes 18**, with identical output. It does not become `always`, which is the trap — a gate that failed completely would be visible in a cost graph, and one that half-fails reads as a gate that works.
 
+```mermaid
+flowchart LR
+  T["a turn"] --> S["<b>slot_of</b><br/><i>already computed by the write path</i>"]
+  S --> G{"does something live<br/>already claim this SLOT?"}
+  G -->|"yes"| NOW{{"consolidate now<br/><i>the announcement, and the correction</i>"}}
+  G -->|"no"| DEF["defer to the background job"]
+  TY["gate on memory type instead"] -.->|"fires on nearly every turn"| NOW
+  BAD["<b>ask the post-write store</b><br/><i>the turn is contested by its own writes,<br/>and a gate that half-fails reads as one that works</i>"]:::bad
+  G -.->|"never"| BAD
+  style S fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style G fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 The employer slot is claimed in session 1 and then contested in **sessions 8 and 9** — the announcement and the correction. Those are exactly the two turns the deferred store gets wrong, and the gate finds them without being told what an employer is.
 
 ## Design decisions

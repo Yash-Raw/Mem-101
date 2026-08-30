@@ -76,6 +76,22 @@ This is a field the Beginner record did not have, added here because summarisati
 
 **Extractive, not generative.** Every sentence in the summary exists verbatim in the store, so every claim is attributable and none can be invented. Generative summaries read better and lose that: a fluent sentence covering three memories cannot be traced to any of them, and a hallucinated one cannot be distinguished from a real one. Fluency is worth less than provenance here.
 
+```mermaid
+flowchart LR
+  S[("a session's memories")] --> T{"type"}
+  T -->|episodic| DR["dropped<br/><i>dated events are archived<br/>or forgotten, not blurred</i>"]
+  T -->|semantic · procedural| C["<b>extractive summary</b><br/><i>every sentence verbatim,<br/>so every claim is attributable</i>"]
+  C --> P["<b>derived_from</b><br/><i>every source, by id</i>"]
+  P --> O{"are all sources<br/>still live?"}
+  O -->|yes| OK["safe to serve"]
+  O -->|no| ST["orphaned — stale at best,<br/>a privacy violation at worst"]
+  C -.->|"never"| X["<b>generative summary</b><br/><i>fluent, and no sentence<br/>traceable to a source</i>"]:::bad
+  style C fill:#aed6f1,stroke:#2874a6
+  style P fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style O fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Summarise per session, or rolling across sessions?** Per session, because the session is a natural boundary the corpus already carries and it keeps `derived_from` small and stable. Rolling windows re-derive far more on every change.

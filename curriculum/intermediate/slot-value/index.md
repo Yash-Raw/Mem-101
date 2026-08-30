@@ -69,6 +69,18 @@ Recalled about this user (may be out of date):            11 tokens
 
 *Recalled* carries the belief framing. *May be out of date* carries the staleness warning. The long version says both twice, and 18 tokens is one more fact.
 
+```mermaid
+flowchart LR
+  H["<b>the framing header</b><br/><i>the cheapest reliability<br/>improvement in the system</i>"] --> Q{"not <i>does it help?</i> but<br/><b>what does it displace?</b>"}
+  Q -->|"the long version —<br/>says both things twice"| L["a dietary restriction falls<br/>out of the budget"]
+  Q -->|"right-sized — recalled,<br/>may be out of date"| S["<b>one more fact fits</b><br/><i>the exam survives a much<br/>tighter context</i>"]
+  S --> G["and the floor is lower still<br/><i>the gap is a genuine second answer<br/>the packer has no basis to reject</i>"]
+  H -.->|"never"| X["remove the header<br/><i>the model defends a stale fact<br/>against the user correcting it</i>"]:::bad
+  style H fill:#aed6f1,stroke:#2874a6
+  style Q fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### The result
 
 | budget | before I8 | after |

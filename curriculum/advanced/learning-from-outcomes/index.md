@@ -71,6 +71,22 @@ in the store  False
 
 **Extraction runs over the transcript, not the store.** Not a convenience — a necessity. Once the write path drops a clause, no amount of reading the store recovers it, and a lessons-learned feature built on the store would find nothing and conclude the user never explained anything.
 
+```mermaid
+flowchart LR
+  subgraph TX["extracted from the transcript"]
+    direction LR
+    TA["the warning and the step,<br/>still adjacent"] --> RS["<b>resolve the pronoun</b><br/><i>'it' names the previous sentence</i>"]
+    RS --> LS["<b>trigger, consequence, step</b>"]
+  end
+  subgraph SO["extracted from the store"]
+    direction LR
+    SA["the step alone<br/><i>the consequence clause was<br/>dropped at extraction</i>"] --> NIL["nothing left to bind to<br/><b>and no way to tell that from<br/>'nobody ever explained'</b>"]
+  end
+  style RS fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style LS fill:#f9e79f,stroke:#b7950b
+  style NIL fill:#f5b7b1,stroke:#c0392b
+```
+
 **The pronoun does the damage.** *"If you skip **it**"* refers to whatever the previous sentence named — a different sentence, and after extraction a different memory. Resolving it needs the annotation still in hand, so the binding is only possible while both halves are together. Ten minutes later there is no *it* to resolve.
 
 ### One lesson, in a corpus of twenty-four turns

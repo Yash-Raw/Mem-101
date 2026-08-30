@@ -64,6 +64,21 @@ Readable in one glance, diffable in review, identical on every run. The model co
 
 **DELETE is deliberately absent.** Nothing in belief updating deletes. A superseded belief keeps its content and gains an `invalid_at` — [supersession](../supersession-not-deletion/index.md), next lesson. Real erasure exists, it is a governance obligation with an entirely different trigger, and it lands in [deletion that actually deletes](../../advanced/deletion-that-actually-deletes/index.md). Putting DELETE in this enum is how a routine update becomes accidental data loss.
 
+```mermaid
+flowchart LR
+  R["<b>relation</b><br/><i>the model's one token</i>"] --> T{"<b>POLICY</b> — a lookup table<br/><i>diffable, and identical<br/>on every run</i>"}
+  T -->|contradiction| U1["<b>UPDATE</b><br/><i>the belief became false</i>"]
+  T -->|refinement| U2["<b>UPDATE</b><br/><i>the belief became imprecise</i>"]
+  T -->|duplicate| M["MERGE<br/><i>collapse and corroborate</i>"]
+  T -->|compatible| N["NOOP<br/><i>most of the work</i>"]
+  U1 --> A["the relation is kept beside<br/>the operation<br/><i>same update, different reason</i>"]
+  U2 --> A
+  T -.->|"never"| X["<b>DELETE</b> in this enum<br/><i>a routine update becomes<br/>data loss</i>"]:::bad
+  style T fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style A fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 Across Priya's store the 24 pairs resolve to **15 NOOP, 8 UPDATE, 1 MERGE**. Two thirds of the work is deciding to do nothing, and that is the correct outcome — most beliefs about the same attribute simply coexist.
 
 ## Design decisions

@@ -69,6 +69,31 @@ There is no such agreement here, and `reading-benchmark-claims` measured why —
 
 **`complete` returns true when there *are* open items.** That is not a joke about software. A release whose gap list is empty has either had no one look at it or has stopped being examined, and both are worse than six named problems with numbers attached.
 
+```mermaid
+flowchart LR
+  ITM["<b>an open item</b>"] --> NUM{"does it carry<br/>a measurement?"}
+  NUM -->|"yes"| MSR["<b>a gap</b><br/><i>cited to the lesson that hit it<br/>in a running system</i>"]
+  NUM -->|"no"| FEL["<b>a feeling</b>"]
+  MSR --> LST["<b>the gap list</b>"]
+  subgraph EXM["three exams, three different questions"]
+    direction LR
+    BEL["<b>belief</b><br/><i>does the store<br/>believe the right thing?</i>"] --> CTX["<b>context</b><br/><i>would the model<br/>ever say it?</i>"] --> BDG["<b>budgeted</b><br/><i>does it survive a<br/>tight window?</i>"]
+  end
+  EXM --> LST
+  LST --> EMP{"is it empty?"}
+  EMP -->|"no"| CPL["<b>complete = true</b><br/><i>named problems, each with<br/>a number attached</i>"]
+  EMP -->|"yes"| NOB["<b>nobody looked</b><br/><i>or it stopped being examined</i>"]
+  style NUM fill:#f9e79f,stroke:#b7950b
+  style MSR fill:#aed6f1,stroke:#2874a6
+  style FEL fill:#f5b7b1,stroke:#c0392b
+  style BEL fill:#aed6f1,stroke:#2874a6
+  style CTX fill:#aed6f1,stroke:#2874a6
+  style BDG fill:#aed6f1,stroke:#2874a6
+  style EMP fill:#f9e79f,stroke:#b7950b
+  style CPL fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style NOB fill:#f5b7b1,stroke:#c0392b
+```
+
 ### What the course actually established
 
 Three claims survived every measurement, and none was obvious at the start:

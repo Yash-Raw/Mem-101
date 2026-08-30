@@ -62,6 +62,26 @@ A judge in a memory system decides what is **stored**. A wrong call at `conflict
 
 `conflict.classify` has all three. Remove any one and the others stop helping: unbounded output cannot be scored against a key, an unchecked judge drifts invisibly, and a non-reproducible one makes every regression unattributable. **`safe` is an `and`, not a score.**
 
+```mermaid
+flowchart LR
+  subgraph THR["three properties, and they only work together"]
+    direction LR
+    BND["<b>bounded output</b><br/><i>four labels — the failure<br/>space is enumerable</i>"]
+    CHK["<b>checked against gold</b><br/><i>so drift is visible</i>"]
+    RPR["<b>reproducible</b><br/><i>fixture-backed; a diff<br/>means a change</i>"]
+  end
+  THR --> AND{"<b>and</b>, not a score"}
+  AND -->|"all three"| DET["<b>detection</b><br/><i>a language question —<br/>a model is allowed here</i>"]
+  AND -->|"any one missing"| UNS["<b>the other two stop helping</b><br/><i>unscoreable · invisible drift ·<br/>unattributable regressions</i>"]
+  ARB["<b>arbitration</b><br/><i>a policy — it changes what is<br/>believed and has to be explainable</i>"] --> RUL["<b>ordered rules</b><br/><i>each returning a stated reason</i>"]
+  ARB -.->|"never"| MDL["<b>a model</b><br/><i>a store whose contents<br/>depend on sampling</i>"]:::bad
+  style AND fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style DET fill:#aed6f1,stroke:#2874a6
+  style RUL fill:#aed6f1,stroke:#2874a6
+  style UNS fill:#f5b7b1,stroke:#c0392b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Arbitration is never a model, and that is a rule rather than a preference.**
 
 ```

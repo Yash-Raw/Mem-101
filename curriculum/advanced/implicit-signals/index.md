@@ -60,6 +60,19 @@ Here the signal is about a **belief**, and the correct response is not to rank i
 
 **Match narrowly.** A broad pattern turns every *"no"* into a correction, including *"still no meat"*, which is a dietary fact. A false correction retires a belief that was right, so precision beats recall here by a wide margin. Four patterns find one correction in twenty-four turns.
 
+```mermaid
+flowchart LR
+  U["a user turn"] --> P{"does it reject the<br/><b>immediately preceding</b><br/>assistant turn?"}
+  P -->|"no"| ORD["an ordinary write<br/><i>changing your mind is not a signal</i>"]
+  P -->|"yes"| M{"narrow pattern,<br/>or broad?"}
+  M -->|"narrow"| AT["<b>attribute it from the assistant's<br/>own words, and retire that belief</b>"]
+  BAD["<i>still no meat</i> reads as a correction<br/><b>and retires a belief that was right</b>"]:::bad
+  M -->|"broad"| BAD
+  style P fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style AT fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Attribute from the assistant's own words.** The assistant said *"your work at Northwind Labs"*, and content overlap points at `Priya is a data engineer at Northwind Labs` — the right memory. A retrieval log would be better, and this course does not keep one; that absence is itself a finding, and `memory-observability` is where it lands.
 
 ### What it buys

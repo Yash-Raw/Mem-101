@@ -64,6 +64,23 @@ Three predicates, each from a different module: **scope** (I2), **validity** (I4
 
 The tier filter is guarded. If nothing in the pool is `long_term` — the beginner profile, where tiers were never assigned — the filter is skipped rather than returning an empty result. A read path that fails closed on an unpopulated field turns "we have not built forgetting yet" into "the system knows nothing", which is exactly what a plain `if` would have done here.
 
+```mermaid
+flowchart LR
+  A[("all memories")] --> S["<b>scope</b><br/><i>I2</i>"]
+  S --> V["<b>validity</b><br/><i>I4</i>"]
+  V --> G{"is anything in this<br/>pool long_term?"}
+  G -->|yes| T["<b>tier</b><br/><i>I5</i>"]
+  G -->|no| R["rank"]
+  T --> R
+  R --> K["top-k"]
+  G -.->|"never"| X["fail closed on an<br/>unpopulated field<br/><i>not-built-yet becomes<br/>the system knows nothing</i>"]:::bad
+  style S fill:#aed6f1,stroke:#2874a6
+  style V fill:#aed6f1,stroke:#2874a6
+  style T fill:#aed6f1,stroke:#2874a6
+  style G fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 `search` is the composed read path this module introduces — filter, formulate, gather, rank, merge — and the next three lessons fill in its middle. Right now it is filter and rank, and that is already worth eight places.
 
 ## Design decisions

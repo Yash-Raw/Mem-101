@@ -59,6 +59,21 @@ Three numbers, measured against `gold.yml`.
 
 **`over_extraction_rate`** — the share of records the durability gate would drop. Cost here is per-*retrieval*, not per-write: every junk memory is embedded once and then competes for token budget on every query forever.
 
+```mermaid
+flowchart LR
+  F["a fact the exam needs"] --> S{"<b>state_recall</b><br/>a live <i>semantic</i> claim?<br/><i>an episode does not count</i>"}
+  S -->|no| WP["<b>write-path</b> bug<br/><i>the fix this lesson makes</i>"]
+  S -->|yes| R{"<b>reachability</b><br/>in the top-k for the<br/>question it exists to answer?"}
+  R -->|no| RK["a <b>ranking</b> bug<br/><i>I6, not here</i>"]
+  R -->|yes| OK["answerable"]
+  J["<b>over-extracted junk</b><br/><i>embedded once, competes for<br/>the budget on every query</i>"] --> R
+  R -.->|"never"| X["a softer metric<br/><i>credits the fact for existing<br/>and calls the problem solved</i>"]:::bad
+  style S fill:#f9e79f,stroke:#b7950b
+  style R fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style WP fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 Measured across both profiles:
 
 | | beginner | intermediate |

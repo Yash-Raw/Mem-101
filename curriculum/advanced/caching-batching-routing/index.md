@@ -66,6 +66,27 @@ The stage with nothing to route is *arbitration*, which `deterministic-freshness
 
 **Two of six tactics do not apply, and that is the deliverable.** A cost review that lists six tactics and recommends all six has not looked at a profile.
 
+```mermaid
+flowchart LR
+  PRF["<b>the profile</b><br/><i>read it before the tactics</i>"] --> CCH{"cache?"}
+  PRF --> BCH{"batch?"}
+  PRF --> RTE{"route?"}
+  CCH -->|"the content-addressed id<br/>is already a stable key"| WRM["<b>a warm read</b><br/><i>built to stop re-embedding the<br/>corpus; the saving is the same<br/>mechanism read from the other side</i>"]
+  BCH -->|"live turns arrive<br/>one at a time"| NOB["<b>does not apply</b><br/><i>waiting is a latency decision,<br/>not a cost one</i>"]
+  BCH -->|"a backfill or a migration"| YSB["<b>applies here</b><br/><i>changes the count, not the work</i>"]
+  RTE -->|"extraction · detection —<br/>both bounded tasks"| SML["<b>two targets</b><br/><i>a schema on one side,<br/>four labels on the other</i>"]
+  RTE -->|"arbitration is rules"| NOR["<b>nothing to route</b>"]
+  ALL["<b>recommend all six</b><br/><i>a review that has not<br/>looked at a profile</i>"]:::bad
+  PRF -.->|"never"| ALL
+  style PRF fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style CCH fill:#f9e79f,stroke:#b7950b
+  style BCH fill:#f9e79f,stroke:#b7950b
+  style RTE fill:#f9e79f,stroke:#b7950b
+  style NOB fill:#aed6f1,stroke:#2874a6
+  style NOR fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why is "cache completions" listed if it does not apply?** Because it is the default proposal, and a lesson that only lists the tactics that work leaves the reader to rediscover why the obvious one fails. The reason — every turn's text differs — is one sentence and it generalises to any conversational write path.

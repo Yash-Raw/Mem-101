@@ -82,6 +82,20 @@ The naive orphan test flags it, and the naive cascade **retires a correct belief
 
 `orphans == 0` is the reading when the cascade is correct, when its edges point into the wrong namespace, and — had the definition been right and the edges broken — when both. The number that distinguishes them is `unresolvable`, which is why `edges()` reports what it could not resolve instead of returning a shorter list.
 
+```mermaid
+flowchart LR
+  D["a derived fact<br/><i>derived_from</i>"] --> R{"does the reference resolve<br/>in the memory-id namespace?"}
+  R -->|"no"| U["<b>report it as unresolvable</b><br/><i>the number that tells the states apart</i>"]
+  R -->|"yes"| S{"retired by <b>someone other</b><br/>than this derived memory?"}
+  S -->|"no"| OK["healthy<br/><i>consolidation retired the loser<br/>and handed over its evidence</i>"]
+  S -->|"yes"| ORP["orphan, cascade to a fixed point"]
+  BAD["<b>skip what you cannot resolve</b><br/><i>no orphans whether the edges are right<br/>or point into the wrong namespace</i>"]:::bad
+  R -.->|"never"| BAD
+  style U fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style S fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why not build the temporal knowledge graph anyway?** Because there is nothing to put on it. Validity on an edge needs edges, and one node has none; the honest deliverable is the measurement plus the machinery that does apply. `graph-stores` made the same call for the same reason, and the two lessons agree because the corpus has not changed.

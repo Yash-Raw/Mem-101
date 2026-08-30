@@ -61,6 +61,21 @@ A memory layer holds a **model of a person**, and the difference between *did no
 
 An instruction that gets stated is a system reciting its own configuration. A fact that gets volunteered is a system telling someone's address to whoever is holding the conversation. Both are failures and neither is about sensitivity — `residence` and `response_style` are equally private and belong in opposite columns.
 
+```mermaid
+flowchart LR
+  A["an attribute of the model"] --> Q{"how is it <b>used</b>?<br/><i>not: how sensitive is it?</i>"}
+  Q -->|"to answer with"| AN["<b>ANSWER</b><br/><i>state it when the question asks,<br/>hold it when it does not</i>"]
+  Q -->|"to obey"| IN["<b>INSTRUCTION</b><br/><i>obey always, state never</i>"]
+  AN --> HD["<b>held, not used</b><br/><i>the line retrieval cannot produce</i>"]
+  BA["volunteered unasked<br/><i>an address, to whoever is holding<br/>the conversation</i>"]:::bad
+  BB["recited<br/><i>a system reading out its<br/>own configuration</i>"]:::bad
+  AN -.->|"never"| BA
+  IN -.->|"never"| BB
+  style Q fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style HD fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Reach the slots through I6's own decomposition.** `formulate` then `slots_for` — the same path retrieval uses, so the model and the retriever agree about what a question is asking, rather than drifting apart on two implementations.
 
 ### Restraint is also cheaper

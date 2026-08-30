@@ -75,6 +75,32 @@ gone from: primary  sqlite  vectors
 
 Three structures held it and none of them knew about the others. `derived` and `summaries` are zero on this corpus and are reported anyway — `temporal-knowledge-graphs` measured that a cascade reporting only what it removed is indistinguishable from one whose edges point nowhere, and this is the operation where that distinction is legally load-bearing.
 
+```mermaid
+flowchart LR
+  REQ["<b>request</b><br/><i>the user's vocabulary</i>"] --> RES["<b>resolve by label</b><br/><i>the kind assigned at write time</i>"]
+  RES --> ACT["<b>actionable</b><br/><i>one candidate</i>"]
+  ACT --> UNA{"unambiguous?"}
+  UNA -->|"no"| HLD["<b>hold, with a reason</b><br/><i>the guess is irreversible</i>"]
+  UNA -->|"yes"| CAS["<b>cascade</b><br/><i>destroy, everywhere at once</i>"]
+  subgraph ST["every structure that held it"]
+    direction LR
+    PRI[("primary")]
+    SQL[("sqlite")]
+    VEC[("vectors")]
+    DRV[("derived")]
+    SUM[("summaries")]
+  end
+  CAS --> ST
+  ST --> RPT["<b>report the empty ones too</b><br/><i>an unreached structure and an<br/>edge pointing nowhere look alike</i>"]
+  SUP["<b>supersede</b> or <b>tombstone</b><br/><i>retires it; the vector survives</i>"]:::bad
+  CAS -.->|"never"| SUP
+  style RES fill:#aed6f1,stroke:#2874a6
+  style UNA fill:#f9e79f,stroke:#b7950b
+  style CAS fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style RPT fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Deletion is not supersession.** Everything else in this course retires rather than destroys, and that decision is what makes `rollback` possible. This is the one operation that must actually destroy, which is why it needed its own vocabulary — `Operation` has had `add | update | merge | noop` since I3 and no member for this.
 
 **Tombstoning is not deletion either.** `VectorIndex.index` tombstones a retired belief and keeps its vector *on purpose*, because an audit needs it. A deletion request is where that requirement inverts: the thing that must be provable is that the vector is gone, so `forget` destroys it and `holds` reports whether it did. Asking `vector_for` instead would **compute the vector you were about to delete**.

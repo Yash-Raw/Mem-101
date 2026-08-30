@@ -84,6 +84,27 @@ unguarded future-dated write: 1 failing  [("no memory is dated past the store's 
 
 The same record the A3 write policy refuses, now caught at rest by the check that is supposed to catch it. **A boundary control and an invariant are not redundant**: one refuses, the other notices what got in another way.
 
+```mermaid
+flowchart LR
+  W["<b>a future-dated write</b>"] --> POL{"<b>write policy</b><br/>refuse it at the boundary?"}
+  POL -->|"refused"| N["never lands"]
+  POL -->|"unguarded"| S[("store")]
+  subgraph SLF["invariant over the data it checks"]
+    direction LR
+    ALL["newest event<br/><i>anywhere in the store</i>"] --> PSS["<b>passes</b><br/><i>the rogue is the newest</i>"]
+  end
+  subgraph LOO["invariant, leave-one-out"]
+    direction LR
+    OTH["newest event<br/><i>among the others</i>"] --> FLS["<b>fails</b><br/><i>caught at rest</i>"]
+  end
+  S --> SLF
+  S --> LOO
+  style POL fill:#f9e79f,stroke:#b7950b
+  style PSS fill:#f5b7b1,stroke:#c0392b
+  style OTH fill:#aed6f1,stroke:#2874a6
+  style FLS fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+```
+
 ## Design decisions
 
 **Why label kind rather than severity?** Because severity is a deployment decision and kind is a fact. *Structural* means "only a bug produces this"; *policy* means "unusual data produces this". How loudly each pages someone depends on who is on call, and encoding that here would bake one team's rota into the library.

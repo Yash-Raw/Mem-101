@@ -77,6 +77,21 @@ Filtering on the event axis is not enough, because the stages after it each pin 
 
 `live_only` is a belief-time filter with its clock set to now, and it is right for every question Level 2 asks. `retrievable_only` is subtler: the tier cap is a decayed-relevance proxy, decay is measured from now, and **a memory demoted for being stale is exactly the memory a question about the past wants.** The property that made it droppable is the property that makes it the answer.
 
+```mermaid
+flowchart LR
+  Q["a dated question<br/><i>where did I work in June?</i>"] --> R{"route"}
+  R -->|"NOW, or abstain"| NW["the current answer"]
+  R -->|"THEN"| TF["<b>temporal filter</b><br/><i>event axis, at the interval asked</i>"]
+  TF --> L1{"release <b>live_only</b><br/><i>a belief filter pinned to now</i>"}
+  L1 --> L2{"release <b>retrievable_only</b><br/><i>the tier cap, decayed from now</i>"}
+  L2 --> RK["rank, then top-k"]
+  BAD["<b>let the filter stand in for the ranker</b><br/><i>every eligible memory: correct, and useless</i>"]:::bad
+  TF -.->|"never"| BAD
+  style TF fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style L2 fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 Neither release alone gets you there. Both together, and the same call answers both questions:
 
 ```

@@ -66,6 +66,27 @@ Four of thirty-seven records gain a real event time — exactly the four phrases
 
 **`compatibility` compares a record before and after, not two schemas.** A schema diff cannot see whether the id moved, and the id moving is the failure that matters.
 
+```mermaid
+flowchart LR
+  NEW["<b>add two fields</b>"] --> HSH{"does the id<br/>hash them?"}
+  HSH -->|"no — user, type,<br/>content, source only"| STB["<b>no id moved</b>"]
+  STB --> DRV["derived_from"]
+  STB --> SUP["superseded_by"]
+  STB --> VEC["the vector cache"]
+  STB --> PIN["every pinned assertion"]
+  HSH -->|"yes"| MOV["<b>every id moves at once</b><br/><i>all four break together —<br/>a rewrite, not a migration</i>"]
+  OLD["<b>a record written before</b>"] --> FBK["<b>falls back</b><br/><i>answers the new question at lower<br/>precision — a degradation, not an outage,<br/>which is what makes the backfill optional</i>"]
+  FBK --> BKF["<b>backfill</b><br/><i>restartable because the parser is<br/>deterministic, not because anyone<br/>added a checkpoint</i>"]
+  CMP["<b>diff the two schemas</b><br/><i>cannot see whether the id moved</i>"]:::bad
+  HSH -.->|"never"| CMP
+  style HSH fill:#f9e79f,stroke:#b7950b
+  style STB fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style MOV fill:#f5b7b1,stroke:#c0392b
+  style FBK fill:#aed6f1,stroke:#2874a6
+  style BKF fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why keep `happened_at` rather than renaming it to `valid_from`?** Because a dozen Level 1 and 2 figures are measured against it and it means something specific — *when this was asserted*. Renaming would have been a content-neutral change that broke every quoted number, which is the most expensive kind: no behaviour changes and everything fails.

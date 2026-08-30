@@ -61,6 +61,19 @@ So full precision buys less than it did. **Not nothing** — a live fact can sti
 
 Worth stating rather than quietly asserting the principle. A lesson that claimed score order rescued this context would be describing a corpus it does not have.
 
+```mermaid
+flowchart LR
+  C["the assembled lines"] --> P{"who resolves a<br/>contradiction now?"}
+  P -->|"Beginner: the model did"| FD["full dates<br/><i>only the day said<br/>which belief was current</i>"]
+  P -->|"after I4: nobody —<br/>the loser never arrives"| YR["<b>year precision</b><br/><i>keeps the ordering,<br/>returns the tokens</i>"]
+  YR --> O["order by <b>score</b>, not chronology<br/><i>attention degrades over long spans</i>"]
+  O --> AG["and here the two orderings agree<br/><i>a claim about this corpus,<br/>checkable and worth checking</i>"]
+  O -.->|"never"| X["claim score order rescued<br/>this context<br/><i>describing a corpus<br/>you do not have</i>"]:::bad
+  style P fill:#f9e79f,stroke:#b7950b
+  style YR fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Year precision, or drop dates entirely?** Year. Bare lines save nine more tokens and lose the ability to tell a 2025 belief from a 2026 one, which is the signal supersession does not cover. Dropping a field to save tokens is compression by deletion.

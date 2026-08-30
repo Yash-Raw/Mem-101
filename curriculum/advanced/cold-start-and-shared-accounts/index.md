@@ -62,6 +62,19 @@ A memory layer starts empty for every user, fills at the rate they talk, and —
 
 **Report coverage as attributes, and answerability separately.** `growth` counts what the model has; `answerable` reads what those attributes contain. Two milestones, two turns apart on this corpus, and the cheap one is the one that lies.
 
+```mermaid
+flowchart LR
+  M["the model, part-built"] --> G["<b>growth</b><br/><i>counts the attributes present</i>"]
+  M --> A["<b>answerable</b><br/><i>reads what those attributes contain</i>"]
+  G --> GR["reports ready first"]
+  A --> AR["reports ready later<br/><i>the milestone the answer keeps</i>"]
+  BAD["<b>ship on the attribute count</b><br/><i>green while the answer<br/>does not yet exist</i>"]:::bad
+  GR -.->|"never"| BAD
+  style G fill:#f9e79f,stroke:#b7950b
+  style A fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Partial models are usable from turn one.** The question reaches `employer` immediately, and `applying-the-model`'s split means an incomplete model degrades by *answering less*, not by answering wrongly — the attributes it does not have are simply not in the `asked` set. That is a property of keying on slots, and it is why cold start needs no special-casing here.
 
 ### The shared account is already in the corpus

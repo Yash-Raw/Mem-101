@@ -73,6 +73,22 @@ Here the read path is arithmetic over a cached index and the *write* path is whe
 
 **`arbitrate` is the only conditional entry**, and that is the interesting one. It is not synchronous or deferred by nature; it is synchronous **when the turn contests something**, which is a property of the turn rather than the stage. Every other row is a property of the stage.
 
+```mermaid
+flowchart LR
+  STG["<b>a stage</b>"] --> QSN{"<b>what breaks if this<br/>waits one turn?</b>"}
+  QSN -->|"cannot be retrieved next turn"| SYN["<b>synchronous</b><br/><i>extraction — the alternative is a system<br/>that cannot answer about the sentence<br/>it just heard</i>"]
+  QSN -->|"retrievable, just wasteful"| DFR["<b>deferred</b><br/><i>dedupe · summarise</i>"]
+  QSN -->|"nothing reads it yet"| DFR
+  TRN["<b>a turn that contests a slot</b>"] --> ARB["<b>arbitrate</b><br/><i>synchronous on those turns only —<br/>a property of the turn, not the stage</i>"]
+  TMR["<b>reach for a stopwatch</b><br/><i>none of this classification needs timing;<br/>counting where each call fires does</i>"]:::bad
+  QSN -.->|"never"| TMR
+  style QSN fill:#f9e79f,stroke:#b7950b
+  style SYN fill:#aed6f1,stroke:#2874a6
+  style DFR fill:#aed6f1,stroke:#2874a6
+  style ARB fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **50% blocking, and the half that remains cannot move.** Extraction is 1.0 of the 2.0 calls, and deferring it is not an optimisation — it is a system that cannot answer a question about the sentence it just heard. The other 1.0 is already off the turn, which is what A2's gate was for.
 
 The first version of this lesson reported **81%**, because it passed `cost-model`'s *total* to `budget()` as though every completion were extraction. The stage names made that plausible — consolidation sounds like the expensive one — and the only thing that caught it was counting where each call fires.

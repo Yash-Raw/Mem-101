@@ -54,6 +54,21 @@ Two fields, both designed into the record back in Beginner and unused until now.
 
 **Episodes are never touched.** `Priya is leaving Northwind Labs` and `Priya left Northwind last month` remain permanently true and permanently live. `typed-memory-model` made that structural: `can_contradict` is false for episodic, so they never become candidates, and no special case is needed here. That decision, made eleven lessons ago, is why applying supersession is safe rather than delicate.
 
+```mermaid
+flowchart LR
+  W["the winning belief"] --> S{{"<b>supersede</b><br/><i>invalid_at = the winner's<br/>event time, not now</i>"}}
+  L["the belief it retires"] --> S
+  S --> K[("content · provenance · id<br/><b>all kept</b>; only <i>live</i> changed")]
+  K --> Q1["<i>where do I work?</i><br/>live_only skips it"]
+  K --> Q2["<i>where did I work before?</i><br/><b>still answerable</b>"]
+  K --> Q3["<i>what did we believe in June?</i><br/>as-of, still answerable"]
+  E["an episode"] -.->|"never a candidate"| S
+  S -.->|"never"| X["<b>delete the loser</b><br/><i>all three questions lose<br/>their answer at once</i>"]:::bad
+  style S fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style Q2 fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### The result
 
 Seven beliefs retired, none deleted. **37 memories, 30 live.**

@@ -70,6 +70,20 @@ Split that into four atomic steps and each becomes independently retrievable and
 
 When updatability and usability conflict, **usability wins** — and the type is what encodes that, which is why the exemption is `if memory_type is PROCEDURAL` rather than a length heuristic.
 
+```mermaid
+flowchart LR
+  T["an extracted claim"] --> Y{"<b>type</b>, not length"}
+  Y -->|procedural| P["<b>returned whole</b><br/><i>order is load-bearing</i>"]
+  Y -->|semantic| C{"a conjunction joining two<br/>independent claims?<br/><i>subject pronoun required</i>"}
+  C -->|yes| S["<b>split</b><br/>two atomic memories"]
+  C -->|no| K["left alone"]
+  P -.->|"never"| X["four independently retrievable<br/>steps, collectively useless<br/><i>and nothing downstream can tell<br/>they were once one claim</i>"]:::bad
+  style Y fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style C fill:#f9e79f,stroke:#b7950b
+  style S fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### Measured
 
 Across the 38 intermediate memories: **0 are non-atomic**. Both procedures return `atomise → 1`, and no semantic fact contains an unsplit conjunction. The stage is doing nothing on this corpus — which is the correct outcome and worth stating, because a transform that never fires is easy to mistake for one that works.

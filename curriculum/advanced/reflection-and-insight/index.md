@@ -101,6 +101,30 @@ Ranks 3–5 are the composites' own members. The insight **joined** its sources 
 
 **Both policies are worse, and retiring the sources is the worse of the two.** The reason is the one I8 spent a module on: the packer selects *memories*. It can take three of the four diet facts and drop the one the question does not need. It cannot take three quarters of a composite. **Composition destroys the packer's ability to drop things** — the property that made 51 reachable at all.
 
+```mermaid
+flowchart LR
+  subgraph SRC["the diet facts, as memories"]
+    direction LR
+    MA["eats fish"]
+    MB["no meat"]
+    MC["pescatarian"]
+    MD["gluten"]
+  end
+  CI["<b>the same facts, as one composite</b><br/><i>every member id in derived_from</i>"]
+  MA --> CI
+  MB --> CI
+  MC --> CI
+  MD --> CI
+  SRC --> PA{"packer, tight budget"}
+  CI --> PB{"packer, tight budget"}
+  PA -->|"drop the one the<br/>question does not need"| OK["<b>the answer survives</b>"]
+  BAD["<b>composition removes the choice</b><br/><i>and the insight joined its sources,<br/>so the context carries diet twice</i>"]:::bad
+  PB -->|"whole, or not at all"| BAD
+  style CI fill:#f9e79f,stroke:#b7950b
+  style OK fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **So reflection ships unwired**, like `promote()` before it, and for the same reason: the measurement says the signal does not carry the decision. Keeping it as code with a passing test makes the deferral visible and re-testable; deleting it makes the next person rediscover it.

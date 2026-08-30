@@ -84,6 +84,21 @@ Three cases, and the id set is what distinguishes them:
 
 Rows 2 and 3 are indistinguishable in the output: both are simply absent. **Without the recorded id set there is no way to tell "the job deleted this" from "the job never saw it"**, which is precisely why `replace` destroys data — it treats every absence as a deletion.
 
+```mermaid
+flowchart LR
+  ST[("store")] --> RD["<b>read</b><br/><i>remembers the id set it saw</i>"]
+  RD --> CO{{"consolidate"}}
+  CO --> WB{"per id: in the snapshot?<br/>in the output?"}
+  WB -->|"in both"| KA["take the job's version"]
+  WB -->|"read, then absent"| KB["drop it, deliberately"]
+  WB -->|"never read"| KC["<b>keep it</b><br/><i>it arrived after the read,<br/>and is not the job's business</i>"]
+  BAD["<b>replace the store wholesale</b><br/><i>every absence read as a deletion</i>"]:::bad
+  CO -.->|"never"| BAD
+  style RD fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style WB fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **The merge is not merely non-destructive; it is correct.** Racing a job against every fourth turn and merging gives a store identical to the serialised run — same 37 memories, same 30 live, the same set of ids:
 
 ```

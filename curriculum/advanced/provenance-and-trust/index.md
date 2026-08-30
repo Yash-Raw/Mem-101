@@ -65,6 +65,20 @@ A memory layer stores assertions from writers with narrow competence into one be
 
 The obvious design has two states, and it is wrong. A claim naming no modelled slot is not outside the writer's domain — it is outside the *vocabulary*, and discounting it encodes *"our slot table is incomplete"* as *"this writer is unreliable"*. Those are statements about different parties.
 
+```mermaid
+flowchart LR
+  W["a write, with its writer<br/>and that writer's authority"] --> S{"does it name a<br/>modelled SLOT at all?"}
+  S -->|"no"| UN["<b>UNNAMEABLE</b><br/><i>keeps its authority, and is flagged<br/>as a claim nothing can contradict</i>"]
+  S -->|"yes"| CP{"is that slot in this writer's<br/>competence table?"}
+  CP -->|"yes"| CO["COMPETENT, at its authority"]
+  CP -->|"no"| OD["OUT_OF_DOMAIN, discounted"]
+  BAD["<b>two verdicts</b><br/><i>a gap in your slot table,<br/>charged to a reliable agent</i>"]:::bad
+  S -.->|"never"| BAD
+  style UN fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style CP fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 Which matters here, because the calendar agent's **entire output** is unnameable. This course models seven attributes and none of them is scheduling:
 
 ```

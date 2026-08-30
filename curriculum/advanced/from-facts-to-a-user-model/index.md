@@ -67,6 +67,21 @@ Which is just as well, because judgement would have got it wrong. Diet and resid
 
 **Count supersessions only for beliefs about the user.** A partner changing jobs twice is not evidence that the *user's* employer is volatile, and `occupation_other` — the slot with the most churn on this corpus — is entirely about Samira.
 
+```mermaid
+flowchart LR
+  H[("supersession history")] --> E{"is the belief<br/>about the user?"}
+  E -->|"no"| SK["skip<br/><i>a partner changing jobs is no<br/>evidence about the user</i>"]
+  E -->|"yes"| CT["<b>count replacements per slot</b><br/><i>a fact about the record, for free</i>"]
+  CT --> V["volatile: it has been replaced"]
+  CT --> S["<b>not yet observed to change</b><br/><i>a fact about the corpus, not a<br/>property of the attribute</i>"]
+  BAD["<b>assert which categories tend to be stable</b><br/><i>diet and residence sound durable;<br/>both have already changed</i>"]:::bad
+  CT -.->|"never"| BAD
+  style E fill:#f9e79f,stroke:#b7950b
+  style S fill:#f9e79f,stroke:#b7950b
+  style CT fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### What cannot enter the model
 
 ```

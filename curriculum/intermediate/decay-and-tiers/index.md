@@ -94,6 +94,25 @@ Salience is continuous; retrieval needs a decision. Three bands, deliberately wi
 
 Only `long_term` is retrieved by default. Nothing is removed — the log still holds all 37.
 
+```mermaid
+flowchart LR
+  M["a memory"] --> T{"<b>type</b> sets the rate"}
+  T -->|episodic · working| FA["fades fast<br/><i>it is over; it recedes</i>"]
+  T -->|semantic| SL["fades slowly<br/><i>current until superseded</i>"]
+  T -->|procedural| PR["barely fades<br/><i>taught once, meant to<br/>outlast everything</i>"]
+  FA --> A["<b>effective age</b><br/><i>against the newest event in<br/>the store, not the clock</i>"]
+  SL --> A
+  PR --> A
+  U["each recorded use"] -->|"buys back a half-life"| A
+  A --> B{"three wide bands"}
+  B -->|long_term| RT["retrieved by default"]
+  B -->|working · scratch| DM["demoted<br/><i>still in the log</i>"]
+  T -.->|"never"| X["<b>one rate for everything</b><br/><i>fourteen standing beliefs and both<br/>procedures leave with the<br/>finished tasks</i>"]:::bad
+  style T fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style A fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Decay salience, or decay the retrieval score?** Salience, stored. It is a property of the memory, it changes slowly, and computing it per query puts a scan on the read path for a number that barely moves. It also makes decay auditable: you can look at a memory and see what it is worth.

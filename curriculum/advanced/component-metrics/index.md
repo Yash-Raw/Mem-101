@@ -83,6 +83,28 @@ rank    relevance judgements are what memory eval lacks by construction
 
 **This is not a gap in the answer key.** These three stages have no correct behaviour that is a fact about the conversation — their correctness is a *policy*, and a gold entry for them would restate whatever policy was implemented and then confirm it. `dedupe`'s threshold, `decay`'s half-life and `rank`'s weights were all chosen by measuring their effect on the exam, which is the only honest thing available: **score the policy stages end-to-end and the factual stages against the key.**
 
+```mermaid
+flowchart LR
+  GLD["<b>a gold entry</b><br/><i>carries a session</i>"] --> LOC{"<b>located?</b><br/>by session, never by value"}
+  LOC -->|"no"| NLC["<b>reported as not located</b><br/><i>a question, or a phrase gold<br/>says has no time in it</i>"]
+  LOC -->|"yes"| COR{"<b>correct?</b>"}
+  COR --> RTE["<b>rate</b> = correct ÷ located"]
+  subgraph POL["stages whose correctness is a policy"]
+    direction LR
+    DED["dedupe<br/><i>a threshold</i>"]
+    DEC["decay<br/><i>a half-life</i>"]
+    RNK["rank<br/><i>weights</i>"]
+  end
+  POL --> E2E["<b>score these end-to-end</b><br/><i>against the exam</i>"]
+  GEN["<b>a gold entry for a policy stage</b><br/><i>restates the policy, then confirms it</i>"]:::bad
+  POL -.->|"never"| GEN
+  style LOC fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style NLC fill:#aed6f1,stroke:#2874a6
+  style COR fill:#f9e79f,stroke:#b7950b
+  style E2E fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why is extraction recall-only?** Precision needs gold to enumerate everything that should *not* be extracted, which is unbounded. `over-extraction` measured the problem in Beginner and named no threshold, because there is not one — the boundary is a judgement, which puts it with `dedupe` and `decay`.

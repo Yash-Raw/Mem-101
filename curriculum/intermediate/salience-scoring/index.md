@@ -70,6 +70,20 @@ Across the live store this yields six distinct values, from **0.5** to **0.95**.
 
 **Reinforcement is the strongest signal and cannot be the only one.** `record_use` increments `access_count` when a memory is recalled *and assembled* — not merely scanned. It is the only signal that requires the system to have been running, which is exactly why a store ranked purely by past use never surfaces the fact stated once and never asked about until the day it matters.
 
+```mermaid
+flowchart LR
+  EX["explicit<br/><i>the user said to remember it</i>"] --> SG
+  CO["corroboration<br/><i>sources in derived_from</i>"] --> SG
+  US["use<br/><i>recalled and assembled</i>"] --> SG
+  HD["finished task · hearsay<br/><i>the two subtractions</i>"] --> SG
+  PB["procedure bonus<br/><i>a correction for a blind spot,<br/>named rather than folded in</i>"] --> SG
+  SG["<b>salience</b><br/><i>rules over fields that<br/>already exist — no model</i>"] --> F{"<b>what fades</b><br/><i>a question about the<br/>memory</i>"}
+  SG -.->|"never"| X["a term in the relevance score<br/><i>a question about the query —<br/>and it moves the correct<br/>answer down</i>"]:::bad
+  style SG fill:#aed6f1,stroke:#2874a6
+  style F fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### What salience is for
 
 Not ranking. **Forgetting.** The next lesson uses it to decide what fades and what stays retrievable, which is a question about the memory rather than about the query — and that is the question salience actually answers.

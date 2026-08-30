@@ -65,6 +65,18 @@ Both are above 0.5, so rule 1 does not discriminate, and arbitration falls throu
 
 `provenance-and-trust` built the fix without wiring it: score the **claim**. A calendar agent asserting diet is out of domain, so its trust is 0.3, which is below the line, and rule 1 discriminates again. The substitution is one argument — `arbitrate(a, b, claim_trust)` — and it is now what `@A3` runs.
 
+```mermaid
+flowchart LR
+  PU["the user says<br/><i>pescatarian</i>"] --> R1{"rule 1: is one side above<br/>FIRST_PARTY and the other below?"}
+  CA["a calendar agent says<br/><i>vegetarian</i>, later"] --> R1
+  R1 -->|"score the <b>writer</b>:<br/>both are above the line"| FL["no discrimination,<br/>fall through to recency"]
+  FL --> LOSE["<b>the agent wins for being newer</b><br/><i>a threshold, so high and highest<br/>are the same number</i>"]
+  R1 -->|"score the <b>claim</b>:<br/>diet is out of this writer's domain,<br/>so it falls below the line"| WIN["<b>the user wins on authority</b>"]
+  style R1 fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style WIN fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style LOSE fill:#f5b7b1,stroke:#c0392b
+```
+
 ### And it changes nothing here
 
 ```

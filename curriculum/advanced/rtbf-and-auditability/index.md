@@ -66,6 +66,32 @@ receipt for ec6117be8ba33512
 
 The request's *text* is not a field. Storing what the user said in order to prove you honoured it is the same mistake one level down; a session number and a timestamp locate the turn without reproducing it.
 
+```mermaid
+flowchart LR
+  ORG["<b>the original record</b><br/><i>destroyed</i>"] --> FPR["<b>id</b><br/><i>a hash of user, type,<br/>content and source</i>"]
+  subgraph KPT["what the receipt keeps"]
+    direction LR
+    FNG["the fingerprint"]
+    DAT["kind · requested · deleted"]
+    STR["structures reached · residue"]
+  end
+  subgraph NVR["what it never keeps"]
+    direction LR
+    CNT["the content"]
+    WRD["the wording of the request"]
+  end
+  FPR --> KPT
+  ORG -.->|"never"| NVR
+  KPT --> VFY{"<b>anyone holding the original</b><br/>recomputes the hash"}
+  VFY -->|"matches"| PRV["<b>proof without retention</b><br/><i>everyone else learns a hex string</i>"]
+  KPT --> EXP["<b>expiry</b><br/><i>a permanent record that someone asked<br/>to be forgotten is a record about them</i>"]
+  style FPR fill:#aed6f1,stroke:#2874a6
+  style VFY fill:#f9e79f,stroke:#b7950b
+  style PRV fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style EXP fill:#f9e79f,stroke:#b7950b
+  style NVR fill:#f5b7b1,stroke:#c0392b
+```
+
 **The re-scan searches by id, not by content.** Searching for the deleted text means holding the deleted text. `residue == 0` is the claim being made, and it is checkable without anyone ever writing the address down again.
 
 **Receipts expire.** A permanent record that a person asked to be forgotten is itself a permanent record about that person:

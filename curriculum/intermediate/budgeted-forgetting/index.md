@@ -64,6 +64,21 @@ out = [replace(m, tier=Tier.WORKING) if m.id in demoted else m for m in memories
 
 Same discipline as [supersession](../supersession-not-deletion/index.md), different trigger. A superseded belief is *false*; an evicted memory is *still true* and simply stopped earning its slot. The record stays in the log, reachable by an explicit historical query, and recoverable the moment reinforcement lifts it back.
 
+```mermaid
+flowchart LR
+  L[("the log — everything, forever")] --> R["<b>the retrievable tier</b><br/><i>what a query scans, and<br/>what a slot costs</i>"]
+  R --> C{"over the cap?"}
+  C -->|no| K["nothing happens<br/><i>the machinery exists ahead<br/>of the pressure</i>"]
+  C -->|yes| E["<b>demote to working</b><br/><i>still true, stopped<br/>earning its slot</i>"]
+  E --> L
+  L -->|"an explicit historical query"| H["still reachable"]
+  L -->|"reinforcement lifts it back"| R
+  C -.->|"never"| X["cap the <b>log</b><br/><i>saves storage, which was<br/>never the problem</i>"]:::bad
+  style R fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style C fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **The cap does not currently bind.** At `@I5` there are **18** retrievable memories against a cap of **20**, so `enforce` evicts nothing. That is worth stating plainly rather than hiding behind a mechanism that appears to be working: the machinery exists ahead of the pressure, because the pressure arrives as a slow degradation rather than an incident, and by the time it is obvious the store is already too big to reason about.
 
 **And summarization stays off.** [Compaction](../summarization-and-compaction/index.md) was built and deliberately left unwired pending budget pressure. There is none. Running a lossy transform to relieve a budget nothing is exceeding is cost without benefit — it turns on when the cap does.

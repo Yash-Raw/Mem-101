@@ -69,6 +69,25 @@ They are not unmeasured because nobody tried. They are properties this shape of 
 
 **A metric that cannot see a change is not evidence the change did nothing.** It is evidence about the metric, and the suite's job is to make that distinction visible instead of leaving it in a paragraph.
 
+```mermaid
+flowchart LR
+  BAT["<b>the battery</b><br/><i>component metrics + budget</i>"] --> SAT["<b>the flat columns</b><br/><i>extract · resolve · arbitrate,<br/>already correct before Level 3</i>"]
+  BAT --> ANC["<b>the one that moves</b><br/><i>anchor, exactly where the<br/>relative-time parser landed</i>"]
+  BAT --> BDG["<b>the budget</b><br/><i>tightens at packing, then<br/>again under pressure</i>"]
+  SAT --> NEV["<b>cannot justify anything</b><br/><i>every individual number stays true</i>"]
+  subgraph INV["properties this shape of battery cannot express"]
+    direction LR
+    WHN["<i>when</i> consolidation runs<br/>— a converged store is identical"]
+    REJ["<i>rejected</i> writes<br/>— nothing refused is there to score"]
+  end
+  BAT --> INV
+  INV --> EVD["<b>evidence about the metric</b><br/><i>not evidence the change did nothing</i>"]
+  style ANC fill:#aed6f1,stroke:#2874a6
+  style BDG fill:#aed6f1,stroke:#2874a6
+  style EVD fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style NEV fill:#f5b7b1,stroke:#c0392b
+```
+
 ## Design decisions
 
 **Why build each profile from scratch?** Because consolidation is the expensive stage and the tempting optimisation is to ingest once and re-score. That silently gives every profile the last one's write path, and the resulting table shows uniform improvement with no cause.

@@ -79,6 +79,21 @@ The two are *"Priya lives at 47 Halloway Road, Bristol"* and *"Priya's phone num
 
 So the trade is not "hierarchical is the safe middle". It is: **hierarchical is a boundary between agents and no boundary at all between the user and an agent.** It costs the travel agent the calendar agent's two rows, and protects nothing the user would care about.
 
+```mermaid
+flowchart LR
+  TA["a low-trust agent,<br/>reading"] --> P{"topology"}
+  P -->|"private"| PR["sees only what it wrote<br/><i>not isolated, disconnected</i>"]
+  P -->|"hierarchical"| HI["sees the user's memories"]
+  P -->|"shared"| SH["sees the user's memories"]
+  HI --> PII["<b>the home address<br/>and the phone number</b>"]
+  SH --> PII
+  PII --> POL["<b>the boundary that works<br/>is not a topology</b><br/><i>a policy on what a writer<br/>may see and may say</i>"]
+  style P fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style PR fill:#f5b7b1,stroke:#c0392b
+  style PII fill:#f5b7b1,stroke:#c0392b,stroke-width:2px
+  style POL fill:#aed6f1,stroke:#2874a6
+```
+
 The mechanism that separates them is not a topology, and it is not a read-time filter either — it is a policy about what a given writer is allowed to *see* and *say*, which is `memory-access-control` at the end of this module.
 
 ## Design decisions

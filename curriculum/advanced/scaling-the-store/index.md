@@ -57,6 +57,23 @@ A memory layer's expensive stage compares memories **with each other**, so its c
 
 The blocking is doing real work; it is bounding the *number of groups*, not the size of one. A store with a thousand beliefs about diet has the same problem the slot table was introduced to solve, one level down.
 
+```mermaid
+flowchart LR
+  PRT{"<b>partition key</b><br/>a correctness boundary,<br/>chosen before size was<br/>a consideration"} --> USR["<b>user</b><br/><i>the key safety needs is also the<br/>key that bounds the groups —<br/>had they disagreed, safety wins</i>"]
+  USR --> STO[("one store, replicated")]
+  STO --> BLK["<b>block by SLOT</b><br/><i>bounds the <b>number</b> of groups</i>"]
+  BLK --> SLA["slot"]
+  BLK --> SLB["slot"]
+  BLK --> SLC["slot"]
+  SLB --> APR["<b>still all-pairs inside one slot</b><br/><i>pairs grow with the square<br/>of the group</i>"]
+  STO --> CAP["<b>the tier cap</b><br/><i>binds under one user talking longer;<br/>not under many users, where each<br/>store brings its own cap</i>"]
+  style PRT fill:#f9e79f,stroke:#b7950b
+  style USR fill:#aed6f1,stroke:#2874a6
+  style BLK fill:#aed6f1,stroke:#2874a6
+  style APR fill:#f5b7b1,stroke:#c0392b,stroke-width:2px
+  style CAP fill:#f9e79f,stroke:#b7950b
+```
+
 **The eligible pool grows linearly, and the tier cap does not save it.** `forget.budget` caps LONG_TERM at 20 per store, and eight replicated stores are eight caps. Under real growth the cap binds; under replication it does not, and that difference is worth naming — **this measurement models many users, not one user talking for eight times as long.**
 
 **The partition key was never a scaling decision.** `scopes.partition` shards on `user`, and it does so because that is where the correctness boundary is:

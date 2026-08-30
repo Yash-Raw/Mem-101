@@ -75,6 +75,20 @@ Derived beliefs were scored in the preview and unscored on disk, so on disk they
 
 The fix is structural rather than careful: `finalize` is a parameter of `preview`, and `promote` calls `preview`. There is no longer a way to measure one thing and apply another.
 
+```mermaid
+flowchart LR
+  DV{{"a derivation"}} --> SG["<b>stage</b><br/><i>the retirement set read off derived_from</i>"]
+  SG --> PV["<b>preview(finalize)</b><br/><i>score it, then measure it</i>"]
+  PV --> LB{"lowest budget at which<br/>the exam still passes<br/><i>not pass/fail at one budget</i>"}
+  LB -->|"better"| PR["promote, by calling the same preview"]
+  LB -->|"worse"| RB["reject, or roll back<br/><i>supersession deleted nothing</i>"]
+  BAD["<b>preview scores, promote writes raw</b><br/><i>derived beliefs land unscored and unreadable,<br/>their sources already retired</i>"]:::bad
+  PV -.->|"never"| BAD
+  style PV fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style LB fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Rollback works because supersession never deleted anything.** Drop what the release added, clear `invalid_at` on what it retired, and the store is identical — ids, validity, supersession pointers and tiers:
 
 ```

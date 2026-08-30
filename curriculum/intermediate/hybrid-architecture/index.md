@@ -79,6 +79,21 @@ Two decisions carry the weight.
 | is every retired row tombstoned? | a belief retired in one store and servable from another |
 | is every entity-bearing row in the graph? | a stale rebuild |
 
+```mermaid
+flowchart LR
+  W["a write"] --> RO[("<b>rows</b><br/><i>the source of record</i>")]
+  RO --> VE[("vectors<br/><i>caches, so it is the one<br/>needing a tombstone</i>")]
+  RO --> GR[("graph<br/><i>rebuilt from rows.all(), never<br/>from the incoming batch</i>")]
+  RO --> CK{"<b>check()</b><br/>every row has a vector ·<br/>every retired row tombstoned ·<br/>every entity-bearing row in the graph"}
+  VE --> CK
+  GR --> CK
+  CK --> D["divergences, named<br/><i>not a diagnostic — the contract</i>"]
+  GR -.->|"never"| X["rebuild from the batch<br/><i>drifts on the write<br/>it did not see</i>"]:::bad
+  style RO fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style CK fill:#f9e79f,stroke:#b7950b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 On Priya's store, after a fan-out write: **37 rows, 18 eligible, zero divergences.** The number worth having is the zero, and it is worth having *because it is checked* rather than assumed.
 
 ### And the honest recommendation

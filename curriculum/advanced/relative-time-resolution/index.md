@@ -67,6 +67,21 @@ last month, as a calendar   2025-12-01      exact
 
 **An event reference needs the store, not the clock.** *"Before the move"* resolves only by finding the memory that dates the move — which makes it the one class that can fail, and failing is a legitimate answer. A parser that always produces a date is a parser that invents them.
 
+```mermaid
+flowchart LR
+  P["a phrase carrying a<br/>relative reference"] --> G{"type is<br/>PROCEDURAL?"}
+  G -->|"yes"| REF["<b>decline</b><br/><i>a step inside a recipe,<br/>not a claim about when</i>"]
+  G -->|"no"| C{"classify<br/><i>EVENT tested before OFFSET</i>"}
+  C -->|"EVENT"| E["ask the <b>store</b><br/><i>the one class that can fail,<br/>and failing is an answer</i>"]
+  C -->|"OFFSET"| O["<b>the unit's own arithmetic</b><br/><i>last month is a calendar month</i>"]
+  C -->|"nothing here"| N["no reference"]
+  BAD["<b>always produce a date</b><br/><i>a fixed offset dates the recipe,<br/>and invents the rest</i>"]:::bad
+  G -.->|"never"| BAD
+  style REF fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style C fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ### The result
 
 All four resolvable phrases land exactly on `gold.yml`:

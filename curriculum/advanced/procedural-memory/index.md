@@ -73,6 +73,18 @@ what the annotation would have become:
 
 A well-formed two-step workflow, in the store, indistinguishable from a real one. The type system says *procedural* and means *about a procedure* — the extractor had no way to express the difference. Excluding it takes a check for the annotation pattern, and **dropping it is better than parsing it, because a wrong procedure looks like data**.
 
+```mermaid
+flowchart LR
+  T["a turn the type system<br/>calls <b>PROCEDURAL</b>"] --> AN{"a procedure, or a<br/>comment about one?"}
+  AN -->|"a procedure"| WH["<b>return it unsplit</b><br/><i>the refusal is the mechanism, and<br/>the order survives to read time</i>"]
+  AN -->|"a comment"| DR["<b>drop it</b><br/><i>dropping beats parsing</i>"]
+  BAD["split the comment on commas<br/><b>a plausible workflow that does not exist,<br/>indistinguishable from a real one</b>"]:::bad
+  AN -.->|"never"| BAD
+  style WH fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style AN fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Nothing links them.** `derived_from` on the annotation is empty. The two came from adjacent turns and the extractor treated each independently, so attaching *"the diff step matters most"* to the workflow means matching on content — and `retrieving-procedures` measures what happens when only one of the pair is retrieved.
 
 ### What the recovered procedure knows

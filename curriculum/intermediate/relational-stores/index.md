@@ -71,6 +71,25 @@ The engine returns **18 rows**; the Python filter had to load **37** to produce 
 
 **Text search complements the vector index rather than competing.** `search_text('Calico')` returns both Calico memories exactly, including the episodic one similarity ranks poorly. `hybrid-ranking` already learned that exact-term matching catches what embeddings smear; this is where that lookup gets an index behind it.
 
+```mermaid
+flowchart LR
+  subgraph PY["in Python — I6"]
+    direction LR
+    AP[("load every row")] --> FP["filter scope · validity · tier<br/><i>linear in the store</i>"]
+  end
+  subgraph SQ["in SQLite — I7"]
+    direction LR
+    AS[("indexed columns")] --> FS["<b>one WHERE clause</b><br/><i>only the rows that qualify<br/>are ever loaded</i>"]
+  end
+  FP --> SM["identical result<br/><i>the lab asserts it</i>"]
+  FS --> SM
+  AS --> TS["<b>text search</b><br/><i>the exact term an<br/>embedding smears</i>"]
+  W["re-insert the whole store"] -->|"INSERT OR IGNORE on a<br/>content-addressed key"| Z["no rows written<br/><i>idempotency for free</i>"]
+  style FS fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style TS fill:#aed6f1,stroke:#2874a6
+  style FP fill:#f5b7b1,stroke:#c0392b
+```
+
 ## Design decisions
 
 **SQLite, or Postgres?** SQLite here, and the point is that it is enough for longer than people expect: one file, no server, real transactions. The lesson is which *operations* belong in a relational store, and that answer does not change with the engine.

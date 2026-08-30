@@ -66,6 +66,23 @@ with a changing one, each is two claims at once
 
 With a deterministic corpus a pinned literal is a claim about the system. Without one it is a claim about the corpus *and* the system, failing on every ingest for reasons nobody can attribute — and the rational response is to delete the assertions, which removes the only regression suite there was.
 
+```mermaid
+flowchart LR
+  PIN["<b>a pinned literal</b><br/><i>a record of what the system did<br/>when someone last looked</i>"] --> CRP{"is the corpus<br/>a golden conversation?"}
+  CRP -->|"yes"| ONE["<b>one claim — about the system</b>"]
+  ONE --> SNP["<b>module snapshots</b><br/><i>a moved number is bisected,<br/>not reasoned about</i>"]
+  CRP -->|"no"| TWO["<b>two claims at once</b><br/><i>the corpus and the system</i>"]
+  TWO --> ATT["fails on every ingest,<br/>attributable to neither"]
+  ATT --> DEL["<b>delete the assertions</b><br/><i>and the only suite goes with them</i>"]
+  SPC["<b>read the pin as a specification</b><br/><i>a requirement nobody chose</i>"]:::bad
+  PIN -.->|"never"| SPC
+  style CRP fill:#f9e79f,stroke:#b7950b
+  style ONE fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style SNP fill:#aed6f1,stroke:#2874a6
+  style DEL fill:#f5b7b1,stroke:#c0392b
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **The suite is emergent, and that is a weakness as well as a strength.** Nobody chose which 376 numbers to pin, so coverage follows whatever each lesson happened to measure. `end-to-end-eval` found three component metrics flat across every profile; the pinned literals have the same property and no report that surfaces it.
 
 ## Design decisions

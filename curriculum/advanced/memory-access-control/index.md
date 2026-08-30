@@ -89,6 +89,20 @@ leak_check with admits() broken      1
 
 So it is not a detector, it is an **invariant**: an assertion about the filter rather than about the data, whose number is always zero and whose entire value is the day it is not. That is exactly what belongs in CI, and this module puts it there.
 
+```mermaid
+flowchart LR
+  F[("a foreign memory,<br/>written straight past the policy")] --> V{"Namespace.admits:<br/>visible to this reader?"}
+  V -->|"no"| OUT["excluded before anything<br/>looks at who owns it"]
+  V -->|"yes"| OWN{"owned by<br/>someone else?"}
+  OWN -->|"yes"| FIRE["<b>leak_check fires</b><br/><i>reachable only when the filter is broken</i>"]
+  OUT --> Z["<b>always zero</b><br/><i>an assertion about the filter,<br/>not about the data</i>"]
+  BAD["<b>read the zero as 'no leaks'</b><br/><i>both conditions cannot hold at once<br/>unless admits is broken</i>"]:::bad
+  Z -.->|"never"| BAD
+  style Z fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style FIRE fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why is impersonation a separate refusal from wrong-user?** Because they fail differently. Wrong-user crosses a tenant boundary and every layer downstream would also be wrong. Impersonation stays inside the correct tenant and is *only* wrong about attribution — the memory is about the right person, filed as though the wrong party said it. A single "unauthorised" verdict would hide which happened, and only one of the two is a security incident.

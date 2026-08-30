@@ -80,6 +80,22 @@ checkable: 7 of 9 seams, 23 of 25 assertions
 
 **Ground truth moving is not a defect to design around.** It is what `as-of-query` already handles: the answer key needs a *date*, not a value. `supersessions` has six entries and each carries a session, which is why they are checkable at all — *"employer was Northwind in session 1 and Calico from session 8"* is two assertions with timestamps, not one contested fact.
 
+```mermaid
+flowchart LR
+  GLD["<b>a gold entry</b><br/><i>written before the system</i>"] --> CHK{"does it state a value<br/>a program can compare?"}
+  CHK -->|"yes"| TST["<b>a test</b>"]
+  CHK -->|"no"| RVW["<b>a reviewer's instruction</b><br/><i>real, important, and<br/>not a test</i>"]
+  TST --> DTE["<b>and a session</b><br/><i>the key states when a value held,<br/>not one settled value</i>"]
+  DTE --> ASQ["<b>an as-of question</b><br/><i>ground truth moving is<br/>already handled</i>"]
+  LAT["<b>write the key after measuring</b><br/><i>a key that agrees with<br/>whatever was built</i>"]:::bad
+  GLD -.->|"never"| LAT
+  style CHK fill:#f9e79f,stroke:#b7950b
+  style TST fill:#aed6f1,stroke:#2874a6
+  style RVW fill:#f9e79f,stroke:#b7950b
+  style DTE fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Why is `final_question` counted as one assertion?** Because it is one. Three levels of this course have been steered by a single boolean over a single question — which is a remarkable amount of leverage from one test and an alarming amount of confidence to place in it. Naming it as one of twenty-five is most of the point of this lesson.

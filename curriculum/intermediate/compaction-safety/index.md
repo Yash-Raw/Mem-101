@@ -72,6 +72,19 @@ That is the third policy in this module to change nothing, and by now the patter
 
 **What pinning does buy** is a stated invariant. Without it, "the diet question got no facts" is a possible outcome nothing forbids. With it, that outcome fails a check rather than producing a confident answer about food.
 
+```mermaid
+flowchart LR
+  Q["the query"] --> SL["<b>slots_for(query)</b><br/><i>the same vocabulary that decides<br/>what conflicts, as a budget rule</i>"]
+  SL --> BF["<b>breadth first</b><br/><i>one fact per asked slot,<br/>then depth, then fill</i>"]
+  BF --> R{"does the target flip<br/>at a tight budget?"}
+  R -->|"no — the padding is<br/>still reached first"| INV["<b>a stated invariant</b><br/><i>a question with no facts now<br/>fails a check instead of<br/>answering confidently</i>"]
+  SL -.->|"never"| X["a topic list<br/><i>pinned regardless of<br/>what was asked</i>"]:::bad
+  style SL fill:#aed6f1,stroke:#2874a6
+  style R fill:#f9e79f,stroke:#b7950b
+  style INV fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Derive from the query, or maintain a list?** Derive. I5 measured what a list costs: protecting diet evicted the employer, and the next question would have needed a class nobody added. A query-derived policy adapts per question, which is the only thing that can.

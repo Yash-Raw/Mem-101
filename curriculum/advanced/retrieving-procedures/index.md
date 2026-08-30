@@ -74,6 +74,19 @@ what did I say about the Spark job?    procedural? False
 
 Numbered, because the order is the content. `slot-value` measured that dropping memories is what makes a tight budget survivable — the packer keeps three of four diet facts and the answer stays right. **This is the memory type where that is not allowed.** Drop the fourth step to save four tokens and the result is not a shorter procedure, it is a wrong one.
 
+```mermaid
+flowchart LR
+  Q["<i>how do I do the weekly report?</i>"] --> TG{"a request to <b>act</b>,<br/>or to recall?"}
+  TG -->|"recall"| RC["the ordinary read path"]
+  TG -->|"act"| IX["<b>index restricted to procedures</b><br/><i>where length stops being a penalty</i>"]
+  IX --> IJ["<b>inject the recipe whole</b><br/><i>numbered, because the order is the content,<br/>with the warning attached</i>"]
+  BAD["drop a step to save tokens<br/><b>not a shorter procedure, a wrong one</b>"]:::bad
+  IJ -.->|"never"| BAD
+  style TG fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style IJ fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 The warning is attached because A5.2 bound it while both halves were in hand. Without that, the workflow renders and the reason the second step matters does not.
 
 ## Design decisions

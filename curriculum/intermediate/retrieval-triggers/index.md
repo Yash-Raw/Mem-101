@@ -75,6 +75,22 @@ Rules, in priority order: correction, then instruction, then explicit recall, th
 
 **The bias, where genuinely ambiguous, is toward retrieving.** A needless retrieval costs latency and a slot. A missing one looks like amnesia — and amnesia is the failure users actually report.
 
+```mermaid
+flowchart LR
+  T["a turn, ending in a<br/>question mark"] --> C{"a <b>correction</b>?<br/><i>checked first</i>"}
+  C -->|yes| NO["do not retrieve<br/><i>this turn is new information</i>"]
+  C -->|no| I{"an <b>instruction</b>?"}
+  I -->|yes| NO
+  I -->|no| E{"explicit recall,<br/>or a real question?"}
+  E -->|yes| Y["retrieve"]
+  E -->|no| D["ambiguous — <b>retrieve anyway</b><br/><i>a needless recall costs a slot;<br/>a missing one looks like amnesia</i>"]
+  T -.->|"never"| X["<b>a question mark means a question</b><br/><i>the assistant recalls the stale fact<br/>and argues with the user<br/>who is correcting it</i>"]:::bad
+  style C fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style I fill:#f9e79f,stroke:#b7950b
+  style D fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 ## Design decisions
 
 **Rules or a classifier?** Rules, for now, and the honest caveat is that this is the weakest module in I6. Intent classification is a genuine language problem; a keyword list gets the clear cases and will misfile anything phrased unusually. It is defensible here because the cost of a miss is one needless retrieval, and because a model call on every turn to decide whether to *do work* is often more expensive than the work.

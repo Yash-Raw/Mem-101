@@ -72,6 +72,20 @@ This is why the same system is cited at wildly different scores on LoCoMo, LongM
 
 **The corpus qualifier is the one most often dropped.** *"One corpus, one persona, 24 turns"* is the strongest caveat on the list — every finding in this course is a finding about Priya — and it is the sentence a headline never has room for.
 
+```mermaid
+flowchart LR
+  MET["<b>a reported metric</b>"] --> DIS{"do two of the systems<br/>compared disagree on it?"}
+  DIS -->|"yes"| RES["<b>a result</b><br/><i>moved is computed,<br/>not asserted</i>"]
+  DIS -->|"no"| SAT["<b>saturated</b><br/><i>looks like evidence, and sits<br/>beside the informative one<br/>with no visual difference</i>"]
+  NON["<b>no metric at all</b>"] --> GAP["<b>an admitted gap</b><br/><i>the better of the two</i>"]
+  RES --> QUA["<b>on what corpus, and how much of it?</b><br/><i>one persona; the qualifier<br/>most often dropped</i>"]
+  style DIS fill:#f9e79f,stroke:#b7950b,stroke-width:2px
+  style RES fill:#aed6f1,stroke:#2874a6
+  style GAP fill:#f9e79f,stroke:#b7950b
+  style QUA fill:#aed6f1,stroke:#2874a6
+  style SAT fill:#f5b7b1,stroke:#c0392b
+```
+
 ## Design decisions
 
 **Why is `honest` a property of the claim rather than a judgement about the claimant?** Because it is checkable: does the claim carry `moved`/`flat`, `absent` and `corpus`? That turns *"read benchmark claims critically"* from advice into a predicate, and it applies identically to a vendor's numbers and to yours.

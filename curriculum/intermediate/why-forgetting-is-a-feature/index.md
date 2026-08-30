@@ -76,6 +76,23 @@ Four reasons to forget, only one of which is about disk.
 
 Collapsing them produces both classic failures. Treat fading as falsification and you retire facts nobody contradicted. Treat falsification as fading and stale beliefs linger because they are recent.
 
+```mermaid
+flowchart LR
+  subgraph SUP["supersession — I4"]
+    direction LR
+    C["a newer claim<br/>contradicts it"] --> FA["the belief is <b>false</b>"] --> IV["invalid_at"]
+  end
+  subgraph FOR["forgetting — this module"]
+    direction LR
+    U["nothing has needed it<br/>for a long time"] --> TR["the belief is <b>still true</b>"] --> DM["<b>tier demotion</b><br/><i>the store holds the only copy</i>"]
+  end
+  TR -.->|"never"| X1["fading treated as falsification<br/><i>retires facts nobody contradicted</i>"]:::bad
+  FA -.->|"never"| X2["falsification treated as fading<br/><i>stale beliefs linger, being recent</i>"]:::bad
+  style IV fill:#f9e79f,stroke:#b7950b
+  style DM fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **And forgetting is not deletion.** A faded memory is still true and the store holds the only copy, so eviction here is tier demotion — the same supersede-never-destroy discipline, applied to a different trigger.
 
 ## Design decisions

@@ -68,6 +68,23 @@ A memory layer manufactures the corpus **one turn at a time, from the person the
 
 **Third-party data is detected by the entity link.** *"Sam is a nurse"* is health-adjacent data about someone who never agreed to any of this, and the only thing distinguishing it from a fact about the user is `entities` — the field I2 populated for a retrieval reason. **Three of the seven findings are about someone else**, and they are the ones with no consent story at all.
 
+```mermaid
+flowchart LR
+  T["turn"] --> CLS["<b>classify</b><br/><i>patterns, not a model</i>"]
+  CLS --> WHO{"whose fact is this?<br/>the <i>entities</i> field"}
+  WHO -->|"the user's"| LBL["<b>kind + subject</b><br/><i>a label, not a permission</i>"]
+  WHO -->|"someone else's"| LBL
+  LBL --> RDC["<b>redaction</b><br/><i>what form to store</i>"]
+  LBL --> ACC["<b>access control</b><br/><i>who may read it</i>"]
+  LBL --> DEL["<b>deletion</b><br/><i>what to look for, years later</i>"]
+  X["<b>refuse the fact at write time</b><br/><i>a memory the user cannot give back</i>"]:::bad
+  CLS -.->|"never"| X
+  style CLS fill:#aed6f1,stroke:#2874a6,stroke-width:2px
+  style WHO fill:#f9e79f,stroke:#b7950b
+  style LBL fill:#aed6f1,stroke:#2874a6
+  classDef bad fill:#f5b7b1,stroke:#c0392b,stroke-dasharray: 4
+```
+
 **Patterns, not a classifier.** A false negative is a missed label; a false positive is a fact the system refuses to remember. Both are visible in a diff, and neither justifies a nondeterministic decision on the write path — the same argument `implicit-signals` and `learning-from-outcomes` made, in the module where the cost of an invented positive is a memory the user gave you and cannot get back into the system.
 
 ### What the table actually says

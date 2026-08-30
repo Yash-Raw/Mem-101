@@ -338,6 +338,52 @@ a.mem-card { display: block; text-decoration: none; }
 .mem-rank__n { font-family: var(--mem-mono); font-size: 11px; color: var(--mem-muted);
   text-align: right; }
 
+/* ---- the roadmap ---------------------------------------------------------
+ * One rail, because the course is one line. The rail is a border on the stops
+ * container, not an absolutely-positioned element, so it stretches with the
+ * content and there is nothing to keep in sync.
+ */
+.mem-road { margin: 2.6rem 0 0; padding-top: 1.6rem;
+  border-top: 1px solid var(--mem-faintest); }
+.mem-road__legend { font-size: 15px; line-height: 1.55; color: var(--mem-muted);
+  margin: 0.5rem 0 1.8rem; max-width: 64ch; text-wrap: pretty; }
+.mem-road__legend b { color: var(--mem-alt); font-weight: 600; }
+.mem-road__band { margin-bottom: 1.5rem; }
+.mem-road__head { display: flex; align-items: baseline; gap: 0.7rem;
+  flex-wrap: wrap; margin-bottom: 0.7rem; }
+.mem-road__lvl { font-size: 1.25rem; font-weight: 600; margin: 0;
+  color: var(--mem-fg); }
+.mem-road__q { font-size: 15px; font-style: italic; color: var(--mem-muted);
+  margin: 0; }
+.mem-road__count { font-family: var(--mem-mono); font-size: 11px;
+  color: var(--mem-muted); margin-left: auto; }
+/* The rail itself. Each band carries its level hue so the line is not one
+ * undifferentiated stripe down three levels. */
+.mem-road__stops { display: flex; flex-direction: column; gap: 1px;
+  padding-left: 1.1rem; border-left: 2px solid var(--mem-faintest); }
+.mem-road__band[data-level="beginner"] .mem-road__stops { border-left-color: var(--mem-l1); }
+.mem-road__band[data-level="intermediate"] .mem-road__stops { border-left-color: var(--mem-l2); }
+.mem-road__band[data-level="advanced"] .mem-road__stops { border-left-color: var(--mem-l3); }
+.mem-road__stop { display: flex; align-items: baseline; gap: 0.75rem;
+  padding: 0.3rem 0.7rem; border-radius: 7px; text-decoration: none;
+  border: 1px solid transparent;
+  transition: border-color var(--mem-dur-ui) var(--mem-ease),
+              background var(--mem-dur-ui) var(--mem-ease); }
+.mem-road__stop:hover { border-color: var(--mem-faintest);
+  background: var(--mem-surface); }
+.mem-road__n { font-family: var(--mem-mono); font-size: 11px;
+  color: var(--mem-muted); flex: 0 0 auto; }
+.mem-road__body { display: flex; align-items: baseline; gap: 0.6rem;
+  flex-wrap: wrap; flex: 1 1 auto; }
+.mem-road__body .mem-road__meta { margin-left: auto; }
+.mem-road__t { font-size: 15.5px; font-weight: 600; color: var(--mem-fg); }
+.mem-road__meta { font-family: var(--mem-mono); font-size: 11px;
+  color: var(--mem-muted); }
+/* Ticked by progress.js. Additive: the stop reads correctly without it. */
+.mem-road__stop.is-done .mem-road__t { color: var(--mem-muted); }
+.mem-road__stop.is-done .mem-road__n::after { content: " \2713";
+  color: var(--mem-pass); }
+
 /* ---- the one way in ------------------------------------------------------
  * The hero used to offer three equally-weighted paths, and README repeated the
  * same three with different destinations. A beginner cannot choose between

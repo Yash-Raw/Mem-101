@@ -33,6 +33,26 @@
     }
   }
 
+  /* A roadmap stop is finished when every lesson in its module is. Additive
+   * only: the stop is already correct and clickable before this runs, so a
+   * reader with no history or no JavaScript loses nothing. */
+  function tickRoadmap(d, done) {
+    var stops = document.querySelectorAll(".mem-road__stop[data-module]");
+    if (!stops.length) { return; }
+    var byModule = {};
+    for (var i = 0; i < d.modules.length; i++) {
+      byModule[d.modules[i].id] = d.modules[i].lessons;
+    }
+    for (var j = 0; j < stops.length; j++) {
+      var ids = byModule[stops[j].getAttribute("data-module")] || [];
+      var all = ids.length > 0;
+      for (var k = 0; k < ids.length; k++) {
+        if (done.indexOf(ids[k]) === -1) { all = false; break; }
+      }
+      if (all) { stops[j].className += " is-done"; }
+    }
+  }
+
   /* Home page: offer the next unfinished lesson. Hidden until it is true, so
    * there is no flash and no claim at all when scripts are off. */
   var resume = document.querySelector(".mem-resume");
@@ -43,6 +63,7 @@
       var data = new URL("../data/site.json", here);
       var base = new URL("../../", here);
       fetch(data).then(function (r) { return r.json(); }).then(function (d) {
+        tickRoadmap(d, done0);
         var nextUp = null;
         for (var i = 0; i < d.lessons.length; i++) {
           if (done0.indexOf(d.lessons[i].id) === -1) { nextUp = d.lessons[i]; break; }

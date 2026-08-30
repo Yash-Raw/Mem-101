@@ -44,6 +44,7 @@
   </nav>
   {% endif %}
   {{ super() }}
+  {% if page.is_homepage %}{% include "partials/roadmap.html" %}{% endif %}
 {% endblock %}
 
 {% block scripts %}

@@ -1,5 +1,10 @@
 # Building a Memory Layer
 
+[![CI](https://github.com/Yash-Raw/Mem-101/actions/workflows/ci.yml/badge.svg)](https://github.com/Yash-Raw/Mem-101/actions/workflows/ci.yml)
+[![Site](https://img.shields.io/badge/site-yash--raw.github.io%2FMem--101-1f6feb)](https://yash-raw.github.io/Mem-101/)
+[![Licence](https://img.shields.io/badge/licence-CC%20BY%204.0%20prose%20%C2%B7%20MIT%20code-blue)](#licence)
+[![Python](https://img.shields.io/badge/python-3.11%2B-3776ab)](https://docs.astral.sh/uv/)
+
 > The write path is the part the tutorials skip.
 
 **Read it online: <https://yash-raw.github.io/Mem-101/>**

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: "Building an Agent Memory Layer"
+message: "If you use this course or its capstone, please cite it."
+type: software
+authors:
+  - family-names: Chaurasia
+    given-names: Yash
+repository-code: "https://github.com/Yash-Raw/Mem-101"
+url: "https://yash-raw.github.io/Mem-101/"
+abstract: >-
+  A hands-on curriculum for the write path of agent memory — extraction, entity
+  resolution, conflict detection, belief updating, consolidation, decay and
+  governance — across 84 lessons with a runnable Python lab each and a capstone
+  system, memlab, that grows across three levels. Prose is CC BY 4.0; code is MIT.
+keywords:
+  - agent-memory
+  - long-term-memory
+  - large-language-models
+  - retrieval-augmented-generation
+  - curriculum
+license: MIT
+license-url: "https://github.com/Yash-Raw/Mem-101/blob/main/LICENSE-CONTENT"
+# Must equal memlab.production.release.VERSION -- validate_capstone.py checks it.
+version: "0.3"
+date-released: "2026-09-01"

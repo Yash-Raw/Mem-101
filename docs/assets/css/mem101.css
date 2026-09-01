@@ -190,7 +190,12 @@
  * are hidden -- a sibling selector, because the partial is injected into the
  * same flow as the rendered Markdown.
  */
+/* docs/index.md is a symlink to README.md, so the hero and the README's own
+ * opening both render. The hero already carries the title, the tagline and the
+ * figures; the README's badge row is for people reading the repo on GitHub,
+ * where there is no hero. Hidden here, shown there -- one file, two audiences. */
 .mem-hero ~ h1,
+.mem-hero ~ h1 + p:has(img[src*="badge"]),
 .mem-hero ~ blockquote:first-of-type { display: none; }
 
 .mem-hero { margin: 0 0 2.4rem; }

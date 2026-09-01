@@ -28,6 +28,7 @@ from _common import ROOT, Problems, lessons
 
 SRC = ROOT / "capstone" / "src"
 API_PAGE = ROOT / "MEMLAB.md"
+CITATION = ROOT / "CITATION.cff"
 
 # Deliberately taught by no lesson. Scaffolding, not subject matter.
 INFRASTRUCTURE = frozenset({
@@ -64,6 +65,7 @@ def main() -> int:
             _check_one(p, d, piece)
 
     _check_api_page(p)
+    _check_version(p)
     _warn_orphans(claimed)
     return p.report("capstone")
 
@@ -88,6 +90,26 @@ def _check_one(p, d, piece: str) -> None:
 
     if not hasattr(m, attr):
         p.add(d.rel, f"capstone_piece '{piece}' — '{mod}' has no '{attr}'")
+
+def _check_version(p) -> None:
+    """Every stated version must be the one memlab actually reports.
+
+    pyproject.toml carried 0.1.0 while the finale, its test and the site all
+    said v0.3. pyproject now builds from release.VERSION, but CITATION.cff
+    states it again in a file no code reads -- so it is checked here rather
+    than left to drift the same way.
+    """
+    if not CITATION.exists():
+        return
+    from memlab.production.release import VERSION
+
+    m = re.search(r"^version:\s*\"?([^\"\s]+)\"?", CITATION.read_text(), re.MULTILINE)
+    if m is None:
+        p.add("CITATION.cff", "no version field")
+    elif m.group(1) != VERSION:
+        p.add("CITATION.cff",
+              f"version {m.group(1)!r} != memlab.production.release.VERSION {VERSION!r}")
+
 
 IMPORT_LINE = re.compile(r"^from (memlab[\w.]*) import (.+)$")
 

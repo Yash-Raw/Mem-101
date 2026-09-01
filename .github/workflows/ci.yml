@@ -61,3 +61,11 @@ jobs:
           path: site
       - id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # Default is 10 minutes. On 2026-09-01 a deploy hit that ceiling and
+          # aborted client-side while the deployment stayed ACTIVE on Pages'
+          # side, which then rejected the next two runs with "due to in progress
+          # deployment" -- one transient slow deploy cost three failed runs and
+          # left main published-behind for half an hour. Waiting longer is
+          # strictly better than abandoning a deployment that is still running.
+          timeout: 1200000

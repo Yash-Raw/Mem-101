@@ -339,7 +339,7 @@ Three claims survived every measurement, and none was obvious at the start.
 - **Similarity cannot carry any write-path decision.** It cannot generate
   conflict candidates (a contradiction scores 0.285, below unrelated noise at
   0.478), identify corroboration, or retrieve a procedure. Every stage that
-  works is keyed on structure, and `SLOT` is imported by nine modules
+  works is keyed on structure, and `SLOT` is imported by ten modules
   outside the one that defines it.
 - **Most of the valuable results are null results.** Reflection makes the
   budgeted answer worse; three of I8's four mechanisms move nothing; the entity

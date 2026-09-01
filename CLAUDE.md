@@ -148,12 +148,41 @@ number to match a memory of what it used to be.**
 ## Status
 
 **The course is complete and published.** 84 lessons across three levels, 823
-tests, eight validators and four generated-file checks, `memlab` v0.3. Public at
+tests, nine validators and four generated-file checks, `memlab` v0.3. Public at
 [github.com/Yash-Raw/Mem-101](https://github.com/Yash-Raw/Mem-101), site at
 <https://yash-raw.github.io/Mem-101/>, deployed by CI from `main` only after
 `check` is green — the site is never newer than the validators that vouch for
 it. The site carries a generated home hero, a filterable course map at `/map/`
 and a concept atlas at `/atlas/`. Dual licence: CC BY 4.0 on prose, MIT on code.
+
+## Being a learner is a thing to test, not to assume
+
+The site, the structure and the diagrams were all shipped before anyone had
+walked the course as a stranger. Doing that walk found things no validator
+could, because none of them was about the learner:
+
+- **Ten labs named a function in their TODO that the stub never imported.**
+  Lesson 1 said to call `embed_text()`; `memlab.llm.fake` appeared nowhere a
+  learner reads. Fixing it needs `[tool.ruff.lint.per-file-ignores]` for
+  `lab.py` — a stub body is one `raise`, so its imports are *for the exercise*
+  and unused by definition. One lab had already hit this and patched it locally
+  with a `# noqa`; the pattern was recognised once and never generalised.
+- **Nothing ever told a learner they were right.** All 84 `test_lab.py` pin the
+  reference solution, and `test_stub_is_runnable` goes red on success — correct
+  behaviour that reads as failure. `tools/show.py --check <lesson-id>` runs the
+  learner's own `lab.py` unpatched and diffs it against `lab_output`, so learner
+  and CI still share one code path.
+- **The first thing a stranger sees is a traceback.** `memlab/__init__.py`
+  appends the next step to it, guarded to fire only for `NotImplementedError`
+  raised in a `lab/lab.py`, and only after chaining to the existing hook.
+- **`MEMLAB.md` is the API reference lesson 1 links to.** The 23 names on it
+  cover 74% of the 897 `memlab` import occurrences across 168 lab files.
+  `validate_capstone.py` executes every import line on it — `capstone_piece`'s
+  rule applied to prose, because a reference that drifts is worse than none.
+
+The checker had the same blind spot as the course: `check.py` guarded every
+validator with `.exists()`, so a renamed validator left the suite silently and
+CI stayed green. A missing name is now a failure.
 
 `tools/show.py <lesson-id>` prints what a lab produces when solved. It exists
 because a clean-clone test found the README's first command was `lab.py`
@@ -223,6 +252,13 @@ Three things about it that were each found the hard way:
 - **`var()` does not resolve in SVG presentation attributes.** `fill="var(--x)"`
   falls back to the initial value -- black fill, no stroke. Colour in the atlas
   goes through `style`.
+- **mkdocs does not evaluate Jinja in page content.** `{{ base_url }}` works in
+  `overrides/partials/*.html`, which really are templates, and ships as a
+  literal string from a generated `.md`. `timeline.md` did exactly that and all
+  21 annotation links 404'd in production while looking correct in the source.
+  Raw HTML inside markdown also escapes mkdocs' link rewriting, so those hrefs
+  must be site-relative (`../curriculum/...`) and C5's `.md` rule cannot apply
+  to them. `validate_links.py` now reads HTML hrefs and rejects `{{`.
 
 Site scripts derive their URLs from their own `src`, never from the site root:
 the published site is served from `/Mem-101/`, so a root-absolute fetch works

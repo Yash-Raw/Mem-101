@@ -4,7 +4,7 @@ title: "Extraction-Pipeline Memory Systems"
 kind: landscape
 category: tool
 volatility: high
-last_verified: 2026-08-27
+last_verified: 2026-09-01
 verified_by: "course maintainers"
 claims_are_vendor_sourced: true
 maps_to_concepts: [extraction,write-path,belief-updating]
@@ -12,12 +12,15 @@ maps_to_concepts: [extraction,write-path,belief-updating]
 
 # Extraction-Pipeline Memory Systems
 
-!!! warning "Dated snapshot — verified 2026-08-27"
+!!! warning "Dated snapshot — verified 2026-09-01"
     Names and APIs here change on a scale of weeks. The mechanism is in
     [naive extraction](../../curriculum/beginner/naive-extraction/index.md); this page
     is only about who ships what.
 
-**Representative system:** Mem0 (~47K GitHub stars as of this snapshot).
+**Representative system:** Mem0 (64,470 GitHub stars, counted 2026-09-01).
+The two sibling pages name their systems without a number, which is the more
+durable form — this one carried `~47K`, which was never right: the API said
+64,470 the day it was written down.
 
 ## The architecture
 

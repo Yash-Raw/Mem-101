@@ -14,6 +14,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+# The one place the version is written. pyproject.toml reads it from here
+# via hatchling, so the wheel can never disagree with what the finale prints.
+VERSION = "0.3"
+
 # Six defects, each with a number and the lesson that measured it. Kept at
 # module level so each entry is one readable pair rather than a nest.
 OPEN_ITEMS: tuple[tuple[str, str], ...] = (
@@ -76,7 +80,7 @@ class Release:
 
 def report(lessons: int, tests: int) -> Release:
     return Release(
-        version="0.3",
+        version=VERSION,
         lessons=lessons,
         tests=tests,
         exams={

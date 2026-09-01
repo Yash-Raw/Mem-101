@@ -568,8 +568,13 @@ def render_timeline(d: dict) -> str:
         quotes = "".join(
             f'        <p class="mem-tl__said">{html.escape(t["text"])}</p>\n' for t in said
         )
+        # `../`, not `{{ base_url }}`. This is raw HTML inside a MARKDOWN page,
+        # and mkdocs does not evaluate Jinja in page content -- it shipped the
+        # literal string to production, so all 21 of these links 404'd. The
+        # partials may use base_url because they really are Jinja templates;
+        # this file is not. timeline.md renders at /timeline/, one level down.
         chips = "".join(
-            f'        <a class="mem-tl__note" href="{{{{ base_url }}}}/'
+            f'        <a class="mem-tl__note" href="../'
             f'{lessons_by_id[n["lesson"]]["path"].replace("index.md", "")}">'
             f'<span class="mem-tl__kind">{html.escape(n["kind"])}</span>'
             f'{html.escape(n["label"])}</a>\n'

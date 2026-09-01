@@ -88,7 +88,18 @@ second lab in a run silently tests the first lab's code. `labkit` namespaces by
 lesson; `validate_structure.py` enforces it.
 
 Every lab test starts with `test_stub_is_runnable`, asserting the stub raises
-`NotImplementedError` — proof the exercise is actually left undone.
+`NotImplementedError` — proof the exercise is actually left undone. Because the
+suite pins the *reference* solution, it can never tell a learner their own code
+is right, and solving a lab turns that first test red. That is what
+`uv run python tools/show.py --check <lesson-id>` is for: it runs the learner's
+`lab.py` unpatched and diffs it against `lab_output`, the same function CI uses.
+
+A lab stub should **import everything its TODO names**, even though the stub
+body is one `raise` and the imports are therefore unused —
+`[tool.ruff.lint.per-file-ignores]` exempts `lab.py` from F401 for exactly this.
+A TODO that says "score every turn with `cosine()`" and leaves the reader to
+guess which module `cosine` lives in is a puzzle the lesson did not intend to
+set.
 
 ## Landscape pages
 

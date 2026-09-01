@@ -55,6 +55,20 @@ def _hook(kind, value, tb) -> None:
     )
 
 
+def __getattr__(name: str) -> str:
+    """`memlab.__version__`, resolved lazily.
+
+    The version lives in `memlab.production.release.VERSION` -- the same value
+    the capstone finale prints and `pyproject.toml` builds from. Resolving it
+    on attribute access keeps that module off the import path of every lab.
+    """
+    if name == "__version__":
+        from memlab.production.release import VERSION
+
+        return VERSION
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
 if not getattr(sys.excepthook, "_memlab", False):
     _hook._memlab = True
     sys.excepthook = _hook

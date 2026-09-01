@@ -1,6 +1,6 @@
 [project]
 name = "memory-layer-course"
-version = "0.1.0"
+dynamic = ["version"]
 description = "A structured, hands-on curriculum for building an agent memory layer."
 readme = "README.md"
 license = "MIT"
@@ -17,6 +17,12 @@ dev = ["pytest>=8", "ruff>=0.6", "jsonschema>=4.23", "mkdocs-material>=9.5"]
 
 [tool.uv]
 package = true
+
+# The version has one source: memlab.production.release.VERSION, which is what
+# the capstone finale prints and what test_lab.py pins. pyproject used to
+# carry its own "0.1.0" while every other surface said v0.3.
+[tool.hatch.version]
+path = "capstone/src/memlab/production/release.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["capstone/src/memlab"]

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Run the whole validator suite. This is what CI runs."""
+"""Run the whole validator suite. This is what CI runs.
+
+A name in SUITE or GENERATED that has no file is a FAILURE, not a skip. Both
+loops used to be guarded by `.exists()`, so renaming or deleting a validator
+removed it from the suite and CI stayed green -- the one hole in a repository
+whose entire character is checking. The suite has to notice its own absence.
+"""
 from __future__ import annotations
 
 import subprocess
@@ -28,20 +34,26 @@ GENERATED = [
 
 
 def main() -> int:
-    print("validators")
     rc = 0
+    print("validators", flush=True)
     for script in SUITE:
-        if (TOOLS / script).exists():
-            rc |= subprocess.run([sys.executable, str(TOOLS / script)], check=False).returncode
-    print("generated files")
+        if not (TOOLS / script).exists():
+            print(f"  FAIL  {script} — listed in SUITE but the file is missing", flush=True)
+            rc |= 1
+            continue
+        rc |= subprocess.run([sys.executable, str(TOOLS / script)], check=False).returncode
+    print("generated files", flush=True)
     for script, flag in GENERATED:
-        if (TOOLS / script).exists():
-            r = subprocess.run([sys.executable, str(TOOLS / script), flag],
-                               capture_output=True, text=True, check=False)
-            print(f"  {'ok  ' if r.returncode == 0 else 'FAIL'} {script}")
-            if r.returncode:
-                print("        " + (r.stderr or r.stdout).strip())
-            rc |= r.returncode
+        if not (TOOLS / script).exists():
+            print(f"  FAIL  {script} — listed in GENERATED but the file is missing")
+            rc |= 1
+            continue
+        r = subprocess.run([sys.executable, str(TOOLS / script), flag],
+                           capture_output=True, text=True, check=False)
+        print(f"  {'ok  ' if r.returncode == 0 else 'FAIL'} {script}")
+        if r.returncode:
+            print("        " + (r.stderr or r.stdout).strip())
+        rc |= r.returncode
     print("\n" + ("all checks passed" if rc == 0 else "CHECKS FAILED"))
     return rc
 

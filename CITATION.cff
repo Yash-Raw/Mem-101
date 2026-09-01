@@ -18,8 +18,12 @@ keywords:
   - large-language-models
   - retrieval-augmented-generation
   - curriculum
-license: MIT
-license-url: "https://github.com/Yash-Raw/Mem-101/blob/main/LICENSE-CONTENT"
+# Both are SPDX identifiers, so the dual licence is stateable directly. Saying
+# `license: MIT` with a license-url pointing at the CC BY file made the two
+# fields contradict each other for anyone citing this.
+license:
+  - MIT
+  - CC-BY-4.0
 # Must equal memlab.production.release.VERSION -- validate_capstone.py checks it.
 version: "0.3"
 date-released: "2026-09-01"

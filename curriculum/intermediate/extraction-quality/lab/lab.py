@@ -4,8 +4,10 @@
 """
 from __future__ import annotations
 
-from memlab.eval.extraction import ExtractionScore
-from memlab.types import Memory, Scope
+from memlab.eval.extraction import NATURAL_QUERY, REQUIRED_STATES, ExtractionScore
+from memlab.extract.gate import passes
+from memlab.retrieve.embedding import EmbeddingRetriever
+from memlab.types import Memory, MemoryType, Scope
 
 
 def score(

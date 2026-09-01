@@ -65,16 +65,23 @@ key, at any level.
    `Why this isn't RAG` section, third of ten; if you read nothing else, read those.
 2. **Open its lab** — `lab/lab.py`. Exactly one function is stubbed with
    `raise NotImplementedError` and a `TODO` describing what it must return.
+   Everything the TODO names is imported at the top of the stub;
+   [the memlab API](MEMLAB.md) is the reference for the rest of the package.
 3. **Fill the stub, then run the file:**
    ```bash
    uv run python curriculum/beginner/memory-is-not-rag/lab/lab.py
    ```
-   It prints a table. **The lesson quotes that same table.** Matching it is how
-   you know you are right — the fake model is deterministic, so your numbers
-   should be identical to the ones on the page, not merely similar.
-   Stuck, or want to see the target first?
-   `uv run python tools/show.py <lesson-id>` prints what the lab produces when
-   it is solved — the same code path CI uses to check the lesson's prose.
+   It prints a table. **The lesson quotes that same table.** The fake model is
+   deterministic, so your numbers should be identical to the ones on the page,
+   not merely similar — and you do not have to compare them by eye:
+   ```bash
+   uv run python tools/show.py --check memory-is-not-rag
+   ```
+   That runs *your* `lab.py` with nothing patched over it and diffs the output
+   against the reference. It is the one command that tells you that you got it
+   right. Stuck, or want to see the target first? Drop the `--check` and
+   `tools/show.py <lesson-id>` prints what the lab produces when it is solved —
+   the same code path CI uses to check the lesson's prose.
 4. **Then read `solution.py`**, which sits next to the stub on purpose. This is
    not a test you can cheat; it is a course you can get stuck in. Read it when
    comparing beats grinding.
@@ -84,7 +91,8 @@ pins the *lesson's claims* against the reference solution, so a lesson's numbers
 cannot silently rot. One consequence surprises people: every lab's first test is
 `test_stub_is_runnable`, which asserts the stub still raises `NotImplementedError`.
 **Implement the stub correctly and that test goes red.** That is the exercise
-working, not you breaking it. Run the suite to check the repo is healthy:
+working, not you breaking it — `show.py --check` is where you get told you are
+right, and `pytest` is how you check the *repository* is healthy:
 
 ```bash
 uv run pytest -q                                              # all 823
@@ -117,6 +125,7 @@ job. `uv run python tools/dump_snapshots.py` shows what moved.
 | `docs/` | The site: its stylesheet, the interactive pages' scripts, and symlinks to everything above. |
 | `modules/` | One generated overview per module — the unit between a lesson and a level. |
 | `timeline.md` | Priya's fourteen sessions, annotated from `gold.yml` with the lesson each moment belongs to. |
+| `MEMLAB.md` | The `memlab` API a lab actually uses — where each thing lives, and what it takes. |
 
 One conversation — Priya, 14 sessions, March 2025 to August 2026 — runs through
 every lab at every level. By the time you are fixing belief updating in
@@ -132,7 +141,7 @@ Two licences, split by what the file is.
 
 | Path | Licence | |
 |---|---|---|
-| `curriculum/`, `concepts/`, `landscape/`, `modules/`, `SYLLABUS.md`, `README.md`, `CONTRIBUTING.md`, `map.md`, `atlas.md` | **CC BY 4.0** | [LICENSE-CONTENT](LICENSE-CONTENT) |
+| `curriculum/`, `concepts/`, `landscape/`, `modules/`, `SYLLABUS.md`, `README.md`, `CONTRIBUTING.md`, `MEMLAB.md`, `map.md`, `atlas.md` | **CC BY 4.0** | [LICENSE-CONTENT](LICENSE-CONTENT) |
 | `capstone/`, `tools/`, `docs/assets/`, `overrides/`, and every `lab/*.py` | **MIT** | [LICENSE](LICENSE) |
 
 Teach from it, translate it, adapt it, use it inside a paid course — all fine,

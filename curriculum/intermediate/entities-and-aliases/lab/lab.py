@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import re
 
-from memlab.entity.aliases import DESCRIPTORS, PRONOUNS
+from memlab.entity.aliases import DESCRIPTORS, NOT_PEOPLE, PRONOUNS
 
 PROPER = re.compile(r"\b([A-Z][a-z]{2,})\b")
 

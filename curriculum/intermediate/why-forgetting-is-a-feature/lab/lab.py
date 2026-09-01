@@ -4,7 +4,7 @@
 """
 from __future__ import annotations
 
-from memlab.forget.audit import ANSWER_MARKERS, BudgetAudit, tier_census  # noqa: F401
+from memlab.forget.audit import ANSWER_MARKERS, BudgetAudit, tier_census
 from memlab.types import Memory
 
 

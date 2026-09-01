@@ -6,8 +6,18 @@ from __future__ import annotations
 
 from dataclasses import replace
 
+from memlab.extract.gate import ACTIVITY, EXPLICIT
+from memlab.forget.salience import (
+    ACTIVITY_PENALTY,
+    BASE,
+    CORROBORATION_BONUS,
+    EXPLICIT_BONUS,
+    HEARSAY_PENALTY,
+    PROCEDURE_BONUS,
+    USE_BONUS,
+)
 from memlab.llm.fake import cosine, embed_text
-from memlab.types import Memory
+from memlab.types import Memory, MemoryType
 
 
 def score(memory: Memory, turn_text: str = "") -> float:

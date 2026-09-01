@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import re
 
+from memlab.evolve.conflict import SLOTS
 from memlab.types import Memory, Scope
 
 FIRST_PERSON = re.compile(r"\b(i|me|my|mine)\b", re.IGNORECASE)

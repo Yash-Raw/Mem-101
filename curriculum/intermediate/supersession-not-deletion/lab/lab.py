@@ -10,6 +10,7 @@ from datetime import datetime
 
 from memlab.evolve.conflict import detect
 from memlab.evolve.operations import Decision, Operation, decide_all
+from memlab.evolve.promote import corroborate
 from memlab.types import Memory, Scope
 
 

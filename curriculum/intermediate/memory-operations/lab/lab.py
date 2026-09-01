@@ -4,6 +4,7 @@
 """
 from __future__ import annotations
 
+from memlab.evolve.arbitrate import arbitrate
 from memlab.evolve.conflict import Conflict, Relation
 from memlab.evolve.operations import Decision, Operation
 

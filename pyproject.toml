@@ -33,3 +33,12 @@ addopts = "--import-mode=importlib"
 
 [tool.ruff]
 line-length = 100
+
+# A lab stub imports what the EXERCISE needs, not what the stub body uses --
+# the body is one `raise NotImplementedError`, so every one of those imports is
+# unused until the learner writes it. Naming them at the top of the file is how
+# a learner discovers that `embed_text` lives in `memlab.llm.fake`; before this,
+# ten TODOs named a function whose module appeared nowhere a learner reads.
+# Narrow on purpose: stubs only, F401 only. `solution.py` stays fully linted.
+[tool.ruff.lint.per-file-ignores]
+"curriculum/*/*/lab/lab.py" = ["F401"]

@@ -107,6 +107,10 @@ nav:
   - Concept Atlas: atlas.md
   # The corpus every lab runs on, annotated from gold.yml.
   - Priya's Timeline: timeline.md
+  # Last entry above the sentinel, so with navigation.footer on this is what
+  # lesson 1's "previous" points at -- the reference a learner wants open when
+  # the first TODO says to call embed_text().
+  - The memlab API: MEMLAB.md
   # Contributing sits after the course, not before it: with navigation.footer
   # on, whatever is directly above the generated block becomes lesson 1's
   # "previous", and a contributor guide is not where a learner came from.

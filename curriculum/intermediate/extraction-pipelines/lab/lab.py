@@ -6,6 +6,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from memlab.extract.atomise import atomise
+from memlab.extract.gate import passes
+from memlab.extract.naive import SCHEMA
+from memlab.extract.pipeline import build_messages
 from memlab.llm.base import LLMClient
 from memlab.types import Memory, MemoryType, Scope
 

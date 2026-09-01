@@ -13,6 +13,7 @@ fine. The ranking is fine. Run it anyway.
 from __future__ import annotations
 
 from memlab.fixtures import load_turns
+from memlab.llm.fake import cosine, embed_text
 
 QUESTION = "where do I work and what should I not eat?"
 ASKED_IN_SESSION = 14

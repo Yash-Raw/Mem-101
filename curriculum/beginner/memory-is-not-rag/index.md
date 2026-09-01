@@ -98,6 +98,17 @@ Run those two stages and the question becomes easy. Skip them and no amount of r
 uv run python curriculum/beginner/memory-is-not-rag/lab/lab.py
 ```
 
+**What it calls:** `embed_text()` and `cosine()` are imported at the top of the
+stub for you. [The memlab API](../../../MEMLAB.md) is the reference for what
+else the package offers, and where each thing lives.
+
+**When you think you have it:**
+```
+uv run python tools/show.py --check memory-is-not-rag
+```
+It runs *your* `lab.py` and diffs it against the reference. The fake model is
+deterministic, so a correct answer matches exactly.
+
 **Expected output:** all 24 candidate memories ranked, with the stale employer at rank 1 (score 0.339) and the current one at rank 18 (score 0.082).
 
 **Stretch:** the final test in `test_lab.py` appends a normalised fact — `"Priya works at Calico Systems as a staff engineer"` — and re-ranks. It climbs sharply and *still* loses to session 1. Work out why before reading Level 2. (Answer: extraction fixed the phrasing mismatch; nothing yet has told the system that one fact retired the other.)

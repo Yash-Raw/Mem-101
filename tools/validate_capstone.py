@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Weld content to code: every capstone_piece must actually import.
 
+The same rule is applied to `MEMLAB.md`, the API reference a learner is sent to
+from lesson 1. A reference page that drifts is worse than no reference page --
+it sends someone confidently to a module that moved -- so every `from memlab
+... import ...` line on it is executed here.
+
 `capstone_piece` may be a single dotted path or a list of them -- a lesson that
 builds two modules should say so rather than leaving one orphaned.
 
@@ -14,6 +19,7 @@ from __future__ import annotations
 
 import importlib
 import pkgutil
+import re
 import sys
 from pathlib import Path
 
@@ -21,6 +27,7 @@ sys.path.insert(0, __file__.rsplit("/", 1)[0])
 from _common import ROOT, Problems, lessons
 
 SRC = ROOT / "capstone" / "src"
+API_PAGE = ROOT / "MEMLAB.md"
 
 # Deliberately taught by no lesson. Scaffolding, not subject matter.
 INFRASTRUCTURE = frozenset({
@@ -56,6 +63,7 @@ def main() -> int:
             claimed.add(piece)
             _check_one(p, d, piece)
 
+    _check_api_page(p)
     _warn_orphans(claimed)
     return p.report("capstone")
 
@@ -80,6 +88,31 @@ def _check_one(p, d, piece: str) -> None:
 
     if not hasattr(m, attr):
         p.add(d.rel, f"capstone_piece '{piece}' — '{mod}' has no '{attr}'")
+
+IMPORT_LINE = re.compile(r"^from (memlab[\w.]*) import (.+)$")
+
+
+def _check_api_page(p) -> None:
+    """Every `from memlab ... import ...` line in MEMLAB.md must resolve."""
+    if not API_PAGE.exists():
+        return
+    checked = 0
+    for n, raw in enumerate(API_PAGE.read_text().splitlines(), 1):
+        m = IMPORT_LINE.match(raw.strip())
+        if not m:
+            continue
+        mod, names = m.group(1), m.group(2)
+        try:
+            module = importlib.import_module(mod)
+        except Exception as e:  # noqa: BLE001
+            p.add("MEMLAB.md", f"line {n}: '{mod}' does not import: {e}")
+            continue
+        for name in (x.strip() for x in names.split(",")):
+            checked += 1
+            if name and not hasattr(module, name):
+                p.add("MEMLAB.md", f"line {n}: '{mod}' has no '{name}'")
+    print(f"        (checked {checked} names on MEMLAB.md)")
+
 
 def _warn_orphans(claimed: set[str]) -> None:
     """A memlab module no lesson claims and INFRASTRUCTURE does not excuse."""

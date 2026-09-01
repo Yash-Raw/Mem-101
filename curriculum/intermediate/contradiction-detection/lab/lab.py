@@ -7,7 +7,7 @@ from __future__ import annotations
 import json
 from itertools import combinations
 
-from memlab.evolve.conflict import SCHEMA, Relation, build_messages
+from memlab.evolve.conflict import SCHEMA, SLOTS, Relation, build_messages
 from memlab.llm.base import LLMClient, get_client
 from memlab.llm.fake import cosine, embed_text
 from memlab.types import Memory, MemoryType, Scope

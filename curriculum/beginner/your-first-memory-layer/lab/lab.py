@@ -5,7 +5,9 @@
 from __future__ import annotations
 
 from memlab.app.chat import ingest
+from memlab.assemble.simple import assemble
 from memlab.fixtures import load_turns
+from memlab.retrieve.embedding import EmbeddingRetriever
 from memlab.store.jsonl import JsonlStore
 from memlab.types import Scope
 

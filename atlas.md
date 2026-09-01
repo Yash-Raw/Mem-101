@@ -22,7 +22,7 @@ does not touch.
   <input id="mem-atlas-q" class="mem-search" type="search" autocomplete="off" placeholder="filter concepts…" aria-label="Filter concepts">
   <span id="mem-atlas-count" class="mem-count"></span>
 </div>
-<div id="mem-atlas-graph" class="mem-atlas mem-wide"><p class="mem-empty">Loading the graph…</p></div>
+<div id="mem-atlas-graph" class="mem-atlas mem-wide"><p class="mem-empty">Loading the graph…</p><noscript><p class="mem-empty">This page draws its graph with JavaScript. With scripts off, the same three relations are written out on every concept page &mdash; <b>Taught in</b>, <b>Used in</b> and <b>Do not confuse with</b> &mdash; listed under <i>Concepts</i> in the sidebar.</p></noscript></div>
 <div id="mem-atlas-detail" class="mem-detail mem-wide"></div>
 
 <script src="../assets/js/atlas.js"></script>

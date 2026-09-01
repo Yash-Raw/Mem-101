@@ -64,6 +64,21 @@ def lab_output(lab_dir: pathlib.Path, slug: str) -> str:
     return buffer.getvalue()
 
 
+def learner_output(lab_dir: pathlib.Path, slug: str) -> str:
+    """Run the lab exactly as the learner left it, with nothing patched over it.
+
+    The counterpart to `lab_output`. Comparing the two is what lets
+    `tools/show.py --check` tell a learner they got it right -- the fake
+    backend is deterministic, so a correct implementation reproduces the
+    reference output byte for byte, and anything else is a real difference.
+    """
+    lab = _load(lab_dir / "lab.py", f"_eo_own_{slug}")
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        lab.main()
+    return buffer.getvalue()
+
+
 # Sections whose figures are claims about the system, not turns of phrase.
 MEASURING = ("The problem", "Mechanism", "Lab")
 

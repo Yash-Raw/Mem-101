@@ -184,6 +184,15 @@ The checker had the same blind spot as the course: `check.py` guarded every
 validator with `.exists()`, so a renamed validator left the suite silently and
 CI stayed green. A missing name is now a failure.
 
+**Nothing validated concept cross-references, and twelve had rotted.**
+`contrasts_with`, `related` and `maps_to_concepts` name concepts by id, and
+`deletion`, `decay`, `invariant` and `recency-bias` are all plausible ids that
+were never filenames. Three were live `contrasts_with` edges in the published
+`graph.json`, pointing at nodes the atlas does not contain. `contrasts_with` is
+the load-bearing one -- it is the "do not confuse with" edge -- so a dangling
+reference silently deletes the relation an author wrote.
+`validate_frontmatter.py` now rejects any of the three naming no concept.
+
 `tools/show.py <lesson-id>` prints what a lab produces when solved. It exists
 because a clean-clone test found the README's first command was `lab.py`
 itself, which raises `NotImplementedError` by design — the "run it yourself"

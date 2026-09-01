@@ -125,7 +125,7 @@ job. `uv run python tools/dump_snapshots.py` shows what moved.
 | `curriculum/` | The lessons, in three levels. `syllabus.yml` is the single source of truth for order. |
 | `concepts/` | One page per idea, linked from everywhere it appears. |
 | `capstone/` | `memlab`, the system you build — plus the canonical corpus every lab uses. |
-| `landscape/` | Named tools and benchmarks, quarantined and dated, so the lessons never rot. |
+| `landscape/` | Named tools, benchmarks and proposed standards, quarantined and dated, so the lessons never rot. |
 | `tools/` | Validators that keep all of the above honest. |
 | `docs/` | The site: its stylesheet, the interactive pages' scripts, and symlinks to everything above. |
 | `modules/` | One generated overview per module — the unit between a lesson and a level. |

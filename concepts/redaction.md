@@ -3,7 +3,7 @@ id: redaction
 title: "Redaction"
 kind: concept
 stage: govern
-contrasts_with: [deletion]
+contrasts_with: [cascade-deletion]
 related: [minimisation, personal-data, memory-record]
 status: published
 ---
@@ -24,4 +24,6 @@ And redaction changes the **id**, because ids are content-addressed. A redacted 
 
 <!-- graph:begin -->
 **Taught in:** [Redaction and Minimization](../curriculum/advanced/redaction-and-minimization/index.md)
+
+**Do not confuse with:** [Cascade Deletion](cascade-deletion.md)
 <!-- graph:end -->

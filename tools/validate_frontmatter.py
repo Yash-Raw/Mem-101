@@ -85,7 +85,33 @@ def main() -> int:
         if d.meta.get("kind") != "landscape":
             p.add(d.rel, "kind must be 'landscape'")
 
+    _check_concept_refs(p)
     return p.report("frontmatter")
+
+
+# Frontmatter fields that name another concept by id. `contrasts_with` is the
+# load-bearing one -- it is the "do not confuse with" edge the atlas draws.
+CONCEPT_REFS = {
+    "concept": ("contrasts_with", "related"),
+    "landscape": ("maps_to_concepts",),
+}
+
+
+def _check_concept_refs(p) -> None:
+    """A named concept must exist.
+
+    Nothing checked these, and twelve had rotted: `deletion`, `decay`,
+    `invariant` and friends are plausible ids that were never filenames. A
+    dangling `contrasts_with` is silently dropped when the graph is built, so
+    the relation an author wrote simply does not appear anywhere.
+    """
+    known = {c.id for c in concepts()}
+    for docs, kind in ((concepts(), "concept"), (landscape(), "landscape")):
+        for d in docs:
+            for field in CONCEPT_REFS[kind]:
+                for ref in d.meta.get(field, []) or []:
+                    if ref not in known:
+                        p.add(d.rel, f"{field}: '{ref}' is not a concept id")
 
 
 if __name__ == "__main__":

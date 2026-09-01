@@ -4,7 +4,7 @@ title: "Temporal Routing"
 kind: concept
 stage: retrieve
 contrasts_with: [retrieval-scoping]
-related: [as-of-query, validity-interval, recency-bias]
+related: [as-of-query, validity-interval, memory-staleness]
 status: published
 ---
 

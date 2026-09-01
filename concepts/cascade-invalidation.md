@@ -4,7 +4,7 @@ title: "Cascade Invalidation"
 kind: concept
 stage: evolve
 contrasts_with: [supersession]
-related: [derivation-graph, deletion, provenance]
+related: [derivation-graph, cascade-deletion, provenance]
 status: published
 ---
 

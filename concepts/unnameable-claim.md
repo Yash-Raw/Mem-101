@@ -4,7 +4,7 @@ title: "Unnameable Claim"
 kind: concept
 stage: govern
 contrasts_with: [slot]
-related: [competence, conflict-detection, provenance]
+related: [competence, contradiction-vs-refinement, provenance]
 status: published
 ---
 

@@ -51,4 +51,5 @@ Pages land here as the course reaches the modules that reference them:
 
 - `tools/` — how shipping systems structure extraction, storage, and conflict resolution
 - `benchmarks/` — what each public memory benchmark actually measures, and what it misses
+- `standards/` — proposed portability and interop work, and how far to trust it
 - `papers/reading-list.md` — the surveys and primary sources worth reading directly

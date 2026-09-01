@@ -4,7 +4,7 @@ title: "Leak Assertion"
 kind: concept
 stage: govern
 contrasts_with: [write-authorisation]
-related: [retrieval-scoping, memory-topology, invariant]
+related: [retrieval-scoping, memory-topology, store-invariant]
 status: published
 ---
 

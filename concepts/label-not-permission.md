@@ -4,7 +4,7 @@ title: "Label, Not Permission"
 kind: concept
 stage: govern
 contrasts_with: [write-authorisation]
-related: [personal-data, redaction, deletion]
+related: [personal-data, redaction, cascade-deletion]
 status: published
 ---
 

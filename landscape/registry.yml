@@ -6,6 +6,8 @@
 
 tools:
   - Mem0
+  - Claude          # the memory tool is a vendor-native store, see tools/vendor-native-memory.md
+  - Memory Bank
   - Letta
   - MemGPT
   - Zep
@@ -26,6 +28,7 @@ tools:
 
 benchmarks:
   - LoCoMo
+  - MemDelta
   - LongMemEval
   - BEAM
   - StreamMemBench
@@ -37,3 +40,9 @@ vendors:
   - Anthropic
   - Google
   - Cohere
+
+# Proposed interop formats. Early, largely single-actor, and named here so the
+# spine cannot come to depend on one -- see standards/memory-interop.md.
+standards:
+  - SAIHM
+  - memorywire

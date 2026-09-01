@@ -382,10 +382,13 @@ nav:
     - landscape/benchmarks/beam.md
     - landscape/benchmarks/locomo.md
     - landscape/benchmarks/longmemeval.md
+    - landscape/benchmarks/memdelta.md
     - landscape/papers/reading-list.md
+    - landscape/standards/memory-interop.md
     - landscape/tools/agent-managed-memory-systems.md
     - landscape/tools/extraction-pipeline-systems.md
     - landscape/tools/framework-memory-primitives.md
     - landscape/tools/temporal-knowledge-graph-systems.md
+    - landscape/tools/vendor-native-memory.md
   # nav:end
   - Contributing: CONTRIBUTING.md

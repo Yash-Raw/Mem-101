@@ -3,8 +3,8 @@ id: as-of-query
 title: "As-Of Query"
 kind: concept
 stage: retrieve
-contrasts_with: [recency-bias]
-related: [bi-temporal-modeling, validity-interval, audit-trail]
+contrasts_with: [memory-staleness]
+related: [bi-temporal-modeling, validity-interval, append-only-log]
 status: published
 ---
 
@@ -24,4 +24,6 @@ Without either, a question about the past is answered by whatever filter the rea
 **Taught in:** [Validity Intervals](../curriculum/advanced/validity-intervals/index.md)
 
 **Used in:** [Three Temporal Questions](../curriculum/advanced/temporal-questions/index.md) · [Why Memory Eval Is Hard](../curriculum/advanced/why-memory-eval-is-hard/index.md)
+
+**Do not confuse with:** [Staleness](memory-staleness.md)
 <!-- graph:end -->

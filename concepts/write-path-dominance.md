@@ -4,7 +4,7 @@ title: "Write-Path Dominance"
 kind: concept
 stage: govern
 contrasts_with: [cost-profile]
-related: [extraction-pipeline, sleep-time-compute, consolidation]
+related: [extraction-pipeline, sleep-time-compute, memory-promotion]
 status: published
 ---
 

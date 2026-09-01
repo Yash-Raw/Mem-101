@@ -4101,7 +4101,7 @@
     },
     {
       "from": "as-of-query",
-      "to": "recency-bias",
+      "to": "memory-staleness",
       "kind": "contrasts_with"
     },
     {
@@ -4416,7 +4416,7 @@
     },
     {
       "from": "redaction",
-      "to": "deletion",
+      "to": "cascade-deletion",
       "kind": "contrasts_with"
     },
     {
@@ -4456,7 +4456,7 @@
     },
     {
       "from": "rollback",
-      "to": "deletion",
+      "to": "cascade-deletion",
       "kind": "contrasts_with"
     },
     {

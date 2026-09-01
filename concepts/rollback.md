@@ -3,7 +3,7 @@ id: rollback
 title: "Rollback"
 kind: concept
 stage: evolve
-contrasts_with: [deletion]
+contrasts_with: [cascade-deletion]
 related: [staged-change, supersession, derivation-graph]
 status: published
 ---
@@ -24,4 +24,6 @@ It works here for one reason: retirement sets `invalid_at` and `superseded_by` o
 
 <!-- graph:begin -->
 **Taught in:** [Promotion as a Release](../curriculum/advanced/promotion-as-release/index.md)
+
+**Do not confuse with:** [Cascade Deletion](cascade-deletion.md)
 <!-- graph:end -->

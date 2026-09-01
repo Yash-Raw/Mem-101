@@ -3249,7 +3249,7 @@
         "why-memory-eval-is-hard"
       ],
       "contrasts_with": [
-        "recency-bias"
+        "memory-staleness"
       ],
       "touches": 3
     },
@@ -3397,7 +3397,9 @@
       ],
       "contrasts_with": [
         "deletion-receipt",
+        "redaction",
         "request-resolution",
+        "rollback",
         "supersession"
       ],
       "touches": 4
@@ -4356,7 +4358,9 @@
         "watching-it-fail"
       ],
       "used_in": [],
-      "contrasts_with": [],
+      "contrasts_with": [
+        "as-of-query"
+      ],
       "touches": 1
     },
     {
@@ -4633,7 +4637,7 @@
       ],
       "used_in": [],
       "contrasts_with": [
-        "deletion"
+        "cascade-deletion"
       ],
       "touches": 1
     },
@@ -4784,7 +4788,7 @@
       ],
       "used_in": [],
       "contrasts_with": [
-        "deletion"
+        "cascade-deletion"
       ],
       "touches": 1
     },

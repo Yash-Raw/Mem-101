@@ -4,7 +4,7 @@ title: "Memory Topology"
 kind: concept
 stage: store
 contrasts_with: [retrieval-scoping]
-related: [provenance, namespace, access-control]
+related: [provenance, namespace, write-authorisation]
 status: published
 ---
 

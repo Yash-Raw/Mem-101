@@ -4,7 +4,7 @@ title: "Volatility"
 kind: concept
 stage: evolve
 contrasts_with: [salience]
-related: [user-model, supersession, decay]
+related: [user-model, supersession, decay-function]
 status: published
 ---
 
